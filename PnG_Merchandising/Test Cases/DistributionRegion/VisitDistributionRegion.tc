@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>VisitDistributionRegion</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c766c824-22f4-4389-b588-54fac2540664</testCaseGuid>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>34a62fb6-4608-4e76-b410-6987cbe0a60b</id>
+      <masked>false</masked>
+      <name>varBrandMessage</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>88420b5c-68b0-4c33-bce5-051086b7b0a4</id>
+      <masked>false</masked>
+      <name>varCorporationMessage</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>17d8a61a-9685-43dc-8ab8-895125a71dc8</id>
+      <masked>false</masked>
+      <name>varValueMessage</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>5a033c6e-dfc0-4f87-bc9a-3e2659deeae1</id>
+      <masked>false</masked>
+      <name>varPoster</name>
+   </variable>
+</TestCaseEntity>

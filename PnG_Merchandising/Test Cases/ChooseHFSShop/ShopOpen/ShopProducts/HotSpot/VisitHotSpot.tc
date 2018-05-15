@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>VisitHotSpot</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>53354d35-a970-46d3-ab7e-cd452989ebc4</testCaseGuid>
+   <variable>
+      <defaultValue>'0000'</defaultValue>
+      <description></description>
+      <id>2ba3e778-ae0f-4975-95fe-4640e25a3dec</id>
+      <masked>false</masked>
+      <name>varAlwaysMaxiThicksExtraLong</name>
+   </variable>
+   <variable>
+      <defaultValue>'0000'</defaultValue>
+      <description></description>
+      <id>d847b623-9af0-4e1a-baaf-25cd4a662db0</id>
+      <masked>false</masked>
+      <name>varHotSpotUtilization</name>
+   </variable>
+</TestCaseEntity>

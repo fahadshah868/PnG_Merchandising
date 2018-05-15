@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Visit HFS Shop With Overwrite Scenarios" time="319" tests="7" failures="0" errors="0">
+   <testsuite name="Visit HFS Shop With Overwrite Scenarios" tests="7" failures="0" errors="0" time="319" timestamp="2018-05-14 16:58:30" hostname="Fahad Shah - Dell-E6420" id="Test Suites/Visit HFS Shop With Overwrite Scenarios">
+      <properties>
+         <property name="deviceName" value="samsung SM-J110H (Android 4.4.4)"/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="D:\\Git Projects\\PnG_Merchandising\\Reports\\Visit HFS Shop With Overwrite Scenarios\\20180514_165825"/>
+         <property name="logFiles" value="D:\\Git Projects\\PnG_Merchandising\\Reports\\Visit HFS Shop With Overwrite Scenarios\\20180514_165825\\appium.log, D:\\Git Projects\\PnG_Merchandising\\Reports\\Visit HFS Shop With Overwrite Scenarios\\20180514_165825\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="Fahad Shah - Dell-E6420"/>
+         <property name="os" value="Windows 8 64bit"/>
+         <property name="katalonVersion" value="5.4.1.1"/>
+         <property name="deviceOS" value="Android"/>
+         <property name="appiumVersion" value="1.8.0"/>
+         <property name="deviceModel" value="SM-J110H"/>
+         <property name="hostAddress" value="192.168.3.79"/>
+         <property name="deviceManufacturer" value="samsung"/>
+         <property name="deviceId" value="11015a1136d0b24a"/>
+         <property name="deviceName" value="samsung SM-J110H (Android 4.4.4)"/>
+         <property name="deviceOSVersion" value="4.4.4"/>
+      </properties>
+      <testcase name="Test Cases/LaunchingApp/LaunchApp" classname="Test Cases/LaunchingApp/LaunchApp" status="PASSED">
+         <system-out><![CDATA[2018-05-14 16:58:31 - [TEST_CASE][PASSED] - Test Cases/LaunchingApp/LaunchApp: Test Cases/LaunchingApp/LaunchApp
+
+2018-05-14 16:58:32 - [TEST_STEP][PASSED] - startApplication: Started app at: 'D:\QAAutomation\Builds\png_local_300418.apk'
+
+2018-05-14 16:59:01 - [MESSAGE][PASSED] - Started app at: 'D:\QAAutomation\Builds\png_local_300418.apk'
+
+2018-05-14 16:59:01 - [TEST_STEP][PASSED] - delay: Delayed 5 second(s)
+
+2018-05-14 16:59:06 - [MESSAGE][PASSED] - Delayed 5 second(s)]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/SelectAndStartYourDay" classname="Test Cases/ChooseHFSShop/SelectAndStartYourDay" status="PASSED">
+         <system-out><![CDATA[2018-05-14 16:59:06 - [TEST_CASE][PASSED] - Test Cases/ChooseHFSShop/SelectAndStartYourDay: Test Cases/ChooseHFSShop/SelectAndStartYourDay
+
+2018-05-14 16:59:07 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/DashboardScreenElements/StartYourDayButton' is exist
+
+2018-05-14 16:59:07 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:08 - [MESSAGE][PASSED] - Element 'Object Repository/DashboardScreenElements/StartYourDayButton' is exist
+
+2018-05-14 16:59:08 - [TEST_STEP][PASSED] - customKeywordsCollection.CustomKeywords.selectCurrentDay: customKeywordsCollection.CustomKeywords.selectCurrentDay is PASSED
+
+2018-05-14 16:59:09 - [MESSAGE][PASSED] - customKeywordsCollection.CustomKeywords.selectCurrentDay is PASSED
+
+2018-05-14 16:59:09 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/DashboardScreenElements/StartYourDayButton'
+
+2018-05-14 16:59:09 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:10 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/DashboardScreenElements/StartYourDayButton'
+
+2018-05-14 16:59:10 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:11 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:11 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:12 - [MESSAGE][PASSED] - Delayed 1 second(s)]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ChooseShopForShopClosed" classname="Test Cases/ChooseHFSShop/ChooseShopForShopClosed" status="PASSED">
+         <system-out><![CDATA[2018-05-14 16:59:12 - [TEST_CASE][PASSED] - Test Cases/ChooseHFSShop/ChooseShopForShopClosed: Test Cases/ChooseHFSShop/ChooseShopForShopClosed
+
+2018-05-14 16:59:13 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopActionsScreenElements/Validate_ShopsListScreen' are matched.
+
+2018-05-14 16:59:13 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopActionsScreenElements/Validate_ShopsListScreen' are matched.
+
+2018-05-14 16:59:13 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:14 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:14 - [TEST_STEP][PASSED] - customKeywordsCollection.CustomKeywords.selectHFSShop: customKeywordsCollection.CustomKeywords.selectHFSShop is PASSED
+
+2018-05-14 16:59:18 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:18 - [MESSAGE][PASSED] - customKeywordsCollection.CustomKeywords.selectHFSShop is PASSED]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ShopClosed/VisitShopClosed" classname="Test Cases/ChooseHFSShop/ShopClosed/VisitShopClosed" status="PASSED">
+         <system-out><![CDATA[2018-05-14 16:59:18 - [TEST_CASE][PASSED] - Test Cases/ChooseHFSShop/ShopClosed/VisitShopClosed: Test Cases/ChooseHFSShop/ShopClosed/VisitShopClosed
+
+2018-05-14 16:59:19 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopActionsScreenElements/Validate_ShopOptionsScreen' are matched.
+
+2018-05-14 16:59:19 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopActionsScreenElements/Validate_ShopOptionsScreen' are matched.
+
+2018-05-14 16:59:19 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:20 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:20 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopActionsScreenElements/StartWorking'
+
+2018-05-14 16:59:20 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:21 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopActionsScreenElements/StartWorking'
+
+2018-05-14 16:59:21 - [TEST_STEP][PASSED] - delay: Delayed 18 second(s)
+
+2018-05-14 16:59:39 - [MESSAGE][PASSED] - Delayed 18 second(s)
+
+2018-05-14 16:59:39 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_MapScreen' is exist
+
+2018-05-14 16:59:40 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:40 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_MapScreen' is exist
+
+2018-05-14 16:59:40 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:41 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:41 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/CheckInButton'
+
+2018-05-14 16:59:41 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:41 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/CheckInButton'
+
+2018-05-14 16:59:41 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:42 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:43 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_InfoPopUpDialog' is exist
+
+2018-05-14 16:59:43 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:43 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_InfoPopUpDialog' is exist
+
+2018-05-14 16:59:43 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:44 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:44 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/InfoPopUp_YesButton'
+
+2018-05-14 16:59:44 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:45 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/InfoPopUp_YesButton'
+
+2018-05-14 16:59:45 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:46 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:46 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/ShopActionsScreenElements/ShopClosed' is exist
+
+2018-05-14 16:59:46 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:46 - [MESSAGE][PASSED] - Element 'Object Repository/ShopActionsScreenElements/ShopClosed' is exist
+
+2018-05-14 16:59:46 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:47 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:48 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopActionsScreenElements/ShopClosed'
+
+2018-05-14 16:59:48 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:50 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopActionsScreenElements/ShopClosed'
+
+2018-05-14 16:59:50 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:51 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:51 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 16:59:51 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:51 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 16:59:51 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 16:59:52 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 16:59:52 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 16:59:52 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 16:59:56 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 16:59:56 - [TEST_STEP][PASSED] - delay: Delayed 5 second(s)
+
+2018-05-14 17:00:01 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-05-14 17:00:01 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:00:01 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:02 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:00:02 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:03 - [MESSAGE][PASSED] - Delayed 1 second(s)]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ChooseShopForShopOpen" classname="Test Cases/ChooseHFSShop/ChooseShopForShopOpen" status="PASSED">
+         <system-out><![CDATA[2018-05-14 17:00:03 - [TEST_CASE][PASSED] - Test Cases/ChooseHFSShop/ChooseShopForShopOpen: Test Cases/ChooseHFSShop/ChooseShopForShopOpen
+
+2018-05-14 17:00:03 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopActionsScreenElements/Validate_ShopsListScreen' are matched.
+
+2018-05-14 17:00:04 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopActionsScreenElements/Validate_ShopsListScreen' are matched.
+
+2018-05-14 17:00:04 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:05 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:05 - [TEST_STEP][PASSED] - customKeywordsCollection.CustomKeywords.selectHFSShop: customKeywordsCollection.CustomKeywords.selectHFSShop is PASSED
+
+2018-05-14 17:00:08 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:08 - [MESSAGE][PASSED] - customKeywordsCollection.CustomKeywords.selectHFSShop is PASSED]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen" classname="Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen" status="PASSED">
+         <system-out><![CDATA[2018-05-14 17:00:08 - [TEST_CASE][PASSED] - Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen: Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen
+
+2018-05-14 17:00:09 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopActionsScreenElements/Validate_ShopOptionsScreen' are matched.
+
+2018-05-14 17:00:10 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopActionsScreenElements/Validate_ShopOptionsScreen' are matched.
+
+2018-05-14 17:00:10 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:11 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:11 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopActionsScreenElements/StartWorking'
+
+2018-05-14 17:00:11 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:12 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopActionsScreenElements/StartWorking'
+
+2018-05-14 17:00:12 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:13 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:13 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_InfoPopUpDialog' is exist
+
+2018-05-14 17:00:13 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:14 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_InfoPopUpDialog' is exist
+
+2018-05-14 17:00:14 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:15 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:15 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/InfoPopUp_YesButton'
+
+2018-05-14 17:00:15 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:15 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/InfoPopUp_YesButton'
+
+2018-05-14 17:00:15 - [TEST_STEP][PASSED] - delay: Delayed 18 second(s)
+
+2018-05-14 17:00:33 - [MESSAGE][PASSED] - Delayed 18 second(s)
+
+2018-05-14 17:00:33 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_MapScreen' is exist
+
+2018-05-14 17:00:33 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:34 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_MapScreen' is exist
+
+2018-05-14 17:00:34 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:35 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:35 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/CheckInButton'
+
+2018-05-14 17:00:35 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:35 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/CheckInButton'
+
+2018-05-14 17:00:35 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:36 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:36 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_InfoPopUpDialog' is exist
+
+2018-05-14 17:00:36 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:36 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_InfoPopUpDialog' is exist
+
+2018-05-14 17:00:36 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:37 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:37 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/InfoPopUp_YesButton'
+
+2018-05-14 17:00:37 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:38 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/InfoPopUp_YesButton'
+
+2018-05-14 17:00:38 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:39 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:39 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/ShopActionsScreenElements/ShopOpen' is exist
+
+2018-05-14 17:00:39 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:39 - [MESSAGE][PASSED] - Element 'Object Repository/ShopActionsScreenElements/ShopOpen' is exist
+
+2018-05-14 17:00:39 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:40 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:40 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopActionsScreenElements/ShopOpen'
+
+2018-05-14 17:00:40 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:42 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopActionsScreenElements/ShopOpen'
+
+2018-05-14 17:00:42 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:43 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:43 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 17:00:43 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:43 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 17:00:43 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:44 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:44 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 17:00:44 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:48 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 17:00:48 - [TEST_STEP][PASSED] - delay: Delayed 5 second(s)
+
+2018-05-14 17:00:53 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-05-14 17:00:53 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:00:53 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:54 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:00:54 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:55 - [MESSAGE][PASSED] - Delayed 1 second(s)]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts" classname="Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts" status="PASSED">
+         <system-out><![CDATA[2018-05-14 17:00:55 - [TEST_CASE][PASSED] - Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts: Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts
+
+2018-05-14 17:00:55 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/ShopProductsScreenElements/Validate_ShopProductsScreen' is exist
+
+2018-05-14 17:00:55 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:00:56 - [MESSAGE][PASSED] - Element 'Object Repository/ShopProductsScreenElements/Validate_ShopProductsScreen' is exist
+
+2018-05-14 17:00:56 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:00:57 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:57 - [TEST_STEP][PASSED] - customKeywordsCollection.CustomKeywords.visitShopProducts: customKeywordsCollection.CustomKeywords.visitShopProducts is PASSED
+
+2018-05-14 17:00:59 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:00:59 - [TEST_CASE][PASSED] - Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/HotSpot/VisitHotSpot: Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/HotSpot/VisitHotSpot
+
+2018-05-14 17:01:00 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:01:01 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:01:01 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:02 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:02 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/ShopKeeperDidNotAllow'
+
+2018-05-14 17:01:02 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:02 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/ShopKeeperDidNotAllow'
+
+2018-05-14 17:01:02 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:03 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:03 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/Validate_ShopKeeperDidnotAllowScreen' are matched.
+
+2018-05-14 17:01:05 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/Validate_ShopKeeperDidnotAllowScreen' are matched.
+
+2018-05-14 17:01:05 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:06 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:06 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/CategoryRemarks_OthersOption'
+
+2018-05-14 17:01:06 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:06 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/CategoryRemarks_OthersOption'
+
+2018-05-14 17:01:06 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:07 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:07 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/CategoryRemarks_BackButton'
+
+2018-05-14 17:01:07 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:08 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/CategoryRemarks_BackButton'
+
+2018-05-14 17:01:08 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:09 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:09 - [TEST_STEP][PASSED] - customKeywordsCollection.CustomKeywords.findProductFromProductsList: customKeywordsCollection.CustomKeywords.findProductFromProductsList is PASSED
+
+2018-05-14 17:01:13 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:18 - [MESSAGE][PASSED] - Swiped from 0,193 to 0,100
+
+2018-05-14 17:01:20 - [MESSAGE][PASSED] - Delayed 2 second(s)
+
+2018-05-14 17:01:21 - [MESSAGE][PASSED] - customKeywordsCollection.CustomKeywords.findProductFromProductsList is PASSED
+
+2018-05-14 17:01:21 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:01:21 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:01:21 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:22 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:22 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotNotAvailable/HotspotNotAvailable'
+
+2018-05-14 17:01:22 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:25 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotNotAvailable/HotspotNotAvailable'
+
+2018-05-14 17:01:25 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:26 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:26 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 17:01:26 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:26 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 17:01:26 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:27 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:27 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 17:01:27 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:30 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 17:01:30 - [TEST_STEP][PASSED] - delay: Delayed 5 second(s)
+
+2018-05-14 17:01:35 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-05-14 17:01:35 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:01:35 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:36 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:01:36 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:37 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:37 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:01:38 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:01:38 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:39 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:39 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/HotSpot_BackButton'
+
+2018-05-14 17:01:39 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:39 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/HotSpot_BackButton'
+
+2018-05-14 17:01:39 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:40 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:40 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/ShopProductsScreenElements/Validate_ShopProductsScreen' is exist
+
+2018-05-14 17:01:40 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:42 - [MESSAGE][PASSED] - Element 'Object Repository/ShopProductsScreenElements/Validate_ShopProductsScreen' is exist
+
+2018-05-14 17:01:42 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:43 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:43 - [TEST_STEP][PASSED] - customKeywordsCollection.CustomKeywords.findProductFromProductsList: customKeywordsCollection.CustomKeywords.findProductFromProductsList is PASSED
+
+2018-05-14 17:01:45 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:50 - [MESSAGE][PASSED] - Swiped from 0,193 to 0,100
+
+2018-05-14 17:01:52 - [MESSAGE][PASSED] - Delayed 2 second(s)
+
+2018-05-14 17:01:53 - [MESSAGE][PASSED] - customKeywordsCollection.CustomKeywords.findProductFromProductsList is PASSED
+
+2018-05-14 17:01:53 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:01:53 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:01:53 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:54 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:54 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotAvailable'
+
+2018-05-14 17:01:54 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:01:55 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotAvailable'
+
+2018-05-14 17:01:55 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:56 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:56 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_SelectAppropriateTypeScreen' are matched.
+
+2018-05-14 17:01:56 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_SelectAppropriateTypeScreen' are matched.
+
+2018-05-14 17:01:56 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:01:57 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:01:57 - [TEST_STEP][PASSED] - customKeywordsCollection.CustomKeywords.selectHotSpotAppropriateType: customKeywordsCollection.CustomKeywords.selectHotSpotAppropriateType is PASSED
+
+2018-05-14 17:02:02 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:02 - [MESSAGE][PASSED] - customKeywordsCollection.CustomKeywords.selectHotSpotAppropriateType is PASSED
+
+2018-05-14 17:02:02 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 17:02:02 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:02 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 17:02:02 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:03 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:03 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 17:02:04 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:07 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 17:02:07 - [TEST_STEP][PASSED] - delay: Delayed 5 second(s)
+
+2018-05-14 17:02:12 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-05-14 17:02:12 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:02:12 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:13 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:02:13 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:14 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:14 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:02:15 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:02:15 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:16 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:16 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Facing'
+
+2018-05-14 17:02:16 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:16 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Facing'
+
+2018-05-14 17:02:16 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:17 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:17 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_FacingScreen' are matched.
+
+2018-05-14 17:02:18 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_FacingScreen' are matched.
+
+2018-05-14 17:02:18 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:19 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:19 - [TEST_STEP][PASSED] - setText: Text '0000' has been set to element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/AlwaysMaxiThicksExtraLong_TextField'
+
+2018-05-14 17:02:19 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:27 - [MESSAGE][PASSED] - Text '0000' has been set to element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/AlwaysMaxiThicksExtraLong_TextField'
+
+2018-05-14 17:02:27 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:28 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:28 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/SubmitButton'
+
+2018-05-14 17:02:28 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:28 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/SubmitButton'
+
+2018-05-14 17:02:28 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:29 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:29 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_InfoPopUpDialog' is exist
+
+2018-05-14 17:02:29 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:30 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_InfoPopUpDialog' is exist
+
+2018-05-14 17:02:30 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:31 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:31 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/InfoPopUp_OKButton'
+
+2018-05-14 17:02:31 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:40 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/InfoPopUp_OKButton'
+
+2018-05-14 17:02:40 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:41 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:41 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:02:42 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:02:42 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:43 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:43 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/POSMImageView'
+
+2018-05-14 17:02:43 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:44 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/POSMImageView'
+
+2018-05-14 17:02:44 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:45 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:45 - [TEST_STEP][PASSED] - customKeywordsCollection.CustomKeywords.selectPOSM: customKeywordsCollection.CustomKeywords.selectPOSM is PASSED
+
+2018-05-14 17:02:47 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:47 - [MESSAGE][PASSED] - customKeywordsCollection.CustomKeywords.selectPOSM is PASSED
+
+2018-05-14 17:02:47 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_POSMRemarksScreen' are matched.
+
+2018-05-14 17:02:48 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_POSMRemarksScreen' are matched.
+
+2018-05-14 17:02:48 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:49 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:49 - [TEST_STEP][PASSED] - customKeywordsCollection.CustomKeywords.selectPOSMRemarks: customKeywordsCollection.CustomKeywords.selectPOSMRemarks is PASSED
+
+2018-05-14 17:02:50 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:50 - [MESSAGE][PASSED] - customKeywordsCollection.CustomKeywords.selectPOSMRemarks is PASSED
+
+2018-05-14 17:02:50 - [TEST_STEP][PASSED] - pressBack: Press back button successfully
+
+2018-05-14 17:02:51 - [MESSAGE][PASSED] - Press back button successfully
+
+2018-05-14 17:02:51 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:52 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:52 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:02:52 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:02:52 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:53 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:53 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/PlanogramImageView'
+
+2018-05-14 17:02:53 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:54 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/PlanogramImageView'
+
+2018-05-14 17:02:54 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:55 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:55 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Planogram_CloseButton' is exist
+
+2018-05-14 17:02:55 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:55 - [MESSAGE][PASSED] - Element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Planogram_CloseButton' is exist
+
+2018-05-14 17:02:55 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:56 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:56 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Planogram_CloseButton'
+
+2018-05-14 17:02:56 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:02:57 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Planogram_CloseButton'
+
+2018-05-14 17:02:57 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:02:58 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:02:58 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:02:59 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:02:59 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:00 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:00 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/PictureImageView'
+
+2018-05-14 17:03:00 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:02 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/PictureImageView'
+
+2018-05-14 17:03:02 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:03 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:03 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 17:03:03 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:03 - [MESSAGE][PASSED] - Element 'Object Repository/CommonScreenElements/Validate_CameraScreen' is exist
+
+2018-05-14 17:03:03 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:04 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:04 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 17:03:04 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:07 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/TakePictureButton'
+
+2018-05-14 17:03:07 - [TEST_STEP][PASSED] - delay: Delayed 5 second(s)
+
+2018-05-14 17:03:12 - [MESSAGE][PASSED] - Delayed 5 second(s)
+
+2018-05-14 17:03:12 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:03:13 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:13 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/CommonScreenElements/DoneButton'
+
+2018-05-14 17:03:13 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:14 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:14 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:03:15 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotAvailableScreen' are matched.
+
+2018-05-14 17:03:15 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:16 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:16 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotAvailable_BackButton'
+
+2018-05-14 17:03:16 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:16 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotAvailable_BackButton'
+
+2018-05-14 17:03:16 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:17 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:17 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotUtilizationScreen' are matched.
+
+2018-05-14 17:03:18 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/Validate_HotSpotUtilizationScreen' are matched.
+
+2018-05-14 17:03:18 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:19 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:19 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotUtilization_YesRadioButton'
+
+2018-05-14 17:03:19 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:19 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotUtilization_YesRadioButton'
+
+2018-05-14 17:03:19 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:20 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:20 - [TEST_STEP][PASSED] - setText: Text '0000' has been set to element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotUtilization_TextField'
+
+2018-05-14 17:03:20 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:30 - [MESSAGE][PASSED] - Text '0000' has been set to element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotUtilization_TextField'
+
+2018-05-14 17:03:30 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:31 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:31 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotUtilization_SubmitButton'
+
+2018-05-14 17:03:31 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:32 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotUtilization_SubmitButton'
+
+2018-05-14 17:03:32 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:33 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:33 - [TEST_STEP][PASSED] - verifyElementText: Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:03:33 - [MESSAGE][PASSED] - Actual text and expected text of test object 'Object Repository/ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen' are matched.
+
+2018-05-14 17:03:33 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:34 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:34 - [TEST_STEP][PASSED] - tap: Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/HotSpot_BackButton'
+
+2018-05-14 17:03:34 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:35 - [MESSAGE][PASSED] - Tapped on element 'Object Repository/ShopProductsScreenElements/HotSpot/HotSpot_BackButton'
+
+2018-05-14 17:03:35 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:36 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:36 - [TEST_STEP][PASSED] - verifyElementExist: Element 'Object Repository/ShopProductsScreenElements/Validate_ShopProductsScreen' is exist
+
+2018-05-14 17:03:36 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-14 17:03:37 - [MESSAGE][PASSED] - Element 'Object Repository/ShopProductsScreenElements/Validate_ShopProductsScreen' is exist
+
+2018-05-14 17:03:37 - [TEST_STEP][PASSED] - delay: Delayed 1 second(s)
+
+2018-05-14 17:03:38 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:38 - [MESSAGE][PASSED] - Call Test Case 'Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/HotSpot/VisitHotSpot' successfully
+
+2018-05-14 17:03:40 - [MESSAGE][PASSED] - Delayed 1 second(s)
+
+2018-05-14 17:03:40 - [TEST_CASE][PASSED] - Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/ShopProduct/VisitShopProduct: Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/ShopProduct/VisitShopProduct
+
+2018-05-14 17:03:41 - [TEST_STEP][PASSED] - Statement - return null: null
+
+2018-05-14 17:03:41 - [MESSAGE][PASSED] - Call Test Case 'Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/ShopProduct/VisitShopProduct' successfully
+
+2018-05-14 17:03:44 - [MESSAGE][PASSED] - Swiped from 0,193 to 0,100
+
+2018-05-14 17:03:46 - [MESSAGE][PASSED] - Delayed 2 second(s)
+
+2018-05-14 17:03:46 - [MESSAGE][PASSED] - customKeywordsCollection.CustomKeywords.visitShopProducts is PASSED]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2018-05-14 16:58:30 - [TEST_SUITE][PASSED] - Visit HFS Shop With Overwrite Scenarios: Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>
