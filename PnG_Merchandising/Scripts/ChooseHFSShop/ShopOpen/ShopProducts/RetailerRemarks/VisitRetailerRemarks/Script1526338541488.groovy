@@ -19,3 +19,38 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/RetailerRemarks/Validate_RetailerRemarksScreen'), 
+    'KPI: Retailer Remarks')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/RetailerRemarks/AllCategories'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/RetailerRemarks/Validate_AllCategoriesScreen'), 
+    'Channel:HFS Medium')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/RetailerRemarks/SRNotVisiting_CheckBox'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+Mobile.pressBack()
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/RetailerRemarks/Validate_RetailerRemarksScreen'), 
+    'KPI: Retailer Remarks')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/RetailerRemarks/RetailerRemarks_BackButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopProductsScreenElements/Validate_ShopProductsScreen'), 0)
+
+MobileBuiltInKeywords.delay(1)
+

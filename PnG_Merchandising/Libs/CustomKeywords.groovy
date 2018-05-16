@@ -43,3 +43,7 @@ def static "customKeywordsCollection.CustomKeywords.visitPampersAvailability"() 
 def static "customKeywordsCollection.CustomKeywords.visitShareOfShelfFields"() {
     (new customKeywordsCollection.CustomKeywords()).visitShareOfShelfFields()
 }
+
+def static "customKeywordsCollection.CustomKeywords.visitHangerProducts"() {
+    (new customKeywordsCollection.CustomKeywords()).visitHangerProducts()
+}

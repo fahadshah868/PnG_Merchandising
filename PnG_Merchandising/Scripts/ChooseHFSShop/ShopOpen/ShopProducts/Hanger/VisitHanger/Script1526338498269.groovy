@@ -19,3 +19,257 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Validate_HangerScreen'), 'Hanger List')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/CorporateHanger'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/Validate_CorporateHangerScreen'), 
+    'KPI: Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/SKDNA/SKDNA'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/SKDNA/Validate_CategoryRemarksScreen'), 
+    'CATEGORY REMARKS')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/SKDNA/CategoryRemarks_Others'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/SKDNA/CategoryRemarks_BackButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Validate_HangerScreen'), 'Hanger List')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/CorporateHanger'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/Validate_CorporateHangerScreen'), 
+    'KPI: Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/HangerNotAvailable'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/TakePictureButton'), 0)
+
+MobileBuiltInKeywords.delay(5)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/DoneButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_HangerAvailableAndNotAvailableScreen'), 
+    'Category:Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Availability'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_AvailabilityScreen'), 
+    'Availability')
+
+MobileBuiltInKeywords.delay(1)
+
+CustomKeywords.'customKeywordsCollection.CustomKeywords.visitHangerProducts'()
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/SubmitButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_HangerAvailableAndNotAvailableScreen'), 
+    'Category:Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Planogram_ImageView'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Planogram_CloseButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Planogram_CloseButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_HangerAvailableAndNotAvailableScreen'), 
+    'Category:Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Picture_ImageView'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/TakePictureButton'), 0)
+
+MobileBuiltInKeywords.delay(5)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/DoneButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_HangerAvailableAndNotAvailableScreen'), 
+    'Category:Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/BackButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/Validate_CorporateHangerScreen'), 
+    'KPI: Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/HangerAvailable'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/TakePictureButton'), 0)
+
+MobileBuiltInKeywords.delay(5)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/DoneButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_HangerAvailableAndNotAvailableScreen'), 
+    'Category:Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Availability'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_AvailabilityScreen'), 
+    'Availability')
+
+MobileBuiltInKeywords.delay(1)
+
+CustomKeywords.'customKeywordsCollection.CustomKeywords.visitHangerProducts'()
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/SubmitButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_HangerAvailableAndNotAvailableScreen'), 
+    'Category:Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Planogram_ImageView'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Planogram_CloseButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Planogram_CloseButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_HangerAvailableAndNotAvailableScreen'), 
+    'Category:Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Picture_ImageView'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/TakePictureButton'), 0)
+
+MobileBuiltInKeywords.delay(5)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/DoneButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/Validate_HangerAvailableAndNotAvailableScreen'), 
+    'Category:Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/HangerAvailable_And_HangerNotAvailable/BackButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/Validate_CorporateHangerScreen'), 
+    'KPI: Hanger')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Hanger/Corporate Hanger/CorporateHanger_BackButton'), 
+    0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Hanger/Validate_HangerScreen'), 'Hanger List')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.pressBack()
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopProductsScreenElements/Validate_ShopProductsScreen'), 0)
+
+MobileBuiltInKeywords.delay(1)
+

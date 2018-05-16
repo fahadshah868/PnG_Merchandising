@@ -4,7 +4,7 @@
    <name>Visit HFS Shop With Overwrite Scenarios</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-05-14T16:58:25</lastRun>
+   <lastRun>2018-05-15T18:47:51</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -56,13 +56,13 @@
    <testCaseLink>
       <guid>71db5713-1061-4324-8721-25b38126c0ca</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ChooseShopForShopClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>7357f772-a394-4d68-9a16-938a522929bc</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ShopClosed/VisitShopClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>

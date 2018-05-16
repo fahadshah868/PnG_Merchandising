@@ -31,6 +31,7 @@ public class CustomKeywords {
 
 	public static AppiumDriver<?> driver = MobileDriverFactory.getDriver()
 
+
 	@Keyword
 	def selectCurrentDay(){
 		Calendar calendar = Calendar.getInstance()
@@ -120,7 +121,7 @@ public class CustomKeywords {
 	def visitShopProducts(){
 		int flag = 0
 		ArrayList<MobileElement> products = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
-		for(int i=1 ; i<=products.size(); i++ ){
+		for(int i=2 ; i<=products.size(); i++ ){
 			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String productname = product.getText()
 			if(productname.contains("HotSpot")){
@@ -167,7 +168,7 @@ public class CustomKeywords {
 				int index = countproducts.size()
 				MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 				String lastproductnamebeforeswipe = lastproductbeforeswipe.getText()
-				Mobile.swipe(0, 193, 0, 100)
+				Mobile.swipe(0, 303, 0, 200)
 				Mobile.delay(2)
 				MobileElement lastproductafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 				String lastproductnameafterswipe = lastproductafterswipe.getText()
@@ -266,18 +267,18 @@ public class CustomKeywords {
 	}
 	@Keyword
 	def visitPampersAvailability(){
-		int index = 1
+		int index = 0
 		ArrayList<MobileElement> pampersavailabilitylist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		for(int i=1; i<=pampersavailabilitylist.size(); i=i+2){
-			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+i+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RadioGroup[1]/android.widget.RadioButton[1]").click()
-			Mobile.delay(1)
 			index = index+1
+			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RadioGroup[1]/android.widget.RadioButton[1]").click()
+			Mobile.delay(1)
 			pampersavailabilitylist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		}
 		while(true){
 			MobileElement lastoptionbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 			String lastoptionnamebeforeswipe = lastoptionbeforeswipe.getText()
-			Mobile.swipe(0, 164, 0, 100)
+			Mobile.swipe(0, 274, 0, 200)
 			Mobile.delay(2)
 			MobileElement lastoptionafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 			String lastoptionnameafterswipe = lastoptionafterswipe.getText()
@@ -292,25 +293,245 @@ public class CustomKeywords {
 	}
 	@Keyword
 	def visitShareOfShelfFields(){
-		int index = 1
+		int index = 0
 		ArrayList<MobileElement> shareofshelffieldslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		for(int i=2; i<=shareofshelffieldslist.size(); i=i+3){
-			Mobile.setText(driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]"), "1", 0)
 			index = index+1
+			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
+			String productname = product.getText()
+			MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+			if(productname.contains("Mini ML JP (2)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Mini ML MP (2)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Midi ML JP (3)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Midi ML MP (3)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Midi Pants JP (3)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Midi Pants MP (3)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Maxi ML JP (4)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Maxi ML MP (4)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("maxi Pants JP (4)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Maxi Pants MP (4)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Junior ML JP (5)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Junior ML MP (5)")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("P&G Others")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Canbabe")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Baby Master")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("P&G imported")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Others")){
+				textfield.setValue("123")
+				Mobile.hideKeyboard()
+			}
 			shareofshelffieldslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		}
 		while(true){
-			MobileElement lastfieldbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
-			String lastfieldnamebeforeswipe = lastfieldbeforeswipe.getText()
-			Mobile.swipe(0, 200, 0, 100)
+			MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String lastproductnamebeforeswipe = lastproductbeforeswipe.getText()
+			Mobile.swipe(0, 330, 0, 220)
 			Mobile.delay(1)
-			MobileElement lastfieldafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
-			String lastfieldnameafterswipe = lastfieldafterswipe.getText()
-			if(lastfieldnamebeforeswipe.equals(lastfieldnameafterswipe)){
+			MobileElement lastproductafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String lastproductnameafterswipe = lastproductafterswipe.getText()
+			if(lastproductnamebeforeswipe.equals(lastproductnameafterswipe)){
 				break
 			}
 			else{
-				Mobile.setText(driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]"), "1", 0)
+				MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+				if(lastproductnameafterswipe.contains("Mini ML JP (2)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Mini ML MP (2)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Midi ML JP (3)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Midi ML MP (3)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Midi Pants JP (3)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Midi Pants MP (3)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Maxi ML JP (4)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Maxi ML MP (4)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("maxi Pants JP (4)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Maxi Pants MP (4)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Junior ML JP (5)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Junior ML MP (5)")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("P&G Others")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Canbabe")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Baby Master")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("P&G imported")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Others")){
+					textfield.setValue("123")
+					Mobile.hideKeyboard()
+				}
+			}
+		}
+	}
+	@Keyword
+	def visitHangerProducts(){
+		ArrayList<MobileElement> hangerproductslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		int index = 0
+		for(int i=2; i<=hangerproductslist.size(); i=i+3){
+			index = index+1
+			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
+			String productname = product.getText()
+			MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+			if(productname.contains("Ariel Ariel 45gm")){
+				textfield.setValue("12345")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Ariel Ariel 95gm")){
+				textfield.setValue("12345")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("H&S Classic Clean   5ml")){
+				textfield.setValue("12345")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("H&S Silky Black 5ml")){
+				textfield.setValue("12345")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("H&S Anti Hair Fall 5ml")){
+				textfield.setValue("12345")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Pantene Smooth & Strong 5ml - Sachet")){
+				textfield.setValue("12345")
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Pantene Milky Extra Treatment 5ml")){
+				textfield.setValue("12345")
+				Mobile.hideKeyboard()
+			}
+			hangerproductslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		}
+		while(true){
+			MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String lastproductnamebeforeswipe = lastproductbeforeswipe.getText()
+			Mobile.swipe(0, 330, 0, 220)
+			Mobile.delay(1)
+			MobileElement lastproductafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String lastproductnameafterswipe = lastproductafterswipe.getText()
+			MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+			if(lastproductnamebeforeswipe.equals(lastproductnameafterswipe)){
+				break
+			}
+			else{
+				if(lastproductnameafterswipe.contains("Ariel Ariel 45gm")){
+					textfield.setValue("12345")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Ariel Ariel 95gm")){
+					textfield.setValue("12345")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("H&S Classic Clean   5ml")){
+					textfield.setValue("12345")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("H&S Silky Black 5ml")){
+					textfield.setValue("12345")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("H&S Anti Hair Fall 5ml")){
+					textfield.setValue("12345")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Pantene Smooth & Strong 5ml - Sachet")){
+					textfield.setValue("12345")
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Pantene Milky Extra Treatment 5ml")){
+					textfield.setValue("12345")
+					Mobile.hideKeyboard()
+				}
 			}
 		}
 	}
