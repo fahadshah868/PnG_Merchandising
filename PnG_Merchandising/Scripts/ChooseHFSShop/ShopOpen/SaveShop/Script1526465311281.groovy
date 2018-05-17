@@ -19,10 +19,19 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopActionsScreenElements/Validate_ShopsListScreen'), 'Shops on Route')
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/SaveShopOpen_Submitbutton'), 0)
 
 MobileBuiltInKeywords.delay(1)
 
-'select the HFS shop to proceed further\r\n'
-CustomKeywords.'customKeywordsCollection.CustomKeywords.selectHFSShop'(varHFSShop)
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUpDialog'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/InfoPopUp_YesButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopActionsScreenElements/Validate_ShopsListScreen'), 'Shops on Route')
+
+MobileBuiltInKeywords.delay(1)
 

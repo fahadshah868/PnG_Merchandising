@@ -23,6 +23,5 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopActionsScreenElement
 
 MobileBuiltInKeywords.delay(1)
 
-'select the HFS shop to proceed further\r\n'
 CustomKeywords.'customKeywordsCollection.CustomKeywords.selectHFSShop'()
 

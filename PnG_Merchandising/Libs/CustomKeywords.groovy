@@ -18,6 +18,10 @@ def static "customKeywordsCollection.CustomKeywords.visitShopProducts"() {
     (new customKeywordsCollection.CustomKeywords()).visitShopProducts()
 }
 
+def static "customKeywordsCollection.CustomKeywords.overwriteShopProducts"() {
+    (new customKeywordsCollection.CustomKeywords()).overwriteShopProducts()
+}
+
 def static "customKeywordsCollection.CustomKeywords.findProductFromProductsList"(
     	String _productname	) {
     (new customKeywordsCollection.CustomKeywords()).findProductFromProductsList(
@@ -32,18 +36,30 @@ def static "customKeywordsCollection.CustomKeywords.selectPOSM"() {
     (new customKeywordsCollection.CustomKeywords()).selectPOSM()
 }
 
-def static "customKeywordsCollection.CustomKeywords.selectPOSMRemarks"() {
-    (new customKeywordsCollection.CustomKeywords()).selectPOSMRemarks()
-}
-
 def static "customKeywordsCollection.CustomKeywords.visitPampersAvailability"() {
     (new customKeywordsCollection.CustomKeywords()).visitPampersAvailability()
+}
+
+def static "customKeywordsCollection.CustomKeywords.overwritePampersAvailability"() {
+    (new customKeywordsCollection.CustomKeywords()).overwritePampersAvailability()
 }
 
 def static "customKeywordsCollection.CustomKeywords.visitShareOfShelfFields"() {
     (new customKeywordsCollection.CustomKeywords()).visitShareOfShelfFields()
 }
 
+def static "customKeywordsCollection.CustomKeywords.overwriteShareOfShelfFields"() {
+    (new customKeywordsCollection.CustomKeywords()).overwriteShareOfShelfFields()
+}
+
 def static "customKeywordsCollection.CustomKeywords.visitHangerProducts"() {
     (new customKeywordsCollection.CustomKeywords()).visitHangerProducts()
+}
+
+def static "customKeywordsCollection.CustomKeywords.overwriteHangerProducts"() {
+    (new customKeywordsCollection.CustomKeywords()).overwriteHangerProducts()
+}
+
+def static "customKeywordsCollection.CustomKeywords.takeProductPictureForMarketIntelligence"() {
+    (new customKeywordsCollection.CustomKeywords()).takeProductPictureForMarketIntelligence()
 }

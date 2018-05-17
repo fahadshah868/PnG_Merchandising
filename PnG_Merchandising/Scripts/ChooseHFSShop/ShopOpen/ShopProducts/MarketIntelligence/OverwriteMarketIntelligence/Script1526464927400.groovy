@@ -19,10 +19,43 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopActionsScreenElements/Validate_ShopsListScreen'), 'Shops on Route')
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUpDialog'), 0)
 
 MobileBuiltInKeywords.delay(1)
 
-'select the HFS shop to proceed further\r\n'
-CustomKeywords.'customKeywordsCollection.CustomKeywords.selectHFSShop'(varHFSShop)
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/InfoPopUp_YesButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/MarketIntelligence/Validate_MarketIntelligenceScreen'), 
+    'Channel: HFS Medium')
+
+MobileBuiltInKeywords.delay(1)
+
+CustomKeywords.'customKeywordsCollection.CustomKeywords.takeProductPictureForMarketIntelligence'()
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/TakePictureButton'), 0)
+
+MobileBuiltInKeywords.delay(5)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/DoneButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/MarketIntelligence/Validate_MarketIntelligenceScreen'), 
+    'Channel: HFS Medium')
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/MarketIntelligence/SubmitButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopProductsScreenElements/Validate_ShopProductsScreen'), 0)
+
+MobileBuiltInKeywords.delay(1)
 

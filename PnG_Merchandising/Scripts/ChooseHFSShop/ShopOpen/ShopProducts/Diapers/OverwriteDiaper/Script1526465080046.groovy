@@ -9,7 +9,6 @@ import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling as FailureHandling
 import com.kms.katalon.core.testcase.TestCase as TestCase
 import com.kms.katalon.core.testcase.TestCaseFactory as TestCaseFactory
-import com.kms.katalon.core.testdata.InternalData
 import com.kms.katalon.core.testdata.TestData as TestData
 import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
 import com.kms.katalon.core.testobject.ObjectRepository as ObjectRepository
@@ -20,7 +19,15 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-public static TestData dataforvisitdiapers = findTestData("Data Files/Diapers/VisitDiapers")
+public static TestData dataforoverwritediapers = findTestData("Data Files/Diapers/OverwriteDiapers")
+
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUpDialog'), 0)
+
+MobileBuiltInKeywords.delay(1)
+
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/InfoPopUp_YesButton'), 0)
+
+MobileBuiltInKeywords.delay(1)
 
 MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Diapers/Validate_DiapersScreen'), 'KPI: Diapers')
 
@@ -53,7 +60,7 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 
 MobileBuiltInKeywords.delay(1)
 
-CustomKeywords.'customKeywordsCollection.CustomKeywords.visitPampersAvailability'()
+CustomKeywords.'customKeywordsCollection.CustomKeywords.overwritePampersAvailability'()
 
 MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitAvailability/PampersAvailability_SubmitButton'), 
     0)
@@ -106,7 +113,7 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 
 MobileBuiltInKeywords.delay(1)
 
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/CategoryRemarks_Others'), 
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/CategoryRemarks_Return'), 
     0)
 
 MobileBuiltInKeywords.delay(1)
@@ -190,7 +197,7 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 
 MobileBuiltInKeywords.delay(1)
 
-CustomKeywords.'customKeywordsCollection.CustomKeywords.visitShareOfShelfFields'()
+CustomKeywords.'customKeywordsCollection.CustomKeywords.overwriteShareOfShelfFields'()
 
 MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/ShareOfShelf_SubmitButton'), 
     0)
@@ -344,7 +351,7 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 
 MobileBuiltInKeywords.delay(1)
 
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitSecondaryDisplay/CategoryRemarksForShopKeeper_Others'), 
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitSecondaryDisplay/CategoryRemarksForShopKeeper_Return'), 
     0)
 
 MobileBuiltInKeywords.delay(1)
@@ -369,7 +376,7 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 
 MobileBuiltInKeywords.delay(1)
 
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitSecondaryDisplay/CategoryRemarksForDisplayUnit_OldBrand'), 
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitSecondaryDisplay/CategoryRemarksForDisplayUnit_BrokenHeader'), 
     0)
 
 MobileBuiltInKeywords.delay(1)
@@ -395,7 +402,7 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 MobileBuiltInKeywords.delay(1)
 
 MobileBuiltInKeywords.setText(findTestObject('ShopProductsScreenElements/Diapers/VisitSecondaryDisplay/DisplayUnitUtilization_TextField'), 
-    dataforvisitdiapers.getObjectValue("Utilization (%)", 1), 0)
+    dataforoverwritediapers.getObjectValue("Utilization (%)", 1), 0)
 
 MobileBuiltInKeywords.delay(1)
 

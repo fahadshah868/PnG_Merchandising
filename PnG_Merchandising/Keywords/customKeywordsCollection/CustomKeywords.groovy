@@ -14,6 +14,7 @@ import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testcase.TestCase
 import com.kms.katalon.core.testcase.TestCaseFactory
 import com.kms.katalon.core.testdata.TestData
+import com.kms.katalon.core.testdata.TestDataColumn
 import com.kms.katalon.core.testdata.TestDataFactory
 import com.kms.katalon.core.testobject.ObjectRepository
 import com.kms.katalon.core.testobject.TestObject
@@ -30,6 +31,11 @@ import WebUiBuiltInKeywords as WebUI
 public class CustomKeywords {
 
 	public static AppiumDriver<?> driver = MobileDriverFactory.getDriver()
+
+	public static TestData dataforvisitdiapers = findTestData("Data Files/Diapers/VisitDiapers")
+	public static TestData dataforoverwritediapers = findTestData("Data Files/Diapers/OverwriteDiapers")
+	public static TestData dataforvisithanger = findTestData("Data Files/Hanger/VisitHanger")
+	public static TestData dataforoverwritehanger = findTestData("Data Files/Hanger/OverwriteHanger")
 
 
 	@Keyword
@@ -88,7 +94,7 @@ public class CustomKeywords {
 		for(int i=1 ; i<= shops.size() ; i++){
 			MobileElement shop = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String shopname = shop.getText()
-			if(shopname.contains("HFS")){
+			if(shopname.contains("HFS Medium")){
 				flag = true
 				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.delay(1)
@@ -109,7 +115,7 @@ public class CustomKeywords {
 				if(lastshopnamebeforeswipe.equals(lastshopnameafterswipe)){
 					break
 				}
-				else if(lastshopname.contains("HFS")){
+				else if(lastshopname.contains("HFS Medium")){
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 					Mobile.delay(1)
 					break
@@ -121,7 +127,7 @@ public class CustomKeywords {
 	def visitShopProducts(){
 		int flag = 0
 		ArrayList<MobileElement> products = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
-		for(int i=2 ; i<=products.size(); i++ ){
+		for(int i=1 ; i<=products.size(); i++ ){
 			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String productname = product.getText()
 			if(productname.contains("HotSpot")){
@@ -209,6 +215,97 @@ public class CustomKeywords {
 		}
 	}
 	@Keyword
+	def overwriteShopProducts(){
+		int flag = 0
+		ArrayList<MobileElement> products = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
+		for(int i=1 ; i<=products.size(); i++ ){
+			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			String productname = product.getText()
+			if(productname.contains("HotSpot")){
+				flag =+ 1
+				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				Mobile.delay(1)
+				Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/HotSpot/OverwriteHotSpot"), null)
+			}
+			else if(productname.contains("Retailer Remarks")){
+				flag =+ 1
+				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				Mobile.delay(1)
+				Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/RetailerRemarks/OverwriteRetailerRemarks"), null)
+			}
+			else if(productname.contains("Market Intelligence")){
+				flag =+ 1
+				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				Mobile.delay(1)
+				Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/MarketIntelligence/OverwriteMarketIntelligence"), null)
+			}
+			else if(productname.contains("Hanger")){
+				flag =+ 1
+				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				Mobile.delay(1)
+				Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/Hanger/OverwriteHanger"), null)
+			}
+			else if(productname.contains("Additional Picture")){
+				flag =+ 1
+				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				Mobile.delay(1)
+				Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/AdditionalPicture/OverwriteAdditionalPicture"), null)
+			}
+			else if(productname.contains("Diapers")){
+				flag =+ 1
+				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				Mobile.delay(1)
+				Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/Diapers/OverwriteDiaper"), null)
+			}
+			products = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
+		}
+		if(flag < 6){
+			while(true){
+				ArrayList<MobileElement> countproducts = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
+				int index = countproducts.size()
+				MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+				String lastproductnamebeforeswipe = lastproductbeforeswipe.getText()
+				Mobile.swipe(0, 303, 0, 200)
+				Mobile.delay(2)
+				MobileElement lastproductafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+				String lastproductnameafterswipe = lastproductafterswipe.getText()
+				if(lastproductnamebeforeswipe.equals(lastproductnameafterswipe)){
+					break
+				}
+				else if(lastproductnameafterswipe.contains("HotSpot")){
+					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+					Mobile.delay(1)
+					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/HotSpot/OverwriteHotSpot"), null)
+				}
+				else if(lastproductnameafterswipe.contains("Retailer Remarks")){
+					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+					Mobile.delay(1)
+					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/RetailerRemarks/OverwriteRetailerRemarks"), null)
+				}
+				else if(lastproductnameafterswipe.contains("Market Intelligence")){
+					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+					Mobile.delay(1)
+					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/MarketIntelligence/OverwriteMarketIntelligence"), null)
+				}
+				else if(lastproductnameafterswipe.contains("Hanger")){
+					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+					Mobile.delay(1)
+					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/Hanger/OverwriteHanger"), null)
+				}
+				else if(lastproductnameafterswipe.contains("Additional Picture")){
+					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+					Mobile.delay(1)
+					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/AdditionalPicture/OverwriteAdditionalPicture"), null)
+				}
+				else if(lastproductnameafterswipe.contains("Diapers")){
+					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+					Mobile.delay(1)
+					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/Diapers/OverwriteDiaper"), null)
+				}
+			}
+		}
+	}
+	@Keyword
 	def findProductFromProductsList(String _productname){
 		int flag = 0
 		ArrayList<MobileElement> products = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
@@ -261,11 +358,6 @@ public class CustomKeywords {
 		Mobile.delay(1)
 	}
 	@Keyword
-	def selectPOSMRemarks(){
-		driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
-		Mobile.delay(1)
-	}
-	@Keyword
 	def visitPampersAvailability(){
 		int index = 0
 		ArrayList<MobileElement> pampersavailabilitylist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
@@ -292,6 +384,32 @@ public class CustomKeywords {
 		}
 	}
 	@Keyword
+	def overwritePampersAvailability(){
+		int index = 0
+		ArrayList<MobileElement> pampersavailabilitylist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		for(int i=1; i<=pampersavailabilitylist.size(); i=i+2){
+			index = index+1
+			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RadioGroup[1]/android.widget.RadioButton[1]").click()
+			Mobile.delay(1)
+			pampersavailabilitylist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		}
+		while(true){
+			MobileElement lastoptionbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
+			String lastoptionnamebeforeswipe = lastoptionbeforeswipe.getText()
+			Mobile.swipe(0, 274, 0, 200)
+			Mobile.delay(2)
+			MobileElement lastoptionafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
+			String lastoptionnameafterswipe = lastoptionafterswipe.getText()
+			if(lastoptionnamebeforeswipe.equals(lastoptionnameafterswipe)){
+				break
+			}
+			else{
+				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RadioGroup[1]/android.widget.RadioButton[2]").click()
+				Mobile.delay(1)
+			}
+		}
+	}
+	@Keyword
 	def visitShareOfShelfFields(){
 		int index = 0
 		ArrayList<MobileElement> shareofshelffieldslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
@@ -301,71 +419,71 @@ public class CustomKeywords {
 			String productname = product.getText()
 			MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 			if(productname.contains("Mini ML JP (2)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Mini ML JP (2)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Mini ML MP (2)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Mini ML MP (2)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Midi ML JP (3)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Midi ML JP (3)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Midi ML MP (3)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Midi ML MP (3)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Midi Pants JP (3)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Midi Pants JP (3)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Midi Pants MP (3)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Midi Pants MP (3)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Maxi ML JP (4)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Maxi ML JP (4)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Maxi ML MP (4)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Maxi ML MP (4)", 1))
 				Mobile.hideKeyboard()
 			}
-			else if(productname.contains("maxi Pants JP (4)")){
-				textfield.setValue("123")
+			else if(productname.contains("Maxi Pants JP (4)")){
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Maxi Pants JP (4)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Maxi Pants MP (4)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Maxi Pants MP (4)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Junior ML JP (5)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Junior ML JP (5)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Junior ML MP (5)")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Junior ML MP (5)", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("P&G Others")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("P&G Others", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Canbabe")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Canbabe", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Baby Master")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Baby Master", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("P&G imported")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("P&G imported", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Others")){
-				textfield.setValue("123")
+				textfield.setValue(dataforvisitdiapers.getObjectValue("Others", 1))
 				Mobile.hideKeyboard()
 			}
 			shareofshelffieldslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
@@ -383,71 +501,233 @@ public class CustomKeywords {
 			else{
 				MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 				if(lastproductnameafterswipe.contains("Mini ML JP (2)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Mini ML JP (2)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Mini ML MP (2)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Mini ML MP (2)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Midi ML JP (3)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Midi ML JP (3)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Midi ML MP (3)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Midi ML MP (3)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Midi Pants JP (3)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Midi Pants JP (3)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Midi Pants MP (3)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Midi Pants MP (3)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Maxi ML JP (4)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Maxi ML JP (4)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Maxi ML MP (4)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Maxi ML MP (4)", 1))
 					Mobile.hideKeyboard()
 				}
-				else if(lastproductnameafterswipe.contains("maxi Pants JP (4)")){
-					textfield.setValue("123")
+				else if(lastproductnameafterswipe.contains("Maxi Pants JP (4)")){
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Maxi Pants JP (4)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Maxi Pants MP (4)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Maxi Pants MP (4)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Junior ML JP (5)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Junior ML JP (5)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Junior ML MP (5)")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Junior ML MP (5)", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("P&G Others")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("P&G Others", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Canbabe")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Canbabe", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Baby Master")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Baby Master", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("P&G imported")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("P&G imported", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Others")){
-					textfield.setValue("123")
+					textfield.setValue(dataforvisitdiapers.getObjectValue("Others", 1))
+					Mobile.hideKeyboard()
+				}
+			}
+		}
+	}
+	@Keyword
+	def overwriteShareOfShelfFields(){
+		int index = 0
+		ArrayList<MobileElement> shareofshelffieldslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		for(int i=2; i<=shareofshelffieldslist.size(); i=i+3){
+			index = index+1
+			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
+			String productname = product.getText()
+			MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+			if(productname.contains("Mini ML JP (2)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Mini ML JP (2)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Mini ML MP (2)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Mini ML MP (2)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Midi ML JP (3)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Midi ML JP (3)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Midi ML MP (3)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Midi ML MP (3)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Midi Pants JP (3)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Midi Pants JP (3)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Midi Pants MP (3)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Midi Pants MP (3)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Maxi ML JP (4)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Maxi ML JP (4)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Maxi ML MP (4)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Maxi ML MP (4)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Maxi Pants JP (4)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Maxi Pants JP (4)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Maxi Pants MP (4)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Maxi Pants MP (4)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Junior ML JP (5)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Junior ML JP (5)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Junior ML MP (5)")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Junior ML MP (5)", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("P&G Others")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("P&G Others", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Canbabe")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Canbabe", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Baby Master")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Baby Master", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("P&G imported")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("P&G imported", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Others")){
+				textfield.setValue(dataforoverwritediapers.getObjectValue("Others", 1))
+				Mobile.hideKeyboard()
+			}
+			shareofshelffieldslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		}
+		while(true){
+			MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String lastproductnamebeforeswipe = lastproductbeforeswipe.getText()
+			Mobile.swipe(0, 330, 0, 220)
+			Mobile.delay(1)
+			MobileElement lastproductafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String lastproductnameafterswipe = lastproductafterswipe.getText()
+			if(lastproductnamebeforeswipe.equals(lastproductnameafterswipe)){
+				break
+			}
+			else{
+				MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+				if(lastproductnameafterswipe.contains("Mini ML JP (2)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Mini ML JP (2)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Mini ML MP (2)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Mini ML MP (2)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Midi ML JP (3)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Midi ML JP (3)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Midi ML MP (3)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Midi ML MP (3)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Midi Pants JP (3)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Midi Pants JP (3)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Midi Pants MP (3)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Midi Pants MP (3)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Maxi ML JP (4)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Maxi ML JP (4)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Maxi ML MP (4)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Maxi ML MP (4)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Maxi Pants JP (4)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Maxi Pants JP (4)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Maxi Pants MP (4)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Maxi Pants MP (4)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Junior ML JP (5)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Junior ML JP (5)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Junior ML MP (5)")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Junior ML MP (5)", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("P&G Others")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("P&G Others", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Canbabe")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Canbabe", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Baby Master")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Baby Master", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("P&G imported")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("P&G imported", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Others")){
+					textfield.setValue(dataforoverwritediapers.getObjectValue("Others", 1))
 					Mobile.hideKeyboard()
 				}
 			}
@@ -463,31 +743,31 @@ public class CustomKeywords {
 			String productname = product.getText()
 			MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 			if(productname.contains("Ariel Ariel 45gm")){
-				textfield.setValue("12345")
+				dataforvisithanger.getObjectValue("Ariel Ariel 45gm", 1)
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Ariel Ariel 95gm")){
-				textfield.setValue("12345")
+				dataforvisithanger.getObjectValue("Ariel Ariel 95gm", 1)
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("H&S Classic Clean   5ml")){
-				textfield.setValue("12345")
+				dataforvisithanger.getObjectValue("H&S Classic Clean 5ml", 1)
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("H&S Silky Black 5ml")){
-				textfield.setValue("12345")
+				dataforvisithanger.getObjectValue("H&S Silky Black 5ml", 1)
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("H&S Anti Hair Fall 5ml")){
-				textfield.setValue("12345")
+				dataforvisithanger.getObjectValue("H&S Anti Hair Fall 5ml", 1)
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Pantene Smooth & Strong 5ml - Sachet")){
-				textfield.setValue("12345")
+				dataforvisithanger.getObjectValue("Pantene Smooth & Strong 5ml - Sachet", 1)
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Pantene Milky Extra Treatment 5ml")){
-				textfield.setValue("12345")
+				dataforvisithanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1)
 				Mobile.hideKeyboard()
 			}
 			hangerproductslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
@@ -505,34 +785,121 @@ public class CustomKeywords {
 			}
 			else{
 				if(lastproductnameafterswipe.contains("Ariel Ariel 45gm")){
-					textfield.setValue("12345")
+					dataforvisithanger.getObjectValue("Ariel Ariel 45gm", 1)
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Ariel Ariel 95gm")){
-					textfield.setValue("12345")
+					dataforvisithanger.getObjectValue("Ariel Ariel 95gm", 1)
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("H&S Classic Clean   5ml")){
-					textfield.setValue("12345")
+					dataforvisithanger.getObjectValue("H&S Classic Clean 5ml", 1)
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("H&S Silky Black 5ml")){
-					textfield.setValue("12345")
+					dataforvisithanger.getObjectValue("H&S Silky Black 5ml", 1)
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("H&S Anti Hair Fall 5ml")){
-					textfield.setValue("12345")
+					dataforvisithanger.getObjectValue("H&S Anti Hair Fall 5ml", 1)
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Pantene Smooth & Strong 5ml - Sachet")){
-					textfield.setValue("12345")
+					dataforvisithanger.getObjectValue("Pantene Smooth & Strong 5ml - Sachet", 1)
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Pantene Milky Extra Treatment 5ml")){
-					textfield.setValue("12345")
+					dataforvisithanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1)
 					Mobile.hideKeyboard()
 				}
 			}
 		}
+	}
+	@Keyword
+	def overwriteHangerProducts(){
+		ArrayList<MobileElement> hangerproductslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		int index = 0
+		for(int i=2; i<=hangerproductslist.size(); i=i+3){
+			index = index+1
+			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
+			String productname = product.getText()
+			MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+			if(productname.contains("Ariel Ariel 45gm")){
+				dataforoverwritehanger.getObjectValue("Ariel Ariel 45gm", 1)
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Ariel Ariel 95gm")){
+				dataforoverwritehanger.getObjectValue("Ariel Ariel 95gm", 1)
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("H&S Classic Clean   5ml")){
+				dataforoverwritehanger.getObjectValue("H&S Classic Clean 5ml", 1)
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("H&S Silky Black 5ml")){
+				dataforoverwritehanger.getObjectValue("H&S Silky Black 5ml", 1)
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("H&S Anti Hair Fall 5ml")){
+				dataforoverwritehanger.getObjectValue("H&S Anti Hair Fall 5ml", 1)
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Pantene Smooth & Strong 5ml - Sachet")){
+				dataforoverwritehanger.getObjectValue("Pantene Smooth & Strong 5ml - Sachet", 1)
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Pantene Milky Extra Treatment 5ml")){
+				dataforoverwritehanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1)
+				Mobile.hideKeyboard()
+			}
+			hangerproductslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		}
+		while(true){
+			MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String lastproductnamebeforeswipe = lastproductbeforeswipe.getText()
+			Mobile.swipe(0, 330, 0, 220)
+			Mobile.delay(1)
+			MobileElement lastproductafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String lastproductnameafterswipe = lastproductafterswipe.getText()
+			MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+			if(lastproductnamebeforeswipe.equals(lastproductnameafterswipe)){
+				break
+			}
+			else{
+				if(lastproductnameafterswipe.contains("Ariel Ariel 45gm")){
+					dataforoverwritehanger.getObjectValue("Ariel Ariel 45gm", 1)
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Ariel Ariel 95gm")){
+					dataforoverwritehanger.getObjectValue("Ariel Ariel 95gm", 1)
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("H&S Classic Clean   5ml")){
+					dataforoverwritehanger.getObjectValue("H&S Classic Clean 5ml", 1)
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("H&S Silky Black 5ml")){
+					dataforoverwritehanger.getObjectValue("H&S Silky Black 5ml", 1)
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("H&S Anti Hair Fall 5ml")){
+					dataforoverwritehanger.getObjectValue("H&S Anti Hair Fall 5ml", 1)
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Pantene Smooth & Strong 5ml - Sachet")){
+					dataforoverwritehanger.getObjectValue("Pantene Smooth & Strong 5ml - Sachet", 1)
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Pantene Milky Extra Treatment 5ml")){
+					dataforoverwritehanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1)
+					Mobile.hideKeyboard()
+				}
+			}
+		}
+	}
+	@Keyword
+	def takeProductPictureForMarketIntelligence(){
+		driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
+		Mobile.delay(1)
 	}
 }

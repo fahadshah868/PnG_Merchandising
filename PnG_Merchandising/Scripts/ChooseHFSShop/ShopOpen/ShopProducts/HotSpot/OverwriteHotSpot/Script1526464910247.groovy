@@ -18,70 +18,8 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
-import com.kms.katalon.core.testdata.InternalData
 
-public static TestData dataforhotspot = findTestData("Data Files/Hotspot/VisitHotspot")
-
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen'), 'KPI: HotSpot')
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/ShopKeeperDidNotAllow'), 
-    0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/Validate_ShopKeeperDidnotAllowScreen'), 
-    'CATEGORY REMARKS')
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/CategoryRemarks_OthersOption'), 
-    0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/HotSpot/VisitShopKeeperDidNotAllow/CategoryRemarks_BackButton'), 
-    0)
-
-MobileBuiltInKeywords.delay(1)
-
-CustomKeywords.'customKeywordsCollection.CustomKeywords.findProductFromProductsList'('HotSpot')
-
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen'), 'KPI: HotSpot')
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/HotSpot/VisitHotSpotNotAvailable/HotspotNotAvailable'), 
-    0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen'), 0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/TakePictureButton'), 0)
-
-MobileBuiltInKeywords.delay(5)
-
-MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/DoneButton'), 0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen'), 'KPI: HotSpot')
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/HotSpot/HotSpot_BackButton'), 0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopProductsScreenElements/Validate_ShopProductsScreen'), 0)
-
-MobileBuiltInKeywords.delay(1)
-
-CustomKeywords.'customKeywordsCollection.CustomKeywords.findProductFromProductsList'('HotSpot')
+public static TestData dataforhotspot = findTestData("Data Files/Hotspot/OverwriteHotspot")
 
 MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen'), 'KPI: HotSpot')
 
@@ -125,7 +63,7 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 MobileBuiltInKeywords.delay(1)
 
 Mobile.setText(findTestObject('ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/AlwaysMaxiThicksExtraLong_TextField'), 
-    dataforhotspot.getObjectValue("Always Maxi Thicks Extra Long", 1), 0)
+   dataforhotspot.getObjectValue("Always Maxi Thicks Extra Long", 1), 0)
 
 Mobile.hideKeyboard()
 
@@ -157,7 +95,7 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 
 MobileBuiltInKeywords.delay(1)
 
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/POSMRemarks_FreshDeployment'), 
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/POSMRemarks_AlreadyDeployed'), 
     0)
 
 MobileBuiltInKeywords.delay(1)
@@ -222,13 +160,13 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 
 MobileBuiltInKeywords.delay(1)
 
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotUtilization_YesRadioButton'), 
+MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotUtilization_NoRadioButton'), 
     0)
 
 MobileBuiltInKeywords.delay(1)
 
 MobileBuiltInKeywords.setText(findTestObject('ShopProductsScreenElements/HotSpot/VisitHotSpotAvailable/HotSpotUtilization_TextField'), 
-    dataforhotspot.getObjectValue("Hotspot Utilization (%)", 1) , 0)
+    dataforhotspot.getObjectValue("Hotspot Utilization (%)", 1), 0)
 
 Mobile.hideKeyboard()
 

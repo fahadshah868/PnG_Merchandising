@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>VisitHotSpot</name>
+   <name>OverwriteMarketIntelligence</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>53354d35-a970-46d3-ab7e-cd452989ebc4</testCaseGuid>
+   <testCaseGuid>ce98adbb-f683-41b1-bca9-e3d86f0cdbac</testCaseGuid>
 </TestCaseEntity>

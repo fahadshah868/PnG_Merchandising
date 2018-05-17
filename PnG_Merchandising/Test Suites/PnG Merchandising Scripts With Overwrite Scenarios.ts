@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>Visit HFS Shop With Overwrite Scenarios</name>
+   <name>PnG Merchandising Scripts With Overwrite Scenarios</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-05-15T18:47:51</lastRun>
+   <lastRun>2018-05-17T10:57:25</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -22,28 +22,37 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>false</isRun>
       <testCaseId>Test Cases/DistributionRegion/VisitDistributionRegion</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/DistributionRegion/DistributionRegion</testDataId>
+      </testDataLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Brand Message</value>
          <variableId>34a62fb6-4608-4e76-b410-6987cbe0a60b</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Corporation Message</value>
          <variableId>88420b5c-68b0-4c33-bce5-051086b7b0a4</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Value Message</value>
          <variableId>17d8a61a-9685-43dc-8ab8-895125a71dc8</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Poster</value>
          <variableId>5a033c6e-dfc0-4f87-bc9a-3e2659deeae1</variableId>
       </variableLink>
    </testCaseLink>
@@ -142,5 +151,17 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>8f85d2ea-6681-4722-8f29-ad127f729c17</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/OverwriteShopProducts</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>d4418378-a789-4b73-8e09-de765291c1e2</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/ChooseHFSShop/ShopOpen/SaveShop</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

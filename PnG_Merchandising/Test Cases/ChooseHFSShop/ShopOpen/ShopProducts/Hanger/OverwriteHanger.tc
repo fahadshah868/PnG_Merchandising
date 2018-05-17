@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>VisitHotSpot</name>
+   <name>OverwriteHanger</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>53354d35-a970-46d3-ab7e-cd452989ebc4</testCaseGuid>
+   <testCaseGuid>c095b0c9-4261-40c7-950d-9bb8a8a4412b</testCaseGuid>
 </TestCaseEntity>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>OverwriteDiaper</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>d0d45100-efad-4bc9-883e-17287721b664</testCaseGuid>
+   <variable>
+      <defaultValue>'0000'</defaultValue>
+      <description></description>
+      <id>3d2d1c26-b650-4bd6-b560-fd1ffc42c70e</id>
+      <masked>false</masked>
+      <name>varDisplayUnitUtilization</name>
+   </variable>
+</TestCaseEntity>
