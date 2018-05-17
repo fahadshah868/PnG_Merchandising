@@ -19,7 +19,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-public static TestData dataforhotspot = findTestData("Data Files/Hotspot/OverwriteHotspot")
+TestData dataforhotspot = findTestData("Data Files/Hotspot/OverwriteHotspot")
 
 MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/HotSpot/Validate_HotSpotScreen'), 'KPI: HotSpot')
 

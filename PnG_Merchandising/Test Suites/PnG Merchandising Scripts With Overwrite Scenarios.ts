@@ -65,13 +65,13 @@
    <testCaseLink>
       <guid>71db5713-1061-4324-8721-25b38126c0ca</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ChooseShopForShopClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>7357f772-a394-4d68-9a16-938a522929bc</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ShopClosed/VisitShopClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>
@@ -155,13 +155,13 @@
    <testCaseLink>
       <guid>8f85d2ea-6681-4722-8f29-ad127f729c17</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/OverwriteShopProducts</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>d4418378-a789-4b73-8e09-de765291c1e2</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ShopOpen/SaveShop</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

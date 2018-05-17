@@ -19,9 +19,6 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-TestData ab = findTestData("Data Files/DistributionRegion/DistributionRegion")
-TestDataColumn bb = ab.getValue("Brand Message", 1)
-
 Mobile.verifyElementExist(findTestObject('DashboardScreenElements/StartYourDayButton'), 0)
 
 MobileBuiltInKeywords.delay(1)

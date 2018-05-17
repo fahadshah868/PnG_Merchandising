@@ -20,7 +20,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-public static TestData dataforvisitdiapers = findTestData("Data Files/Diapers/VisitDiapers")
+TestData dataforvisitdiapers = findTestData("Data Files/Diapers/VisitDiapers")
 
 MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Diapers/Validate_DiapersScreen'), 'KPI: Diapers')
 

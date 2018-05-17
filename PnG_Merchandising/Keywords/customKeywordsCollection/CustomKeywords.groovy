@@ -127,7 +127,7 @@ public class CustomKeywords {
 	def visitShopProducts(){
 		int flag = 0
 		ArrayList<MobileElement> products = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
-		for(int i=1 ; i<=products.size(); i++ ){
+		for(int i=5 ; i<=products.size(); i++ ){
 			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String productname = product.getText()
 			if(productname.contains("HotSpot")){
@@ -170,6 +170,8 @@ public class CustomKeywords {
 		}
 		if(flag < 6){
 			while(true){
+				String lastvisitedproduct = ""
+				boolean _flag = false
 				ArrayList<MobileElement> countproducts = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
 				int index = countproducts.size()
 				MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
@@ -182,34 +184,58 @@ public class CustomKeywords {
 					break
 				}
 				else if(lastproductnameafterswipe.contains("HotSpot")){
+					lastvisitedproduct = "HotSpot"
+					_flag = true
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 					Mobile.delay(1)
 					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/HotSpot/VisitHotSpot"), null)
 				}
 				else if(lastproductnameafterswipe.contains("Retailer Remarks")){
+					lastvisitedproduct = "Retailer Remarks"
+					_flag = true
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 					Mobile.delay(1)
 					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/RetailerRemarks/VisitRetailerRemarks"), null)
 				}
 				else if(lastproductnameafterswipe.contains("Market Intelligence")){
+					lastvisitedproduct = "Market Intelligence"
+					_flag = false
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 					Mobile.delay(1)
 					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/MarketIntelligence/VisitMarketIntelligence"), null)
 				}
 				else if(lastproductnameafterswipe.contains("Hanger")){
+					lastvisitedproduct = "Hanger"
+					_flag = true
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 					Mobile.delay(1)
 					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/Hanger/VisitHanger"), null)
 				}
 				else if(lastproductnameafterswipe.contains("Additional Picture")){
+					lastvisitedproduct = "Additional Picture"
+					_flag = true
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 					Mobile.delay(1)
 					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/AdditionalPicture/VisitAdditionalPicture"), null)
 				}
 				else if(lastproductnameafterswipe.contains("Diapers")){
+					lastvisitedproduct = "Diapers"
+					_flag = true
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 					Mobile.delay(1)
 					Mobile.callTestCase(findTestCase("Test Cases/VisitShopOpen/VisitShopProducts/VisitShopProduct/ShopProduct"), null)
+				}
+				if(_flag == true){
+					while(true){
+						Mobile.swipe(0, 303, 0, 200)
+						Mobile.delay(2)
+						MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+						String productname = product.getText()
+						if(productname.contains(lastvisitedproduct)){
+							_flag = false
+							break
+						}
+					}
 				}
 			}
 		}
@@ -261,6 +287,8 @@ public class CustomKeywords {
 		}
 		if(flag < 6){
 			while(true){
+				String lastvisitedproduct = ""
+				boolean _flag = false
 				ArrayList<MobileElement> countproducts = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
 				int index = countproducts.size()
 				MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
@@ -301,6 +329,18 @@ public class CustomKeywords {
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 					Mobile.delay(1)
 					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/Diapers/OverwriteDiaper"), null)
+				}
+				if(_flag == true){
+					while(true){
+						Mobile.swipe(0, 303, 0, 200)
+						Mobile.delay(2)
+						MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+						String productname = product.getText()
+						if(productname.contains(lastvisitedproduct)){
+							_flag = false
+							break
+						}
+					}
 				}
 			}
 		}
@@ -743,31 +783,31 @@ public class CustomKeywords {
 			String productname = product.getText()
 			MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 			if(productname.contains("Ariel Ariel 45gm")){
-				dataforvisithanger.getObjectValue("Ariel Ariel 45gm", 1)
+				textfield.setValue(dataforvisithanger.getObjectValue("Ariel Ariel 45gm", 1))
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Ariel Ariel 95gm")){
-				dataforvisithanger.getObjectValue("Ariel Ariel 95gm", 1)
+				textfield.setValue(dataforvisithanger.getObjectValue("Ariel Ariel 95gm", 1))				
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("H&S Classic Clean   5ml")){
-				dataforvisithanger.getObjectValue("H&S Classic Clean 5ml", 1)
+				textfield.setValue(dataforvisithanger.getObjectValue("H&S Classic Clean 5ml", 1))				
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("H&S Silky Black 5ml")){
-				dataforvisithanger.getObjectValue("H&S Silky Black 5ml", 1)
+				textfield.setValue(dataforvisithanger.getObjectValue("H&S Silky Black 5ml", 1))				
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("H&S Anti Hair Fall 5ml")){
-				dataforvisithanger.getObjectValue("H&S Anti Hair Fall 5ml", 1)
+				textfield.setValue(dataforvisithanger.getObjectValue("H&S Anti Hair Fall 5ml", 1))				
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Pantene Smooth & Strong 5ml - Sachet")){
-				dataforvisithanger.getObjectValue("Pantene Smooth & Strong 5ml - Sachet", 1)
+				textfield.setValue(dataforvisithanger.getObjectValue("Pantene Smooth & Strong 5ml - Sachet", 1))				
 				Mobile.hideKeyboard()
 			}
 			else if(productname.contains("Pantene Milky Extra Treatment 5ml")){
-				dataforvisithanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1)
+				textfield.setValue(dataforvisithanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1))				
 				Mobile.hideKeyboard()
 			}
 			hangerproductslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
@@ -785,31 +825,31 @@ public class CustomKeywords {
 			}
 			else{
 				if(lastproductnameafterswipe.contains("Ariel Ariel 45gm")){
-					dataforvisithanger.getObjectValue("Ariel Ariel 45gm", 1)
+					textfield.setValue(dataforvisithanger.getObjectValue("Ariel Ariel 45gm", 1))					
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Ariel Ariel 95gm")){
-					dataforvisithanger.getObjectValue("Ariel Ariel 95gm", 1)
+					textfield.setValue(dataforvisithanger.getObjectValue("Ariel Ariel 95gm", 1))					
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("H&S Classic Clean   5ml")){
-					dataforvisithanger.getObjectValue("H&S Classic Clean 5ml", 1)
+					textfield.setValue(dataforvisithanger.getObjectValue("H&S Classic Clean 5ml", 1))					
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("H&S Silky Black 5ml")){
-					dataforvisithanger.getObjectValue("H&S Silky Black 5ml", 1)
+					textfield.setValue(dataforvisithanger.getObjectValue("H&S Silky Black 5ml", 1))					
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("H&S Anti Hair Fall 5ml")){
-					dataforvisithanger.getObjectValue("H&S Anti Hair Fall 5ml", 1)
+					textfield.setValue(dataforvisithanger.getObjectValue("H&S Anti Hair Fall 5ml", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Pantene Smooth & Strong 5ml - Sachet")){
-					dataforvisithanger.getObjectValue("Pantene Smooth & Strong 5ml - Sachet", 1)
+					textfield.setValue(dataforvisithanger.getObjectValue("Pantene Smooth & Strong 5ml - Sachet", 1))
 					Mobile.hideKeyboard()
 				}
 				else if(lastproductnameafterswipe.contains("Pantene Milky Extra Treatment 5ml")){
-					dataforvisithanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1)
+					textfield.setValue(dataforvisithanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1))
 					Mobile.hideKeyboard()
 				}
 			}

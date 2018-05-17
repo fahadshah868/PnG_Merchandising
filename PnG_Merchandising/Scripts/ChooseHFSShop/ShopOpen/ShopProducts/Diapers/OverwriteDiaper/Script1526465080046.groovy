@@ -19,7 +19,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-public static TestData dataforoverwritediapers = findTestData("Data Files/Diapers/OverwriteDiapers")
+TestData dataforoverwritediapers = findTestData("Data Files/Diapers/OverwriteDiapers")
 
 MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUpDialog'), 0)
 

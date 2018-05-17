@@ -25,13 +25,13 @@ MobileBuiltInKeywords.delay(1)
 
 MobileBuiltInKeywords.tap(findTestObject('ShopActionsScreenElements/StartWorking'), 0)
 
-not_run: MobileBuiltInKeywords.delay(1)
+MobileBuiltInKeywords.delay(1)
 
-not_run: MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUpDialog'), 0)
+MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUpDialog'), 0)
 
-not_run: MobileBuiltInKeywords.delay(1)
+MobileBuiltInKeywords.delay(1)
 
-not_run: MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/InfoPopUp_YesButton'), 0)
+MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/InfoPopUp_YesButton'), 0)
 
 MobileBuiltInKeywords.delay(18)
 
