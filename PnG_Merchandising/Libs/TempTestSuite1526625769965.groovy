@@ -27,7 +27,7 @@ DriverCleanerCollector.getInstance().addDriverCleaner(new com.kms.katalon.core.m
 
 
 
-RunConfiguration.setExecutionSettingFile("D:\\(Katalon studio) GitProject\\PnG_Merchandising\\PnG_Merchandising\\Reports\\PnG Merchandising Scripts With Overwrite Scenarios\\20180517_041720\\execution.properties")
+RunConfiguration.setExecutionSettingFile("D:\\(Katalon studio) GitProject\\PnG_Merchandising\\PnG_Merchandising\\Reports\\PnG Merchandising Scripts With Overwrite Scenarios\\20180518_114249\\execution.properties")
 
 TestCaseMain.beforeStart()
 
