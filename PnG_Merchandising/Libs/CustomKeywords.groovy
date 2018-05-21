@@ -10,6 +10,10 @@ def static "customKeywordsCollection.CustomKeywords.selectCurrentDay"() {
     (new customKeywordsCollection.CustomKeywords()).selectCurrentDay()
 }
 
+def static "customKeywordsCollection.CustomKeywords.visitDistributionRegion"() {
+    (new customKeywordsCollection.CustomKeywords()).visitDistributionRegion()
+}
+
 def static "customKeywordsCollection.CustomKeywords.selectHFSShop"() {
     (new customKeywordsCollection.CustomKeywords()).selectHFSShop()
 }

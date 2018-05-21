@@ -4,7 +4,7 @@
    <name>PnG Merchandising Scripts With Overwrite Scenarios</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-05-18T11:42:49</lastRun>
+   <lastRun>2018-05-21T16:17:19</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -18,43 +18,10 @@
       <testCaseId>Test Cases/LaunchingApp/LaunchApp</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>94401428-28c1-4ca6-8c17-fcefc5222049</guid>
+      <guid>205a176a-3474-4dce-8685-fe0a568ea22a</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/DistributionRegion/VisitDistributionRegion</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</id>
-         <iterationEntity>
-            <iterationType>ALL</iterationType>
-            <value></value>
-         </iterationEntity>
-         <testDataId>Data Files/DistributionRegion/DistributionRegion</testDataId>
-      </testDataLink>
-      <variableLink>
-         <testDataLinkId>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Brand Message</value>
-         <variableId>34a62fb6-4608-4e76-b410-6987cbe0a60b</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Corporation Message</value>
-         <variableId>88420b5c-68b0-4c33-bce5-051086b7b0a4</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Value Message</value>
-         <variableId>17d8a61a-9685-43dc-8ab8-895125a71dc8</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId>2e45cc7f-b285-4e0c-a568-0b8d64d431e4</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Poster</value>
-         <variableId>5a033c6e-dfc0-4f87-bc9a-3e2659deeae1</variableId>
-      </variableLink>
    </testCaseLink>
    <testCaseLink>
       <guid>90bceb61-1336-45d2-88be-4494718d73ff</guid>
@@ -65,73 +32,73 @@
    <testCaseLink>
       <guid>71db5713-1061-4324-8721-25b38126c0ca</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ChooseShopForShopClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>7357f772-a394-4d68-9a16-938a522929bc</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ShopClosed/VisitShopClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>629f2c15-28b1-4b4b-9679-4f2e38626da5</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ChooseShopForShopPermanentlyClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>78473044-562e-4b61-902e-0c179dd2d976</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ShopPermanentlyClosed/VisitShopPermanentlyClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>9538c0e2-b91a-451a-8235-50fe0b430e9f</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ChooseShopForShopNotFound</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>04a185de-65ea-43a6-9170-67ed63fc93b5</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ShopNotFound/VisitShopNotFound</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>476c2199-126a-4912-9e77-ff40fb89efdd</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ChooseShopForShopToBeRemoved</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>5f2b7716-6db0-42df-926b-e157bf7d20d5</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ShopToBeRemoved/VisitShopToBeRemoved</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>706a6469-2c22-4504-9c65-47a1476cf2db</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ChooseShopForAreaClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>c5fce9b5-449e-4151-9dbe-c605b7e0ec7e</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/AreaClosed/VisitAreaClosed</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>20412cc2-945b-4596-96ac-863250b91616</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/ChooseShopForRetailerDidNotAllow</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>fab12b86-dd01-459b-ae6d-736d09466321</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/ChooseHFSShop/RetailerDidNotAllow/VisitRetailerDidNotAllow</testCaseId>
    </testCaseLink>
    <testCaseLink>

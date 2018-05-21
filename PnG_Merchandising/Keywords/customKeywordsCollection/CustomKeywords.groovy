@@ -36,6 +36,7 @@ public class CustomKeywords {
 	public static TestData dataforoverwritediapers = findTestData("Data Files/Diapers/OverwriteDiapers")
 	public static TestData dataforvisithanger = findTestData("Data Files/Hanger/VisitHanger")
 	public static TestData dataforoverwritehanger = findTestData("Data Files/Hanger/OverwriteHanger")
+	public static TestData datafordistributionregion = findTestData("Data Files/DistributionRegion/DistributionRegion")
 
 
 	@Keyword
@@ -88,6 +89,36 @@ public class CustomKeywords {
 		}
 	}
 	@Keyword
+	def visitDistributionRegion(){
+		int index = 0;
+		ArrayList<MobileElement> distributionfields = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/*")
+		for(int i=2; i<=(distributionfields.size()-1); i++){
+			index = index+1
+			MobileElement distributionfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String distributionfieldname = distributionfield.getText()
+			if(distributionfieldname.contains("Brand Message")){
+				MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+				textfield.setValue(datafordistributionregion.getObjectValue("Brand Message", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(distributionfieldname.contains("Corporate Message")){
+				MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+				textfield.setValue(datafordistributionregion.getObjectValue("Corporation Message", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(distributionfieldname.contains("Value Message")){
+				MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+				textfield.setValue(datafordistributionregion.getObjectValue("Value Message", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(distributionfieldname.contains("Poster")){
+				MobileElement textfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+				textfield.setValue(datafordistributionregion.getObjectValue("Poster", 1))
+				Mobile.hideKeyboard()
+			}
+		}
+	}
+	@Keyword
 	def selectHFSShop(){
 		boolean flag = false;
 		ArrayList<MobileElement> shops = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*")
@@ -126,6 +157,7 @@ public class CustomKeywords {
 	@Keyword
 	def visitShopProducts(){
 		int flag = 0
+		int index = 0
 		ArrayList<MobileElement> products = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
 		for(int i=1 ; i<=products.size(); i++ ){
 			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
@@ -170,14 +202,14 @@ public class CustomKeywords {
 		}
 		if(flag < 6){
 			while(true){
+				index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 				String lastvisitedproduct = ""
 				boolean _flag = false
-				ArrayList<MobileElement> countproducts = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
-				int index = countproducts.size()
 				MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 				String lastproductnamebeforeswipe = lastproductbeforeswipe.getText()
 				Mobile.swipe(0, 293, 0, 200)
 				Mobile.delay(2)
+				index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 				MobileElement lastproductafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 				String lastproductnameafterswipe = lastproductafterswipe.getText()
 				if(lastproductnamebeforeswipe.equals(lastproductnameafterswipe)){
@@ -204,8 +236,7 @@ public class CustomKeywords {
 					Mobile.delay(1)
 					Mobile.callTestCase(findTestCase("ChooseHFSShop/ShopOpen/ShopProducts/MarketIntelligence/VisitMarketIntelligence"), null)
 				}
-				else
-				if(lastproductnameafterswipe.contains("Hanger")){
+				else if(lastproductnameafterswipe.contains("Hanger")){
 					lastvisitedproduct = "Hanger"
 					_flag = true
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
@@ -228,6 +259,7 @@ public class CustomKeywords {
 				}
 				if(_flag == true){
 					while(true){
+						index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 						Mobile.swipe(0, 293, 0, 200)
 						Mobile.delay(2)
 						MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
@@ -244,6 +276,7 @@ public class CustomKeywords {
 	@Keyword
 	def overwriteShopProducts(){
 		int flag = 0
+		int index = 0
 		ArrayList<MobileElement> products = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
 		for(int i=1 ; i<=products.size(); i++ ){
 			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
@@ -288,14 +321,14 @@ public class CustomKeywords {
 		}
 		if(flag < 6){
 			while(true){
+				index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 				String lastvisitedproduct = ""
 				boolean _flag = false
-				ArrayList<MobileElement> countproducts = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*")
-				int index = countproducts.size()
 				MobileElement lastproductbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 				String lastproductnamebeforeswipe = lastproductbeforeswipe.getText()
 				Mobile.swipe(0, 293, 0, 200)
 				Mobile.delay(2)
+				index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 				MobileElement lastproductafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 				String lastproductnameafterswipe = lastproductafterswipe.getText()
 				if(lastproductnamebeforeswipe.equals(lastproductnameafterswipe)){
@@ -333,6 +366,7 @@ public class CustomKeywords {
 				}
 				if(_flag == true){
 					while(true){
+						index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 						Mobile.swipe(0, 293, 0, 200)
 						Mobile.delay(2)
 						MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
@@ -435,10 +469,12 @@ public class CustomKeywords {
 			pampersavailabilitylist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		}
 		while(true){
+			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
 			MobileElement lastoptionbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 			String lastoptionnamebeforeswipe = lastoptionbeforeswipe.getText()
 			Mobile.swipe(0, 274, 0, 200)
 			Mobile.delay(2)
+			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
 			MobileElement lastoptionafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 			String lastoptionnameafterswipe = lastoptionafterswipe.getText()
 			if(lastoptionnamebeforeswipe.equals(lastoptionnameafterswipe)){
@@ -803,6 +839,14 @@ public class CustomKeywords {
 				textfield.setValue(dataforvisithanger.getObjectValue("H&S Anti Hair Fall 5ml", 1))
 				Mobile.hideKeyboard()
 			}
+			else if(productname.contains("H&S Refreshing 5ml")){
+				textfield.setValue(dataforvisithanger.getObjectValue("H&S Refreshing 5ml", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Pantene Anti Hairfall 5ml")){
+				textfield.setValue(dataforvisithanger.getObjectValue("Pantene Anti Hairfall 5ml", 1))
+				Mobile.hideKeyboard()
+			}
 			else if(productname.contains("Pantene Smooth & Strong 5ml - Sachet")){
 				textfield.setValue(dataforvisithanger.getObjectValue("Pantene Smooth & Strong 5ml - Sachet", 1))
 				Mobile.hideKeyboard()
@@ -853,6 +897,14 @@ public class CustomKeywords {
 					textfield.setValue(dataforvisithanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1))
 					Mobile.hideKeyboard()
 				}
+				else if(lastproductnameafterswipe.contains("H&S Refreshing 5ml")){
+					textfield.setValue(dataforvisithanger.getObjectValue("H&S Refreshing 5ml", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Pantene Anti Hairfall 5ml")){
+					textfield.setValue(dataforvisithanger.getObjectValue("Pantene Anti Hairfall 5ml", 1))
+					Mobile.hideKeyboard()
+				}
 			}
 		}
 	}
@@ -891,6 +943,14 @@ public class CustomKeywords {
 			}
 			else if(productname.contains("Pantene Milky Extra Treatment 5ml")){
 				textfield.setValue(dataforoverwritehanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("H&S Refreshing 5ml")){
+				textfield.setValue(dataforvisithanger.getObjectValue("H&S Refreshing 5ml", 1))
+				Mobile.hideKeyboard()
+			}
+			else if(productname.contains("Pantene Anti Hairfall 5ml")){
+				textfield.setValue(dataforvisithanger.getObjectValue("Pantene Anti Hairfall 5ml", 1))
 				Mobile.hideKeyboard()
 			}
 			hangerproductslist = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
@@ -933,6 +993,14 @@ public class CustomKeywords {
 				}
 				else if(lastproductnameafterswipe.contains("Pantene Milky Extra Treatment 5ml")){
 					textfield.setValue(dataforoverwritehanger.getObjectValue("Pantene Milky Extra Treatment 5ml", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("H&S Refreshing 5ml")){
+					textfield.setValue(dataforvisithanger.getObjectValue("H&S Refreshing 5ml", 1))
+					Mobile.hideKeyboard()
+				}
+				else if(lastproductnameafterswipe.contains("Pantene Anti Hairfall 5ml")){
+					textfield.setValue(dataforvisithanger.getObjectValue("Pantene Anti Hairfall 5ml", 1))
 					Mobile.hideKeyboard()
 				}
 			}

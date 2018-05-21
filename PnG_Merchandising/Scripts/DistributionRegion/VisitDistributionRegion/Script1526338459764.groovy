@@ -59,18 +59,7 @@ MobileBuiltInKeywords.verifyElementExist(findTestObject('DistributionRegionScree
 
 MobileBuiltInKeywords.delay(1)
 
-MobileBuiltInKeywords.setText(findTestObject('DistributionRegionScreenElements/BrandMessage_TextField'), varBrandMessage, 
-    0)
-
-MobileBuiltInKeywords.setText(findTestObject('DistributionRegionScreenElements/CorporationMessage_TextField'), varCorporationMessage, 
-    0)
-
-MobileBuiltInKeywords.setText(findTestObject('DistributionRegionScreenElements/ValueMessage_TextField'), varValueMessage, 
-    0)
-
-MobileBuiltInKeywords.setText(findTestObject('DistributionRegionScreenElements/Poster_TextField'), varPoster, 0)
-
-Mobile.hideKeyboard()
+CustomKeywords.'customKeywordsCollection.CustomKeywords.visitDistributionRegion'()
 
 MobileBuiltInKeywords.tap(findTestObject('DistributionRegionScreenElements/Fields_SubmitButton'), 0)
 

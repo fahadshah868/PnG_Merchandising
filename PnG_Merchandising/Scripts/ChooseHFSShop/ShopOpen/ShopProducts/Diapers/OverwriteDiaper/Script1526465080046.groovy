@@ -19,7 +19,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUiBuiltInKe
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-TestData dataforoverwritediapers = findTestData("Data Files/Diapers/OverwriteDiapers")
+TestData dataforoverwritediapers = findTestData('Data Files/Diapers/OverwriteDiapers')
 
 MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUpDialog'), 0)
 
@@ -82,65 +82,6 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 MobileBuiltInKeywords.delay(1)
 
 Mobile.pressBack()
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Diapers/Validate_DiapersScreen'), 'KPI: Diapers')
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/PrimaryDisplay'), 0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/Validate_PrimaryDisplayScreen'), 
-    'KPI: Diapers')
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/NotRecommendedForThisChannel'), 
-    0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/ShopKeeperDidNotAllow'), 
-    0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/Validate_CategoryRemarksScreen'), 
-    'CATEGORY REMARKS')
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/CategoryRemarks_Return'), 
-    0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/CategoryRemarks_BackButton'), 
-    0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/Validate_PrimaryDisplayScreen'), 
-    'KPI: Diapers')
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitPrimaryDisplay/NoSpaceForDisplay'), 0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen'), 0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/TakePictureButton'), 0)
-
-MobileBuiltInKeywords.delay(5)
-
-MobileBuiltInKeywords.tap(findTestObject('CommonScreenElements/DoneButton'), 0)
 
 MobileBuiltInKeywords.delay(1)
 
@@ -286,15 +227,6 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 
 MobileBuiltInKeywords.delay(1)
 
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitSecondaryDisplay/NotRecommendedForThisChannel'), 
-    0)
-
-MobileBuiltInKeywords.delay(1)
-
-MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitSecondaryDisplay/NotAvailable'), 0)
-
-MobileBuiltInKeywords.delay(1)
-
 MobileBuiltInKeywords.tap(findTestObject('ShopProductsScreenElements/Diapers/VisitSecondaryDisplay/Available'), 0)
 
 MobileBuiltInKeywords.delay(1)
@@ -402,7 +334,7 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('ShopProductsScreenElemen
 MobileBuiltInKeywords.delay(1)
 
 MobileBuiltInKeywords.setText(findTestObject('ShopProductsScreenElements/Diapers/VisitSecondaryDisplay/DisplayUnitUtilization_TextField'), 
-    dataforoverwritediapers.getObjectValue("Utilization (%)", 1), 0)
+    dataforoverwritediapers.getObjectValue('Utilization (%)', 1), 0)
 
 MobileBuiltInKeywords.delay(1)
 
