@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="PnG Merchandising Scripts With Overwrite Scenarios" time="41" tests="0" failures="8" errors="0">
+   <testsuite name="PnG Merchandising Scripts With Overwrite Scenarios" tests="0" failures="8" errors="0" time="41" timestamp="2018-05-22 10:23:26" hostname="Fahad Shah - Dell-E6420" id="Test Suites/PnG Merchandising Scripts With Overwrite Scenarios">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="D:\\(Katalon studio) GitProject\\PnG_Merchandising\\PnG_Merchandising\\Reports\\PnG Merchandising Scripts With Overwrite Scenarios\\20180522_102321"/>
+         <property name="logFiles" value="D:\\(Katalon studio) GitProject\\PnG_Merchandising\\PnG_Merchandising\\Reports\\PnG Merchandising Scripts With Overwrite Scenarios\\20180522_102321\\appium.log, D:\\(Katalon studio) GitProject\\PnG_Merchandising\\PnG_Merchandising\\Reports\\PnG Merchandising Scripts With Overwrite Scenarios\\20180522_102321\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="Fahad Shah - Dell-E6420"/>
+         <property name="hostAddress" value="192.168.3.79"/>
+         <property name="os" value="Windows 8 64bit"/>
+         <property name="katalonVersion" value="5.4.1.1"/>
+      </properties>
+      <testcase name="Test Cases/LaunchingApp/LaunchApp" classname="Test Cases/LaunchingApp/LaunchApp" status="FAILED">
+         <failure type="FAILED" message="Unable to start app at: 'D:\QAAutomation\Builds\png_local_300418.apk' (Root cause: com.kms.katalon.core.appium.exception.AppiumStartException: Fail to start Appium server in 30 seconds)"/>
+         <system-out><![CDATA[2018-05-22 10:23:27 - [TEST_CASE][FAILED] - Test Cases/LaunchingApp/LaunchApp: Test Cases/LaunchingApp/LaunchApp FAILED because (of) Unable to start app at: 'D:\QAAutomation\Builds\png_local_300418.apk' (Root cause: com.kms.katalon.core.appium.exception.AppiumStartException: Fail to start Appium server in 30 seconds)
+
+2018-05-22 10:23:28 - [TEST_STEP][FAILED] - startApplication: Unable to start app at: 'D:\QAAutomation\Builds\png_local_300418.apk' (Root cause: com.kms.katalon.core.appium.exception.AppiumStartException: Fail to start Appium server in 30 seconds)
+
+2018-05-22 10:24:00 - [MESSAGE][FAILED] - Unable to start app at: 'D:\QAAutomation\Builds\png_local_300418.apk' (Root cause: com.kms.katalon.core.appium.exception.AppiumStartException: Fail to start Appium server in 30 seconds)]]></system-out>
+         <system-err><![CDATA[2018-05-22 10:23:27 - [TEST_CASE][FAILED] - Test Cases/LaunchingApp/LaunchApp: Test Cases/LaunchingApp/LaunchApp FAILED because (of) Unable to start app at: 'D:\QAAutomation\Builds\png_local_300418.apk' (Root cause: com.kms.katalon.core.appium.exception.AppiumStartException: Fail to start Appium server in 30 seconds)]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/DistributionRegion/VisitDistributionRegion" classname="Test Cases/DistributionRegion/VisitDistributionRegion" status="FAILED">
+         <failure type="FAILED" message="No driver found"/>
+         <system-out><![CDATA[2018-05-22 10:24:00 - [TEST_CASE][FAILED] - Test Cases/DistributionRegion/VisitDistributionRegion: Test Cases/DistributionRegion/VisitDistributionRegion FAILED because (of) No driver found
+
+2018-05-22 10:24:02 - [TEST_STEP][PASSED] - verifyElementExist: Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-22 10:24:02 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30']]></system-out>
+         <system-err><![CDATA[2018-05-22 10:24:00 - [TEST_CASE][FAILED] - Test Cases/DistributionRegion/VisitDistributionRegion: Test Cases/DistributionRegion/VisitDistributionRegion FAILED because (of) No driver found]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/SelectAndStartYourDay" classname="Test Cases/ChooseHFSShop/SelectAndStartYourDay" status="FAILED">
+         <failure type="FAILED" message="No driver found"/>
+         <system-out><![CDATA[2018-05-22 10:24:03 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/SelectAndStartYourDay: Test Cases/ChooseHFSShop/SelectAndStartYourDay FAILED because (of) No driver found
+
+2018-05-22 10:24:03 - [TEST_STEP][PASSED] - verifyElementExist: Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-22 10:24:03 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30']]></system-out>
+         <system-err><![CDATA[2018-05-22 10:24:03 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/SelectAndStartYourDay: Test Cases/ChooseHFSShop/SelectAndStartYourDay FAILED because (of) No driver found]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ChooseShopForShopOpen" classname="Test Cases/ChooseHFSShop/ChooseShopForShopOpen" status="FAILED">
+         <failure type="FAILED" message="No driver found"/>
+         <system-out><![CDATA[2018-05-22 10:24:03 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ChooseShopForShopOpen: Test Cases/ChooseHFSShop/ChooseShopForShopOpen FAILED because (of) No driver found
+
+2018-05-22 10:24:04 - [TEST_STEP][PASSED] - verifyElementText: Checking timeout]]></system-out>
+         <system-err><![CDATA[2018-05-22 10:24:03 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ChooseShopForShopOpen: Test Cases/ChooseHFSShop/ChooseShopForShopOpen FAILED because (of) No driver found]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen" classname="Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen" status="FAILED">
+         <failure type="FAILED" message="No driver found"/>
+         <system-out><![CDATA[2018-05-22 10:24:04 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen: Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen FAILED because (of) No driver found
+
+2018-05-22 10:24:05 - [TEST_STEP][PASSED] - verifyElementText: Checking timeout]]></system-out>
+         <system-err><![CDATA[2018-05-22 10:24:04 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen: Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen FAILED because (of) No driver found]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts" classname="Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts" status="FAILED">
+         <failure type="FAILED" message="No driver found"/>
+         <system-out><![CDATA[2018-05-22 10:24:05 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts: Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts FAILED because (of) No driver found
+
+2018-05-22 10:24:06 - [TEST_STEP][PASSED] - verifyElementExist: Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-22 10:24:06 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30']]></system-out>
+         <system-err><![CDATA[2018-05-22 10:24:05 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts: Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts FAILED because (of) No driver found]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/OverwriteShopProducts" classname="Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/OverwriteShopProducts" status="FAILED">
+         <failure type="FAILED" message="No driver found"/>
+         <system-out><![CDATA[2018-05-22 10:24:06 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/OverwriteShopProducts: Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/OverwriteShopProducts FAILED because (of) No driver found
+
+2018-05-22 10:24:06 - [TEST_STEP][PASSED] - swipe: null]]></system-out>
+         <system-err><![CDATA[2018-05-22 10:24:06 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/OverwriteShopProducts: Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/OverwriteShopProducts FAILED because (of) No driver found]]></system-err>
+      </testcase>
+      <testcase name="Test Cases/ChooseHFSShop/ShopOpen/SaveShop" classname="Test Cases/ChooseHFSShop/ShopOpen/SaveShop" status="FAILED">
+         <failure type="FAILED" message="No driver found"/>
+         <system-out><![CDATA[2018-05-22 10:24:06 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ShopOpen/SaveShop: Test Cases/ChooseHFSShop/ShopOpen/SaveShop FAILED because (of) No driver found
+
+2018-05-22 10:24:07 - [TEST_STEP][PASSED] - tap: Timeout '0' is invalid. Using default page load timeout: '30'
+
+2018-05-22 10:24:07 - [MESSAGE][WARNING] - Timeout '0' is invalid. Using default page load timeout: '30']]></system-out>
+         <system-err><![CDATA[2018-05-22 10:24:06 - [TEST_CASE][FAILED] - Test Cases/ChooseHFSShop/ShopOpen/SaveShop: Test Cases/ChooseHFSShop/ShopOpen/SaveShop FAILED because (of) No driver found]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2018-05-22 10:23:26 - [TEST_SUITE][FAILED] - PnG Merchandising Scripts With Overwrite Scenarios: Test Cases/LaunchingApp/LaunchApp FAILED because (of) Unable to start app at: 'D:\QAAutomation\Builds\png_local_300418.apk' (Root cause: com.kms.katalon.core.appium.exception.AppiumStartException: Fail to start Appium server in 30 seconds)]]></system-out>
+      <system-err><![CDATA[2018-05-22 10:23:26 - [TEST_SUITE][FAILED] - PnG Merchandising Scripts With Overwrite Scenarios: Test Cases/LaunchingApp/LaunchApp FAILED because (of) Unable to start app at: 'D:\QAAutomation\Builds\png_local_300418.apk' (Root cause: com.kms.katalon.core.appium.exception.AppiumStartException: Fail to start Appium server in 30 seconds)]]></system-err>
+   </testsuite>
+</testsuites>

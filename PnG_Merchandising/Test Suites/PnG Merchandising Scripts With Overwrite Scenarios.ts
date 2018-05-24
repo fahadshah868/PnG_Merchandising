@@ -4,7 +4,7 @@
    <name>PnG Merchandising Scripts With Overwrite Scenarios</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-05-21T16:17:19</lastRun>
+   <lastRun>2018-05-22T10:23:21</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>30</pageLoadTimeout>
@@ -20,7 +20,7 @@
    <testCaseLink>
       <guid>205a176a-3474-4dce-8685-fe0a568ea22a</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/DistributionRegion/VisitDistributionRegion</testCaseId>
    </testCaseLink>
    <testCaseLink>

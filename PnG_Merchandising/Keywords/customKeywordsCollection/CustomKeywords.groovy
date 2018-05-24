@@ -121,6 +121,7 @@ public class CustomKeywords {
 	@Keyword
 	def selectHFSShop(){
 		boolean flag = false;
+		int index = 0
 		ArrayList<MobileElement> shops = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*")
 		for(int i=1 ; i<= shops.size() ; i++){
 			MobileElement shop = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
@@ -135,12 +136,12 @@ public class CustomKeywords {
 		}
 		if(flag == false){
 			while(true){
-				ArrayList<MobileElement> countshops = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*")
-				int index = countshops.size()
+				index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 				MobileElement lastshopbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]//android.widget.TextView[1]")
 				String lastshopnamebeforeswipe = lastshopbeforeswipe.getText()
-				Mobile.swipe(0, 193, 0, 100)
+				Mobile.swipe(0, 192, 0, 100)
 				Mobile.delay(2)
+				index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 				MobileElement lastshopafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]//android.widget.TextView[1]")
 				String lastshopnameafterswipe = lastshopafterswipe.getText()
 				if(lastshopnamebeforeswipe.equals(lastshopnameafterswipe)){

@@ -1,0 +1,26 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+PnG Merchandising Scripts With Overwrite Scenarios,,,2018-05-22 10:23:26,2018-05-22 10:24:08,41.826s,FAILED
+,,,,,,
+Test Cases/LaunchingApp/LaunchApp,,,2018-05-22 10:23:27,2018-05-22 10:24:00,33.244s,FAILED
+startApplication,,,2018-05-22 10:23:28,2018-05-22 10:24:00,32.062s,FAILED
+,,,,,,
+Test Cases/DistributionRegion/VisitDistributionRegion,,,2018-05-22 10:24:00,2018-05-22 10:24:02,2.024s,FAILED
+verifyElementExist,,,2018-05-22 10:24:02,2018-05-22 10:24:02,0.678s,PASSED
+,,,,,,
+Test Cases/ChooseHFSShop/SelectAndStartYourDay,,,2018-05-22 10:24:03,2018-05-22 10:24:03,0.767s,FAILED
+verifyElementExist,,,2018-05-22 10:24:03,2018-05-22 10:24:03,0.154s,PASSED
+,,,,,,
+Test Cases/ChooseHFSShop/ChooseShopForShopOpen,,,2018-05-22 10:24:03,2018-05-22 10:24:04,0.914s,FAILED
+verifyElementText,,,2018-05-22 10:24:04,2018-05-22 10:24:04,0.123s,PASSED
+,,,,,,
+Test Cases/ChooseHFSShop/ShopOpen/VisitShopOpen,,,2018-05-22 10:24:04,2018-05-22 10:24:05,0.807s,FAILED
+verifyElementText,,,2018-05-22 10:24:05,2018-05-22 10:24:05,0.131s,PASSED
+,,,,,,
+Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/VisitShopProducts,,,2018-05-22 10:24:05,2018-05-22 10:24:06,0.725s,FAILED
+verifyElementExist,,,2018-05-22 10:24:06,2018-05-22 10:24:06,0.042s,PASSED
+,,,,,,
+Test Cases/ChooseHFSShop/ShopOpen/ShopProducts/OverwriteShopProducts,,,2018-05-22 10:24:06,2018-05-22 10:24:06,0.628s,FAILED
+swipe,,,2018-05-22 10:24:06,2018-05-22 10:24:06,0.139s,PASSED
+,,,,,,
+Test Cases/ChooseHFSShop/ShopOpen/SaveShop,,,2018-05-22 10:24:06,2018-05-22 10:24:07,0.510s,FAILED
+tap,,,2018-05-22 10:24:07,2018-05-22 10:24:07,0.153s,PASSED
