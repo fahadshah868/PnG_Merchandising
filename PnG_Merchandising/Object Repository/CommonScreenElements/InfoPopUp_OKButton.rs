@@ -4,6 +4,12 @@
    <name>InfoPopUp_OKButton</name>
    <tag></tag>
    <elementGuidId>00000000-0000-0000-0000-000000000000</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@class = 'android.widget.Button' and @instance = '0' and (text() = 'OK' or . = 'OK') and @resource-id = 'com.concavetech.bloc:id/submit']</value>
+      </entry>
+   </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <webElementProperties>
@@ -116,7 +122,7 @@
       <matchCondition>equals</matchCondition>
       <name>x</name>
       <type>Main</type>
-      <value>190</value>
+      <value>191</value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>

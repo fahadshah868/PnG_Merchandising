@@ -4,5 +4,12 @@
    <name>LaunchApp</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>6a0a1dc1-17da-483c-bb3b-54bb7afb2a96</testCaseGuid>
+   <testCaseGuid>e00f20b5-dfe6-4b4b-acc8-8aefbf5e6b6c</testCaseGuid>
+   <variable>
+      <defaultValue>'00'</defaultValue>
+      <description></description>
+      <id>8644ebf3-0b87-4389-b6e5-796ac7ab46da</id>
+      <masked>false</masked>
+      <name>variable</name>
+   </variable>
 </TestCaseEntity>
