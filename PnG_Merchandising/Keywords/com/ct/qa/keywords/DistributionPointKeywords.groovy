@@ -30,7 +30,6 @@ import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 import com.ct.qa.constants.ProjectConstants
-import com.ct.qa.struct.LoadProductsData
 import io.appium.java_client.MobileElement
 
 public class DistributionPointKeywords {

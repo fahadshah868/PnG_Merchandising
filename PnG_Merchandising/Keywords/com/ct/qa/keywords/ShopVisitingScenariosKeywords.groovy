@@ -145,8 +145,8 @@ public class ShopVisitingScenariosKeywords{
 								String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
 								String.format("%-30s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
 								String.format("%-60s%-30s%-40s", "Products","Display Space Available","Overwrite Display Space Available")+"\n"
-						for(int k=0; k<visitedcategorydata.getShopProductsdata().size() ; k++){
-							ChannelProduct channelproduct = visitedcategorydata.getShopProductsdata().get(k)
+						for(int k=0; k<visitedcategorydata.getChannelproducts().size() ; k++){
+							ChannelProduct channelproduct = visitedcategorydata.getChannelproducts().get(k)
 							message = message + String.format("%-60s%-20s", channelproduct.getProduct(),channelproduct.getDisplayspaceavailable(),channelproduct.getOverwritedisplayspaceavailable())+"\n"
 						}
 					}

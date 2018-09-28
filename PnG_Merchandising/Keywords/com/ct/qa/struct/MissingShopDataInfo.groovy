@@ -69,7 +69,7 @@ public class MissingShopDataInfo {
 	public ArrayList<MissingCategoryData> getMissingCategoriesData() {
 		return missingcategoriesdata;
 	}
-	public void setMissingCategoriesData(MissingCategoryData missingcategorydata, String assettype) {
+	public void setMissingCategoriesData(MissingCategoryData missingcategorydata) {
 		this.missingcategoriesdata.add(missingcategorydata)
 	}
 }

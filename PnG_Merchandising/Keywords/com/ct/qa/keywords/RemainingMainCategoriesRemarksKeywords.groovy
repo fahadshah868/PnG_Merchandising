@@ -8,6 +8,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import org.apache.poi.xssf.usermodel.XSSFSheet
 
 import com.ct.qa.constants.ProjectConstants
+import com.ct.qa.struct.ChannelProduct
 import com.ct.qa.struct.GetClassWithIndex
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.ProductWithValue
@@ -154,7 +155,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_NOTMATCH)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
+					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
 					break
 				}
 				else{
@@ -168,7 +169,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MORE)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
+					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
 					break
 				}
 				else{
@@ -182,7 +183,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MISSING)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata, "")
+					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
 					break
 				}
 				else{
@@ -206,13 +207,13 @@ public class RemainingMainCategoriesRemarksKeywords {
 	}
 	@Keyword
 	def visitDSA_Products(int columnindex){
-		ArrayList<ProductWithValue> displayedchannelproducts = new ArrayList<ProductWithValue>()
+		ArrayList<ChannelProduct> visitedchannelproducts = new ArrayList<ChannelProduct>()
 		int index = 0
 		XSSFSheet sheet = LoadDataKeywords.loadChannelProductsSheet()
 		ArrayList<ProductWithValue> expectedchannelproducts = LoadDataKeywords.loadChannelWiseProductsList(sheet, columnindex)
 		int totalproducts = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
 		for(int i=1; i<= totalproducts; i=i+3){
-			ProductWithValue channelproduct = new ProductWithValue()
+			ChannelProduct channelproduct = new ChannelProduct()
 			boolean flag = false
 			index = index + 1
 			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
@@ -224,7 +225,12 @@ public class RemainingMainCategoriesRemarksKeywords {
 					flag = true
 					MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 					edittext.setValue(expectedchannelproduct.getProduct_value())
-					channelproduct.setProduct_value(expectedchannelproduct.getProduct_value())
+					if(ProjectConstants.scenario.equalsIgnoreCase("first visit")){
+						channelproduct.setDisplayspaceavailable(expectedchannelproduct.getProduct_value())
+					}
+					else{
+						channelproduct.setOverwritedisplayspaceavailable(expectedchannelproduct.getProduct_value())
+					}
 					Mobile.hideKeyboard()
 					break
 				}
@@ -233,16 +239,21 @@ public class RemainingMainCategoriesRemarksKeywords {
 			if(flag == false){
 				MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 				edittext.setValue("0000")
-				channelproduct.setProduct_value("0000")
+				if(ProjectConstants.scenario.equalsIgnoreCase("first visit")){
+					channelproduct.setDisplayspaceavailable("0000")
+				}
+				else{
+					channelproduct.setOverwritedisplayspaceavailable("0000")
+				}
 				Mobile.hideKeyboard()
 			}
 			else{}
-			displayedchannelproducts.add(channelproduct)
+			visitedchannelproducts.add(channelproduct)
 		}
 		totalproducts = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
 		if(totalproducts >= 16){
 			while(true){
-				ProductWithValue channelproduct = new ProductWithValue()
+				ChannelProduct channelproduct = new ChannelProduct()
 				boolean flag = false
 				int xlocation = ProjectConstants.getXPoint()
 				MobileElement productbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
@@ -261,7 +272,12 @@ public class RemainingMainCategoriesRemarksKeywords {
 							flag = true
 							MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
 							edittext.setValue(expectedchannelproduct.getProduct_value())
-							channelproduct.setProduct_value(expectedchannelproduct.getProduct_value())
+							if(ProjectConstants.scenario.equalsIgnoreCase("first visit")){
+								channelproduct.setDisplayspaceavailable(expectedchannelproduct.getProduct_value())
+							}
+							else{
+								channelproduct.setOverwritedisplayspaceavailable(expectedchannelproduct.getProduct_value())
+							}
 							Mobile.hideKeyboard()
 							break
 						}
@@ -270,30 +286,35 @@ public class RemainingMainCategoriesRemarksKeywords {
 					if(flag == false){
 						MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
 						edittext.setValue("0000")
-						channelproduct.setProduct_value("0000")
+						if(ProjectConstants.scenario.equalsIgnoreCase("first visit")){
+							channelproduct.setDisplayspaceavailable("0000")
+						}
+						else{
+							channelproduct.setOverwritedisplayspaceavailable("0000")
+						}
 						Mobile.hideKeyboard()
 					}
 					else{}
 				}
-				displayedchannelproducts.add(channelproduct)
+				visitedchannelproducts.add(channelproduct)
 			}
 		}
 		else{}
-		if(expectedchannelproducts.size() == displayedchannelproducts.size()){
+		if(expectedchannelproducts.size() == visitedchannelproducts.size()){
 			ArrayList<String> products = new ArrayList<String>()
-			for(int i=0; i<displayedchannelproducts.size(); i++){
+			for(int i=0; i<visitedchannelproducts.size(); i++){
 				boolean match = false
 				for(int j=0; j<expectedchannelproducts.size(); j++){
-					String dis = displayedchannelproducts.get(i).getProduct()
+					String dis = visitedchannelproducts.get(i).getProduct()
 					String exp = expectedchannelproducts.get(j).getProduct()
-					if(displayedchannelproducts.get(i).getProduct().equalsIgnoreCase(expectedchannelproducts.get(j).getProduct())){
+					if(visitedchannelproducts.get(i).getProduct().equalsIgnoreCase(expectedchannelproducts.get(j).getProduct())){
 						match = true
 						break
 					}
 					else{}
 				}
 				if(match == false){
-					products.add(displayedchannelproducts.get(i).getProduct())
+					products.add(visitedchannelproducts.get(i).getProduct())
 				}
 				else{
 				}
@@ -316,18 +337,18 @@ public class RemainingMainCategoriesRemarksKeywords {
 			else{
 			}
 		}
-		else if(expectedchannelproducts.size() < displayedchannelproducts.size()){
+		else if(expectedchannelproducts.size() < visitedchannelproducts.size()){
 			ArrayList<String> products = new ArrayList<String>()
-			for(int i=0; i<displayedchannelproducts.size(); i++){
+			for(int i=0; i<visitedchannelproducts.size(); i++){
 				boolean match = false
 				for(int j=0; j<expectedchannelproducts.size(); j++){
-					if(displayedchannelproducts.get(i).getProduct().equalsIgnoreCase(expectedchannelproducts.get(j).getProduct())){
+					if(visitedchannelproducts.get(i).getProduct().equalsIgnoreCase(expectedchannelproducts.get(j).getProduct())){
 						match = true
 						break
 					}
 				}
 				if(match == false){
-					products.add(displayedchannelproducts.get(i).getProduct())
+					products.add(visitedchannelproducts.get(i).getProduct())
 				}
 				else{
 				}
@@ -345,12 +366,12 @@ public class RemainingMainCategoriesRemarksKeywords {
 				}
 			}
 		}
-		else if(expectedchannelproducts.size() > displayedchannelproducts.size()){
+		else if(expectedchannelproducts.size() > visitedchannelproducts.size()){
 			ArrayList<String> products = new ArrayList<String>()
 			for(int i=0; i<expectedchannelproducts.size(); i++){
 				boolean match = false
-				for(int j=0; j<displayedchannelproducts.size(); j++){
-					if(expectedchannelproducts.get(i).getProduct().equalsIgnoreCase(displayedchannelproducts.get(j).getProduct())){
+				for(int j=0; j<visitedchannelproducts.size(); j++){
+					if(expectedchannelproducts.get(i).getProduct().equalsIgnoreCase(visitedchannelproducts.get(j).getProduct())){
 						match = true
 						break
 					}
@@ -383,7 +404,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 		VisitedCategoryData visitedcategorydata = new VisitedCategoryData()
 		visitedcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
 		visitedcategorydata.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
-		visitedcategorydata.setShopProductsdata(displayedchannelproducts)
+		visitedcategorydata.setChannelproducts(visitedchannelproducts)
 		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
 			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
 				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
@@ -394,15 +415,16 @@ public class RemainingMainCategoriesRemarksKeywords {
 						VisitedCategoryData visitedcategorydatainfo = visitedcategoriesdata.get(k)
 						if(visitedcategorydatainfo.getMaincategory().equals(visitedcategorydata.getMaincategory()) && visitedcategorydatainfo.getProductcategory().equals(visitedcategorydata.getProductcategory())){
 							flag = true
-							for(int l=0; l< visitedcategorydatainfo.getShopProductsdata().size(); l++){
-								ProductWithValue existingproductsdata = visitedcategorydatainfo.getShopProductsdata().get(l)
-								for(int m=0; m< displayedchannelproducts.size(); m++){
-									ProductWithValue displayedchannelproduct = displayedchannelproducts.get(m)
+							for(int l=0; l< visitedcategorydatainfo.getChannelproducts().size(); l++){
+								ChannelProduct existingproductsdata = visitedcategorydatainfo.getChannelproducts().get(l)
+								for(int m=0; m< visitedchannelproducts.size(); m++){
+									ProductWithValue displayedchannelproduct = visitedchannelproducts.get(m)
 									if(existingproductsdata.getProduct().equals(displayedchannelproduct.getProduct())){
 										if(ProjectConstants.scenario.equals("first visit")){
-											existingproductsdata.setProduct_value(displayedchannelproduct.getProduct_value())
+											existingproductsdata.setDisplayspaceavailable(displayedchannelproduct.getProduct_value())
 										}
 										else{
+											existingproductsdata.setOverwritedisplayspaceavailable(displayedchannelproduct.getProduct_value())
 										}
 									}
 								}
