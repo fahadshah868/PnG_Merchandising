@@ -225,7 +225,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 					flag = true
 					MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 					edittext.setValue(expectedchannelproduct.getProduct_value())
-					if(ProjectConstants.scenario.equalsIgnoreCase("first visit")){
+					if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 						channelproduct.setDisplayspaceavailable(expectedchannelproduct.getProduct_value())
 					}
 					else{
@@ -239,7 +239,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 			if(flag == false){
 				MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 				edittext.setValue("0000")
-				if(ProjectConstants.scenario.equalsIgnoreCase("first visit")){
+				if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 					channelproduct.setDisplayspaceavailable("0000")
 				}
 				else{
@@ -272,7 +272,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 							flag = true
 							MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
 							edittext.setValue(expectedchannelproduct.getProduct_value())
-							if(ProjectConstants.scenario.equalsIgnoreCase("first visit")){
+							if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 								channelproduct.setDisplayspaceavailable(expectedchannelproduct.getProduct_value())
 							}
 							else{
@@ -286,7 +286,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 					if(flag == false){
 						MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
 						edittext.setValue("0000")
-						if(ProjectConstants.scenario.equalsIgnoreCase("first visit")){
+						if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 							channelproduct.setDisplayspaceavailable("0000")
 						}
 						else{
@@ -420,7 +420,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 								for(int m=0; m< visitedchannelproducts.size(); m++){
 									ProductWithValue displayedchannelproduct = visitedchannelproducts.get(m)
 									if(existingproductsdata.getProduct().equals(displayedchannelproduct.getProduct())){
-										if(ProjectConstants.scenario.equals("first visit")){
+										if(ProjectConstants.SCENARIO.equals("first visit")){
 											existingproductsdata.setDisplayspaceavailable(displayedchannelproduct.getProduct_value())
 										}
 										else{

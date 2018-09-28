@@ -32,6 +32,7 @@ import com.ct.qa.struct.VisitedCategoryData
 import com.ct.qa.struct.VisitedShopDataInfo
 import com.ct.qa.struct.VisitedChillerProductsCategoryData
 import com.ct.qa.struct.ChannelProduct
+import com.ct.qa.struct.HotSpotProduct
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.MissingChillerProductsCategoryData
 import com.ct.qa.struct.MissingShopDataInfo
@@ -141,13 +142,25 @@ public class ShopVisitingScenariosKeywords{
 				if(visitedshopdatainfo.getVisitedcategoriesdata() != null){
 					for(int j=0; j< visitedshopdatainfo.getVisitedcategoriesdata().size(); j++){
 						VisitedCategoryData visitedcategorydata = visitedshopdatainfo.getVisitedcategoriesdata().get(j)
-						message = message+ "\n\n" +
-								String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-								String.format("%-30s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
-								String.format("%-60s%-30s%-40s", "Products","Display Space Available","Overwrite Display Space Available")+"\n"
-						for(int k=0; k<visitedcategorydata.getChannelproducts().size() ; k++){
-							ChannelProduct channelproduct = visitedcategorydata.getChannelproducts().get(k)
-							message = message + String.format("%-60s%-20s", channelproduct.getProduct(),channelproduct.getDisplayspaceavailable(),channelproduct.getOverwritedisplayspaceavailable())+"\n"
+						if(visitedcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
+							message = message+ "\n\n" +
+							String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+							String.format("%-30s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
+							String.format("%-60s%-30s%-40s", "Products","Facing","Overwrite Facing")+"\n"
+							for(int k=0; k<visitedcategorydata.getHotspotproducts().size() ; k++){
+								HotSpotProduct hotspotproduct = visitedcategorydata.getHotspotproducts().get(k)
+								message = message + String.format("%-60s%-20s", hotspotproduct.getProduct(),hotspotproduct.getFacing(),hotspotproduct.getOverwritefacing())+"\n"
+							}
+						}
+						else{
+							message = message+ "\n\n" +
+							String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+							String.format("%-30s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
+							String.format("%-60s%-30s%-40s", "Products","Facing","Overwrite Facing")+"\n"
+							for(int k=0; k<visitedcategorydata.getChannelproducts().size() ; k++){
+								ChannelProduct channelproduct = visitedcategorydata.getChannelproducts().get(k)
+								message = message + String.format("%-60s%-20s", channelproduct.getProduct(),channelproduct.getDisplayspaceavailable(),channelproduct.getOverwritedisplayspaceavailable())+"\n"
+							}
 						}
 					}
 				}

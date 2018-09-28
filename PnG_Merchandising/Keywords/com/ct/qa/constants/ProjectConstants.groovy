@@ -44,6 +44,7 @@ public class ProjectConstants {
 	//variables for excel file and sheets
 	public static final String EXCEL_FILEPATH = "G:\\PnG_Merchandising.xlsx"
 	public static final String CHANNEL_PRODUCTSSHEET = "Channel Products"
+	public static final String HOTSPOT_PRODUCTSSHEET = "Hotspot Products"
 	public static final String DISTRIBUTION_SHEET = "Distribution Point"
 	public static final String SLIDEROPTIONSSHEET = "Slider Options"
 	public static final AppiumDriver<MobileElement> DRIVER = MobileDriverFactory.getDriver()
@@ -73,13 +74,19 @@ public class ProjectConstants {
 	public static final String MESSAGEFOR_SLIDEROPTIONSARE_NOTMATCH = "above slider options are displaying on device not matching with expected slider options"
 
 	//variables for excel sheet columns index
-	//channel wise product categories product columns
+	//channel wise product columns
 	public static final int CHANNEL
 	public static final int MAINCATEGORY
 	public static final int PRODUCTCATEGORY
-	public static final int PRODUCT
+	public static final int CHANNELPRODUCT
 	public static final int DISPLAYSPACEAVAILABLE
 	public static final int OVERWRITEDISPLAYSPACEAVAILABLE
+
+	//hotspot product columns
+	public static final int HOTSPOTTYPE
+	public static final int HOTSPOTPRODUCT
+	public static final int HOTSPOTFACING
+	public static final int OVERWRITEHOTSPOTFACING
 
 	//slider options columns
 	public static final int SLIDEROPTIONS
@@ -89,7 +96,9 @@ public class ProjectConstants {
 	public static String CURRENTVISITING_SHOPCHANNEL = ""
 	public static String CURRENTVISITING_MAINCATEGORY = ""
 	public static String CURRENTVISITING_PRODUCTCATEGORY = ""
-	public static String scenario = ""
+	public static String CURRENTVISITING_HOTSPOTTYPE = ""
+	public static String SCENARIO = ""
+	public static int HOTSPOTINDEX = 0
 
 	//list for containing shop info
 	public static ArrayList<MissingShopDataInfo> missingshopdatainfo = new ArrayList<MissingShopDataInfo>()
@@ -99,10 +108,13 @@ public class ProjectConstants {
 	//initialization of sheet columns index
 	static{
 		XSSFSheet channelproductssheet = LoadDataKeywords.loadChannelProductsSheet()
+		XSSFSheet hotspotproductssheet = LoadDataKeywords.loadHotSpotProductsSheet()
 		XSSFSheet slideroptionssheet = LoadDataKeywords.loadSliderOptionsSheet()
 		Row channelproductssheetheaderrow = channelproductssheet.getRow(0)
+		Row hotspotproductssheetheaderrow = hotspotproductssheet.getRow(0)
 		Row slideroptionssheetheaderrow = slideroptionssheet.getRow(0)
 		int channelproductssheettotalcolumns = channelproductssheetheaderrow.getLastCellNum()
+		int hotspotproductssheettotalcolumns = hotspotproductssheetheaderrow.getLastCellNum()
 		int slideroptionssheettotalcolumns = slideroptionssheetheaderrow.getLastCellNum()
 		for(int cellnumber=0; cellnumber<channelproductssheettotalcolumns; cellnumber++){
 			String columnname = channelproductssheetheaderrow.getCell(cellnumber)
@@ -116,7 +128,7 @@ public class ProjectConstants {
 				PRODUCTCATEGORY = cellnumber
 			}
 			else if(columnname.equalsIgnoreCase("Product")){
-				PRODUCT = cellnumber
+				CHANNELPRODUCT = cellnumber
 			}
 			else if(columnname.equalsIgnoreCase("Display Space Available")){
 				DISPLAYSPACEAVAILABLE = cellnumber
@@ -125,6 +137,21 @@ public class ProjectConstants {
 				OVERWRITEDISPLAYSPACEAVAILABLE = cellnumber
 			}
 			else{}
+		}
+		for(int cellnumber=0; cellnumber<hotspotproductssheettotalcolumns; cellnumber++){
+			String columnname = hotspotproductssheetheaderrow.getCell(cellnumber)
+			if(columnname.equalsIgnoreCase("Hotspot Type")){
+				HOTSPOTTYPE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Product")){
+				HOTSPOTPRODUCT = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Facing")){
+				HOTSPOTFACING = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Overwrite Facing")){
+				OVERWRITEHOTSPOTFACING = cellnumber
+			}
 		}
 		for(int cellnumber=0; cellnumber<slideroptionssheettotalcolumns; cellnumber++ ){
 			String columnname = slideroptionssheetheaderrow.getCell(cellnumber)

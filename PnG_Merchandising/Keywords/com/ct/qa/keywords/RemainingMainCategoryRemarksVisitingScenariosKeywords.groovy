@@ -40,7 +40,7 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
 			}
-			else if(actionname.equalsIgnoreCase("Additional Info")){
+			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
 			}

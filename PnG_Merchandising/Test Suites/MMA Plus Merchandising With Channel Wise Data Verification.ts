@@ -4,7 +4,7 @@
    <name>MMA Plus Merchandising With Channel Wise Data Verification</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-09-28T12:04:24</lastRun>
+   <lastRun>2018-09-28T18:59:33</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>15</pageLoadTimeout>
@@ -38,7 +38,7 @@
    <testCaseLink>
       <guid>15a74100-fe1f-497b-95d3-d17a70d10880</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithChannelWiseDataVerification</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

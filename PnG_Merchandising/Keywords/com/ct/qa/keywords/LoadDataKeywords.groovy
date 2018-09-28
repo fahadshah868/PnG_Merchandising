@@ -53,6 +53,17 @@ public class LoadDataKeywords {
 		catch(Exception ex){
 		}
 	}
+	//load HotSopt sheet
+	def static loadHotSpotProductsSheet(){
+		try{
+			FileInputStream inputStream = new FileInputStream(new File(ProjectConstants.EXCEL_FILEPATH))
+			XSSFWorkbook wb = new XSSFWorkbook(inputStream)
+			XSSFSheet sheet = wb.getSheet(ProjectConstants.HOTSPOT_PRODUCTSSHEET)
+			return sheet
+		}
+		catch(Exception ex){
+		}
+	}
 	//load Slider Options sheet
 	def static loadSliderOptionsSheet(){
 		try{
@@ -94,7 +105,33 @@ public class LoadDataKeywords {
 			String productcategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.PRODUCTCATEGORY))
 			if((ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_MAINCATEGORY.equalsIgnoreCase(maincategory)) && ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY.equalsIgnoreCase(productcategory)){
 				ProductWithValue productwithvalue = new ProductWithValue()
-				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.PRODUCT))
+				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.CHANNELPRODUCT))
+				String columndata = dataformatter.formatCellValue(row.getCell(column))
+				productwithvalue.setProduct(product)
+				productwithvalue.setProduct_value(columndata)
+				productswithvalue.add(productwithvalue)
+			}
+			else{
+			}
+		}
+		return productswithvalue
+	}
+	//load hotspot products and quantity
+	def static loadHotSpotProductsList(XSSFSheet sheet, int column){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<ProductWithValue> productswithvalue = new ArrayList<ProductWithValue>()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<=totalrows; i++){
+			Row row = sheet.getRow(i)
+			String hotspottype = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTTYPE))
+			
+			
+			String typoooo = ProjectConstants.CURRENTVISITING_HOTSPOTTYPE
+			
+			
+			if(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE.equalsIgnoreCase(hotspottype)){
+				ProductWithValue productwithvalue = new ProductWithValue()
+				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTPRODUCT))
 				String columndata = dataformatter.formatCellValue(row.getCell(column))
 				productwithvalue.setProduct(product)
 				productwithvalue.setProduct_value(columndata)
