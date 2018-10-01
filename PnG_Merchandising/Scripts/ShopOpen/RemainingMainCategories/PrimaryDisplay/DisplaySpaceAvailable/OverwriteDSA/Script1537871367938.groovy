@@ -31,12 +31,7 @@ Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/Prima
 
 CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitPrimaryDisplay_WithDSASubCategories'(2)
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/SubCategoryPlanogram_ImageView'), 
-    0)
-
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.checkPlanogramAvailability'()
-
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.closePlanogram'()
+CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPlanogramImageView'()
 
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen'), 
     0)
@@ -46,8 +41,7 @@ CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPictureImageView'()
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen'), 
     0)
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/SubCategory_BackButton'), 
-    0)
+CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findBackButtonImageView'()
 
 CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.validateCategoryDetailActionScreen'()
 

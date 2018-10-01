@@ -31,6 +31,7 @@ public class VisitedCategoryData {
 	public String productcategory
 	public ArrayList<ChannelProduct> channelproducts
 	public ArrayList<HotSpotProduct> hotspotproducts
+	public ArrayList<HangerProduct> hangerproducts
 
 	public VisitedCategoryData(){
 		this.taggedchillersremark = new ArrayList<TaggedChillersRemark>()
@@ -65,5 +66,11 @@ public class VisitedCategoryData {
 	}
 	public void setHotspotproducts(ArrayList<HotSpotProduct> hotspotproducts) {
 		this.hotspotproducts = hotspotproducts;
+	}
+	public ArrayList<HangerProduct> getHangerproducts() {
+		return hangerproducts;
+	}
+	public void setHangerproducts(ArrayList<HangerProduct> hangerproducts) {
+		this.hangerproducts = hangerproducts;
 	}
 }

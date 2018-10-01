@@ -136,12 +136,12 @@ def static "com.ct.qa.keywords.CommonKeywords.findPictureImageView"() {
     (new com.ct.qa.keywords.CommonKeywords()).findPictureImageView()
 }
 
-def static "com.ct.qa.keywords.CommonKeywords.checkPlanogramAvailability"() {
-    (new com.ct.qa.keywords.CommonKeywords()).checkPlanogramAvailability()
+def static "com.ct.qa.keywords.CommonKeywords.findPlanogramImageView"() {
+    (new com.ct.qa.keywords.CommonKeywords()).findPlanogramImageView()
 }
 
-def static "com.ct.qa.keywords.CommonKeywords.closePlanogram"() {
-    (new com.ct.qa.keywords.CommonKeywords()).closePlanogram()
+def static "com.ct.qa.keywords.CommonKeywords.findBackButtonImageView"() {
+    (new com.ct.qa.keywords.CommonKeywords()).findBackButtonImageView()
 }
 
 def static "com.ct.qa.keywords.CategoryVisitingScenariosWithoutOverwritePopUpKeywords.visitShopCategoriesWithDataVerification"() {
@@ -290,8 +290,28 @@ def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotAvailableFacingProduc
         	columnindex)
 }
 
-def static "com.ct.qa.keywords.HotSpotKeywords.visitPOSM"() {
-    (new com.ct.qa.keywords.HotSpotKeywords()).visitPOSM()
+def static "com.ct.qa.keywords.HotSpotKeywords.findPOSMImageView"() {
+    (new com.ct.qa.keywords.HotSpotKeywords()).findPOSMImageView()
+}
+
+def static "com.ct.qa.keywords.HangerKeywords.visitHangerList"(
+    	String hangertype	) {
+    (new com.ct.qa.keywords.HangerKeywords()).visitHangerList(
+        	hangertype)
+}
+
+def static "com.ct.qa.keywords.HangerKeywords.selectHangerRemark"(
+    	String _remark	) {
+    (new com.ct.qa.keywords.HangerKeywords()).selectHangerRemark(
+        	_remark)
+}
+
+def static "com.ct.qa.keywords.HangerKeywords.visitHangerProducts"(
+    	int columnindex	
+     , 	String assettype	) {
+    (new com.ct.qa.keywords.HangerKeywords()).visitHangerProducts(
+        	columnindex
+         , 	assettype)
 }
 
 def static "com.ct.qa.keywords.CategoryVisitingScenariosWithOverwritePopUpKeywords.visitShopCategoriesWithDataVerification"() {

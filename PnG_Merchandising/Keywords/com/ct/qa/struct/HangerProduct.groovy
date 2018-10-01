@@ -18,26 +18,41 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
 
-public class HotSpotProduct {
+public class HangerProduct {
 	public String product
-	public String facing
-	public String overwritefacing
+	public String hangeravailable
+	public String hangernotavailable
+	public String overwrite_hangeravailable
+	public String overwrite_hangernotavailable
 	public String getProduct() {
 		return product;
 	}
 	public void setProduct(String product) {
 		this.product = product;
 	}
-	public String getFacing() {
-		return facing;
+	public String getHangeravailable() {
+		return hangeravailable;
 	}
-	public void setFacing(String facing) {
-		this.facing = facing;
+	public void setHangeravailable(String hangeravailable) {
+		this.hangeravailable = hangeravailable;
 	}
-	public String getOverwritefacing() {
-		return overwritefacing;
+	public String getHangernotavailable() {
+		return hangernotavailable;
 	}
-	public void setOverwritefacing(String overwritefacing) {
-		this.overwritefacing = overwritefacing;
+	public void setHangernotavailable(String hangernotavailable) {
+		this.hangernotavailable = hangernotavailable;
 	}
+	public String getOverwrite_hangeravailable() {
+		return overwrite_hangeravailable;
+	}
+	public void setOverwrite_hangeravailable(String overwrite_hangeravailable) {
+		this.overwrite_hangeravailable = overwrite_hangeravailable;
+	}
+	public String getOverwrite_hangernotavailable() {
+		return overwrite_hangernotavailable;
+	}
+	public void setOverwrite_hangernotavailable(String overwrite_hangernotavailable) {
+		this.overwrite_hangernotavailable = overwrite_hangernotavailable;
+	}
+	
 }

@@ -218,11 +218,7 @@ public class CompareDataKeywords {
 					}
 				}
 				if(match == false){
-					if(!displayshopcategorieslist.get(i).equalsIgnoreCase("HotSpot") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM"))
-					{
-						products.add(displayshopcategorieslist.get(i))
-					}
-					else{}
+					products.add(displayshopcategorieslist.get(i))
 				}
 				else{
 				}
@@ -243,11 +239,7 @@ public class CompareDataKeywords {
 					}
 				}
 				if(match == false){
-					if(!displayshopcategorieslist.get(i).equalsIgnoreCase("HotSpot") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM"))
-					{
-						products.add(displayshopcategorieslist.get(i))
-					}
-					else{}
+					products.add(displayshopcategorieslist.get(i))
 				}
 				else{
 				}

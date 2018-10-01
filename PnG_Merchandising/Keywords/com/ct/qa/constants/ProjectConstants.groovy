@@ -47,6 +47,7 @@ public class ProjectConstants {
 	public static final String HOTSPOT_PRODUCTSSHEET = "Hotspot Products"
 	public static final String DISTRIBUTION_SHEET = "Distribution Point"
 	public static final String SLIDEROPTIONSSHEET = "Slider Options"
+	
 	public static final AppiumDriver<MobileElement> DRIVER = MobileDriverFactory.getDriver()
 
 
@@ -87,6 +88,13 @@ public class ProjectConstants {
 	public static final int HOTSPOTPRODUCT
 	public static final int HOTSPOTFACING
 	public static final int OVERWRITEHOTSPOTFACING
+	
+	//hanger products columns
+	public static final int HANGERAVAILABLE
+	public static final int HANGERNOTAVAILABLE
+	public static final int OVERWRITEHANGERAVAILABLE
+	public static final int OVERWRITEHANGERNOTAVAILABLE
+
 
 	//slider options columns
 	public static final int SLIDEROPTIONS
@@ -97,6 +105,7 @@ public class ProjectConstants {
 	public static String CURRENTVISITING_MAINCATEGORY = ""
 	public static String CURRENTVISITING_PRODUCTCATEGORY = ""
 	public static String CURRENTVISITING_HOTSPOTTYPE = ""
+	public static String CURRENTVISITING_HANGER = ""
 	public static String SCENARIO = ""
 	public static int HOTSPOTINDEX = 0
 
@@ -136,7 +145,21 @@ public class ProjectConstants {
 			else if(columnname.equalsIgnoreCase("Overwrite Display Space Available")){
 				OVERWRITEDISPLAYSPACEAVAILABLE = cellnumber
 			}
-			else{}
+			else if(columnname.equalsIgnoreCase("Hanger Available")){
+				HANGERAVAILABLE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Hanger Not Available")){
+				HANGERNOTAVAILABLE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Overwrite Hanger Available")){
+				OVERWRITEHANGERAVAILABLE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Overwrite Hanger Not Available")){
+				OVERWRITEHANGERNOTAVAILABLE = cellnumber
+			}
+			
+			
+			
 		}
 		for(int cellnumber=0; cellnumber<hotspotproductssheettotalcolumns; cellnumber++){
 			String columnname = hotspotproductssheetheaderrow.getCell(cellnumber)

@@ -42,17 +42,13 @@ Mobile.tap(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/POSM_ImageView'), 0
 
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_POSMScreen'), 'POSM Deployment')
 
-CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.visitPOSM'()
+CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.findPOSMImageView'()
 
 Mobile.pressBack()
 
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen'), 'Facing')
 
-Mobile.tap(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Planogram_ImageView'), 0)
-
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.checkPlanogramAvailability'()
-
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.closePlanogram'()
+CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPlanogramImageView'()
 
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen'), 'Facing')
 
@@ -60,7 +56,7 @@ CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPictureImageView'()
 
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen'), 'Facing')
 
-Mobile.tap(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/BackButton'), 0)
+CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findBackButtonImageView'()
 
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/ValidateUtilization_Popup'), 'Utilization')
 
