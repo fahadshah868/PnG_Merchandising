@@ -38,7 +38,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 	@Keyword
 	def validateCategoryDetailActionScreen(){
 		boolean flag = false
-		Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/Validate_MainCategoryDetailActionScreen"), 0)
+		Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/Validate_MainCategoryDetailActionScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		int totalactions = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalactions; i++){
 			flag = false
@@ -476,10 +476,10 @@ public class RemainingMainCategoriesRemarksKeywords {
 		int totaldropdowns = driver.findElementsByClassName("android.widget.Spinner").size()
 		for(int i=1; i<= totaldropdowns; i++){
 			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
-			Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen"), 0)
-			Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_YesOption"), 0)
+			Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			validateCameraScreenAndTakePicture()
-			Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen'), 'Questions')
+			Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 		}
 		for(int i=1; i<= totaleditfields; i++){
 			MobileElement edittextfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+i+"]")
@@ -520,10 +520,10 @@ public class RemainingMainCategoriesRemarksKeywords {
 			else{
 				for(int i=1; i<= totaldropdowns; i++){
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
-					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen"), 0)
-					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_YesOption"), 0)
+					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					validateCameraScreenAndTakePicture()
-					Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen'), 'Questions')
+					Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 				}
 				for(int i=1; i<= totaleditfields; i++){
 					MobileElement edittextfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+i+"]")
@@ -540,10 +540,10 @@ public class RemainingMainCategoriesRemarksKeywords {
 		int totaldropdowns = driver.findElementsByClassName("android.widget.Spinner").size()
 		for(int i=1; i<= totaldropdowns; i++){
 			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
-			Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen"), 0)
-			Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_NoOption"), 0)
+			Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			validateCameraScreenAndTakePicture()
-			Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen'), 'Questions')
+			Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 		}
 		for(int i=1; i<= totaleditfields; i++){
 			MobileElement edittextfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+i+"]")
@@ -584,10 +584,10 @@ public class RemainingMainCategoriesRemarksKeywords {
 			else{
 				for(int i=1; i<= totaldropdowns; i++){
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
-					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen"), 0)
-					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_NoOption"), 0)
+					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					validateCameraScreenAndTakePicture()
-					Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen'), 'Questions')
+					Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 				}
 				for(int i=1; i<= totaleditfields; i++){
 					MobileElement edittextfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+i+"]")
@@ -619,10 +619,10 @@ public class RemainingMainCategoriesRemarksKeywords {
 		return classwithindex
 	}
 	def validateCameraScreenAndTakePicture(){
-		if(Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen"), 0, FailureHandling.OPTIONAL)){
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton"), 0)
+		if(Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0, FailureHandling.OPTIONAL)){
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			Mobile.delay(5)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton"), 0)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		}
 		else{
 		}

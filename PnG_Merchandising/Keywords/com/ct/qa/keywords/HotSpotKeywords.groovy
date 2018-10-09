@@ -55,10 +55,10 @@ public class HotSpotKeywords {
 			MobileElement hotspot = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+ProjectConstants.HOTSPOTINDEX+"]/android.widget.TextView[1]")
 			ProjectConstants.CURRENTVISITING_HOTSPOTTYPE = hotspot.getText()
 			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+ProjectConstants.HOTSPOTINDEX+"]").click()
-			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen"), 0)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton"), 0)
+			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			Mobile.delay(5)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton"), 0)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		}
 		else{
 			ProjectConstants.HOTSPOTINDEX = ProjectConstants.HOTSPOTINDEX + 1
@@ -70,10 +70,10 @@ public class HotSpotKeywords {
 			MobileElement hotspot = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+totalhotspottypes+"]/android.widget.TextView[1]")
 			ProjectConstants.CURRENTVISITING_HOTSPOTTYPE = hotspot.getText()
 			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+totalhotspottypes+"]").click()
-			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen"), 0)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton"), 0)
+			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			Mobile.delay(5)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton"), 0)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		}
 	}
 	@Keyword
@@ -85,10 +85,10 @@ public class HotSpotKeywords {
 			ProjectConstants.CURRENTVISITING_HOTSPOTTYPE = hotspot.getText()
 			if(hotspottext.equalsIgnoreCase("2 Shelfs")){
 				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen"), 0)
-				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton"), 0)
+				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				Mobile.delay(5)
-				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton"), 0)
+				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			}
 			else{}
 		}
@@ -342,7 +342,7 @@ public class HotSpotKeywords {
 				int totalposm = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 				for(int j=1; j<= totalposm; j++){
 					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+j+"]").click()
-					Mobile.verifyElementText(findTestObject("Object Repository/ShopOpen/HotSpot/HotSpotAvailable/Validate_POSMRemarksScreen"), "Remarks")
+					Mobile.verifyElementText(findTestObject("Object Repository/ShopOpen/HotSpot/HotSpotAvailable/Validate_POSMRemarksScreen", [('package') : ProjectConstants.PACKAGENAME]), "Remarks")
 					int totalremarks = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 					for(int k=1; k<= totalremarks; k++){
 						MobileElement remark = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+k+"]/android.widget.TextView[1]")
@@ -352,7 +352,7 @@ public class HotSpotKeywords {
 							break
 						}
 					}
-					Mobile.verifyElementText(findTestObject("Object Repository/ShopOpen/HotSpot/HotSpotAvailable/Validate_POSMScreen"), "POSM Deployment")
+					Mobile.verifyElementText(findTestObject("Object Repository/ShopOpen/HotSpot/HotSpotAvailable/Validate_POSMScreen", [('package') : ProjectConstants.PACKAGENAME]), "POSM Deployment")
 				}
 				break
 			}

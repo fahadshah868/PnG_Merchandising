@@ -35,8 +35,8 @@ public class CommonKeywords {
 	def selectday(){
 		Calendar calendar = Calendar.getInstance()
 		int day = calendar.get(Calendar.DAY_OF_WEEK)
-		Mobile.tap(findTestObject("Object Repository/DashboardScreenElements/DaysDropdownMenu"), 0)
-		Mobile.verifyElementExist(findTestObject("Object Repository/DashboardScreenElements/Validate_DaysListScreen"), 0)
+		Mobile.tap(findTestObject("Object Repository/DashboardScreenElements/DaysDropdownMenu", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		Mobile.verifyElementExist(findTestObject("Object Repository/DashboardScreenElements/Validate_DaysListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		if(day == 1){
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.TextView[7]").click()
 		}
@@ -67,10 +67,10 @@ public class CommonKeywords {
 			String targetimageviewtext = targetimageview.getText()
 			if(targetimageviewtext.equalsIgnoreCase("Picture")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+i+"]/android.widget.ImageButton[1]").click()
-				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen"), 0)
-				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton"), 0)
+				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				Mobile.delay(5)
-				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton"), 0)
+				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				break
 			}
 			else{}
@@ -84,7 +84,7 @@ public class CommonKeywords {
 			String targetimageviewtext = targetimageview.getText()
 			if(targetimageviewtext.equalsIgnoreCase("Planogram")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+i+"]/android.widget.ImageButton[1]").click()
-				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_OKButton"), 0, FailureHandling.OPTIONAL)
+				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_OKButton", [('package') : ProjectConstants.PACKAGENAME]), 0, FailureHandling.OPTIONAL)
 				int buttons = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/*").size()
 				for(int j=1; j<=buttons; j++){
 					MobileElement button = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+j+"]/android.widget.TextView[1]")

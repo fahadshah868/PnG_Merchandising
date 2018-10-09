@@ -4,6 +4,12 @@
    <name>Validate_RouteInfoScreen</name>
    <tag></tag>
    <elementGuidId>daf2d870-9baf-44dd-8f07-975033c23136</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@class = 'android.widget.TextView' and @instance = '2' and (text() = 'Route Info' or . = 'Route Info') and @resource-id = '${package}:id/shop_name']</value>
+      </entry>
+   </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <webElementProperties>
@@ -32,14 +38,14 @@
       <matchCondition>equals</matchCondition>
       <name>resource-id</name>
       <type>Main</type>
-      <value>com.concavetech.bloc:id/shop_name</value>
+      <value>${package}:id/shop_name</value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>package</name>
       <type>Main</type>
-      <value>com.concavetech.bloc</value>
+      <value>${package}</value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>

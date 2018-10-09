@@ -54,5 +54,4 @@ public class HangerProduct {
 	public void setOverwrite_hangernotavailable(String overwrite_hangernotavailable) {
 		this.overwrite_hangernotavailable = overwrite_hangernotavailable;
 	}
-	
 }

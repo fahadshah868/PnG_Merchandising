@@ -41,11 +41,11 @@ public class AdditionalPictureKeywords {
 		int images = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.GridView[1]/*").size()
 		for(int i=1; i<=1; i++){
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.GridView[1]/android.widget.RelativeLayout["+i+"]").click()
-			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen"), 0)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton"), 0)
+			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			Mobile.delay(5)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton"), 0)
-			Mobile.verifyElementText(findTestObject("Object Repository/ShopOpen/AdditionPicture/Validate_AdditionalPicture"), "Additional Picture")
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.verifyElementText(findTestObject("Object Repository/ShopOpen/AdditionPicture/Validate_AdditionalPicture", [('package') : ProjectConstants.PACKAGENAME]), "Additional Picture")
 		}
 		//		int index = 0
 		//		final int[] image1Data = null

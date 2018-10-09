@@ -2,6 +2,8 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import com.ct.qa.constants.ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -13,32 +15,32 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/Validate_PrimaryDisplayRemarksScreen'), 
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/Validate_PrimaryDisplayRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
 CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectPrimaryDisplayRemark'('Display Space Available')
 
-Mobile.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen'), 0)
+Mobile.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-Mobile.tap(findTestObject('CommonScreenElements/TakePictureButton'), 0)
+Mobile.tap(findTestObject('CommonScreenElements/TakePictureButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 Mobile.delay(5, FailureHandling.STOP_ON_FAILURE)
 
-Mobile.tap(findTestObject('CommonScreenElements/DoneButton'), 0)
+Mobile.tap(findTestObject('CommonScreenElements/DoneButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen'), 
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
 CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitPrimaryDisplay_WithDSASubCategories'(2)
 
 CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPlanogramImageView'()
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen'), 
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
 CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPictureImageView'()
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen'), 
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
 CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findBackButtonImageView'()

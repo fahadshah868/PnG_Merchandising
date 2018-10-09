@@ -2,6 +2,8 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import com.ct.qa.constants.ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as MobileBuiltInKeywords
@@ -20,21 +22,21 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
 'validate "Retailer Remarks" detail screen appearance'
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopOpen/RetailerRemarks/Validate_RetailerRemarks'), 'KPI: Retailer Remarks')
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopOpen/RetailerRemarks/Validate_RetailerRemarks', [('package') : ProjectConstants.PACKAGENAME]), 'KPI: Retailer Remarks')
 
-Mobile.tap(findTestObject('ShopOpen/RetailerRemarks/AllCategories'), 0)
+Mobile.tap(findTestObject('ShopOpen/RetailerRemarks/AllCategories', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-Mobile.verifyElementText(findTestObject('ShopOpen/RetailerRemarks/SRnotVisiting'), 'SR not Visiting')
+Mobile.verifyElementText(findTestObject('ShopOpen/RetailerRemarks/SRnotVisiting', [('package') : ProjectConstants.PACKAGENAME]), 'SR not Visiting')
 
-Mobile.tap(findTestObject('ShopOpen/RetailerRemarks/SRnotVisiting'), 0)
+Mobile.tap(findTestObject('ShopOpen/RetailerRemarks/SRnotVisiting', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 Mobile.pressBack()
 
 'validate "Retailer Remarks" detail screen appearance'
-MobileBuiltInKeywords.verifyElementText(findTestObject('ShopOpen/RetailerRemarks/Validate_RetailerRemarks'), 'KPI: Retailer Remarks')
+MobileBuiltInKeywords.verifyElementText(findTestObject('ShopOpen/RetailerRemarks/Validate_RetailerRemarks', [('package') : ProjectConstants.PACKAGENAME]), 'KPI: Retailer Remarks')
 
-Mobile.tap(findTestObject('ShopOpen/RetailerRemarks/BackButton'), 0)
+Mobile.tap(findTestObject('ShopOpen/RetailerRemarks/BackButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 'validate shop\'s categories screen appearance'
-MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen'), 0)
+MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 0)
 

@@ -2,6 +2,8 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import com.ct.qa.constants.ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -13,10 +15,10 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUP'), 0)
+Mobile.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUP', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-Mobile.tap(findTestObject('CommonScreenElements/InfoPopUp_NoButton'), 0)
+Mobile.tap(findTestObject('CommonScreenElements/InfoPopUp_NoButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 'validate shop\'s categories screen appearance'
-Mobile.verifyElementExist(findTestObject('Object Repository/ShopOpen/Validate_ShopCategoriesListScreen'), 0)
+Mobile.verifyElementExist(findTestObject('Object Repository/ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 0)
 

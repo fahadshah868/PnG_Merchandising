@@ -47,7 +47,7 @@ public class ProjectConstants {
 	public static final String HOTSPOT_PRODUCTSSHEET = "Hotspot Products"
 	public static final String DISTRIBUTION_SHEET = "Distribution Point"
 	public static final String SLIDEROPTIONSSHEET = "Slider Options"
-	
+
 	public static final AppiumDriver<MobileElement> DRIVER = MobileDriverFactory.getDriver()
 
 
@@ -74,6 +74,9 @@ public class ProjectConstants {
 	public static final String MESSAGEFOR_SLIDEROPTIONSARE_MISSING = "above slider options are missing on device"
 	public static final String MESSAGEFOR_SLIDEROPTIONSARE_NOTMATCH = "above slider options are displaying on device not matching with expected slider options"
 
+	//package name for objects
+	public static final String PACKAGENAME = "com.concavetech.bloc"
+	
 	//variables for excel sheet columns index
 	//channel wise product columns
 	public static final int CHANNEL
@@ -88,7 +91,7 @@ public class ProjectConstants {
 	public static final int HOTSPOTPRODUCT
 	public static final int HOTSPOTFACING
 	public static final int OVERWRITEHOTSPOTFACING
-	
+
 	//hanger products columns
 	public static final int HANGERAVAILABLE
 	public static final int HANGERNOTAVAILABLE
@@ -157,9 +160,9 @@ public class ProjectConstants {
 			else if(columnname.equalsIgnoreCase("Overwrite Hanger Not Available")){
 				OVERWRITEHANGERNOTAVAILABLE = cellnumber
 			}
-			
-			
-			
+
+
+
 		}
 		for(int cellnumber=0; cellnumber<hotspotproductssheettotalcolumns; cellnumber++){
 			String columnname = hotspotproductssheetheaderrow.getCell(cellnumber)

@@ -14,29 +14,29 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_ShareOfShelfScreen'), 
+Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_ShareOfShelfScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Share of shelf')
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/ShareOfShelf'), 0)
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/ShareOfShelf', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_ShareOfShelfProductsScreen'), 
+Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_ShareOfShelfProductsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Share of shelf')
 
 CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitDSA_Products'(ProjectConstants.DISPLAYSPACEAVAILABLE)
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/SubmitButton'), 0)
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_AlertScreen'), 
+Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_AlertScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Alert')
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Alert_SaveButton'), 0)
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Alert_SaveButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_ShareOfShelfScreen'), 
+Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_ShareOfShelfScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Share of shelf')
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/ShareofShelf_BackButton'), 
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/ShareofShelf_BackButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen'), 
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
