@@ -2,8 +2,7 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-
-import com.ct.qa.constants.ProjectConstants
+import com.ct.qa.constants.ProjectConstants as ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -15,11 +14,14 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/Validate_MainCategoryDetailActionScreen', [('package') : ProjectConstants.PACKAGENAME]), 0)
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/Validate_MainCategoryDetailActionScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+    0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_Yes_DSA_SKDNA_AdditionalInfo'()
+CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.overwriteRemarksWith_AY_DSA_Available_AIY'()
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/BackButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/BackButton', [('package') : ProjectConstants.PACKAGENAME]), 
+    0)
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 0)
+Mobile.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+    0)
 

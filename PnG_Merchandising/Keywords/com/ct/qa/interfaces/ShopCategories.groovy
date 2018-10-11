@@ -26,59 +26,45 @@ import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 
 public interface ShopCategories {
+
+	/* format for method prototype
+	 _Hanger/HotSpot_Availability_Primary Display_Secondary Display_Addtitional Info
+	 */
+
+	/*  visit secondary display available ** create 4 units
+	 unit1 => Display unit need maintenance
+	 unit2 => SKDNA
+	 unit3 => SKDNA
+	 unit4 => Display Unit Is In Perfect condition
+	 overwrite secondary display available ** create 4 units
+	 unit1 => Display unit need maintenance(different remarks)
+	 unit2 => SKDNA(different remarks)
+	 unit3 => Display Unit Need Maintenance
+	 unit4 => Display Unit Need Maintenance 	
+	 */
+
 	// for data verification
 	def visitShopCategoriesWithDataVerification()
 
-	/*category flows with chiller*/
+	// for overwrite scenarios
+	def visitShopCategoriesWith_HA_AY_DSA_Available_AIY()
+	def visitShopCategoriesWith_HNA_AN_NSFD_NAvailable_AIN()
 
-	//chiller not allocated -> SKDNA  || DSA -> NSFD || chiller available -> chiller not available
-	def visitShopCategoriesWith_CNAl_CAv_DSA()
-	def visitShopCategoriesWith_SKDNA_CNAv_NSFD()
+	//	def visitShopCategoriesWith_HA_AY_DSA_Available_AIY()
+	def overwriteShopCategoriesWith_HA_AY_DSA_Available_AIY()
 
-	//SKDNA -> Chiller not allocated || NSFD -> DSA || chiller not available -> chiller available
-	//def visitShopCategoriesWith_SKDNA_CNAv_NSFD()
-	//def visitShopCategoriesWith_CNAl_CAv_DSA()
+	def visitShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY()
+	def overwriteShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY()
 
-	//SKDNA -> SKDNA
-	def visitShopCategoriesWith_SKDNA_SKDNA_SKDNA()
-	def overwriteShopCategoriesWith_SKDNA_SKDNA_SKDNA()
+	def visitShopCategoriesWith_SKDNA_AY_SKDNA_NR_AIN()
+	def visitShopCategoriesWith_HA_AN_DSA_NAvailable_AIY()
 
-	//chiller not allocated -> chiller not allocated || chiller availble -> chiller available || DSA -> DSA
-	//def visitShopCategoriesWith_CNAl_CAv_DSA()     (implemented above)
-	def overwriteShopCategoriesWith_CNAl_CAv_DSA()
+	//	def visitShopCategoriesWith_SKDNA_AY_SKDNA_NR_AIN()
+	def visitShopCategoriesWith_HNA_AN_NSFD_Available_AIY()
 
+	//	def visitShopCategoriesWith_HNA_AN_NSFD_NAvailable_AIN()
+	//	def visitShopCategoriesWith_HA_AY_DSA_Available_AIY()
 
-	/*--------------------------------------------------------------------------------------------------------------------------------*/
-
-
-	/*category flows with chiller utilization*/
-
-	//chiller not allocated -> SKDNA || CAv -> CNAv || NSFD -> SKDNA
-	def visitShopCategoriesWith_CNAl_CAv_NSFD()
-	def visitShopCategoriesWith_SKDNA_CNAv_SKDNA()
-
-	//chiller not allocated -> SKDNA || CNAv -> CAv || SKDNA -> DSA
-	def visitShopCategoriesWith_CNAl_CNAv_SKDNA()
-	def visitShopCategoriesWith_SKDNA_CAv_DSA()
-
-	//chiller not allocated -> SKDNA || CNAv -> CAv || DSA -> SKDNA
-	def visitShopCategoriesWith_CNAl_CNAv_DSA()
-	def visitShopCategoriesWith_SKDNA_CAv_SKDNA()
-
-	//chiller not allocated -> chiller not allocated || chiller availble -> chiller available || DSA -> DSA
-	//def visitShopCategoriesWith_CNAl_CAv_DSA()     (implemented above)
-	//def overwriteShopCategoriesWith_CNAl_CAv_DSA()
-
-	//SKDNA -> chiller not allocated || SKDNA -> chiller available || SKDNA -> DSA
-	//def visitShopCategoriesWith_SKDNA_SKDNA_SKDNA()		(implemented above)
-	//def visitShopCategoriesWith_CNAl_CAv_DSA()
-
-	//chiller not allocated -> SKDNA || chiller type not available -> chiller available || NSFD -> DSA
-	def visitShopCategoriesWith_CNAl_CTNAv_NSFD()
-	//def visitShopCategoriesWith_SKDNA_CAv_DSA()		(implemented above)
-
-	//SKDNA -> SKDNA
-	//def visitShopCategoriesWith_SKDNA_SKDNA_SKDNA()
-	//def overwriteShopCategoriesWith_SKDNA_SKDNA_SKDNA()
-
+	def visitShopCategoriesWith_HNA_AN_NR_NAvailable_AIN()
+	def visitShopCategoriesWith_HA_AY_SKDNA_Available_AIY()
 }

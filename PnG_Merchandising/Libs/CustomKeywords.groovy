@@ -196,8 +196,44 @@ def static "com.ct.qa.keywords.CategoryVisitingScenariosWithoutOverwritePopUpKey
     (new com.ct.qa.keywords.CategoryVisitingScenariosWithoutOverwritePopUpKeywords()).visitShopCategoriesWith_SKDNA_CAv_SKDNA()
 }
 
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_Yes_DSA_SKDNA_AdditionalInfo"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_Yes_DSA_SKDNA_AdditionalInfo()
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_DataVerification"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_DataVerification()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AN_DSA_NAvailable_AIY"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AN_DSA_NAvailable_AIY()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AN_NR_NAvailable_AIN"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AN_NR_NAvailable_AIN()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AN_NSFD_Available_AIY"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AN_NSFD_Available_AIY()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AN_NSFD_NAvailable_AIN"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AN_NSFD_NAvailable_AIN()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AY_DSA_Available_AIY"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AY_DSA_Available_AIY()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AY_SKDNA_Available_AIY"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AY_SKDNA_Available_AIY()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AY_SKDNA_NR_AIN"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AY_SKDNA_NR_AIN()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.overwriteRemarksWith_AY_DSA_Available_AIY"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).overwriteRemarksWith_AY_DSA_Available_AIY()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.overwriteRemarksWith_AY_SKDNA_Available_AIY"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).overwriteRemarksWith_AY_SKDNA_Available_AIY()
 }
 
 def static "com.ct.qa.keywords.SliderOptionsKeywords.valideSliderOptions"() {
@@ -222,52 +258,44 @@ def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCatego
     (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWithDataVerification()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_CNAl_CAv_DSA"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_CNAl_CAv_DSA()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_HA_AY_DSA_Available_AIY"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_HA_AY_DSA_Available_AIY()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_SKDNA_CNAv_NSFD"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_SKDNA_CNAv_NSFD()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_HNA_AN_NSFD_NAvailable_AIN"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_HNA_AN_NSFD_NAvailable_AIN()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_SKDNA_SKDNA_SKDNA"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_SKDNA_SKDNA_SKDNA()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.overwriteShopCategoriesWith_HA_AY_DSA_Available_AIY"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).overwriteShopCategoriesWith_HA_AY_DSA_Available_AIY()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_CNAl_CTNAv_NSFD"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_CNAl_CTNAv_NSFD()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_SKDNA_CAv_DSA"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_SKDNA_CAv_DSA()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.overwriteShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).overwriteShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.overwriteShopCategoriesWith_SKDNA_SKDNA_SKDNA"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).overwriteShopCategoriesWith_SKDNA_SKDNA_SKDNA()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_SKDNA_AY_SKDNA_NR_AIN"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_SKDNA_AY_SKDNA_NR_AIN()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.overwriteShopCategoriesWith_CNAl_CAv_DSA"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).overwriteShopCategoriesWith_CNAl_CAv_DSA()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_HA_AN_DSA_NAvailable_AIY"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_HA_AN_DSA_NAvailable_AIY()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_CNAl_CAv_NSFD"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_CNAl_CAv_NSFD()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_HNA_AN_NSFD_Available_AIY"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_HNA_AN_NSFD_Available_AIY()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_SKDNA_CNAv_SKDNA"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_SKDNA_CNAv_SKDNA()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_HNA_AN_NR_NAvailable_AIN"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_HNA_AN_NR_NAvailable_AIN()
 }
 
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_CNAl_CNAv_SKDNA"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_CNAl_CNAv_SKDNA()
-}
-
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_CNAl_CNAv_DSA"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_CNAl_CNAv_DSA()
-}
-
-def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_SKDNA_CAv_SKDNA"() {
-    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_SKDNA_CAv_SKDNA()
+def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWith_HA_AY_SKDNA_Available_AIY"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWith_HA_AY_SKDNA_Available_AIY()
 }
 
 def static "com.ct.qa.keywords.HotSpotKeywords.selectHotSpotRemark"(

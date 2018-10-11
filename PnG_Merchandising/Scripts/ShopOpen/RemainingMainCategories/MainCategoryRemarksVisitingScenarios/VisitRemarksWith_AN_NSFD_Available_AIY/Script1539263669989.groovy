@@ -14,20 +14,14 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'KPI: Hanger')
-
-CustomKeywords.'com.ct.qa.keywords.HangerKeywords.selectHangerRemark'('ShopKeeper did not allow')
-
-Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/ShopKeeperDidnotAllow/Validate_CategoryRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'CATEGORY REMARKS')
-
-Mobile.tap(findTestObject('ShopOpen/HotSpot/ShopKeeperDidnotAllow/CategoryRemarks_Return', [('package') : ProjectConstants.PACKAGENAME]), 
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/Validate_MainCategoryDetailActionScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-Mobile.tap(findTestObject('ShopOpen/HotSpot/ShopKeeperDidnotAllow/CategoryRemarks_BackButton', [('package') : ProjectConstants.PACKAGENAME]), 
+CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AN_NSFD_Available_AIY'()
+
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/BackButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Hanger List')
+Mobile.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+    0)
 
