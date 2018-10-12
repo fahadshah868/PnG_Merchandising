@@ -4,7 +4,7 @@
    <name>MMA Plus Merchandising With Shop Level Overwrite Scenarios</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-09-06T16:14:02</lastRun>
+   <lastRun>2018-10-12T18:25:45</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>4</pageLoadTimeout>
@@ -32,7 +32,7 @@
    <testCaseLink>
       <guid>47437fb5-7c1b-4987-af43-cadb766a13e8</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/VisitShopScenarios/ShopsWithFirstVisitBeforeShopLevelOverwriting</testCaseId>
    </testCaseLink>
    <testCaseLink>

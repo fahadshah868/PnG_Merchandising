@@ -89,6 +89,7 @@ public class HotSpotKeywords {
 				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				Mobile.delay(5)
 				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				break
 			}
 			else{}
 		}
