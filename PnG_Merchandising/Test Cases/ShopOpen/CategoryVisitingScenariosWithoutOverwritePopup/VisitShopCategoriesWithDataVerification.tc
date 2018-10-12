@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>VisitAdditionalInfo</name>
+   <name>VisitShopCategoriesWithDataVerification</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>49062697-042b-42a0-b37f-8bdb8f6b03ec</testCaseGuid>
+   <testCaseGuid>bd898e3f-04ad-4db6-95fa-9e06da0a50aa</testCaseGuid>
 </TestCaseEntity>

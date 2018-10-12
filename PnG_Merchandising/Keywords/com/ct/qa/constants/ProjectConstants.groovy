@@ -76,7 +76,7 @@ public class ProjectConstants {
 
 	//package name for objects
 	public static final String PACKAGENAME = "com.concavetech.bloc"
-	
+
 	//variables for excel sheet columns index
 	//channel wise product columns
 	public static final int CHANNEL
@@ -160,9 +160,6 @@ public class ProjectConstants {
 			else if(columnname.equalsIgnoreCase("Overwrite Hanger Not Available")){
 				OVERWRITEHANGERNOTAVAILABLE = cellnumber
 			}
-
-
-
 		}
 		for(int cellnumber=0; cellnumber<hotspotproductssheettotalcolumns; cellnumber++){
 			String columnname = hotspotproductssheetheaderrow.getCell(cellnumber)
@@ -195,6 +192,6 @@ public class ProjectConstants {
 	}
 	def static visitPopUpForOverwriting(){
 		Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP"), 0, FailureHandling.OPTIONAL)
-		Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_YesButton"), -20, FailureHandling.OPTIONAL)
+		Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_YesButton"), 0, FailureHandling.OPTIONAL)
 	}
 }

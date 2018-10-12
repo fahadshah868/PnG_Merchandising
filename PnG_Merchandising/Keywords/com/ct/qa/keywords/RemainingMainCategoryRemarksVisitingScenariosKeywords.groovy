@@ -38,11 +38,11 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Secondary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/SecondaryDisplayAvailable_VisitingScenarios/VisitSecondaryDisplayAvailable"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
 			}
 		}
 	}
@@ -66,7 +66,7 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
 			}
 		}
 	}
@@ -90,13 +90,10 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/OverwriteAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_NoRemark"), null)
 			}
 		}
 	}
-	
-	
-	//------------------------------------------------ add 4 units for apply visit and overwrite scenarios
 	@Keyword
 	def visitRemarksWith_AN_NSFD_Available_AIY(){
 		int totalactions = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -113,11 +110,11 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Secondary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/SecondaryDisplayAvailable_VisitingScenarios/VisitSecondaryDisplayAvailable"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
 			}
 		}
 	}
@@ -129,19 +126,19 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			String actionname = action.getText()
 			if(actionname.equalsIgnoreCase("Availability")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/Availability/VisitAvailability_WithYesRemark"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/Availability/VisitAvailability_WithNoRemark"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Primary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/VisitDSA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/NoSpaceForDisplay/VisitNSFD"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Secondary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/NotAvailable/VisitNotAvailable"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_NoRemark"), null)
 			}
 		}
 	}
@@ -161,11 +158,11 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Secondary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/SecondaryDisplayAvailable_VisitingScenarios/VisitSecondaryDisplayAvailable"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
 			}
 		}
 	}
@@ -181,15 +178,15 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Primary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/VisitDSA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/ShopKeeperDidnotAllow/VisitSKDNA"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Secondary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/SecondaryDisplayAvailable_VisitingScenarios/VisitSecondaryDisplayAvailable"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
 			}
 		}
 	}
@@ -205,15 +202,15 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Primary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/VisitDSA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/ShopKeeperDidnotAllow/VisitSKDNA"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Secondary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/NotRecommended/VisitNotRecommended"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_NoRemark"), null)
 			}
 		}
 	}
@@ -229,15 +226,15 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Primary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/VisitDSA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/OverwriteDSA"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Secondary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/SecondaryDisplayAvailable_VisitingScenarios/OverwriteSecondaryDisplayAvailable"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
 			}
 		}
 	}
@@ -253,15 +250,15 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Primary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/VisitDSA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/ShopKeeperDidnotAllow/OverwriteSKDNA"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Secondary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/SecondaryDisplayAvailable_VisitingScenarios/OverwriteSecondaryDisplayAvailable"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfo"), null)
+				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
 			}
 		}
 	}

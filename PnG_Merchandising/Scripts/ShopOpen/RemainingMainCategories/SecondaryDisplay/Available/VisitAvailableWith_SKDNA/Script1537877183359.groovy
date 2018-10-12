@@ -2,8 +2,7 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-
-import com.ct.qa.constants.ProjectConstants
+import com.ct.qa.constants.ProjectConstants as ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -15,32 +14,8 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Validate_SecondaryDisplayRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+Mobile.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
-
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplayRemark'('Available')
-
-Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UnitsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Units')
-
-Mobile.setText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Units_FirstEditField', [('package') : ProjectConstants.PACKAGENAME]), '1', 
-    0)
-
-Mobile.hideKeyboard()
-
-Mobile.setText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Unit_SecondEditField', [('package') : ProjectConstants.PACKAGENAME]), '1', 
-    0)
-
-Mobile.hideKeyboard()
-
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Units_SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
-
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UnitsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
-
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Unit1', [('package') : ProjectConstants.PACKAGENAME]), 0)
-
-Mobile.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 Mobile.tap(findTestObject('CommonScreenElements/TakePictureButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
@@ -48,38 +23,37 @@ Mobile.delay(5, FailureHandling.STOP_ON_FAILURE)
 
 Mobile.tap(findTestObject('CommonScreenElements/DoneButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_AvailableRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_AvailableRemarksScreen', 
+        [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplay_AvailableRemark'('Shopkeeper did not allow')
 
-Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_SKDNA_CategoryRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'CATEGORY REMARKS')
+Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_SKDNA_CategoryRemarksScreen', 
+        [('package') : ProjectConstants.PACKAGENAME]), 'CATEGORY REMARKS')
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/SKDNA_CategoryRemark_Return', [('package') : ProjectConstants.PACKAGENAME]), 0)
-
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/SKDNA_CategoryRemark_BackButton', [('package') : ProjectConstants.PACKAGENAME]), 
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/SKDNA_CategoryRemark_Return', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_AvailableRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/SKDNA_CategoryRemark_BackButton', 
+        [('package') : ProjectConstants.PACKAGENAME]), 0)
+
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_AvailableRemarksScreen', 
+        [('package') : ProjectConstants.PACKAGENAME]), 0)
+
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/AvailableRemarks_BackButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/AvailableRemarks_BackButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
+Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UtilizationPopUpScreen', 
+        [('package') : ProjectConstants.PACKAGENAME]), 'Utilization')
 
-Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UtilizationPopUpScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Utilization')
-
-Mobile.setText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Utilization_EditField', [('package') : ProjectConstants.PACKAGENAME]), '50', 
-    0)
+Mobile.setText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Utilization_EditField', [('package') : ProjectConstants.PACKAGENAME]), 
+    '50', 0)
 
 Mobile.hideKeyboard()
 
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Utilization_SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 0, FailureHandling.STOP_ON_FAILURE)
+Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Utilization_SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
+    0, FailureHandling.STOP_ON_FAILURE)
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UnitsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
-
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/UnitsList_BackButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
-
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.validateCategoryDetailActionScreen'()
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UnitsListScreen', 
+        [('package') : ProjectConstants.PACKAGENAME]), 0)
 

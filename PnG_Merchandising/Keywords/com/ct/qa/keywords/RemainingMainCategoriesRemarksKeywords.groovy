@@ -457,6 +457,52 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 	}
 	@Keyword
+	def visitSecondaryDisplayUnitsList(){
+		int totalunits = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i<= totalunits; i++){
+			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+			if(i == 1){
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_DisplayUnitNeedMaintenance"), null)
+			}
+			else if(i == 2){
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+			}
+			else if(i == 3){
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+			}
+			else if(i == 4){
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailable_WithDisplayUnitIsInPerfectCondition"), null)
+			}
+			else{
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailable_WithDisplayUnitIsInPerfectCondition"), null)
+			}
+		}
+	}
+	@Keyword
+	def overwriteSecondaryDisplayUnitsList(){
+		int totalunits = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i<= totalunits; i++){
+			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+			if(i == 1){
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/OverwriteAvailableWith_DisplayUnitNeedMaintenance"), null)
+			}
+			else if(i == 2){
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/OverwriteAvailableWith_SKDNA"), null)
+			}
+			else if(i == 3){
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+			}
+			else if(i == 4){
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_DisplayUnitNeedMaintenance"), null)
+			}
+			else{
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_DisplayUnitNeedMaintenance"), null)
+			}
+		}
+	}
+	
+	
+	@Keyword
 	def selectSecondaryDisplay_AvailableRemark(String _remark){
 		int totalremarks = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalremarks; i++){
