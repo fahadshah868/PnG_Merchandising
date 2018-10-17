@@ -34,7 +34,64 @@ public class MissingCategoryData {
 	public ArrayList<String> products
 	public String productcategories_errormessage
 	public String products_errormessage
+	
+	public ArrayList<String> surveyquestioncategories
+	public String suveryquestioncategories_errormessage
+	public ArrayList<String> surveyquestions
+	public String surveyquestions_errormessage
+	
+	public ArrayList<String> additionalinfoquestions
+	public String additionalinfoquestions_errormessage
 
+
+
+	public ArrayList<String> getSurveyquestioncategories() {
+		return surveyquestioncategories;
+	}
+
+	public void setSurveyquestioncategories(ArrayList<String> surveyquestioncategories) {
+		this.surveyquestioncategories = surveyquestioncategories;
+	}
+
+	public String getSuveryquestioncategories_errormessage() {
+		return suveryquestioncategories_errormessage;
+	}
+
+	public void setSuveryquestioncategories_errormessage(String suveryquestioncategories_errormessage) {
+		this.suveryquestioncategories_errormessage = suveryquestioncategories_errormessage;
+	}
+
+	public ArrayList<String> getSurveyquestions() {
+		return surveyquestions;
+	}
+
+	public void setSurveyquestions(ArrayList<String> surveyquestions) {
+		this.surveyquestions = surveyquestions;
+	}
+
+	public String getSurveyquestions_errormessage() {
+		return surveyquestions_errormessage;
+	}
+
+	public void setSurveyquestions_errormessage(String surveyquestions_errormessage) {
+		this.surveyquestions_errormessage = surveyquestions_errormessage;
+	}
+
+	public ArrayList<String> getAdditionalinfoquestions() {
+		return additionalinfoquestions;
+	}
+
+	public void setAdditionalinfoquestions(ArrayList<String> additionalinfoquestions) {
+		this.additionalinfoquestions = additionalinfoquestions;
+	}
+
+	public String getAdditionalinfoquestions_errormessage() {
+		return additionalinfoquestions_errormessage;
+	}
+
+	public void setAdditionalinfoquestions_errormessage(String additionalinfoquestions_errormessage) {
+		this.additionalinfoquestions_errormessage = additionalinfoquestions_errormessage;
+	}
 
 	public MissingCategoryData(){
 		this.taggedchillersremarks = new ArrayList<TaggedChillersRemark>()

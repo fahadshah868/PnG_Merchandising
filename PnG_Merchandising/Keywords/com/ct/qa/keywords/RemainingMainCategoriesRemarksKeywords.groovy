@@ -6,13 +6,13 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import org.apache.poi.xssf.usermodel.XSSFSheet
-
+import org.openqa.selenium.By
 import com.ct.qa.constants.ProjectConstants
 import com.ct.qa.struct.ChannelProduct
-import com.ct.qa.struct.GetClassWithIndex
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.ProductWithValue
-import com.ct.qa.struct.UnmatchedProducts
+import com.ct.qa.struct.Questions
+import com.ct.qa.struct.UnmatchedItems
 import com.ct.qa.struct.VisitedCategoryData
 import com.ct.qa.struct.VisitedShopDataInfo
 import com.kms.katalon.core.annotation.Keyword
@@ -106,7 +106,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 					}
 				}
 				else{
-	
+
 				}
 			}
 		}
@@ -149,11 +149,11 @@ public class RemainingMainCategoriesRemarksKeywords {
 	}
 	@Keyword
 	def visitPrimaryDisplay_WithDSASubCategories(int status){
-		UnmatchedProducts unmatchedproducts_status = CompareDataKeywords.compareChannelWiseProductsCategories()
-		if(unmatchedproducts_status.getStatus() == 2){
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareChannelWiseProductsCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
+			missingcategorydata.setProductcategories(UnmatchedItems_status.getItems())
 			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_NOTMATCH)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
@@ -164,10 +164,10 @@ public class RemainingMainCategoriesRemarksKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == 1){
+		else if(UnmatchedItems_status.getStatus() == 1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
+			missingcategorydata.setProductcategories(UnmatchedItems_status.getItems())
 			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MORE)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
@@ -178,10 +178,10 @@ public class RemainingMainCategoriesRemarksKeywords {
 				}
 			}
 		}
-		else if(unmatchedproducts_status.getStatus() == -1){
+		else if(UnmatchedItems_status.getStatus() == -1){
 			MissingCategoryData missingcategorydata = new MissingCategoryData()
 			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategories(unmatchedproducts_status.getProducts())
+			missingcategorydata.setProductcategories(UnmatchedItems_status.getItems())
 			missingcategorydata.setProductcategories_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSCATEGORIESARE_MISSING)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
@@ -502,8 +502,8 @@ public class RemainingMainCategoriesRemarksKeywords {
 			}
 		}
 	}
-	
-	
+
+
 	@Keyword
 	def selectSecondaryDisplay_AvailableRemark(String _remark){
 		int totalremarks = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -519,152 +519,380 @@ public class RemainingMainCategoriesRemarksKeywords {
 	// for additional info remark
 	@Keyword
 	def visitAdditionalInfoQuestions(){
-		int index = 1
-		int totaleditfields = driver.findElementsByClassName("android.widget.EditText").size()
-		int totaldropdowns = driver.findElementsByClassName("android.widget.Spinner").size()
-		for(int i=1; i<= totaldropdowns; i++){
-			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
-			Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			validateCameraScreenAndTakePicture()
-			Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
-		}
-		for(int i=1; i<= totaleditfields; i++){
-			MobileElement edittextfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+i+"]")
-			edittextfield.setValue("100")
-			Mobile.hideKeyboard()
+		int index = 0
+		String itemtextbeforeswipe = ""
+		String itemtextafterswipe = ""
+		String tag = ""
+		MobileElement surveyquestion = null
+		ArrayList<String> visitedadditionalinfoquestions = new ArrayList<String>()
+		ArrayList<Questions> expectedadditionalinfoquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList(LoadDataKeywords.loadAdditionalInfoQuestionsSheet(), ProjectConstants.ADDITIONALINFOQUESTION_VALUE)
+		ArrayList<MobileElement> surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		for(int i=0; i< surveyquestionslist.size(); i++){
+			surveyquestion = surveyquestionslist.get(i)
+			tag = surveyquestion.getTagName()
+			if(tag.equalsIgnoreCase("android.widget.Spinner")){
+				String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
+				visitedadditionalinfoquestions.add(displayeddropdowntext)
+				surveyquestion.click()
+				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.verifyElementText(findTestObject('Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
+			}
+			else{
+				String displayededitfieldtext = surveyquestion.getText()
+				visitedadditionalinfoquestions.add(displayededitfieldtext)
+				for(int j=0; j< expectedadditionalinfoquestions.size(); j++){
+					String expectededitfieldtext = expectedadditionalinfoquestions.get(j).getQuestion()
+					if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
+						String questionvalue = expectedadditionalinfoquestions.get(j).getQuestion_value()
+						surveyquestion.setValue(questionvalue)
+						Mobile.hideKeyboard()
+					}
+					else{
+						surveyquestion.setValue("0000")
+						Mobile.hideKeyboard()
+					}
+				}
+			}
 		}
 		while(true){
-			int xlocation = ProjectConstants.getXPoint()
-			totaleditfields = driver.findElementsByClassName("android.widget.EditText").size()
-			totaldropdowns = driver.findElementsByClassName("android.widget.Spinner").size()
-			String questionnamebeforeswipe_edittext = ""
-			String questionnamebeforeswipe_dropdown = ""
-			String questionnameafterswipe_edittext = ""
-			String questionnameafterswipe_dropdown = ""
-			if(totaldropdowns != 0){
-				MobileElement questionbeforeswipe_dropdown = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+totaldropdowns+"]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
-				questionnamebeforeswipe_dropdown = questionbeforeswipe_dropdown.getText()
+			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+			index = (surveyquestionslist.size()-1)
+			surveyquestion =  surveyquestionslist.get(index)
+			tag = surveyquestion.getTagName()
+			if(tag.equalsIgnoreCase("android.widget.Spinner")){
+				itemtextbeforeswipe = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 			}
-			if(totaleditfields != 0){
-				MobileElement questionbeforeswipe_edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+totaleditfields+"]")
-				questionnamebeforeswipe_edittext = questionbeforeswipe_edittext.getText()
+			else{
+				itemtextbeforeswipe = surveyquestion.getText()
 			}
-			Mobile.swipe(xlocation, 580, xlocation, 300)
-			Mobile.swipe(xlocation, 580, xlocation, 300)
-			totaleditfields = driver.findElementsByClassName("android.widget.EditText").size()
-			totaldropdowns = driver.findElementsByClassName("android.widget.Spinner").size()
-			if(totaldropdowns != 0){
-				MobileElement questionafterswipe_dropdown = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+totaldropdowns+"]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
-				questionnameafterswipe_dropdown = questionafterswipe_dropdown.getText()
+			Mobile.swipe(20, 324, 20, 200)
+			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+			index = (surveyquestionslist.size()-1)
+			surveyquestion =  surveyquestionslist.get(index)
+			tag = surveyquestion.getTagName()
+			if(tag.equalsIgnoreCase("android.widget.Spinner")){
+				itemtextafterswipe = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 			}
-			if(totaleditfields != 0){
-				MobileElement questionafterswipe_edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+totaleditfields+"]")
-				questionnameafterswipe_edittext = questionafterswipe_edittext.getText()
+			else{
+				itemtextafterswipe = surveyquestion.getText()
 			}
-			if(questionnamebeforeswipe_edittext.equals(questionnameafterswipe_edittext) && questionnamebeforeswipe_dropdown.equals(questionnameafterswipe_dropdown)){
+			if(itemtextbeforeswipe.equals(itemtextafterswipe)){
 				break
 			}
 			else{
-				for(int i=1; i<= totaldropdowns; i++){
-					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
-					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-					validateCameraScreenAndTakePicture()
-					Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
+				if(tag.equalsIgnoreCase("android.widget.Spinner")){
+					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
+					visitedadditionalinfoquestions.add(displayeddropdowntext)
+					surveyquestion.click()
+					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.verifyElementText(findTestObject('Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 				}
-				for(int i=1; i<= totaleditfields; i++){
-					MobileElement edittextfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+i+"]")
-					edittextfield.setValue("100")
-					Mobile.hideKeyboard()
+				else{
+					String displayededitfieldtext = surveyquestion.getText()
+					visitedadditionalinfoquestions.add(displayededitfieldtext)
+					for(int j=0; j< expectedadditionalinfoquestions.size(); j++){
+						String expectededitfieldtext = expectedadditionalinfoquestions.get(j).getQuestion()
+						if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
+							String questionvalue = expectedadditionalinfoquestions.get(j).getQuestion_value()
+							surveyquestion.setValue(questionvalue)
+							Mobile.hideKeyboard()
+						}
+						else{
+							surveyquestion.setValue("0000")
+							Mobile.hideKeyboard()
+						}
+					}
 				}
 			}
+		}
+		if(expectedadditionalinfoquestions.size() == visitedadditionalinfoquestions.size()){
+			ArrayList<String> questions = new ArrayList<String>()
+			for(int i=0; i<visitedadditionalinfoquestions.size(); i++){
+				boolean match = false
+				for(int j=0; j<expectedadditionalinfoquestions.size(); j++){
+					String dis = visitedadditionalinfoquestions.get(i)
+					String exp = expectedadditionalinfoquestions.get(j).getQuestion()
+					if(visitedadditionalinfoquestions.get(i).equalsIgnoreCase(expectedadditionalinfoquestions.get(j).getQuestion())){
+						match = true
+						break
+					}
+					else{}
+				}
+				if(match == false){
+					questions.add(visitedadditionalinfoquestions.get(i))
+				}
+				else{
+				}
+			}
+			if(!questions.isEmpty()){
+				MissingCategoryData missingcategorydata = new MissingCategoryData()
+				missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+				missingcategorydata.setAdditionalinfoquestions(questions)
+				missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_NOTMATCH)
+				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+						ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
+						break
+					}
+					else{
+					}
+				}
+			}
+			else{
+			}
+		}
+		else if(expectedadditionalinfoquestions.size() < visitedadditionalinfoquestions.size()){
+			ArrayList<String> questions = new ArrayList<String>()
+			for(int i=0; i<visitedadditionalinfoquestions.size(); i++){
+				boolean match = false
+				for(int j=0; j<expectedadditionalinfoquestions.size(); j++){
+					if(visitedadditionalinfoquestions.get(i).equalsIgnoreCase(expectedadditionalinfoquestions.get(j).getQuestion())){
+						match = true
+						break
+					}
+				}
+				if(match == false){
+					questions.add(visitedadditionalinfoquestions.get(i))
+				}
+				else{
+				}
+			}
+			MissingCategoryData missingcategorydata = new MissingCategoryData()
+			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategorydata.setAdditionalinfoquestions(questions)
+			missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_MORE)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
+				}
+				else{
+				}
+			}
+		}
+		else if(expectedadditionalinfoquestions.size() > visitedadditionalinfoquestions.size()){
+			ArrayList<String> questions = new ArrayList<String>()
+			for(int i=0; i<expectedadditionalinfoquestions.size(); i++){
+				boolean match = false
+				for(int j=0; j<visitedadditionalinfoquestions.size(); j++){
+					if(expectedadditionalinfoquestions.get(i).getQuestion().equalsIgnoreCase(visitedadditionalinfoquestions.get(j))){
+						match = true
+						break
+					}
+				}
+				if(match == false){
+					questions.add(expectedadditionalinfoquestions.get(i).getQuestion())
+				}
+				else{
+				}
+			}
+			MissingCategoryData missingcategorydata = new MissingCategoryData()
+			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategorydata.setAdditionalinfoquestions(questions)
+			missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_MISSING)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+
+			String message = "Main Category: "+ProjectConstants.CURRENTVISITING_MAINCATEGORY+"\nProduct Category: "+ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY+"\n"+ProjectConstants.MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL
+			KeywordUtil.logInfo(message)
 		}
 	}
 	@Keyword
 	def overwriteAdditionalInfoQuestions(){
-		int index = 1
-		int totaleditfields = driver.findElementsByClassName("android.widget.EditText").size()
-		int totaldropdowns = driver.findElementsByClassName("android.widget.Spinner").size()
-		for(int i=1; i<= totaldropdowns; i++){
-			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
-			Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			validateCameraScreenAndTakePicture()
-			Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
-		}
-		for(int i=1; i<= totaleditfields; i++){
-			MobileElement edittextfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+i+"]")
-			edittextfield.setValue("200")
-			Mobile.hideKeyboard()
+		int index = 0
+		String itemtextbeforeswipe = ""
+		String itemtextafterswipe = ""
+		String tag = ""
+		MobileElement surveyquestion = null
+		ArrayList<String> visitedadditionalinfoquestions = new ArrayList<String>()
+		ArrayList<Questions> expectedadditionalinfoquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList(LoadDataKeywords.loadAdditionalInfoQuestionsSheet(), ProjectConstants.OVERWRITE_ADDITIONALINFOQUESTION_VALUE)
+		ArrayList<MobileElement> surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		for(int i=0; i< surveyquestionslist.size(); i++){
+			surveyquestion = surveyquestionslist.get(i)
+			tag = surveyquestion.getTagName()
+			if(tag.equalsIgnoreCase("android.widget.Spinner")){
+				String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
+				visitedadditionalinfoquestions.add(displayeddropdowntext)
+				surveyquestion.click()
+				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.verifyElementText(findTestObject('Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
+			}
+			else{
+				String displayededitfieldtext = surveyquestion.getText()
+				visitedadditionalinfoquestions.add(displayededitfieldtext)
+				for(int j=0; j< expectedadditionalinfoquestions.size(); j++){
+					String expectededitfieldtext = expectedadditionalinfoquestions.get(j).getQuestion()
+					if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
+						String questionvalue = expectedadditionalinfoquestions.get(j).getQuestion_value()
+						surveyquestion.setValue(questionvalue)
+						Mobile.hideKeyboard()
+					}
+					else{
+						surveyquestion.setValue("0000")
+						Mobile.hideKeyboard()
+					}
+				}
+			}
 		}
 		while(true){
-			int xlocation = ProjectConstants.getXPoint()
-			totaleditfields = driver.findElementsByClassName("android.widget.EditText").size()
-			totaldropdowns = driver.findElementsByClassName("android.widget.Spinner").size()
-			String questionnamebeforeswipe_edittext = ""
-			String questionnamebeforeswipe_dropdown = ""
-			String questionnameafterswipe_edittext = ""
-			String questionnameafterswipe_dropdown = ""
-			if(totaldropdowns != 0){
-				MobileElement questionbeforeswipe_dropdown = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+totaldropdowns+"]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
-				questionnamebeforeswipe_dropdown = questionbeforeswipe_dropdown.getText()
+			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+			index = (surveyquestionslist.size()-1)
+			surveyquestion =  surveyquestionslist.get(index)
+			tag = surveyquestion.getTagName()
+			if(tag.equalsIgnoreCase("android.widget.Spinner")){
+				itemtextbeforeswipe = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 			}
-			if(totaleditfields != 0){
-				MobileElement questionbeforeswipe_edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+totaleditfields+"]")
-				questionnamebeforeswipe_edittext = questionbeforeswipe_edittext.getText()
+			else{
+				itemtextbeforeswipe = surveyquestion.getText()
 			}
-			Mobile.swipe(xlocation, 580, xlocation, 300)
-			Mobile.swipe(xlocation, 580, xlocation, 300)
-			totaleditfields = driver.findElementsByClassName("android.widget.EditText").size()
-			totaldropdowns = driver.findElementsByClassName("android.widget.Spinner").size()
-			if(totaldropdowns != 0){
-				MobileElement questionafterswipe_dropdown = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+totaldropdowns+"]/android.widget.LinearLayout[1]/android.widget.TextView[1]")
-				questionnameafterswipe_dropdown = questionafterswipe_dropdown.getText()
+			Mobile.swipe(20, 324, 20, 200)
+			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+			index = (surveyquestionslist.size()-1)
+			surveyquestion =  surveyquestionslist.get(index)
+			tag = surveyquestion.getTagName()
+			if(tag.equalsIgnoreCase("android.widget.Spinner")){
+				itemtextafterswipe = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 			}
-			if(totaleditfields != 0){
-				MobileElement questionafterswipe_edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+totaleditfields+"]")
-				questionnameafterswipe_edittext = questionafterswipe_edittext.getText()
+			else{
+				itemtextafterswipe = surveyquestion.getText()
 			}
-			if(questionnamebeforeswipe_edittext.equals(questionnameafterswipe_edittext) && questionnamebeforeswipe_dropdown.equals(questionnameafterswipe_dropdown)){
+			if(itemtextbeforeswipe.equals(itemtextafterswipe)){
 				break
 			}
 			else{
-				for(int i=1; i<= totaldropdowns; i++){
-					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
-					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_ConfirmPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/ConfirmPopup_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-					validateCameraScreenAndTakePicture()
-					Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
+				if(tag.equalsIgnoreCase("android.widget.Spinner")){
+					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
+					visitedadditionalinfoquestions.add(displayeddropdowntext)
+					surveyquestion.click()
+					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.verifyElementText(findTestObject('Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 				}
-				for(int i=1; i<= totaleditfields; i++){
-					MobileElement edittextfield = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.EditText["+i+"]")
-					edittextfield.setValue("200")
-					Mobile.hideKeyboard()
+				else{
+					String displayededitfieldtext = surveyquestion.getText()
+					visitedadditionalinfoquestions.add(displayededitfieldtext)
+					for(int j=0; j< expectedadditionalinfoquestions.size(); j++){
+						String expectededitfieldtext = expectedadditionalinfoquestions.get(j).getQuestion()
+						if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
+							String questionvalue = expectedadditionalinfoquestions.get(j).getQuestion_value()
+							surveyquestion.setValue(questionvalue)
+							Mobile.hideKeyboard()
+						}
+						else{
+							surveyquestion.setValue("0000")
+							Mobile.hideKeyboard()
+						}
+					}
 				}
 			}
 		}
-	}
-	def getAdditionalInfoClassName(){
-		GetClassWithIndex classwithindex = new GetClassWithIndex()
-		String classname = ""
-		int spinnerindex = 0
-		int edittextindex = 0
-		ArrayList<MobileElement> totalquestions = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
-		for(int i=1; i<= totalquestions.size(); i++){
-			String question = totalquestions.get(i).getClass()
-			classname = question
-			if(question.equalsIgnoreCase("android.widget.EditText")){
-				spinnerindex = spinnerindex + 1
+		if(expectedadditionalinfoquestions.size() == visitedadditionalinfoquestions.size()){
+			ArrayList<String> questions = new ArrayList<String>()
+			for(int i=0; i<visitedadditionalinfoquestions.size(); i++){
+				boolean match = false
+				for(int j=0; j<expectedadditionalinfoquestions.size(); j++){
+					String dis = visitedadditionalinfoquestions.get(i)
+					String exp = expectedadditionalinfoquestions.get(j).getQuestion()
+					if(visitedadditionalinfoquestions.get(i).equalsIgnoreCase(expectedadditionalinfoquestions.get(j).getQuestion())){
+						match = true
+						break
+					}
+					else{}
+				}
+				if(match == false){
+					questions.add(visitedadditionalinfoquestions.get(i))
+				}
+				else{
+				}
+			}
+			if(!questions.isEmpty()){
+				MissingCategoryData missingcategorydata = new MissingCategoryData()
+				missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+				missingcategorydata.setAdditionalinfoquestions(questions)
+				missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_NOTMATCH)
+				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+						ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
+						break
+					}
+					else{
+					}
+				}
 			}
 			else{
-				edittextindex = edittextindex + 1
 			}
 		}
-		classwithindex.setClassname(classname)
-		classwithindex.setSpinnerindex(spinnerindex)
-		classwithindex.setEdittextindex(edittextindex)
-		return classwithindex
+		else if(expectedadditionalinfoquestions.size() < visitedadditionalinfoquestions.size()){
+			ArrayList<String> questions = new ArrayList<String>()
+			for(int i=0; i<visitedadditionalinfoquestions.size(); i++){
+				boolean match = false
+				for(int j=0; j<expectedadditionalinfoquestions.size(); j++){
+					if(visitedadditionalinfoquestions.get(i).equalsIgnoreCase(expectedadditionalinfoquestions.get(j).getQuestion())){
+						match = true
+						break
+					}
+				}
+				if(match == false){
+					questions.add(visitedadditionalinfoquestions.get(i))
+				}
+				else{
+				}
+			}
+			MissingCategoryData missingcategorydata = new MissingCategoryData()
+			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategorydata.setAdditionalinfoquestions(questions)
+			missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_MORE)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
+				}
+				else{
+				}
+			}
+		}
+		else if(expectedadditionalinfoquestions.size() > visitedadditionalinfoquestions.size()){
+			ArrayList<String> questions = new ArrayList<String>()
+			for(int i=0; i<expectedadditionalinfoquestions.size(); i++){
+				boolean match = false
+				for(int j=0; j<visitedadditionalinfoquestions.size(); j++){
+					if(expectedadditionalinfoquestions.get(i).getQuestion().equalsIgnoreCase(visitedadditionalinfoquestions.get(j))){
+						match = true
+						break
+					}
+				}
+				if(match == false){
+					questions.add(expectedadditionalinfoquestions.get(i).getQuestion())
+				}
+				else{
+				}
+			}
+			MissingCategoryData missingcategorydata = new MissingCategoryData()
+			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategorydata.setAdditionalinfoquestions(questions)
+			missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_MISSING)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+			String message = "Main Category: "+ProjectConstants.CURRENTVISITING_MAINCATEGORY+"\nProduct Category: "+ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY+"\n"+ProjectConstants.MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL
+			KeywordUtil.logInfo(message)
+		}
 	}
 	def validateCameraScreenAndTakePicture(){
 		if(Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0, FailureHandling.OPTIONAL)){

@@ -254,6 +254,20 @@ def static "com.ct.qa.keywords.SliderOptionsKeywords.findRoute"() {
     (new com.ct.qa.keywords.SliderOptionsKeywords()).findRoute()
 }
 
+def static "com.ct.qa.keywords.SurveyQuestions.visitSurveyQuestionCategories"(
+    	int flag	) {
+    (new com.ct.qa.keywords.SurveyQuestions()).visitSurveyQuestionCategories(
+        	flag)
+}
+
+def static "com.ct.qa.keywords.SurveyQuestions.visitSurveyQuestionsWithYesRemark"() {
+    (new com.ct.qa.keywords.SurveyQuestions()).visitSurveyQuestionsWithYesRemark()
+}
+
+def static "com.ct.qa.keywords.SurveyQuestions.visitSurveyQuestionsWithNoRemark"() {
+    (new com.ct.qa.keywords.SurveyQuestions()).visitSurveyQuestionsWithNoRemark()
+}
+
 def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWithDataVerification"() {
     (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWithDataVerification()
 }

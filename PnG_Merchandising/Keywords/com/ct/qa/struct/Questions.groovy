@@ -18,26 +18,19 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
 
-public class GetClassWithIndex {
-	public int spinnerindex
-	public int edittextindex
-	public String classname
-	public int getSpinnerindex() {
-		return spinnerindex;
+public class Questions {
+	public String question
+	public String question_value
+	public String getQuestion() {
+		return question;
 	}
-	public void setSpinnerindex(int spinnerindex) {
-		this.spinnerindex = spinnerindex;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
-	public int getEdittextindex() {
-		return edittextindex;
+	public String getQuestion_value() {
+		return question_value;
 	}
-	public void setEdittextindex(int edittextindex) {
-		this.edittextindex = edittextindex;
-	}
-	public String getClassname() {
-		return classname;
-	}
-	public void setClassname(String classname) {
-		this.classname = classname;
+	public void setQuestion_value(String question_value) {
+		this.question_value = question_value;
 	}
 }

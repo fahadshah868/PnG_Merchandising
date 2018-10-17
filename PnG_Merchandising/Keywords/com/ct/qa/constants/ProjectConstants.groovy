@@ -8,7 +8,6 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import com.ct.qa.keywords.LoadDataKeywords
 import com.ct.qa.struct.MissingShopDataInfo
 import com.ct.qa.struct.MissingSliderOptions
-import com.ct.qa.struct.UnmatchedProducts
 import com.ct.qa.struct.VisitedShopDataInfo
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
@@ -42,11 +41,13 @@ import WebUiBuiltInKeywords as WebUI
 public class ProjectConstants {
 
 	//variables for excel file and sheets
-	public static final String EXCEL_FILEPATH = "G:\\PnG_Merchandising.xlsx"
+	public static final String EXCEL_FILEPATH = "F:\\Git Projects\\PnG_Merchandising\\PnG_Merchandising\\PnG_Merchandising.xlsx"
 	public static final String CHANNEL_PRODUCTSSHEET = "Channel Products"
 	public static final String HOTSPOT_PRODUCTSSHEET = "Hotspot Products"
 	public static final String DISTRIBUTION_SHEET = "Distribution Point"
 	public static final String SLIDEROPTIONSSHEET = "Slider Options"
+	public static final String SURVEYQUESTIONS_SHEET = "Survey Questions"
+	public static final String ADDITIONALINFOQUESTIONS_SHEET = "Additional Info Questions"
 
 	public static final AppiumDriver<MobileElement> DRIVER = MobileDriverFactory.getDriver()
 
@@ -74,6 +75,21 @@ public class ProjectConstants {
 	public static final String MESSAGEFOR_SLIDEROPTIONSARE_MISSING = "above slider options are missing on device"
 	public static final String MESSAGEFOR_SLIDEROPTIONSARE_NOTMATCH = "above slider options are displaying on device not matching with expected slider options"
 
+	//survey question categories comparison messages
+	public static final String MESSAGEFOR_SURVEYQUESTIONCATEGORIESARE_MORE = "above survey question categories are displaying on device more than to expected survey questions categories"
+	public static final String MESSAGEFOR_SURVEYQUESTIONCATEGORIESARE_MISSING = "above survey questions categories are missing on device"
+	public static final String MESSAGEFOR_SURVEYQUESTIONCATEGORIESARE_NOTMATCH = "above survey questions categories are displaying on device not matching with expected survey questions categories"
+
+	//survey questions comparison messages
+	public static final String MESSAGEFOR_SURVEYQUESTIONSARE_MORE = "above survey questions are displaying on device more than to expected survey questions"
+	public static final String MESSAGEFOR_SURVEYQUESTIONSARE_MISSING = "above survey questions are missing on device"
+	public static final String MESSAGEFOR_SURVEYQUESTIONSARE_NOTMATCH = "above survey questions are displaying on device not matching with expected survey questions"
+
+	//additional info questions comparison messages
+	public static final String MESSAGEFOR_ADDITIONALINFOQUESTIONSARE_MORE = "above additional info questions are displaying on device more than to expected additional info questions"
+	public static final String MESSAGEFOR_ADDITIONALINFOQUESTIONSARE_MISSING = "above additional info questions are missing on device"
+	public static final String MESSAGEFOR_ADDITIONALINFOQUESTIONSARE_NOTMATCH = "above additional info questions are displaying on device not matching with expected additional info questions"
+
 	//package name for objects
 	public static final String PACKAGENAME = "com.concavetech.bloc"
 
@@ -98,9 +114,23 @@ public class ProjectConstants {
 	public static final int OVERWRITEHANGERAVAILABLE
 	public static final int OVERWRITEHANGERNOTAVAILABLE
 
-
 	//slider options columns
 	public static final int SLIDEROPTIONS
+
+	//survey questions columns
+	public static final int SURVEYQUESTIONS_CHANNEL
+	public static final int SURVEYQUESTIONCATEGORY
+	public static final int SURVEYQUESTION
+	public static final int SURVEYQUESTIONVALUE
+	public static final int OVERWRITE_SURVEYQUESTIONVALUE
+
+	//additional info questions columns
+	public static final int ADDITIONALINFOQUESTIONS_CHANNEL
+	public static final int ADDITIONALINFOQUESTIONS_MAINCATEGORY
+	public static final int ADDITIONALINFOQUESTION
+	public static final int ADDITIONALINFOQUESTION_VALUE
+	public static final int OVERWRITE_ADDITIONALINFOQUESTION_VALUE
+
 
 	//variables for current visiting shop channels, chiller and categories
 	public static String CURRENTVISITING_SHOPNAME = ""
@@ -109,6 +139,7 @@ public class ProjectConstants {
 	public static String CURRENTVISITING_PRODUCTCATEGORY = ""
 	public static String CURRENTVISITING_HOTSPOTTYPE = ""
 	public static String CURRENTVISITING_HANGER = ""
+	public static String CURRENTVISITING_SURVEYQUESTION_CATEGORY = ""
 	public static String SCENARIO = ""
 	public static int HOTSPOTINDEX = 0
 
@@ -122,12 +153,22 @@ public class ProjectConstants {
 		XSSFSheet channelproductssheet = LoadDataKeywords.loadChannelProductsSheet()
 		XSSFSheet hotspotproductssheet = LoadDataKeywords.loadHotSpotProductsSheet()
 		XSSFSheet slideroptionssheet = LoadDataKeywords.loadSliderOptionsSheet()
+		XSSFSheet surveyquestionssheet = LoadDataKeywords.loadSurveyQuestionsSheet()
+		XSSFSheet additionalinfoquestionssheet = LoadDataKeywords.loadAdditionalInfoQuestionsSheet()
+
 		Row channelproductssheetheaderrow = channelproductssheet.getRow(0)
 		Row hotspotproductssheetheaderrow = hotspotproductssheet.getRow(0)
 		Row slideroptionssheetheaderrow = slideroptionssheet.getRow(0)
+		Row surveyquestionssheetheaderrow = surveyquestionssheet.getRow(0)
+		Row additionalinfoquestionssheetheaderrow = additionalinfoquestionssheet.getRow(0)
+
 		int channelproductssheettotalcolumns = channelproductssheetheaderrow.getLastCellNum()
 		int hotspotproductssheettotalcolumns = hotspotproductssheetheaderrow.getLastCellNum()
 		int slideroptionssheettotalcolumns = slideroptionssheetheaderrow.getLastCellNum()
+		int surveyquestionssheettotalcolumns = surveyquestionssheetheaderrow.getLastCellNum()
+		int additionalinfoquestionssheettotalcolumns = additionalinfoquestionssheetheaderrow.getLastCellNum()
+
+		//load channel wise products sheet columns
 		for(int cellnumber=0; cellnumber<channelproductssheettotalcolumns; cellnumber++){
 			String columnname = channelproductssheetheaderrow.getCell(cellnumber)
 			if(columnname.equalsIgnoreCase("Channel")){
@@ -161,6 +202,7 @@ public class ProjectConstants {
 				OVERWRITEHANGERNOTAVAILABLE = cellnumber
 			}
 		}
+		//load hotspot products sheet columns
 		for(int cellnumber=0; cellnumber<hotspotproductssheettotalcolumns; cellnumber++){
 			String columnname = hotspotproductssheetheaderrow.getCell(cellnumber)
 			if(columnname.equalsIgnoreCase("Hotspot Type")){
@@ -176,6 +218,7 @@ public class ProjectConstants {
 				OVERWRITEHOTSPOTFACING = cellnumber
 			}
 		}
+		//load slider options sheet columns
 		for(int cellnumber=0; cellnumber<slideroptionssheettotalcolumns; cellnumber++ ){
 			String columnname = slideroptionssheetheaderrow.getCell(cellnumber)
 			if(columnname.equalsIgnoreCase("Slider Options")){
@@ -183,6 +226,46 @@ public class ProjectConstants {
 			}
 			else{
 			}
+		}
+		//load survey questions sheet columns
+		for(int cellnumber=0; cellnumber<surveyquestionssheettotalcolumns; cellnumber++ ){
+			String columnname = surveyquestionssheetheaderrow.getCell(cellnumber)
+			if(columnname.equalsIgnoreCase("Channel")){
+				SURVEYQUESTIONS_CHANNEL = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Question Category")){
+				SURVEYQUESTIONCATEGORY = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Question")){
+				SURVEYQUESTION = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Value")){
+				SURVEYQUESTIONVALUE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Overwrite Value")){
+				OVERWRITE_SURVEYQUESTIONVALUE = cellnumber
+			}
+			else{}
+		}
+		//load additional info questions sheet columns
+		for(int cellnumber=0; cellnumber<additionalinfoquestionssheettotalcolumns; cellnumber++ ){
+			String columnname = additionalinfoquestionssheetheaderrow.getCell(cellnumber)
+			if(columnname.equalsIgnoreCase("Channel")){
+				ADDITIONALINFOQUESTIONS_CHANNEL = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Main Category")){
+				ADDITIONALINFOQUESTIONS_MAINCATEGORY = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Question")){
+				ADDITIONALINFOQUESTION = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Value")){
+				ADDITIONALINFOQUESTION_VALUE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Overwrite Value")){
+				OVERWRITE_ADDITIONALINFOQUESTION_VALUE = cellnumber
+			}
+			else{}
 		}
 	}
 	def static getXPoint(){

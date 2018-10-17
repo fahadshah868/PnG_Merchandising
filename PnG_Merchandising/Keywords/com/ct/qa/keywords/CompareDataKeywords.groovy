@@ -6,7 +6,7 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import com.ct.qa.constants.ProjectConstants
-import com.ct.qa.struct.UnmatchedProducts
+import com.ct.qa.struct.UnmatchedItems
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
@@ -57,7 +57,7 @@ public class CompareDataKeywords {
 		ArrayList<String> expectedproductscategories = new HashSet<String>(expectedproductscategorieslist)
 		if(expectedproductscategories.size() == displayedproductscategorieslist.size()){
 			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedProducts unmatchedproducts_status = new UnmatchedProducts()
+			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
 			for(int i=0; i<displayedproductscategorieslist.size(); i++){
 				boolean match = false
 				for(int j=0; j<expectedproductscategories.size(); j++){
@@ -73,19 +73,19 @@ public class CompareDataKeywords {
 				}
 			}
 			if(!products.isEmpty()){
-				unmatchedproducts_status.setProducts(products)
-				unmatchedproducts_status.setStatus(2)
-				return unmatchedproducts_status
+				UnmatchedItems_status.setItems(products)
+				UnmatchedItems_status.setStatus(2)
+				return UnmatchedItems_status
 			}
 			else{
-				unmatchedproducts_status.setProducts(products)
-				unmatchedproducts_status.setStatus(0)
-				return unmatchedproducts_status
+				UnmatchedItems_status.setItems(products)
+				UnmatchedItems_status.setStatus(0)
+				return UnmatchedItems_status
 			}
 		}
 		else if(expectedproductscategories.size() < displayedproductscategorieslist.size()){
 			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedProducts unmatchedproducts_status = new UnmatchedProducts()
+			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
 			for(int i=0; i<displayedproductscategorieslist.size(); i++){
 				boolean match = false
 				for(int j=0; j<expectedproductscategories.size(); j++){
@@ -100,13 +100,13 @@ public class CompareDataKeywords {
 				else{
 				}
 			}
-			unmatchedproducts_status.setProducts(products)
-			unmatchedproducts_status.setStatus(1)
-			return unmatchedproducts_status
+			UnmatchedItems_status.setItems(products)
+			UnmatchedItems_status.setStatus(1)
+			return UnmatchedItems_status
 		}
 		else if(expectedproductscategories.size() > displayedproductscategorieslist.size()){
 			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedProducts unmatchedproducts_status = new UnmatchedProducts()
+			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
 			for(int i=0; i<expectedproductscategories.size(); i++){
 				boolean match = false
 				for(int j=0; j<displayedproductscategorieslist.size(); j++){
@@ -121,9 +121,9 @@ public class CompareDataKeywords {
 				else{
 				}
 			}
-			unmatchedproducts_status.setProducts(products)
-			unmatchedproducts_status.setStatus(-1)
-			return unmatchedproducts_status
+			UnmatchedItems_status.setItems(products)
+			UnmatchedItems_status.setStatus(-1)
+			return UnmatchedItems_status
 		}
 		else{
 			String message = "Main Category: "+ProjectConstants.CURRENTVISITING_MAINCATEGORY+"\nProduct Category: "+ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY+"\n"+ProjectConstants.MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL
@@ -180,7 +180,7 @@ public class CompareDataKeywords {
 		ArrayList<String> expectedshopcategories = new HashSet<String>(expectedshopcategorieslist)
 		if(expectedshopcategories.size() == displayshopcategorieslist.size()){
 			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedProducts unmatchedproducts_status = new UnmatchedProducts()
+			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
 			for(int i=0; i<displayshopcategorieslist.size(); i++){
 				boolean match = false
 				for(int j=0; j<expectedshopcategories.size(); j++){
@@ -196,19 +196,19 @@ public class CompareDataKeywords {
 				}
 			}
 			if(!products.isEmpty()){
-				unmatchedproducts_status.setProducts(products)
-				unmatchedproducts_status.setStatus(2)
-				return unmatchedproducts_status
+				UnmatchedItems_status.setItems(products)
+				UnmatchedItems_status.setStatus(2)
+				return UnmatchedItems_status
 			}
 			else{
-				unmatchedproducts_status.setProducts(products)
-				unmatchedproducts_status.setStatus(0)
-				return unmatchedproducts_status
+				UnmatchedItems_status.setItems(products)
+				UnmatchedItems_status.setStatus(0)
+				return UnmatchedItems_status
 			}
 		}
 		else if(expectedshopcategories.size() < displayshopcategorieslist.size()){
 			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedProducts unmatchedproducts_status = new UnmatchedProducts()
+			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
 			for(int i=0; i<displayshopcategorieslist.size(); i++){
 				boolean match = false
 				for(int j=0; j<expectedshopcategories.size(); j++){
@@ -223,13 +223,13 @@ public class CompareDataKeywords {
 				else{
 				}
 			}
-			unmatchedproducts_status.setProducts(products)
-			unmatchedproducts_status.setStatus(1)
-			return unmatchedproducts_status
+			UnmatchedItems_status.setItems(products)
+			UnmatchedItems_status.setStatus(1)
+			return UnmatchedItems_status
 		}
 		else if(expectedshopcategories.size() > displayshopcategorieslist.size()){
 			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedProducts unmatchedproducts_status = new UnmatchedProducts()
+			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
 			for(int i=0; i<expectedshopcategories.size(); i++){
 				boolean match = false
 				for(int j=0; j<displayshopcategorieslist.size(); j++){
@@ -244,9 +244,9 @@ public class CompareDataKeywords {
 				else{
 				}
 			}
-			unmatchedproducts_status.setProducts(products)
-			unmatchedproducts_status.setStatus(-1)
-			return unmatchedproducts_status
+			UnmatchedItems_status.setItems(products)
+			UnmatchedItems_status.setStatus(-1)
+			return UnmatchedItems_status
 		}
 		else{
 			String message = "Main Category: "+ProjectConstants.CURRENTVISITING_MAINCATEGORY+"\nProduct Category: "+ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY+"\n"+ProjectConstants.MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL
@@ -280,7 +280,7 @@ public class CompareDataKeywords {
 		}
 		if(displayedslideroptions.size() == expectedslideroptions.size()){
 			ArrayList<String> slideroptions = new ArrayList<String>()
-			UnmatchedProducts unmatchedoptions = new UnmatchedProducts()
+			UnmatchedItems unmatchedoptions = new UnmatchedItems()
 			for(int i=0; i<displayedslideroptions.size(); i++){
 				boolean match = false
 				for(int j=0; j<expectedslideroptions.size(); j++){
@@ -298,19 +298,19 @@ public class CompareDataKeywords {
 				}
 			}
 			if(!slideroptions.isEmpty()){
-				unmatchedoptions.setProducts(slideroptions)
+				unmatchedoptions.setItems(slideroptions)
 				unmatchedoptions.setStatus(2)
 				return unmatchedoptions
 			}
 			else{
-				unmatchedoptions.setProducts(slideroptions)
+				unmatchedoptions.setItems(slideroptions)
 				unmatchedoptions.setStatus(0)
 				return unmatchedoptions
 			}
 		}
 		else if(displayedslideroptions.size() > expectedslideroptions.size()){
 			ArrayList<String> slideroptions = new ArrayList<String>()
-			UnmatchedProducts unmatchedoptions = new UnmatchedProducts()
+			UnmatchedItems unmatchedoptions = new UnmatchedItems()
 			for(int i=0; i<displayedslideroptions.size(); i++){
 				boolean match = false
 				for(int j=0; j<expectedslideroptions.size(); j++){
@@ -327,13 +327,13 @@ public class CompareDataKeywords {
 				else{
 				}
 			}
-			unmatchedoptions.setProducts(slideroptions)
+			unmatchedoptions.setItems(slideroptions)
 			unmatchedoptions.setStatus(1)
 			return unmatchedoptions
 		}
 		else if(displayedslideroptions.size() < expectedslideroptions.size()){
 			ArrayList<String> slideroptions = new ArrayList<String>()
-			UnmatchedProducts unmatchedoptions = new UnmatchedProducts()
+			UnmatchedItems unmatchedoptions = new UnmatchedItems()
 			for(int i=0; i<expectedslideroptions.size(); i++){
 				boolean match = false
 				for(int j=0; j<displayedslideroptions.size(); j++){
@@ -350,11 +350,111 @@ public class CompareDataKeywords {
 				else{
 				}
 			}
-			unmatchedoptions.setProducts(slideroptions)
+			unmatchedoptions.setItems(slideroptions)
 			unmatchedoptions.setStatus(-1)
 			return unmatchedoptions
 		}
-
-
+	}
+	def static compareSurveyQuestionCategories(){
+		int index = 0
+		ArrayList<String> expectedsurveyquestioncategorieslist = LoadDataKeywords.loadSurveyQuestionCategories()
+		ArrayList<String> expectedsurveyquestioncategories = new HashSet<String>(expectedsurveyquestioncategorieslist)
+		ArrayList<String> displayedsurveyquestioncategories = new ArrayList<String>()
+		int totalsurveyquestioncategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i<=totalsurveyquestioncategories; i++){
+			MobileElement surveyquestioncategory = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			displayedsurveyquestioncategories.add(surveyquestioncategory.getText())
+		}
+		while(true){
+			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement lastitembeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String lastitemnamebeforeswipe = lastitembeforeswipe.getText()
+			Mobile.swipe(0, 293, 0, 200)
+			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement lastitemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String lastitemnameafterswipe = lastitemafterswipe.getText()
+			if(lastitemnamebeforeswipe.equals(lastitemnameafterswipe)){
+				break
+			}
+			else{
+				displayedsurveyquestioncategories.add(lastitemnameafterswipe)
+			}
+		}
+		if(displayedsurveyquestioncategories.size() == expectedsurveyquestioncategories.size()){
+			ArrayList<String> slideroptions = new ArrayList<String>()
+			UnmatchedItems unmatchedoptions = new UnmatchedItems()
+			for(int i=0; i<displayedsurveyquestioncategories.size(); i++){
+				boolean match = false
+				for(int j=0; j<expectedsurveyquestioncategories.size(); j++){
+					if(displayedsurveyquestioncategories.get(i).equalsIgnoreCase(expectedsurveyquestioncategories.get(j))){
+						match = true
+						break
+					}
+					else{
+					}
+				}
+				if(match == false){
+					slideroptions.add(displayedsurveyquestioncategories.get(i))
+				}
+				else{
+				}
+			}
+			if(!slideroptions.isEmpty()){
+				unmatchedoptions.setItems(slideroptions)
+				unmatchedoptions.setStatus(2)
+				return unmatchedoptions
+			}
+			else{
+				unmatchedoptions.setItems(slideroptions)
+				unmatchedoptions.setStatus(0)
+				return unmatchedoptions
+			}
+		}
+		else if(displayedsurveyquestioncategories.size() > expectedsurveyquestioncategories.size()){
+			ArrayList<String> slideroptions = new ArrayList<String>()
+			UnmatchedItems unmatchedoptions = new UnmatchedItems()
+			for(int i=0; i<displayedsurveyquestioncategories.size(); i++){
+				boolean match = false
+				for(int j=0; j<expectedsurveyquestioncategories.size(); j++){
+					if(displayedsurveyquestioncategories.get(i).equalsIgnoreCase(expectedsurveyquestioncategories.get(j))){
+						match = true
+						break
+					}
+					else{
+					}
+				}
+				if(match == false){
+					slideroptions.add(displayedsurveyquestioncategories.get(i))
+				}
+				else{
+				}
+			}
+			unmatchedoptions.setItems(slideroptions)
+			unmatchedoptions.setStatus(1)
+			return unmatchedoptions
+		}
+		else if(displayedsurveyquestioncategories.size() < expectedsurveyquestioncategories.size()){
+			ArrayList<String> slideroptions = new ArrayList<String>()
+			UnmatchedItems unmatchedoptions = new UnmatchedItems()
+			for(int i=0; i<expectedsurveyquestioncategories.size(); i++){
+				boolean match = false
+				for(int j=0; j<displayedsurveyquestioncategories.size(); j++){
+					if(expectedsurveyquestioncategories.get(i).equalsIgnoreCase(displayedsurveyquestioncategories.get(j))){
+						match = true
+						break
+					}
+					else{
+					}
+				}
+				if(match == false){
+					slideroptions.add(expectedsurveyquestioncategories.get(i))
+				}
+				else{
+				}
+			}
+			unmatchedoptions.setItems(slideroptions)
+			unmatchedoptions.setStatus(-1)
+			return unmatchedoptions
+		}
 	}
 }

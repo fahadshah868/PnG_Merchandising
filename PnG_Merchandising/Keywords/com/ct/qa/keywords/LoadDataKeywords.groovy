@@ -7,6 +7,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import com.ct.qa.constants.ProjectConstants
 import com.ct.qa.struct.ProductWithValue
+import com.ct.qa.struct.Questions
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
@@ -75,6 +76,28 @@ public class LoadDataKeywords {
 		catch(Exception ex){
 		}
 	}
+	//load Survey Questions sheet
+	def static loadSurveyQuestionsSheet(){
+		try{
+			FileInputStream inputStream = new FileInputStream(new File(ProjectConstants.EXCEL_FILEPATH))
+			XSSFWorkbook wb = new XSSFWorkbook(inputStream)
+			XSSFSheet sheet = wb.getSheet(ProjectConstants.SURVEYQUESTIONS_SHEET)
+			return sheet
+		}
+		catch(Exception ex){
+		}
+	}
+	//load Additional Info Questions sheet
+	def static loadAdditionalInfoQuestionsSheet(){
+		try{
+			FileInputStream inputStream = new FileInputStream(new File(ProjectConstants.EXCEL_FILEPATH))
+			XSSFWorkbook wb = new XSSFWorkbook(inputStream)
+			XSSFSheet sheet = wb.getSheet(ProjectConstants.ADDITIONALINFOQUESTIONS_SHEET)
+			return sheet
+		}
+		catch(Exception ex){
+		}
+	}
 	//load shop categories
 	def static loadShopCategories(){
 		DataFormatter dataformatter = new DataFormatter()
@@ -92,6 +115,65 @@ public class LoadDataKeywords {
 		}
 		return expectedshopcategories
 	}
+	//load channel wise survey question categories
+	def static loadSurveyQuestionCategories(XSSFSheet sheet, int columnindexforvalue){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<String> expectedsurveyquestioncategories = new ArrayList<String>()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<=totalrows; i++){
+			Row row = sheet.getRow(i)
+			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONS_CHANNEL))
+			String channelname = "Channel: "+channel
+			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname)){
+				String questioncategory = dataformatter.formatCellValue(row.getCell(columnindexforvalue))
+				expectedsurveyquestioncategories.add(questioncategory)
+			}
+		}
+		return expectedsurveyquestioncategories
+	}
+	//load channel wise survey questions
+	def static loadSurveyQuestionsList(XSSFSheet sheet, int columnindexforvalue){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<Questions> expectedsurveyquestions = new ArrayList<String>()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<=totalrows; i++){
+			Row row = sheet.getRow(i)
+			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONS_CHANNEL))
+			String questioncategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONCATEGORY))
+			String channelname = "Channel: "+channel
+			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_SURVEYQUESTION_CATEGORY.equalsIgnoreCase(questioncategory)){
+				Questions questionwithvalue = new Questions()
+				String question = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTION))
+				String value = dataformatter.formatCellValue(row.getCell(columnindexforvalue))
+				questionwithvalue.setQuestion(question)
+				questionwithvalue.setQuestion_value(value)
+				expectedsurveyquestions.add(questionwithvalue)
+			}
+		}
+		return expectedsurveyquestions
+	}
+	//load channel wise survey questions
+	def static loadAdditionalInfoQuestionsList(){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<Questions> expectedadditionalinfoquestions = new ArrayList<String>()
+		XSSFSheet sheet = loadAdditionalInfoQuestionsSheet()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<=totalrows; i++){
+			Row row = sheet.getRow(i)
+			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTIONS_CHANNEL))
+			String maincategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTIONS_MAINCATEGORY))
+			String channelname = "Channel: "+channel
+			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_MAINCATEGORY.equalsIgnoreCase(maincategory)){
+				Questions questionwithvalue = new Questions()
+				String question = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTION))
+				String value = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTION_VALUE))
+				questionwithvalue.setQuestion(question)
+				questionwithvalue.setQuestion_value(value)
+				expectedadditionalinfoquestions.add(questionwithvalue)
+			}
+		}
+		return expectedadditionalinfoquestions
+	}
 	//load channel wise products and quantity
 	def static loadChannelWiseProductsList(XSSFSheet sheet, int column){
 		DataFormatter dataformatter = new DataFormatter()
@@ -103,11 +185,6 @@ public class LoadDataKeywords {
 			String channelname = "Channel: "+channel
 			String maincategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.MAINCATEGORY))
 			String productcategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.PRODUCTCATEGORY))
-
-			String chann = ProjectConstants.CURRENTVISITING_SHOPCHANNEL
-			String maincat = ProjectConstants.CURRENTVISITING_MAINCATEGORY
-			String procat = ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY
-
 			if((ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_MAINCATEGORY.equalsIgnoreCase(maincategory)) && ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY.equalsIgnoreCase(productcategory)){
 				ProductWithValue productwithvalue = new ProductWithValue()
 				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.CHANNELPRODUCT))
