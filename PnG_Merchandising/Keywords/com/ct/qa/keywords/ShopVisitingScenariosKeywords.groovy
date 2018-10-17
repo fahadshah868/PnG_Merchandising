@@ -27,15 +27,12 @@ import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 import com.ct.qa.constants.ProjectConstants
-import com.ct.qa.struct.TaggedChillersRemark
 import com.ct.qa.struct.VisitedCategoryData
 import com.ct.qa.struct.VisitedShopDataInfo
-import com.ct.qa.struct.VisitedChillerProductsCategoryData
 import com.ct.qa.struct.ChannelProduct
 import com.ct.qa.struct.HotSpotProduct
 import com.ct.qa.struct.HangerProduct
 import com.ct.qa.struct.MissingCategoryData
-import com.ct.qa.struct.MissingChillerProductsCategoryData
 import com.ct.qa.struct.MissingShopDataInfo
 
 public class ShopVisitingScenariosKeywords{
@@ -216,7 +213,7 @@ public class ShopVisitingScenariosKeywords{
 			visitedshopdatainfo.setShopname(shop.getText())
 			ProjectConstants.missingshopdatainfo.add(missingshopdatainfo)
 			ProjectConstants.visitedshopdatainfo.add(visitedshopdatainfo)
-			//			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			MobileBuiltInKeywords.verifyElementText(findTestObject("Object Repository/Validate_ShopOptionsScreen", [('package') : ProjectConstants.PACKAGENAME]), "Options")
 			MobileBuiltInKeywords.tap(findTestObject("Object Repository/StartWorking", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			Mobile.delay(15)

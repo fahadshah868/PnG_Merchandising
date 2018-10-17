@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>MMA Plus Merchandising With Category Level(Chiller) Overwrite Scenarios</name>
+   <name>PnG Merchandising With Category Level Overwrite Scenarios</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-09-06T17:13:29</lastRun>
+   <lastRun>2018-09-12T11:06:41</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>4</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
-   <testSuiteGuid>b9d1b4e0-a9dd-4488-91b6-f455213ee42b</testSuiteGuid>
+   <testSuiteGuid>2b38b13f-7465-49bb-b2a5-494421761f99</testSuiteGuid>
    <testCaseLink>
-      <guid>be68e7bb-0f96-4c0d-a684-97c2c6adc2e0</guid>
+      <guid>ad24066b-de1e-420b-a72d-7a783af17411</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/LaunchingApp/LaunchApp</testCaseId>
@@ -24,21 +24,21 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>ad5a054f-d6a1-4134-84eb-f5d775f6a0b2</guid>
+      <guid>80575ba9-724c-444f-bb98-cd91ac0d89a3</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/DistributionPoint/VisitDistributionPoint</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>5ce4c51f-ffd5-40b6-84fb-99c5dd27fc2c</guid>
+      <guid>1fb238e1-643e-4b42-a359-516640c606e9</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel(Chiller)FirstVisit</testCaseId>
+      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel(Chiller Utilization)First Visit</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>1d49206e-1f04-40cb-9064-ae01da15ee9f</guid>
+      <guid>67caf282-f3c5-496f-bc69-04ff79eef53a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel(Chiller)Overwriting</testCaseId>
+      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel(Chiller Utilization)Overwriting</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

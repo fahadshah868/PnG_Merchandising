@@ -27,27 +27,17 @@ import WebUiBuiltInKeywords as WebUI
 
 public class VisitedCategoryData {
 	public String maincategory
-	public ArrayList<TaggedChillersRemark> taggedchillersremark
 	public String productcategory
 	public ArrayList<ChannelProduct> channelproducts
 	public ArrayList<HotSpotProduct> hotspotproducts
 	public ArrayList<HangerProduct> hangerproducts
 
-	public VisitedCategoryData(){
-		this.taggedchillersremark = new ArrayList<TaggedChillersRemark>()
-	}
 
 	public String getMaincategory() {
 		return maincategory;
 	}
 	public void setMaincategory(String maincategory) {
 		this.maincategory = maincategory;
-	}
-	public ArrayList<TaggedChillersRemark> getTaggedchillersremark() {
-		return taggedchillersremark;
-	}
-	public void setTaggedchillersremark(TaggedChillersRemark taggedchillersremark) {
-		this.taggedchillersremark.add(taggedchillersremark);
 	}
 	public String getProductcategory() {
 		return productcategory;

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>MMA Plus Merchandising With Channel Wise Data Verification</name>
+   <name>PnG Merchandising With Shop Level Overwrite Scenarios</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-10-17T15:09:03</lastRun>
+   <lastRun>2018-10-12T18:25:45</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
-   <pageLoadTimeout>15</pageLoadTimeout>
+   <pageLoadTimeout>4</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
-   <testSuiteGuid>a38ec77d-4482-4fea-9114-75f34aca3e53</testSuiteGuid>
+   <testSuiteGuid>75b95793-bc5d-41e0-ae7c-16a9faed4cb8</testSuiteGuid>
    <testCaseLink>
-      <guid>31f42947-b530-4c2a-b89b-89cd6caf3bdf</guid>
+      <guid>5205da17-eb8f-4e77-9d78-51623189c057</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/LaunchingApp/LaunchApp</testCaseId>
@@ -24,21 +24,21 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>30d38ab9-f1d4-4158-99ae-5a6ef1f1d2af</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
-      <testCaseId>Test Cases/SliderOptions/VisitSliderOptions</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>29b8720b-e6cb-4d54-bb93-c240c64d2319</guid>
+      <guid>f3022bb4-0c7c-4b9e-aa6d-a3911d3dbd52</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>false</isRun>
       <testCaseId>Test Cases/DistributionPoint/VisitDistributionPoint</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>15a74100-fe1f-497b-95d3-d17a70d10880</guid>
+      <guid>47437fb5-7c1b-4987-af43-cadb766a13e8</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>false</isRun>
+      <testCaseId>Test Cases/VisitShopScenarios/ShopsWithFirstVisitBeforeShopLevelOverwriting</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>1aed1dc1-4c53-44cb-972f-1517463fd380</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithChannelWiseDataVerification</testCaseId>
+      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithShopLevelOverwriting</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

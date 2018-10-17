@@ -27,19 +27,18 @@ import WebUiBuiltInKeywords as WebUI
 
 public class MissingCategoryData {
 	public String maincategory
-	public ArrayList<TaggedChillersRemark> taggedchillersremarks
 
 	public String ProductCategory
 	public ArrayList<String> productcategories
 	public ArrayList<String> products
 	public String productcategories_errormessage
 	public String products_errormessage
-	
+
 	public ArrayList<String> surveyquestioncategories
 	public String suveryquestioncategories_errormessage
 	public ArrayList<String> surveyquestions
 	public String surveyquestions_errormessage
-	
+
 	public ArrayList<String> additionalinfoquestions
 	public String additionalinfoquestions_errormessage
 
@@ -92,21 +91,12 @@ public class MissingCategoryData {
 	public void setAdditionalinfoquestions_errormessage(String additionalinfoquestions_errormessage) {
 		this.additionalinfoquestions_errormessage = additionalinfoquestions_errormessage;
 	}
-
-	public MissingCategoryData(){
-		this.taggedchillersremarks = new ArrayList<TaggedChillersRemark>()
-	}
+
 	public String getMaincategory() {
 		return maincategory;
 	}
 	public void setMaincategory(String maincategory) {
 		this.maincategory = maincategory;
-	}
-	public ArrayList<TaggedChillersRemark> getTaggedchillersremarks() {
-		return taggedchillersremarks;
-	}
-	public void setTaggedchillersremarks(TaggedChillersRemark taggedchillersremarks) {
-		this.taggedchillersremarks.add(taggedchillersremarks);
 	}
 	public String getProductCategory() {
 		return ProductCategory;

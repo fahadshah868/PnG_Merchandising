@@ -36,42 +36,42 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.SCENARIO = "first visit"
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
-		//		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
-		//		if(UnmatchedItems_status.getStatus() == 2){
-		//			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-		//				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-		//					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-		//					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
-		//					break
-		//				}
-		//				else{
-		//				}
-		//			}
-		//		}
-		//		else if(UnmatchedItems_status.getStatus() == 1){
-		//			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-		//				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-		//					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-		//					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
-		//					break
-		//				}
-		//				else{
-		//				}
-		//			}
-		//		}
-		//		else if(UnmatchedItems_status.getStatus() == -1){
-		//			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-		//				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-		//					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-		//					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
-		//					break
-		//				}
-		//				else{
-		//				}
-		//			}
-		//		}
-		//		else{
-		//		}
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
 		Mobile.swipe(0, 200, 0, 750)
 		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
