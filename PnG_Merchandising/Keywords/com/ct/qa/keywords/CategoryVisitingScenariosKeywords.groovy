@@ -479,7 +479,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		}
 	}
 	@Keyword
-	def overwriteShopCategoriesWith_HA_AY_DSA_Available_AIY(){
+	def overwriteShopCategoriesWith_HA_AN_DSA_Available_AIN(){
 		ProjectConstants.SCENARIO = "first visit"
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
@@ -558,7 +558,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
 				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AY_DSA_Available_AIY"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_DSA_Available_AIN"), null)
 			}
 		}
 		while(true){
@@ -612,7 +612,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AY_DSA_Available_AIY"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_DSA_Available_AIN"), null)
 			}
 			while(true){
 				Mobile.swipe(0, 293, 0, 200)
@@ -773,7 +773,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		}
 	}
 	@Keyword
-	def overwriteShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY(){
+	def overwriteShopCategoriesWith_SKDNA_AN_SKDNA_Available_AIN(){
 		ProjectConstants.SCENARIO = "first visit"
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
@@ -852,7 +852,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
 				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AY_SKDNA_Available_AIY"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_SKDNA_Available_AIN"), null)
 			}
 		}
 		while(true){
@@ -906,7 +906,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AY_SKDNA_Available_AIY"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_SKDNA_Available_AIN"), null)
 			}
 			while(true){
 				Mobile.swipe(0, 293, 0, 200)

@@ -51,10 +51,10 @@ public interface ShopCategories {
 	def visitShopCategoriesWith_HNA_AN_NSFD_NAvailable_AIN()
 
 	//	def visitShopCategoriesWith_HA_AY_DSA_Available_AIY()
-	def overwriteShopCategoriesWith_HA_AY_DSA_Available_AIY()
+	def overwriteShopCategoriesWith_HA_AN_DSA_Available_AIN()
 
 	def visitShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY()
-	def overwriteShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY()
+	def overwriteShopCategoriesWith_SKDNA_AN_SKDNA_Available_AIN()
 
 	def visitShopCategoriesWith_SKDNA_AY_SKDNA_NR_AIN()
 	def visitShopCategoriesWith_HA_AN_DSA_NAvailable_AIY()

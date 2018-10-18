@@ -484,7 +484,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords implements Shop
 		}
 	}
 	@Keyword
-	def overwriteShopCategoriesWith_HA_AY_DSA_Available_AIY(){
+	def overwriteShopCategoriesWith_HA_AN_DSA_Available_AIN(){
 		ProjectConstants.SCENARIO = "overwrite"
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
@@ -565,7 +565,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords implements Shop
 				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.visitPopUpForOverwriting()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AY_DSA_Available_AIY"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_DSA_Available_AIN"), null)
 			}
 		}
 		while(true){
@@ -621,7 +621,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords implements Shop
 				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				ProjectConstants.visitPopUpForOverwriting()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AY_DSA_Available_AIY"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_DSA_Available_AIN"), null)
 			}
 			while(true){
 				Mobile.swipe(0, 293, 0, 200)
@@ -786,7 +786,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords implements Shop
 		}
 	}
 	@Keyword
-	def overwriteShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY(){
+	def overwriteShopCategoriesWith_SKDNA_AN_SKDNA_Available_AIN(){
 		ProjectConstants.SCENARIO = "overwrite"
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
@@ -867,7 +867,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords implements Shop
 				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.visitPopUpForOverwriting()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AY_SKDNA_Available_AIY"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_SKDNA_Available_AIN"), null)
 			}
 		}
 		while(true){
@@ -923,7 +923,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords implements Shop
 				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				ProjectConstants.visitPopUpForOverwriting()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AY_SKDNA_Available_AIY"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_SKDNA_Available_AIN"), null)
 			}
 			while(true){
 				Mobile.swipe(0, 293, 0, 200)

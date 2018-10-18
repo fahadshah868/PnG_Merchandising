@@ -215,14 +215,14 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 		}
 	}
 	@Keyword
-	def overwriteRemarksWith_AY_DSA_Available_AIY(){
+	def overwriteRemarksWith_AN_DSA_Available_AIN(){
 		int totalactions = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalactions; i++){
 			MobileElement action = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String actionname = action.getText()
 			if(actionname.equalsIgnoreCase("Availability")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/Availability/VisitAvailability_WithYesRemark"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/Availability/VisitAvailability_WithNoRemark"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Primary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
@@ -234,19 +234,19 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_NoRemark"), null)
 			}
 		}
 	}
 	@Keyword
-	def overwriteRemarksWith_AY_SKDNA_Available_AIY(){
+	def overwriteRemarksWith_AN_SKDNA_Available_AIN(){
 		int totalactions = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalactions; i++){
 			MobileElement action = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String actionname = action.getText()
 			if(actionname.equalsIgnoreCase("Availability")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/Availability/VisitAvailability_WithYesRemark"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/Availability/VisitAvailability_WithNoRemark"), null)
 			}
 			else if(actionname.equalsIgnoreCase("Primary Display")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
@@ -258,7 +258,7 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 			}
 			else if(actionname.equalsIgnoreCase("Additional Info") && ProjectConstants.CURRENTVISITING_SHOPNAME.contains("MM")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_NoRemark"), null)
 			}
 		}
 	}

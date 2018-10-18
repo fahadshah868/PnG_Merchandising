@@ -30,15 +30,15 @@
       <testCaseId>Test Cases/DistributionPoint/VisitDistributionPoint</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>47437fb5-7c1b-4987-af43-cadb766a13e8</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
-      <testCaseId>Test Cases/VisitShopScenarios/ShopsWithFirstVisitBeforeShopLevelOverwriting</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>1aed1dc1-4c53-44cb-972f-1517463fd380</guid>
+      <guid>787e2e24-a816-4da3-a707-bfd67ca1a4b8</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithShopLevelOverwriting</testCaseId>
+      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithShopLevel_OverwriteScenarios</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>35bbedcf-9942-4bd8-af34-5db880d895d2</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithShopLevel_Overwriting</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

@@ -30,15 +30,15 @@
       <testCaseId>Test Cases/DistributionPoint/VisitDistributionPoint</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>1fb238e1-643e-4b42-a359-516640c606e9</guid>
+      <guid>16593f81-7cb6-4607-919e-a593ef1f9a77</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel(Chiller Utilization)First Visit</testCaseId>
+      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel_OverwriteScenarios</testCaseId>
    </testCaseLink>
    <testCaseLink>
-      <guid>67caf282-f3c5-496f-bc69-04ff79eef53a</guid>
+      <guid>56601ed6-4570-4b9b-9a73-11551915bf58</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel(Chiller Utilization)Overwriting</testCaseId>
+      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel_Overwriting</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

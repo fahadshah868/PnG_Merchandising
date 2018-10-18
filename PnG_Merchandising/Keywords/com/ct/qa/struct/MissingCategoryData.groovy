@@ -27,8 +27,8 @@ import WebUiBuiltInKeywords as WebUI
 
 public class MissingCategoryData {
 	public String maincategory
-
-	public String ProductCategory
+	public String maincategory_remark
+	public String productcategory
 	public ArrayList<String> productcategories
 	public ArrayList<String> products
 	public String productcategories_errormessage
@@ -40,69 +40,24 @@ public class MissingCategoryData {
 	public String surveyquestions_errormessage
 
 	public ArrayList<String> additionalinfoquestions
-	public String additionalinfoquestions_errormessage
-
-
-
-	public ArrayList<String> getSurveyquestioncategories() {
-		return surveyquestioncategories;
-	}
-
-	public void setSurveyquestioncategories(ArrayList<String> surveyquestioncategories) {
-		this.surveyquestioncategories = surveyquestioncategories;
-	}
-
-	public String getSuveryquestioncategories_errormessage() {
-		return suveryquestioncategories_errormessage;
-	}
-
-	public void setSuveryquestioncategories_errormessage(String suveryquestioncategories_errormessage) {
-		this.suveryquestioncategories_errormessage = suveryquestioncategories_errormessage;
-	}
-
-	public ArrayList<String> getSurveyquestions() {
-		return surveyquestions;
-	}
-
-	public void setSurveyquestions(ArrayList<String> surveyquestions) {
-		this.surveyquestions = surveyquestions;
-	}
-
-	public String getSurveyquestions_errormessage() {
-		return surveyquestions_errormessage;
-	}
-
-	public void setSurveyquestions_errormessage(String surveyquestions_errormessage) {
-		this.surveyquestions_errormessage = surveyquestions_errormessage;
-	}
-
-	public ArrayList<String> getAdditionalinfoquestions() {
-		return additionalinfoquestions;
-	}
-
-	public void setAdditionalinfoquestions(ArrayList<String> additionalinfoquestions) {
-		this.additionalinfoquestions = additionalinfoquestions;
-	}
-
-	public String getAdditionalinfoquestions_errormessage() {
-		return additionalinfoquestions_errormessage;
-	}
-
-	public void setAdditionalinfoquestions_errormessage(String additionalinfoquestions_errormessage) {
-		this.additionalinfoquestions_errormessage = additionalinfoquestions_errormessage;
-	}
-
+	public String additionalinfoquestions_errormessage
 	public String getMaincategory() {
 		return maincategory;
 	}
 	public void setMaincategory(String maincategory) {
 		this.maincategory = maincategory;
 	}
-	public String getProductCategory() {
-		return ProductCategory;
+	public String getMaincategory_remark() {
+		return maincategory_remark;
 	}
-	public void setProductCategory(String productCategory) {
-		this.ProductCategory = productCategory;
+	public void setMaincategory_remark(String maincategory_remark) {
+		this.maincategory_remark = maincategory_remark;
+	}
+	public String getProductcategory() {
+		return productcategory;
+	}
+	public void setProductcategory(String productcategory) {
+		this.productcategory = productcategory;
 	}
 	public ArrayList<String> getProductcategories() {
 		return productcategories;
@@ -127,5 +82,41 @@ public class MissingCategoryData {
 	}
 	public void setProducts_errormessage(String products_errormessage) {
 		this.products_errormessage = products_errormessage;
+	}
+	public ArrayList<String> getSurveyquestioncategories() {
+		return surveyquestioncategories;
+	}
+	public void setSurveyquestioncategories(ArrayList<String> surveyquestioncategories) {
+		this.surveyquestioncategories = surveyquestioncategories;
+	}
+	public String getSuveryquestioncategories_errormessage() {
+		return suveryquestioncategories_errormessage;
+	}
+	public void setSuveryquestioncategories_errormessage(String suveryquestioncategories_errormessage) {
+		this.suveryquestioncategories_errormessage = suveryquestioncategories_errormessage;
+	}
+	public ArrayList<String> getSurveyquestions() {
+		return surveyquestions;
+	}
+	public void setSurveyquestions(ArrayList<String> surveyquestions) {
+		this.surveyquestions = surveyquestions;
+	}
+	public String getSurveyquestions_errormessage() {
+		return surveyquestions_errormessage;
+	}
+	public void setSurveyquestions_errormessage(String surveyquestions_errormessage) {
+		this.surveyquestions_errormessage = surveyquestions_errormessage;
+	}
+	public ArrayList<String> getAdditionalinfoquestions() {
+		return additionalinfoquestions;
+	}
+	public void setAdditionalinfoquestions(ArrayList<String> additionalinfoquestions) {
+		this.additionalinfoquestions = additionalinfoquestions;
+	}
+	public String getAdditionalinfoquestions_errormessage() {
+		return additionalinfoquestions_errormessage;
+	}
+	public void setAdditionalinfoquestions_errormessage(String additionalinfoquestions_errormessage) {
+		this.additionalinfoquestions_errormessage = additionalinfoquestions_errormessage;
 	}
 }
