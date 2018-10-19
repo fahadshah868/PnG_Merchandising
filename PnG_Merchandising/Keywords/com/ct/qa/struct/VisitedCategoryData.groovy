@@ -32,35 +32,4 @@ public class VisitedCategoryData {
 	public ArrayList<HotSpotProduct> hotspotproducts
 	public ArrayList<HangerProduct> hangerproducts
 
-
-	public String getMaincategory() {
-		return maincategory;
-	}
-	public void setMaincategory(String maincategory) {
-		this.maincategory = maincategory;
-	}
-	public String getProductcategory() {
-		return productcategory;
-	}
-	public void setProductcategory(String productcategory) {
-		this.productcategory = productcategory;
-	}
-	public ArrayList<ChannelProduct> getChannelproducts() {
-		return channelproducts;
-	}
-	public void setChannelproducts(ArrayList<ChannelProduct> _channelproducts) {
-		this.channelproducts = _channelproducts;
-	}
-	public ArrayList<HotSpotProduct> getHotspotproducts() {
-		return hotspotproducts;
-	}
-	public void setHotspotproducts(ArrayList<HotSpotProduct> hotspotproducts) {
-		this.hotspotproducts = hotspotproducts;
-	}
-	public ArrayList<HangerProduct> getHangerproducts() {
-		return hangerproducts;
-	}
-	public void setHangerproducts(ArrayList<HangerProduct> hangerproducts) {
-		this.hangerproducts = hangerproducts;
-	}
 }

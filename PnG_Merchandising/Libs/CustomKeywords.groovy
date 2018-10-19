@@ -90,10 +90,6 @@ def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitAddit
     (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitAdditionalInfoQuestions()
 }
 
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.overwriteAdditionalInfoQuestions"() {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).overwriteAdditionalInfoQuestions()
-}
-
 def static "com.ct.qa.keywords.MarketIntelligenceKeywords.visitMarketIntelligenceCategories"() {
     (new com.ct.qa.keywords.MarketIntelligenceKeywords()).visitMarketIntelligenceCategories()
 }

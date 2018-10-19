@@ -32,152 +32,151 @@ import com.ct.qa.struct.VisitedShopDataInfo
 import com.ct.qa.struct.ChannelProduct
 import com.ct.qa.struct.HotSpotProduct
 import com.ct.qa.struct.HangerProduct
-import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.MissingShopDataInfo
 
 public class ShopVisitingScenariosKeywords{
-	def displayDataInReport(){
-		String message = "\n\n---------------------------------------------Missing Shop Data-----------------------------------------------------------------------------------------------------\n\n"+
-				"<-------------------------------------------------------------------------------------------------------------------------------------->"
-		for(int i=0; i<ProjectConstants.missingshopdatainfo.size(); i++){
-			boolean flag = false
-			MissingShopDataInfo missingshopdatainfo = ProjectConstants.missingshopdatainfo.get(i)
-			if(missingshopdatainfo != null){
-				if(missingshopdatainfo.getMissingshopcategories() != null){
-					if(flag == false){
-						message = message+"\n\n"+
-								String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
-								String.format("%-34s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
-								"\n\n" + String.format("%-34s", "Shop Categories:")
-						for(int j=0; j<missingshopdatainfo.getMissingshopcategories().size(); j++){
-							message = message+missingshopdatainfo.getMissingshopcategories().get(j)+",   "
-						}
-						message = message+"\n"+missingshopdatainfo.getMissingshopcategories_errormessage() + "\n\n"
-						flag = true
-					}
-					else{
-					}
-				}
-				if(missingshopdatainfo.getMissingCategoriesData() != null){
-					for(int j=0; j<missingshopdatainfo.getMissingCategoriesData().size(); j++){
-						MissingCategoryData missingcategorydata = missingshopdatainfo.getMissingCategoriesData().get(j)
-						if(missingcategorydata.getProductcategories() != null){
-							if(flag == false){
-								message = message+"\n\n"+
-										String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
-										String.format("%-34s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
-										"\n\nProduct Categories:\n\n" +
-										String.format("%-34s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
-										String.format("%-34s","Product Categories:")
-								for(int k=0; k<missingcategorydata.getProductcategories().size(); k++){
-									message = message+missingcategorydata.getProductcategories().get(k)+",	"
-								}
-								message = message+"\n"+missingcategorydata.getProductcategories_errormessage()+"\n\n"
-								flag = true
-							}
-							else{
-								message = message+
-										"\n\nProduct Categories:\n\n" +
-										String.format("%-34s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
-										String.format("%-34s","Product Categories:")
-								for(int k=0; k<missingcategorydata.getProductcategories().size(); k++){
-									message = message+missingcategorydata.getProductcategories().get(k)+",	"
-								}
-								message = message+"\n"+missingcategorydata.getProductcategories_errormessage()+"\n\n"
-							}
-						}
-					}
-				}
-				if(missingshopdatainfo.getMissingCategoriesData() != null){
-					for(int n=0; n<missingshopdatainfo.getMissingCategoriesData().size(); n++){
-						MissingCategoryData missingcategorydata = missingshopdatainfo.getMissingCategoriesData().get(n)
-						if(missingcategorydata.getProducts() != null){
-							if(flag == false){
-								message = message+"\n\n"+
-										String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
-										String.format("%-34s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
-										"\n\nProducts:\n\n" +
-										String.format("%-34s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
-										String.format("%-34s%-60s","Product Category:",missingcategorydata.getProductCategory()) + "\n" +
-										String.format("%-34s", "Products:")
-								for(int k=0; k<missingcategorydata.getProducts().size(); k++){
-									message = message+missingcategorydata.getProducts().get(k) + ",	"
-								}
-								message = message + "\n"+missingcategorydata.getProducts_errormessage() + "\n\n"
-								flag = true
-							}
-							else{
-								message = message+
-										"\n\nProducts:\n\n" +
-										String.format("%-34s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
-										String.format("%-34s%-60s","Product Category:",missingcategorydata.getProductCategory()) + "\n" +
-										String.format("%-34s", "Products:")
-								for(int k=0; k<missingcategorydata.getProducts().size(); k++){
-									message = message+missingcategorydata.getProducts().get(k) + ",	"
-								}
-								message = message + "\n"+missingcategorydata.getProducts_errormessage() + "\n\n"
-							}
-						}
-					}
-				}
-				if(flag != false){
-					message = message+"\n\n<-------------------------------------------------------------------------------------------------------------------------------------->\n\n"
-					KeywordUtil.logInfo(message)
-					message = ""
-				}
-				else{
-				}
-			}
-		}
-		message = "\n\n\n---------------------------------------------Visited Shop Data-----------------------------------------------------------------------------------------------------\n\n"+
-				"<-------------------------------------------------------------------------------------------------------------------------------------->"
-		for(int i=0; i<ProjectConstants.visitedshopdatainfo.size(); i++){
-			VisitedShopDataInfo visitedshopdatainfo = ProjectConstants.visitedshopdatainfo.get(i)
-			if(visitedshopdatainfo != null){
-				message = message+"\n\n"+
-						String.format("%-11s%-60s%-60s","Shop Name:",visitedshopdatainfo.getShopname(),visitedshopdatainfo.getShopchannel())+"\n\n"+
-						String.format("%-34s%-100s", "Visiting Scenarios:",visitedshopdatainfo.getScenario())
-				if(visitedshopdatainfo.getVisitedcategoriesdata() != null){
-					for(int j=0; j< visitedshopdatainfo.getVisitedcategoriesdata().size(); j++){
-						VisitedCategoryData visitedcategorydata = visitedshopdatainfo.getVisitedcategoriesdata().get(j)
-						if(visitedcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
-							message = message+ "\n\n" +
-									String.format("%-34s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-									String.format("%-34s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
-									String.format("%-60s%-30s%-40s", "Products","Facing","Overwrite Facing")+"\n"
-							for(int k=0; k<visitedcategorydata.getHotspotproducts().size() ; k++){
-								HotSpotProduct hotspotproduct = visitedcategorydata.getHotspotproducts().get(k)
-								message = message + String.format("%-60s%-30s%-40s", hotspotproduct.getProduct(),hotspotproduct.getFacing(),hotspotproduct.getOverwritefacing())+"\n"
-							}
-						}
-						else if(visitedcategorydata.getMaincategory().equalsIgnoreCase("Hanger")){
-							message = message+ "\n\n" +
-									String.format("%-34s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-									String.format("%-34s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
-									String.format("%-46s%-23s%-33s%-27s%-37s", "Products","Hanger Available","Overwrite Hanger Available","Hanger Not Available","Overwrite Hanger Not Available")+"\n"
-							for(int k=0; k<visitedcategorydata.getHangerproducts().size() ; k++){
-								HangerProduct hangerproduct = visitedcategorydata.getHangerproducts().get(k)
-								message = message + String.format("%-46s%-23s%-33s%-27s%-37s", hangerproduct.getProduct(),hangerproduct.getHangeravailable(),hangerproduct.getOverwrite_hangeravailable(),hangerproduct.getHangernotavailable(),hangerproduct.getOverwrite_hangernotavailable())+"\n"
-							}
-						}
-						else{
-							message = message+ "\n\n" +
-									String.format("%-34s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-									String.format("%-34s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
-									String.format("%-60s%-30s%-40s", "Products","Share Of Shelf","Overwrite Share Of Shelf")+"\n"
-							for(int k=0; k<visitedcategorydata.getChannelproducts().size() ; k++){
-								ChannelProduct channelproduct = visitedcategorydata.getChannelproducts().get(k)
-								message = message + String.format("%-60s%-30s%-40s", channelproduct.getProduct(),channelproduct.getDisplayspaceavailable(),channelproduct.getOverwritedisplayspaceavailable())+"\n"
-							}
-						}
-					}
-				}
-				message = message + "\n\n<-------------------------------------------------------------------------------------------------------------------------------------->\n\n"
-				KeywordUtil.logInfo(message)
-				message = ""
-			}
-		}
-	}
+	//	def displayDataInReport(){
+	//		String message = "\n\n---------------------------------------------Missing Shop Data-----------------------------------------------------------------------------------------------------\n\n"+
+	//				"<-------------------------------------------------------------------------------------------------------------------------------------->"
+	//		for(int i=0; i<ProjectConstants.missingshopdatainfo.size(); i++){
+	//			boolean flag = false
+	//			MissingShopDataInfo missingshopdatainfo = ProjectConstants.missingshopdatainfo.get(i)
+	//			if(missingshopdatainfo != null){
+	//				if(missingshopdatainfo.getMissingshopcategories() != null){
+	//					if(flag == false){
+	//						message = message+"\n\n"+
+	//								String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
+	//								String.format("%-34s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
+	//								"\n\n" + String.format("%-34s", "Shop Categories:")
+	//						for(int j=0; j<missingshopdatainfo.getMissingshopcategories().size(); j++){
+	//							message = message+missingshopdatainfo.getMissingshopcategories().get(j)+",   "
+	//						}
+	//						message = message+"\n"+missingshopdatainfo.getMissingshopcategories_errormessage() + "\n\n"
+	//						flag = true
+	//					}
+	//					else{
+	//					}
+	//				}
+	//				if(missingshopdatainfo.getMissingCategoriesData() != null){
+	//					for(int j=0; j<missingshopdatainfo.getMissingCategoriesData().size(); j++){
+	//						MissingCategoryData missingcategorydata = missingshopdatainfo.getMissingCategoriesData().get(j)
+	//						if(missingcategorydata.getProductcategories() != null){
+	//							if(flag == false){
+	//								message = message+"\n\n"+
+	//										String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
+	//										String.format("%-34s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
+	//										"\n\nProduct Categories:\n\n" +
+	//										String.format("%-34s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+	//										String.format("%-34s","Product Categories:")
+	//								for(int k=0; k<missingcategorydata.getProductcategories().size(); k++){
+	//									message = message+missingcategorydata.getProductcategories().get(k)+",	"
+	//								}
+	//								message = message+"\n"+missingcategorydata.getProductcategories_errormessage()+"\n\n"
+	//								flag = true
+	//							}
+	//							else{
+	//								message = message+
+	//										"\n\nProduct Categories:\n\n" +
+	//										String.format("%-34s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+	//										String.format("%-34s","Product Categories:")
+	//								for(int k=0; k<missingcategorydata.getProductcategories().size(); k++){
+	//									message = message+missingcategorydata.getProductcategories().get(k)+",	"
+	//								}
+	//								message = message+"\n"+missingcategorydata.getProductcategories_errormessage()+"\n\n"
+	//							}
+	//						}
+	//					}
+	//				}
+	//				if(missingshopdatainfo.getMissingCategoriesData() != null){
+	//					for(int n=0; n<missingshopdatainfo.getMissingCategoriesData().size(); n++){
+	//						MissingCategoryData missingcategorydata = missingshopdatainfo.getMissingCategoriesData().get(n)
+	//						if(missingcategorydata.getProducts() != null){
+	//							if(flag == false){
+	//								message = message+"\n\n"+
+	//										String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
+	//										String.format("%-34s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
+	//										"\n\nProducts:\n\n" +
+	//										String.format("%-34s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+	//										String.format("%-34s%-60s","Product Category:",missingcategorydata.getProductCategory()) + "\n" +
+	//										String.format("%-34s", "Products:")
+	//								for(int k=0; k<missingcategorydata.getProducts().size(); k++){
+	//									message = message+missingcategorydata.getProducts().get(k) + ",	"
+	//								}
+	//								message = message + "\n"+missingcategorydata.getProducts_errormessage() + "\n\n"
+	//								flag = true
+	//							}
+	//							else{
+	//								message = message+
+	//										"\n\nProducts:\n\n" +
+	//										String.format("%-34s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+	//										String.format("%-34s%-60s","Product Category:",missingcategorydata.getProductCategory()) + "\n" +
+	//										String.format("%-34s", "Products:")
+	//								for(int k=0; k<missingcategorydata.getProducts().size(); k++){
+	//									message = message+missingcategorydata.getProducts().get(k) + ",	"
+	//								}
+	//								message = message + "\n"+missingcategorydata.getProducts_errormessage() + "\n\n"
+	//							}
+	//						}
+	//					}
+	//				}
+	//				if(flag != false){
+	//					message = message+"\n\n<-------------------------------------------------------------------------------------------------------------------------------------->\n\n"
+	//					KeywordUtil.logInfo(message)
+	//					message = ""
+	//				}
+	//				else{
+	//				}
+	//			}
+	//		}
+	//		message = "\n\n\n---------------------------------------------Visited Shop Data-----------------------------------------------------------------------------------------------------\n\n"+
+	//				"<-------------------------------------------------------------------------------------------------------------------------------------->"
+	//		for(int i=0; i<ProjectConstants.visitedshopdatainfo.size(); i++){
+	//			VisitedShopDataInfo visitedshopdatainfo = ProjectConstants.visitedshopdatainfo.get(i)
+	//			if(visitedshopdatainfo != null){
+	//				message = message+"\n\n"+
+	//						String.format("%-11s%-60s%-60s","Shop Name:",visitedshopdatainfo.getShopname(),visitedshopdatainfo.getShopchannel())+"\n\n"+
+	//						String.format("%-34s%-100s", "Visiting Scenarios:",visitedshopdatainfo.getScenario())
+	//				if(visitedshopdatainfo.getVisitedcategoriesdata() != null){
+	//					for(int j=0; j< visitedshopdatainfo.getVisitedcategoriesdata().size(); j++){
+	//						VisitedCategoryData visitedcategorydata = visitedshopdatainfo.getVisitedcategoriesdata().get(j)
+	//						if(visitedcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
+	//							message = message+ "\n\n" +
+	//									String.format("%-34s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+	//									String.format("%-34s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
+	//									String.format("%-60s%-30s%-40s", "Products","Facing","Overwrite Facing")+"\n"
+	//							for(int k=0; k<visitedcategorydata.getHotspotproducts().size() ; k++){
+	//								HotSpotProduct hotspotproduct = visitedcategorydata.getHotspotproducts().get(k)
+	//								message = message + String.format("%-60s%-30s%-40s", hotspotproduct.getProduct(),hotspotproduct.getFacing(),hotspotproduct.getOverwritefacing())+"\n"
+	//							}
+	//						}
+	//						else if(visitedcategorydata.getMaincategory().equalsIgnoreCase("Hanger")){
+	//							message = message+ "\n\n" +
+	//									String.format("%-34s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+	//									String.format("%-34s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
+	//									String.format("%-46s%-23s%-33s%-27s%-37s", "Products","Hanger Available","Overwrite Hanger Available","Hanger Not Available","Overwrite Hanger Not Available")+"\n"
+	//							for(int k=0; k<visitedcategorydata.getHangerproducts().size() ; k++){
+	//								HangerProduct hangerproduct = visitedcategorydata.getHangerproducts().get(k)
+	//								message = message + String.format("%-46s%-23s%-33s%-27s%-37s", hangerproduct.getProduct(),hangerproduct.getHangeravailable(),hangerproduct.getOverwrite_hangeravailable(),hangerproduct.getHangernotavailable(),hangerproduct.getOverwrite_hangernotavailable())+"\n"
+	//							}
+	//						}
+	//						else{
+	//							message = message+ "\n\n" +
+	//									String.format("%-34s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+	//									String.format("%-34s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
+	//									String.format("%-60s%-30s%-40s", "Products","Share Of Shelf","Overwrite Share Of Shelf")+"\n"
+	//							for(int k=0; k<visitedcategorydata.getChannelproducts().size() ; k++){
+	//								ChannelProduct channelproduct = visitedcategorydata.getChannelproducts().get(k)
+	//								message = message + String.format("%-60s%-30s%-40s", channelproduct.getProduct(),channelproduct.getDisplayspaceavailable(),channelproduct.getOverwritedisplayspaceavailable())+"\n"
+	//							}
+	//						}
+	//					}
+	//				}
+	//				message = message + "\n\n<-------------------------------------------------------------------------------------------------------------------------------------->\n\n"
+	//				KeywordUtil.logInfo(message)
+	//				message = ""
+	//			}
+	//		}
+	//	}
 	def findShop(String _shopname){
 		int index = 0
 		int totalshops = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
@@ -204,7 +203,7 @@ public class ShopVisitingScenariosKeywords{
 	def visitShopWithDataVerification(){
 		int index = 0
 		int totalshops = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<=totalshops; i++){
+		for(int i=1; i<=1; i++){
 			MissingShopDataInfo missingshopdatainfo = new MissingShopDataInfo()
 			VisitedShopDataInfo visitedshopdatainfo = new VisitedShopDataInfo()
 			MobileElement shop = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
@@ -246,61 +245,61 @@ public class ShopVisitingScenariosKeywords{
 			}
 			Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		}
-		while(true){
-			MissingShopDataInfo missingshopdatainfo = new MissingShopDataInfo()
-			VisitedShopDataInfo visitedshopdatainfo = new VisitedShopDataInfo()
-			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-			MobileElement lastitembeforeswipe  = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
-			String lastitemnamebeforeswipe = lastitembeforeswipe.getText()
-			Mobile.swipe(0, 292, 0, 200)
-			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-			MobileElement lastitemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
-			String lastitemnameafterswipe = lastitemafterswipe.getText()
-			if(lastitemnamebeforeswipe.equalsIgnoreCase(lastitemnameafterswipe)){
-				break
-			}
-			else{
-				MobileElement shop = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
-				ProjectConstants.CURRENTVISITING_SHOPNAME = shop.getText()
-				missingshopdatainfo.setShopname(shop.getText())
-				visitedshopdatainfo.setShopname(shop.getText())
-				ProjectConstants.missingshopdatainfo.add(missingshopdatainfo)
-				ProjectConstants.visitedshopdatainfo.add(visitedshopdatainfo)
-				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-				MobileBuiltInKeywords.verifyElementText(findTestObject("Object Repository/Validate_ShopOptionsScreen", [('package') : ProjectConstants.PACKAGENAME]), "Options")
-				MobileBuiltInKeywords.tap(findTestObject("Object Repository/StartWorking", [('package') : ProjectConstants.PACKAGENAME]), 0)
-				Mobile.delay(15)
-				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_MapScreen", [('package') : ProjectConstants.PACKAGENAME]), 60)
-				MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/Location_CheckIn", [('package') : ProjectConstants.PACKAGENAME]), 0)
-				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP", [('package') : ProjectConstants.PACKAGENAME]), 0)
-				MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_NoButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWithDataVerification"), null)
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
-				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-						ProjectConstants.missingshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
-						ProjectConstants.missingshopdatainfo.get(j).setScenario("Data Verification")
-						break
-					}
-				}
-				for(int j=0; j<ProjectConstants.visitedshopdatainfo.size(); j++){
-					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
-						String message = "'Scenario given bellow' for chiller utilization\n"+
-								String.format("%-34s%-100s","","'Display Space Available' for remaining categories")+"\n"+
-								String.format("%-34s%-100s","","'RTM visit frequency' with 'Once a week'")+"\n"+
-								String.format("%-34s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-								String.format("%-34s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s","","'Hanger Availability' with 'Yes' remark")
-						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
-						break
-					}
-				}
-				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			}
-		}
-		displayDataInReport()
+		//		while(true){
+		//			MissingShopDataInfo missingshopdatainfo = new MissingShopDataInfo()
+		//			VisitedShopDataInfo visitedshopdatainfo = new VisitedShopDataInfo()
+		//			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+		//			MobileElement lastitembeforeswipe  = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+		//			String lastitemnamebeforeswipe = lastitembeforeswipe.getText()
+		//			Mobile.swipe(0, 292, 0, 200)
+		//			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+		//			MobileElement lastitemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+		//			String lastitemnameafterswipe = lastitemafterswipe.getText()
+		//			if(lastitemnamebeforeswipe.equalsIgnoreCase(lastitemnameafterswipe)){
+		//				break
+		//			}
+		//			else{
+		//				MobileElement shop = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+		//				ProjectConstants.CURRENTVISITING_SHOPNAME = shop.getText()
+		//				missingshopdatainfo.setShopname(shop.getText())
+		//				visitedshopdatainfo.setShopname(shop.getText())
+		//				ProjectConstants.missingshopdatainfo.add(missingshopdatainfo)
+		//				ProjectConstants.visitedshopdatainfo.add(visitedshopdatainfo)
+		//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+		//				MobileBuiltInKeywords.verifyElementText(findTestObject("Object Repository/Validate_ShopOptionsScreen", [('package') : ProjectConstants.PACKAGENAME]), "Options")
+		//				MobileBuiltInKeywords.tap(findTestObject("Object Repository/StartWorking", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		//				Mobile.delay(15)
+		//				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_MapScreen", [('package') : ProjectConstants.PACKAGENAME]), 60)
+		//				MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/Location_CheckIn", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		//				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		//				MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_NoButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWithDataVerification"), null)
+		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
+		//				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+		//					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+		//						ProjectConstants.missingshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
+		//						ProjectConstants.missingshopdatainfo.get(j).setScenario("Data Verification")
+		//						break
+		//					}
+		//				}
+		//				for(int j=0; j<ProjectConstants.visitedshopdatainfo.size(); j++){
+		//					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+		//						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
+		//						String message = "'Scenario given bellow' for chiller utilization\n"+
+		//								String.format("%-34s%-100s","","'Display Space Available' for remaining categories")+"\n"+
+		//								String.format("%-34s%-100s","","'RTM visit frequency' with 'Once a week'")+"\n"+
+		//								String.format("%-34s%-100s","","'Pop Application' with 'No' remark")+"\n"+
+		//								String.format("%-34s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+		//								String.format("%-34s%-100s","","'Hanger Availability' with 'Yes' remark")
+		//						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
+		//						break
+		//					}
+		//				}
+		//				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		//			}
+		//		}
+		//		displayDataInReport()
 	}
 	@Keyword
 	def visitShopsWithShopLevel_OverwriteScenario(){

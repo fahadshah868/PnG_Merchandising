@@ -174,6 +174,26 @@ public class LoadDataKeywords {
 		}
 		return expectedadditionalinfoquestions
 	}
+	//load channel wise product categories
+	def static loadChannelWiseProductCategories(){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<String> productcategories = new ArrayList<String>()
+		XSSFSheet sheet = loadChannelProductsSheet()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<=totalrows; i++){
+			Row row = sheet.getRow(i)
+			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.CHANNEL))
+			String channelname = "Channel: "+channel
+			String maincategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.MAINCATEGORY))
+			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_MAINCATEGORY.equalsIgnoreCase(maincategory)){
+				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.PRODUCTCATEGORY))
+				productcategories.add(product)
+			}
+			else{
+			}
+		}
+		return productcategories
+	}
 	//load channel wise products and quantity
 	def static loadChannelWiseProductsList(XSSFSheet sheet, int column){
 		DataFormatter dataformatter = new DataFormatter()
@@ -185,7 +205,7 @@ public class LoadDataKeywords {
 			String channelname = "Channel: "+channel
 			String maincategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.MAINCATEGORY))
 			String productcategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.PRODUCTCATEGORY))
-			if((ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_MAINCATEGORY.equalsIgnoreCase(maincategory)) && ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY.equalsIgnoreCase(productcategory)){
+			if((ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_MAINCATEGORY.equalsIgnoreCase(maincategory)) && ProjectConstants.CURRENTVISITING_SUBCATEGORY.equalsIgnoreCase(productcategory)){
 				ProductWithValue productwithvalue = new ProductWithValue()
 				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.CHANNELPRODUCT))
 				String columndata = dataformatter.formatCellValue(row.getCell(column))

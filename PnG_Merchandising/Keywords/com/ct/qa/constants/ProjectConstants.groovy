@@ -41,7 +41,7 @@ import WebUiBuiltInKeywords as WebUI
 public class ProjectConstants {
 
 	//variables for excel file and sheets
-	public static final String EXCEL_FILEPATH = "F:\\Git Projects\\PnG_Merchandising\\PnG_Merchandising\\PnG_Merchandising.xlsx"
+	public static final String EXCEL_FILEPATH = "G:\\PnG_Merchandising.xlsx"
 	public static final String CHANNEL_PRODUCTSSHEET = "Channel Products"
 	public static final String HOTSPOT_PRODUCTSSHEET = "Hotspot Products"
 	public static final String DISTRIBUTION_SHEET = "Distribution Point"
@@ -54,41 +54,9 @@ public class ProjectConstants {
 
 	//variables for display messages
 	//products comparison messages
-	public static final String MESSAGEFOR_PRODUCTSARE_MORE = "above products are displaying on device more than to expected products..."
-	public static final String MESSAGEFOR_PRODUCTSARE_MISSING = "above products are missing on device..."
-	public static final String MESSAGEFOR_PRODUCTSARE_NOTMATCH = "above products are display on device not match with expected products..."
-
-	public static final String MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL = "displayed products are equals to expected products..."
-
-	//products categories comparison messages
-	public static final String MESSAGEFOR_PRODUCTSCATEGORIESARE_MORE = "above products categories are displaying on device more than to expected products..."
-	public static final String MESSAGEFOR_PRODUCTSCATEGORIESARE_MISSING = "above products categories are missing on device"
-	public static final String MESSAGEFOR_PRODUCTSCATEGORIESARE_NOTMATCH = "above products categories are displaying on device not matching with expected products..."
-
-	//shop categories comparison messages
-	public static final String MESSAGEFOR_SHOPCATEGORIESARE_MORE = "above shop categories are displaying on device more than to expected shop categories"
-	public static final String MESSAGEFOR_SHOPCATEGORIESARE_MISSING = "above shop categories are missing on device"
-	public static final String MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH = "above shop categories are displaying on device not matching with expected shop categories"
-
-	//slider options comparison messages
-	public static final String MESSAGEFOR_SLIDEROPTIONSARE_MORE = "above slider options are displaying on device more than to expected slider options"
-	public static final String MESSAGEFOR_SLIDEROPTIONSARE_MISSING = "above slider options are missing on device"
-	public static final String MESSAGEFOR_SLIDEROPTIONSARE_NOTMATCH = "above slider options are displaying on device not matching with expected slider options"
-
-	//survey question categories comparison messages
-	public static final String MESSAGEFOR_SURVEYQUESTIONCATEGORIESARE_MORE = "above survey question categories are displaying on device more than to expected survey questions categories"
-	public static final String MESSAGEFOR_SURVEYQUESTIONCATEGORIESARE_MISSING = "above survey questions categories are missing on device"
-	public static final String MESSAGEFOR_SURVEYQUESTIONCATEGORIESARE_NOTMATCH = "above survey questions categories are displaying on device not matching with expected survey questions categories"
-
-	//survey questions comparison messages
-	public static final String MESSAGEFOR_SURVEYQUESTIONSARE_MORE = "above survey questions are displaying on device more than to expected survey questions"
-	public static final String MESSAGEFOR_SURVEYQUESTIONSARE_MISSING = "above survey questions are missing on device"
-	public static final String MESSAGEFOR_SURVEYQUESTIONSARE_NOTMATCH = "above survey questions are displaying on device not matching with expected survey questions"
-
-	//additional info questions comparison messages
-	public static final String MESSAGEFOR_ADDITIONALINFOQUESTIONSARE_MORE = "above additional info questions are displaying on device more than to expected additional info questions"
-	public static final String MESSAGEFOR_ADDITIONALINFOQUESTIONSARE_MISSING = "above additional info questions are missing on device"
-	public static final String MESSAGEFOR_ADDITIONALINFOQUESTIONSARE_NOTMATCH = "above additional info questions are displaying on device not matching with expected additional info questions"
+	public static final String MESSAGEFOR_ITEMSARE_MORE = "above products are displaying on device more than to expected products..."
+	public static final String MESSAGEFOR_ITEMSARE_MISSING = "above products are missing on device..."
+	public static final String MESSAGEFOR_ITEMSARE_NOTMATCH = "above products are display on device not match with expected products..."
 
 	//package name for objects
 	public static final String PACKAGENAME = "com.concavetech.bloc"
@@ -142,6 +110,10 @@ public class ProjectConstants {
 	public static String CURRENTVISITING_SURVEYQUESTION_CATEGORY = ""
 	public static String SCENARIO = ""
 	public static int HOTSPOTINDEX = 0
+
+	public static String CURRENTVISITING_CATEGORYREMARK = ""
+	public static String CURRENTVISITING_REMAININGCATEOGRYREMARK = ""
+	public static String CURRENTVISITING_SUBCATEGORY = ""
 
 	//list for containing shop info
 	public static ArrayList<MissingShopDataInfo> missingshopdatainfo = new ArrayList<MissingShopDataInfo>()

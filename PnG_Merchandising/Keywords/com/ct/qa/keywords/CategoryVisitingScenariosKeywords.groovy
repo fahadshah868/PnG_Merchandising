@@ -22,6 +22,7 @@ import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
 import com.ct.qa.interfaces.ShopCategories
+import com.ct.qa.struct.MissingMainCategoryData
 import com.ct.qa.struct.UnmatchedItems
 
 import internal.GlobalVariable
@@ -38,10 +39,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -49,10 +57,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -60,10 +75,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -77,7 +99,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<=totalcategories; i++){
+		for(int i=1; i<=1; i++){
 			MobileElement category = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String categoryname = category.getText()
 			if(categoryname.equalsIgnoreCase("Additional Picture")){
@@ -91,30 +113,32 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailableForDataVerification"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
 				Mobile.swipe(0, 200, 0, 750)
 				Mobile.swipe(0, 200, 0, 750)
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_DataVerification"), null)
 			}
@@ -144,32 +168,34 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailableForDataVerification"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Survey")){
 				lastvisitedcategory = lastitemnameafterswipe
-				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
+				//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
 				Mobile.swipe(0, 200, 0, 750)
 				Mobile.swipe(0, 200, 0, 750)
 			}
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_DataVerification"), null)
 			}
@@ -191,10 +217,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -202,10 +235,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -213,10 +253,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -244,17 +291,19 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -262,7 +311,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AY_DSA_Available_AIY"), null)
 			}
@@ -292,18 +341,20 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailable"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
 			}
@@ -316,7 +367,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AY_DSA_Available_AIY"), null)
 			}
@@ -338,10 +389,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -349,10 +407,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -360,10 +425,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -391,17 +463,19 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerNotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotspotNotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -409,7 +483,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AN_NSFD_NAvailable_AIN"), null)
 			}
@@ -439,18 +513,20 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotspotNotAvailable"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerNotAvailable"), null)
 			}
@@ -463,7 +539,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AN_NSFD_NAvailable_AIN"), null)
 			}
@@ -485,10 +561,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -496,10 +579,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -507,10 +597,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -542,13 +639,13 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/OverwriteHangerWithHangerAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotSpotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -556,7 +653,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_DSA_Available_AIN"), null)
 			}
@@ -590,14 +687,14 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotSpotAvailable"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/OverwriteHangerWithHangerAvailable"), null)
 			}
@@ -610,7 +707,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_DSA_Available_AIN"), null)
 			}
@@ -632,10 +729,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -643,10 +747,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -654,10 +765,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -685,17 +803,19 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithSKDNA"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitShopKeeperDidnotAllow"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -703,7 +823,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AY_SKDNA_Available_AIY"), null)
 			}
@@ -733,18 +853,20 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitShopKeeperDidnotAllow"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithSKDNA"), null)
 			}
@@ -757,7 +879,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AY_SKDNA_Available_AIY"), null)
 			}
@@ -779,10 +901,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -790,10 +919,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -801,10 +937,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -836,13 +979,13 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/OverwriteHangerWithSKDNA"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteShopKeeperDidnotAllow"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -850,7 +993,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_SKDNA_Available_AIN"), null)
 			}
@@ -884,14 +1027,14 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteShopKeeperDidnotAllow"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/OverwriteHangerWithSKDNA"), null)
 			}
@@ -904,7 +1047,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/OverwriteRemarksWith_AN_SKDNA_Available_AIN"), null)
 			}
@@ -926,10 +1069,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -937,10 +1087,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -948,10 +1105,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -979,17 +1143,19 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithSKDNA"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitShopKeeperDidnotAllow"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -997,7 +1163,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AY_SKDNA_NR_AIN"), null)
 			}
@@ -1027,18 +1193,20 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitShopKeeperDidnotAllow"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithSKDNA"), null)
 			}
@@ -1051,7 +1219,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AY_SKDNA_NR_AIN"), null)
 			}
@@ -1073,10 +1241,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -1084,10 +1259,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -1095,10 +1277,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -1126,17 +1315,19 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -1144,7 +1335,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AN_DSA_NAvailable_AIY"), null)
 			}
@@ -1174,18 +1365,20 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailable"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
 			}
@@ -1198,7 +1391,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AN_DSA_NAvailable_AIY"), null)
 			}
@@ -1220,10 +1413,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -1231,10 +1431,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -1242,10 +1449,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -1273,17 +1487,19 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerNotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotspotNotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -1291,7 +1507,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AN_NSFD_Available_AIY"), null)
 			}
@@ -1321,18 +1537,20 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotspotNotAvailable"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerNotAvailable"), null)
 			}
@@ -1345,7 +1563,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AN_NSFD_Available_AIY"), null)
 			}
@@ -1367,10 +1585,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -1378,10 +1603,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -1389,10 +1621,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -1420,17 +1659,19 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerNotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotspotNotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -1438,7 +1679,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AN_NR_NAvailable_AIN"), null)
 			}
@@ -1468,18 +1709,20 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotspotNotAvailable"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerNotAvailable"), null)
 			}
@@ -1492,7 +1735,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AN_NR_NAvailable_AIN"), null)
 			}
@@ -1514,10 +1757,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -1525,10 +1775,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -1536,10 +1793,17 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
+				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				String missingcategory = UnmatchedItems_status.getItems().get(i)
+				missingmaincategory.setMaincategory(missingcategory)
+				missingmaincategories.add(missingmaincategory)
+			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
-					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_SHOPCATEGORIESARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -1567,17 +1831,19 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(categoryname.equalsIgnoreCase("Hanger")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailable"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
@@ -1585,7 +1851,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = categoryname
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AY_SKDNA_Available_AIY"), null)
 			}
@@ -1615,18 +1881,20 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailable"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
 			}
@@ -1639,7 +1907,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_AY_SKDNA_Available_AIY"), null)
 			}

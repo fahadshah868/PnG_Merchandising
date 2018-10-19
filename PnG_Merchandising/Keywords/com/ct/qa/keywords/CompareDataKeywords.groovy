@@ -32,6 +32,80 @@ import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 
 public class CompareDataKeywords {
+
+
+	def static compareLists(ArrayList<String> expectedlist, ArrayList<String> displayedlist){
+		if(expectedlist.size() == displayedlist.size()){
+			ArrayList<String> products = new ArrayList<String>()
+			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
+			for(int i=0; i<displayedlist.size(); i++){
+				boolean match = false
+				for(int j=0; j<expectedlist.size(); j++){
+					if(displayedlist.get(i).equalsIgnoreCase(expectedlist.get(j))){
+						match = true
+						break
+					}
+				}
+				if(match == false){
+					products.add(displayedlist.get(i))
+				}
+				else{
+				}
+			}
+			if(!products.isEmpty()){
+				UnmatchedItems_status.setItems(products)
+				UnmatchedItems_status.setStatus(2)
+				return UnmatchedItems_status
+			}
+			else{
+				UnmatchedItems_status.setItems(products)
+				UnmatchedItems_status.setStatus(0)
+				return UnmatchedItems_status
+			}
+		}
+		else if(expectedlist.size() < displayedlist.size()){
+			ArrayList<String> products = new ArrayList<String>()
+			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
+			for(int i=0; i<displayedlist.size(); i++){
+				boolean match = false
+				for(int j=0; j<expectedlist.size(); j++){
+					if(displayedlist.get(i).equalsIgnoreCase(expectedlist.get(j))){
+						match = true
+						break
+					}
+				}
+				if(match == false){
+					products.add(displayedlist.get(i))
+				}
+				else{
+				}
+			}
+			UnmatchedItems_status.setItems(products)
+			UnmatchedItems_status.setStatus(1)
+			return UnmatchedItems_status
+		}
+		else if(expectedlist.size() > displayedlist.size()){
+			ArrayList<String> products = new ArrayList<String>()
+			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
+			for(int i=0; i<expectedlist.size(); i++){
+				boolean match = false
+				for(int j=0; j<displayedlist.size(); j++){
+					if(expectedlist.get(i).equalsIgnoreCase(displayedlist.get(j))){
+						match = true
+						break
+					}
+				}
+				if(match == false){
+					products.add(expectedlist.get(i))
+				}
+				else{
+				}
+			}
+			UnmatchedItems_status.setItems(products)
+			UnmatchedItems_status.setStatus(-1)
+			return UnmatchedItems_status
+		}
+	}
 	//compare display and actual channel wise products categories
 	def static compareChannelWiseProductsCategories(){
 		DataFormatter dataformatter = new DataFormatter()
@@ -55,80 +129,8 @@ public class CompareDataKeywords {
 			displayedproductscategorieslist.add(productcategory.getText())
 		}
 		ArrayList<String> expectedproductscategories = new HashSet<String>(expectedproductscategorieslist)
-		if(expectedproductscategories.size() == displayedproductscategorieslist.size()){
-			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
-			for(int i=0; i<displayedproductscategorieslist.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedproductscategories.size(); j++){
-					if(displayedproductscategorieslist.get(i).equalsIgnoreCase(expectedproductscategories.get(j))){
-						match = true
-						break
-					}
-				}
-				if(match == false){
-					products.add(displayedproductscategorieslist.get(i))
-				}
-				else{
-				}
-			}
-			if(!products.isEmpty()){
-				UnmatchedItems_status.setItems(products)
-				UnmatchedItems_status.setStatus(2)
-				return UnmatchedItems_status
-			}
-			else{
-				UnmatchedItems_status.setItems(products)
-				UnmatchedItems_status.setStatus(0)
-				return UnmatchedItems_status
-			}
-		}
-		else if(expectedproductscategories.size() < displayedproductscategorieslist.size()){
-			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
-			for(int i=0; i<displayedproductscategorieslist.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedproductscategories.size(); j++){
-					if(displayedproductscategorieslist.get(i).equalsIgnoreCase(expectedproductscategories.get(j))){
-						match = true
-						break
-					}
-				}
-				if(match == false){
-					products.add(displayedproductscategorieslist.get(i))
-				}
-				else{
-				}
-			}
-			UnmatchedItems_status.setItems(products)
-			UnmatchedItems_status.setStatus(1)
-			return UnmatchedItems_status
-		}
-		else if(expectedproductscategories.size() > displayedproductscategorieslist.size()){
-			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
-			for(int i=0; i<expectedproductscategories.size(); i++){
-				boolean match = false
-				for(int j=0; j<displayedproductscategorieslist.size(); j++){
-					if(expectedproductscategories.get(i).equalsIgnoreCase(displayedproductscategorieslist.get(j))){
-						match = true
-						break
-					}
-				}
-				if(match == false){
-					products.add(expectedproductscategories.get(i))
-				}
-				else{
-				}
-			}
-			UnmatchedItems_status.setItems(products)
-			UnmatchedItems_status.setStatus(-1)
-			return UnmatchedItems_status
-		}
-		else{
-			String message = "Main Category: "+ProjectConstants.CURRENTVISITING_MAINCATEGORY+"\nProduct Category: "+ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY+"\n"+ProjectConstants.MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL
-			KeywordUtil.logInfo(message)
-		}
+		UnmatchedItems UnmatchedItems_status = compareLists(expectedproductscategories , displayedproductscategorieslist)
+		return UnmatchedItems_status
 	}
 	//compare display and actual shop main categories
 	def static compareShopCategories(){
@@ -178,80 +180,59 @@ public class CompareDataKeywords {
 		}
 		ArrayList<String> expectedshopcategorieslist = LoadDataKeywords.loadShopCategories()
 		ArrayList<String> expectedshopcategories = new HashSet<String>(expectedshopcategorieslist)
-		if(expectedshopcategories.size() == displayshopcategorieslist.size()){
-			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
-			for(int i=0; i<displayshopcategorieslist.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedshopcategories.size(); j++){
-					if(displayshopcategorieslist.get(i).equalsIgnoreCase(expectedshopcategories.get(j))){
-						match = true
-						break
-					}
-				}
-				if(match == false){
-					products.add(displayshopcategorieslist.get(i))
-				}
-				else{
-				}
-			}
-			if(!products.isEmpty()){
-				UnmatchedItems_status.setItems(products)
-				UnmatchedItems_status.setStatus(2)
-				return UnmatchedItems_status
-			}
-			else{
-				UnmatchedItems_status.setItems(products)
-				UnmatchedItems_status.setStatus(0)
-				return UnmatchedItems_status
-			}
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedshopcategories , displayshopcategorieslist)
+		return UnmatchedItems_status
+	}
+	//compare display and actual shop remaining categories remarks
+	def static compareShopRemainingCategoryRemarks(){
+		ArrayList<String> displaycategoryremarks = new ArrayList<String>()
+		ArrayList<String> expectedcategoriesremarksformmachannels = new ArrayList<String>()
+		expectedcategoriesremarksformmachannels.addAll(Arrays.asList("Availability","Primary Display","Secondary Display","Additional Infooo"))
+		ArrayList<String> expectedcategoriesremarksforotherchannels = new ArrayList<String>()
+		expectedcategoriesremarksforotherchannels.addAll(Arrays.asList("Availability","Primary Display","Secondary Display"))
+		int index = 0
+		int mandatorycategories = 0
+		int totalremarks = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i<= totalremarks; i++){
+			MobileElement action = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			displaycategoryremarks.add(action.getText())
 		}
-		else if(expectedshopcategories.size() < displayshopcategorieslist.size()){
-			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
-			for(int i=0; i<displayshopcategorieslist.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedshopcategories.size(); j++){
-					if(displayshopcategorieslist.get(i).equalsIgnoreCase(expectedshopcategories.get(j))){
-						match = true
-						break
-					}
-				}
-				if(match == false){
-					products.add(displayshopcategorieslist.get(i))
-				}
-				else{
-				}
-			}
-			UnmatchedItems_status.setItems(products)
-			UnmatchedItems_status.setStatus(1)
-			return UnmatchedItems_status
-		}
-		else if(expectedshopcategories.size() > displayshopcategorieslist.size()){
-			ArrayList<String> products = new ArrayList<String>()
-			UnmatchedItems UnmatchedItems_status = new UnmatchedItems()
-			for(int i=0; i<expectedshopcategories.size(); i++){
-				boolean match = false
-				for(int j=0; j<displayshopcategorieslist.size(); j++){
-					if(expectedshopcategories.get(i).equalsIgnoreCase(displayshopcategorieslist.get(j))){
-						match = true
-						break
-					}
-				}
-				if(match == false){
-					products.add(displayshopcategorieslist.get(i))
-				}
-				else{
-				}
-			}
-			UnmatchedItems_status.setItems(products)
-			UnmatchedItems_status.setStatus(-1)
+		if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.contains("MM")){
+			UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedcategoriesremarksformmachannels , displaycategoryremarks)
 			return UnmatchedItems_status
 		}
 		else{
-			String message = "Main Category: "+ProjectConstants.CURRENTVISITING_MAINCATEGORY+"\nProduct Category: "+ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY+"\n"+ProjectConstants.MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL
-			KeywordUtil.logInfo(message)
+			UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedcategoriesremarksforotherchannels , displaycategoryremarks)
+			return UnmatchedItems_status
 		}
+	}
+	//compare display and actual shop remaining categories availability
+	def static compareShopRemainingCategoryAvailabilitySubCategories(){
+		ArrayList<String> displaysubcategories = new ArrayList<String>()
+		ArrayList<String> expectedsubcategorieslist = LoadDataKeywords.loadChannelWiseProductCategories()
+		int totalsubcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i<= totalsubcategories; i++){
+			MobileElement subcategory = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			String _subcategory = subcategory.getText()
+			displaysubcategories.add(_subcategory)
+		}
+		ArrayList<String> expectedproductcategories = new HashSet<String>(expectedsubcategorieslist)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedproductcategories , displaysubcategories)
+		return UnmatchedItems_status
+	}
+	//compare display and actual shop remaining categories display space available
+	def static compareShopRemainingCategoryDisplaySpaceAvailableSubCategories(){
+		ArrayList<String> displaysubcategories = new ArrayList<String>()
+		ArrayList<String> expectedsubcategorieslist = LoadDataKeywords.loadChannelWiseProductCategories()
+		int totalsubcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i<= totalsubcategories; i++){
+			MobileElement subcategory = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			String _subcategory = subcategory.getText()
+			displaysubcategories.add(_subcategory)
+		}
+		ArrayList<String> expectedproductcategories = new HashSet<String>(expectedsubcategorieslist)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedproductcategories , displaysubcategories)
+		return UnmatchedItems_status
 	}
 	def static compareSliderOptions(){
 		int index = 0
@@ -278,82 +259,8 @@ public class CompareDataKeywords {
 				displayedslideroptions.add(lastitemnameafterswipe)
 			}
 		}
-		if(displayedslideroptions.size() == expectedslideroptions.size()){
-			ArrayList<String> slideroptions = new ArrayList<String>()
-			UnmatchedItems unmatchedoptions = new UnmatchedItems()
-			for(int i=0; i<displayedslideroptions.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedslideroptions.size(); j++){
-					if(displayedslideroptions.get(i).equalsIgnoreCase(expectedslideroptions.get(j))){
-						match = true
-						break
-					}
-					else{
-					}
-				}
-				if(match == false){
-					slideroptions.add(displayedslideroptions.get(i))
-				}
-				else{
-				}
-			}
-			if(!slideroptions.isEmpty()){
-				unmatchedoptions.setItems(slideroptions)
-				unmatchedoptions.setStatus(2)
-				return unmatchedoptions
-			}
-			else{
-				unmatchedoptions.setItems(slideroptions)
-				unmatchedoptions.setStatus(0)
-				return unmatchedoptions
-			}
-		}
-		else if(displayedslideroptions.size() > expectedslideroptions.size()){
-			ArrayList<String> slideroptions = new ArrayList<String>()
-			UnmatchedItems unmatchedoptions = new UnmatchedItems()
-			for(int i=0; i<displayedslideroptions.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedslideroptions.size(); j++){
-					if(displayedslideroptions.get(i).equalsIgnoreCase(expectedslideroptions.get(j))){
-						match = true
-						break
-					}
-					else{
-					}
-				}
-				if(match == false){
-					slideroptions.add(displayedslideroptions.get(i))
-				}
-				else{
-				}
-			}
-			unmatchedoptions.setItems(slideroptions)
-			unmatchedoptions.setStatus(1)
-			return unmatchedoptions
-		}
-		else if(displayedslideroptions.size() < expectedslideroptions.size()){
-			ArrayList<String> slideroptions = new ArrayList<String>()
-			UnmatchedItems unmatchedoptions = new UnmatchedItems()
-			for(int i=0; i<expectedslideroptions.size(); i++){
-				boolean match = false
-				for(int j=0; j<displayedslideroptions.size(); j++){
-					if(expectedslideroptions.get(i).equalsIgnoreCase(displayedslideroptions.get(j))){
-						match = true
-						break
-					}
-					else{
-					}
-				}
-				if(match == false){
-					slideroptions.add(expectedslideroptions.get(i))
-				}
-				else{
-				}
-			}
-			unmatchedoptions.setItems(slideroptions)
-			unmatchedoptions.setStatus(-1)
-			return unmatchedoptions
-		}
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedslideroptions , displayedslideroptions)
+		return UnmatchedItems_status
 	}
 	def static compareSurveyQuestionCategories(){
 		int index = 0
@@ -380,81 +287,7 @@ public class CompareDataKeywords {
 				displayedsurveyquestioncategories.add(lastitemnameafterswipe)
 			}
 		}
-		if(displayedsurveyquestioncategories.size() == expectedsurveyquestioncategories.size()){
-			ArrayList<String> slideroptions = new ArrayList<String>()
-			UnmatchedItems unmatchedoptions = new UnmatchedItems()
-			for(int i=0; i<displayedsurveyquestioncategories.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedsurveyquestioncategories.size(); j++){
-					if(displayedsurveyquestioncategories.get(i).equalsIgnoreCase(expectedsurveyquestioncategories.get(j))){
-						match = true
-						break
-					}
-					else{
-					}
-				}
-				if(match == false){
-					slideroptions.add(displayedsurveyquestioncategories.get(i))
-				}
-				else{
-				}
-			}
-			if(!slideroptions.isEmpty()){
-				unmatchedoptions.setItems(slideroptions)
-				unmatchedoptions.setStatus(2)
-				return unmatchedoptions
-			}
-			else{
-				unmatchedoptions.setItems(slideroptions)
-				unmatchedoptions.setStatus(0)
-				return unmatchedoptions
-			}
-		}
-		else if(displayedsurveyquestioncategories.size() > expectedsurveyquestioncategories.size()){
-			ArrayList<String> slideroptions = new ArrayList<String>()
-			UnmatchedItems unmatchedoptions = new UnmatchedItems()
-			for(int i=0; i<displayedsurveyquestioncategories.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedsurveyquestioncategories.size(); j++){
-					if(displayedsurveyquestioncategories.get(i).equalsIgnoreCase(expectedsurveyquestioncategories.get(j))){
-						match = true
-						break
-					}
-					else{
-					}
-				}
-				if(match == false){
-					slideroptions.add(displayedsurveyquestioncategories.get(i))
-				}
-				else{
-				}
-			}
-			unmatchedoptions.setItems(slideroptions)
-			unmatchedoptions.setStatus(1)
-			return unmatchedoptions
-		}
-		else if(displayedsurveyquestioncategories.size() < expectedsurveyquestioncategories.size()){
-			ArrayList<String> slideroptions = new ArrayList<String>()
-			UnmatchedItems unmatchedoptions = new UnmatchedItems()
-			for(int i=0; i<expectedsurveyquestioncategories.size(); i++){
-				boolean match = false
-				for(int j=0; j<displayedsurveyquestioncategories.size(); j++){
-					if(expectedsurveyquestioncategories.get(i).equalsIgnoreCase(displayedsurveyquestioncategories.get(j))){
-						match = true
-						break
-					}
-					else{
-					}
-				}
-				if(match == false){
-					slideroptions.add(expectedsurveyquestioncategories.get(i))
-				}
-				else{
-				}
-			}
-			unmatchedoptions.setItems(slideroptions)
-			unmatchedoptions.setStatus(-1)
-			return unmatchedoptions
-		}
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestioncategories , displayedsurveyquestioncategories)
+		return UnmatchedItems_status
 	}
 }
