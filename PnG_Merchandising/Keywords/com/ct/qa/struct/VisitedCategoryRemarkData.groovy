@@ -18,19 +18,34 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
 
-public class Questions {
-	public String question
-	public String question_value
-	public String getQuestion() {
-		return question;
+public class VisitedCategoryRemarkData {
+	public String categoryremark
+	public String subremark
+	public String subcategory
+	public ArrayList<ShopProductsData> shopproductsdata
+	public String getCategoryremark() {
+		return categoryremark;
 	}
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setCategoryremark(String categoryremark) {
+		this.categoryremark = categoryremark;
 	}
-	public String getQuestion_value() {
-		return question_value;
+	public String getSubremark() {
+		return subremark;
 	}
-	public void setQuestion_value(String question_value) {
-		this.question_value = question_value;
+	public void setSubremark(String subremark) {
+		this.subremark = subremark;
 	}
+	public String getSubcategory() {
+		return subcategory;
+	}
+	public void setSubcategory(String subcategory) {
+		this.subcategory = subcategory;
+	}
+	public ArrayList<ShopProductsData> getShopproductsdata() {
+		return shopproductsdata;
+	}
+	public void setShopproductsdata(ArrayList<ShopProductsData> shopproductsdata) {
+		this.shopproductsdata = shopproductsdata;
+	}
+	
 }

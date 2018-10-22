@@ -218,6 +218,19 @@ public class LoadDataKeywords {
 		}
 		return productswithvalue
 	}
+	//load hotspot type
+	def static loadHotSpotTypeList(){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<String> hotspottypes = new ArrayList<ProductWithValue>()
+		XSSFSheet sheet = loadHotSpotProductsSheet()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<=totalrows; i++){
+			Row row = sheet.getRow(i)
+			String hotspottype = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTTYPE))
+			hotspottypes.add(hotspottype)
+		}
+		return hotspottypes
+	}
 	//load hotspot products and quantity
 	def static loadHotSpotProductsList(XSSFSheet sheet, int column){
 		DataFormatter dataformatter = new DataFormatter()

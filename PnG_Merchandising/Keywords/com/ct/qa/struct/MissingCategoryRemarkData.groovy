@@ -21,8 +21,11 @@ import internal.GlobalVariable
 public class MissingCategoryRemarkData {
 	public String categoryremark
 	public String subremark
-	public ArrayList<MissingSubCategoryData> missingsubcategories
-	public String missingsubcategories_errormessage
+	public String subcategory
+	public ArrayList<String> subcategories
+	public ArrayList<String> products
+	public String subcategories_errormessage
+	public String products_errormessage
 	public String getCategoryremark() {
 		return categoryremark;
 	}
@@ -35,17 +38,35 @@ public class MissingCategoryRemarkData {
 	public void setSubremark(String subremark) {
 		this.subremark = subremark;
 	}
-	public ArrayList<MissingSubCategoryData> getMissingsubcategories() {
-		return missingsubcategories;
+	public String getSubcategory() {
+		return subcategory;
 	}
-	public void setMissingsubcategories(ArrayList<MissingSubCategoryData> missingsubcategories) {
-		this.missingsubcategories = missingsubcategories;
+	public void setSubcategory(String subcategory) {
+		this.subcategory = subcategory;
 	}
-	public String getMissingsubcategories_errormessage() {
-		return missingsubcategories_errormessage;
+	public ArrayList<String> getSubcategories() {
+		return subcategories;
 	}
-	public void setMissingsubcategories_errormessage(String missingsubcategories_errormessage) {
-		this.missingsubcategories_errormessage = missingsubcategories_errormessage;
+	public void setSubcategories(ArrayList<String> subcategories) {
+		this.subcategories = subcategories;
+	}
+	public ArrayList<String> getProducts() {
+		return products;
+	}
+	public void setProducts(ArrayList<String> products) {
+		this.products = products;
+	}
+	public String getSubcategories_errormessage() {
+		return subcategories_errormessage;
+	}
+	public void setSubcategories_errormessage(String subcategories_errormessage) {
+		this.subcategories_errormessage = subcategories_errormessage;
+	}
+	public String getProducts_errormessage() {
+		return products_errormessage;
+	}
+	public void setProducts_errormessage(String products_errormessage) {
+		this.products_errormessage = products_errormessage;
 	}
 	
 }

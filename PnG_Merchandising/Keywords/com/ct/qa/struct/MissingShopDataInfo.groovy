@@ -29,8 +29,13 @@ public class MissingShopDataInfo {
 	public String shopname
 	public String shopchannel
 	public String scenario
-	public ArrayList<MissingMainCategoryData> missingmaincategories
-	public String missingmaincategories_errormessage
+	public ArrayList<String> missingshopcategories
+	public String missingshopcategories_errormessage
+	public ArrayList<MissingCategoryData> missingcategoriesdata
+	public MissingShopDataInfo(){
+		this.missingcategoriesdata = new ArrayList<MissingCategoryData>()
+	}
+
 	public String getShopname() {
 		return shopname;
 	}
@@ -49,17 +54,22 @@ public class MissingShopDataInfo {
 	public void setScenario(String scenario) {
 		this.scenario = scenario;
 	}
-	public ArrayList<MissingMainCategoryData> getMissingmaincategories() {
-		return missingmaincategories;
+	public ArrayList<String> getMissingshopcategories() {
+		return missingshopcategories;
 	}
-	public void setMissingmaincategories(ArrayList<MissingMainCategoryData> missingmaincategories) {
-		this.missingmaincategories = missingmaincategories;
+	public void setMissingshopcategories(ArrayList<String> missingshopcategories) {
+		this.missingshopcategories = missingshopcategories;
 	}
-	public String getMissingmaincategories_errormessage() {
-		return missingmaincategories_errormessage;
+	public String getMissingshopcategories_errormessage() {
+		return missingshopcategories_errormessage;
 	}
-	public void setMissingmaincategories_errormessage(String missingmaincategories_errormessage) {
-		this.missingmaincategories_errormessage = missingmaincategories_errormessage;
+	public void setMissingshopcategories_errormessage(String missingshopcategories_errormessage) {
+		this.missingshopcategories_errormessage = missingshopcategories_errormessage;
 	}
-	
+	public ArrayList<MissingCategoryData> getMissingcategoriesdata() {
+		return missingcategoriesdata;
+	}
+	public void setMissingcategoriesdata(MissingCategoryData missingcategoriesdata) {
+		this.missingcategoriesdata.add(missingcategoriesdata);
+	}
 }

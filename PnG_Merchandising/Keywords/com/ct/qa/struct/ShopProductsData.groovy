@@ -18,17 +18,33 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
 
-public class HangerProduct {
+public class ShopProductsData {
 	public String product
+	public String pd_displayspaceavailable
+	public String pd_overwrite_displayspaceavailable
 	public String hangeravailable
 	public String hangernotavailable
 	public String overwrite_hangeravailable
-	public String overwrite_hangernotavailable
+	public String overwrite_hangernotavailable
+	public String hs_facing
+	public String overwrite_hs_facing
 	public String getProduct() {
 		return product;
 	}
 	public void setProduct(String product) {
 		this.product = product;
+	}
+	public String getPd_displayspaceavailable() {
+		return pd_displayspaceavailable;
+	}
+	public void setPd_displayspaceavailable(String pd_displayspaceavailable) {
+		this.pd_displayspaceavailable = pd_displayspaceavailable;
+	}
+	public String getPd_overwrite_displayspaceavailable() {
+		return pd_overwrite_displayspaceavailable;
+	}
+	public void setPd_overwrite_displayspaceavailable(String pd_overwrite_displayspaceavailable) {
+		this.pd_overwrite_displayspaceavailable = pd_overwrite_displayspaceavailable;
 	}
 	public String getHangeravailable() {
 		return hangeravailable;
@@ -53,5 +69,17 @@ public class HangerProduct {
 	}
 	public void setOverwrite_hangernotavailable(String overwrite_hangernotavailable) {
 		this.overwrite_hangernotavailable = overwrite_hangernotavailable;
+	}
+	public String getHs_facing() {
+		return hs_facing;
+	}
+	public void setHs_facing(String hs_facing) {
+		this.hs_facing = hs_facing;
+	}
+	public String getOverwrite_hs_facing() {
+		return overwrite_hs_facing;
+	}
+	public void setOverwrite_hs_facing(String overwrite_hs_facing) {
+		this.overwrite_hs_facing = overwrite_hs_facing;
 	}
 }

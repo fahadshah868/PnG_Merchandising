@@ -187,7 +187,7 @@ public class CompareDataKeywords {
 	def static compareShopRemainingCategoryRemarks(){
 		ArrayList<String> displaycategoryremarks = new ArrayList<String>()
 		ArrayList<String> expectedcategoriesremarksformmachannels = new ArrayList<String>()
-		expectedcategoriesremarksformmachannels.addAll(Arrays.asList("Availability","Primary Display","Secondary Display","Additional Infooo"))
+		expectedcategoriesremarksformmachannels.addAll(Arrays.asList("Availability","Primary Display","Secondary Display","Additional Info"))
 		ArrayList<String> expectedcategoriesremarksforotherchannels = new ArrayList<String>()
 		expectedcategoriesremarksforotherchannels.addAll(Arrays.asList("Availability","Primary Display","Secondary Display"))
 		int index = 0

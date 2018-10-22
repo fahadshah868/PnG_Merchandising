@@ -6,9 +6,10 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import com.ct.qa.constants.ProjectConstants
-import com.ct.qa.struct.HangerProduct
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.ProductWithValue
+import com.ct.qa.struct.ShopProductsData
+import com.ct.qa.struct.UnmatchedItems
 import com.ct.qa.struct.VisitedCategoryData
 import com.ct.qa.struct.VisitedShopDataInfo
 import com.kms.katalon.core.annotation.Keyword
@@ -35,7 +36,7 @@ public class HangerKeywords {
 		int totalhangers = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalhangers; i++){
 			MobileElement hangercategory = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
-			ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY = hangercategory.getText()
+			ProjectConstants.CURRENTVISITING_SUBCATEGORY = hangercategory.getText()
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			if(hangertype.equalsIgnoreCase("Hanger Available")){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerAvailable/VisitHangerAvailable"), null)
@@ -71,18 +72,23 @@ public class HangerKeywords {
 	}
 	@Keyword
 	def visitHangerProducts(int columnindex, String assettype){
-		ArrayList<HangerProduct> visitedhangerproducts = new ArrayList<HangerProduct>()
+		ArrayList<ShopProductsData> visitedshopproductsdata = new ArrayList<ShopProductsData>()
+		ArrayList<String> expectedproducts = new ArrayList<String>()
+		ArrayList<String> displayedproducts = new ArrayList<String>()
 		int index = 0
 		XSSFSheet sheet = LoadDataKeywords.loadChannelProductsSheet()
 		ArrayList<ProductWithValue> expectedhangerproducts = LoadDataKeywords.loadChannelWiseProductsList(sheet, columnindex)
+		for(int i=0; i< expectedhangerproducts.size(); i++){
+			expectedproducts.add(expectedhangerproducts.get(i).getProduct())
+		}
 		int totalproducts = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
 		for(int i=1; i<= totalproducts; i=i+3){
-			HangerProduct hangerproduct = new HangerProduct()
+			ShopProductsData shopproductdata = new ShopProductsData()
 			boolean flag = false
 			index = index + 1
 			MobileElement product = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
 			String productname = product.getText()
-			hangerproduct.setProduct(productname)
+			shopproductdata.setProduct(productname)
 			for(int j=0; j< expectedhangerproducts.size(); j++){
 				ProductWithValue expectedhotspotproduct = expectedhangerproducts.get(j)
 				if(expectedhotspotproduct.getProduct().equalsIgnoreCase(productname)){
@@ -91,18 +97,18 @@ public class HangerKeywords {
 					edittext.setValue(expectedhotspotproduct.getProduct_value())
 					if(assettype.equalsIgnoreCase("Hanger Available")){
 						if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-							hangerproduct.setHangeravailable(expectedhotspotproduct.getProduct_value())
+							shopproductdata.setHangeravailable(expectedhotspotproduct.getProduct_value())
 						}
 						else{
-							hangerproduct.setOverwrite_hangeravailable(expectedhotspotproduct.getProduct_value())
+							shopproductdata.setOverwrite_hangeravailable(expectedhotspotproduct.getProduct_value())
 						}
 					}
 					else{
 						if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-							hangerproduct.setHangernotavailable(expectedhotspotproduct.getProduct_value())
+							shopproductdata.setHangernotavailable(expectedhotspotproduct.getProduct_value())
 						}
 						else{
-							hangerproduct.setOverwrite_hangernotavailable(expectedhotspotproduct.getProduct_value())
+							shopproductdata.setOverwrite_hangernotavailable(expectedhotspotproduct.getProduct_value())
 						}
 					}
 					Mobile.hideKeyboard()
@@ -115,29 +121,29 @@ public class HangerKeywords {
 				edittext.setValue("0000")
 				if(assettype.equalsIgnoreCase("Hanger Available")){
 					if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-						hangerproduct.setHangeravailable("0000")
+						shopproductdata.setHangeravailable("0000")
 					}
 					else{
-						hangerproduct.setOverwrite_hangeravailable("0000")
+						shopproductdata.setOverwrite_hangeravailable("0000")
 					}
 				}
 				else{
 					if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-						hangerproduct.setHangernotavailable("0000")
+						shopproductdata.setHangernotavailable("0000")
 					}
 					else{
-						hangerproduct.setOverwrite_hangernotavailable("0000")
+						shopproductdata.setOverwrite_hangernotavailable("0000")
 					}
 				}
 				Mobile.hideKeyboard()
 			}
 			else{}
-			visitedhangerproducts.add(hangerproduct)
+			visitedshopproductsdata.add(shopproductdata)
 		}
 		totalproducts = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
 		if(totalproducts >= 16){
 			while(true){
-				HangerProduct hangerproduct = new HangerProduct()
+				ShopProductsData hangerproduct = new ShopProductsData()
 				boolean flag = false
 				int xlocation = ProjectConstants.getXPoint()
 				MobileElement productbeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
@@ -200,142 +206,92 @@ public class HangerKeywords {
 					}
 					else{}
 				}
-				visitedhangerproducts.add(hangerproduct)
+				visitedshopproductsdata.add(hangerproduct)
 			}
 		}
 		else{}
-		if(expectedhangerproducts.size() == visitedhangerproducts.size()){
-			ArrayList<String> products = new ArrayList<String>()
-			for(int i=0; i<visitedhangerproducts.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedhangerproducts.size(); j++){
-					if(visitedhangerproducts.get(i).getProduct().equalsIgnoreCase(expectedhangerproducts.get(j).getProduct())){
-						match = true
-						break
-					}
-					else{}
-				}
-				if(match == false){
-					products.add(visitedhangerproducts.get(i).getProduct())
-				}
-				else{
-				}
-			}
-			if(!products.isEmpty()){
-				MissingCategoryData missingcategorydata = new MissingCategoryData()
-				missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-				missingcategorydata.setProducts(products)
-				missingcategorydata.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
-				missingcategorydata.setProducts_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSARE_NOTMATCH)
-				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-						ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
-						break
-					}
-					else{
-					}
-				}
-			}
-			else{
-			}
+		for(int i=0; i< visitedshopproductsdata.size(); i++){
+			displayedproducts.add(visitedshopproductsdata.get(i).getProduct())
 		}
-		else if(expectedhangerproducts.size() < visitedhangerproducts.size()){
-			ArrayList<String> products = new ArrayList<String>()
-			for(int i=0; i<visitedhangerproducts.size(); i++){
-				boolean match = false
-				for(int j=0; j<expectedhangerproducts.size(); j++){
-					if(visitedhangerproducts.get(i).getProduct().equalsIgnoreCase(expectedhangerproducts.get(j).getProduct())){
-						match = true
-						break
-					}
-				}
-				if(match == false){
-					products.add(visitedhangerproducts.get(i).getProduct())
-				}
-				else{
-				}
-			}
-			MissingCategoryData missingcategorydata = new MissingCategoryData()
-			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProducts(products)
-			missingcategorydata.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
-			missingcategorydata.setProducts_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSARE_MORE)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedproducts, displayedproducts)
+		if(UnmatchedItems_status.getStatus() == 2){
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+			missingcategory.setProducts(UnmatchedItems_status.getItems())
+			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
 				}
 				else{
 				}
 			}
 		}
-		else if(expectedhangerproducts.size() > visitedhangerproducts.size()){
-			ArrayList<String> products = new ArrayList<String>()
-			for(int i=0; i<expectedhangerproducts.size(); i++){
-				boolean match = false
-				for(int j=0; j<visitedhangerproducts.size(); j++){
-					if(expectedhangerproducts.get(i).getProduct().equalsIgnoreCase(visitedhangerproducts.get(j).getProduct())){
-						match = true
-						break
-					}
-				}
-				if(match == false){
-					products.add(expectedhangerproducts.get(i).getProduct())
+		else if(UnmatchedItems_status.getStatus() == 1){
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+			missingcategory.setProducts(UnmatchedItems_status.getItems())
+			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
 				}
 				else{
 				}
 			}
-			MissingCategoryData missingcategorydata = new MissingCategoryData()
-			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategorydata.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
-			missingcategorydata.setProducts_errormessage(ProjectConstants.MESSAGEFOR_PRODUCTSARE_MISSING)
-			missingcategorydata.setProducts(products)
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+			missingcategory.setProducts(UnmatchedItems_status.getItems())
+			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
-					break
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
 				}
 				else{
 				}
 			}
 		}
 		else{
-
-			String message = "Main Category: "+ProjectConstants.CURRENTVISITING_MAINCATEGORY+"\nProduct Category: "+ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY+"\n"+ProjectConstants.MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL
-			KeywordUtil.logInfo(message)
 		}
-		VisitedCategoryData visitedcategorydata = new VisitedCategoryData()
-		visitedcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-		visitedcategorydata.setProductcategory(ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY)
-		visitedcategorydata.setHangerproducts(visitedhangerproducts)
+		VisitedCategoryData visitedcategory = new VisitedCategoryData()
+		visitedcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+		visitedcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+		visitedcategory.setShopproductsdata(visitedshopproductsdata)
 		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
 			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
 				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
 				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
-				if(visitedcategoriesdata.size() != 0){
+				if(visitedcategoriesdata != null){
 					boolean flag = false
 					for(int k=0; k<visitedcategoriesdata.size(); k++){
-						VisitedCategoryData visitedcategorydatainfo = visitedcategoriesdata.get(k)
-						if(visitedcategorydatainfo.getMaincategory().equals(visitedcategorydata.getMaincategory()) && visitedcategorydatainfo.getProductcategory().equals(visitedcategorydata.getProductcategory())){
+						VisitedCategoryData visitedcategorydata = visitedcategoriesdata.get(k)
+						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory()) && visitedcategorydata.getSubcategory().equalsIgnoreCase(visitedcategory.getSubcategory())){
+							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
 							flag = true
-							for(int l=0; l< visitedcategorydatainfo.getHotspotproducts().size(); l++){
-								HangerProduct existingproductsdata = visitedcategorydatainfo.getHangerproducts().get(l)
-								for(int m=0; m< visitedhangerproducts.size(); m++){
-									ProductWithValue displayedhotspotproduct = visitedhangerproducts.get(m)
-									if(existingproductsdata.getProduct().equals(displayedhotspotproduct.getProduct())){
+							for(int n=0; n< shopproductsdata.size(); n++){
+								ShopProductsData existingshopproductsdata = shopproductsdata.get(n)
+								for(int b=0; b< visitedshopproductsdata.size(); b++){
+									ShopProductsData displayedshopproductsdata = visitedshopproductsdata.get(b)
+									if(existingshopproductsdata.getProduct().equalsIgnoreCase(displayedshopproductsdata.getProduct())){
 										if(assettype.equalsIgnoreCase("Hanger Available")){
-											if(ProjectConstants.SCENARIO.equals("first visit")){
-												existingproductsdata.setHangeravailable(displayedhotspotproduct.getProduct_value())
+											if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+												existingshopproductsdata.setHangeravailable(displayedshopproductsdata.getHangeravailable())
 											}
 											else{
-												existingproductsdata.setOverwrite_hangeravailable(displayedhotspotproduct.getProduct_value())
+												existingshopproductsdata.setOverwrite_hangeravailable(displayedshopproductsdata.getOverwrite_hangeravailable())
 											}
 										}
 										else{
-											if(ProjectConstants.SCENARIO.equals("first visit")){
-												existingproductsdata.setHangernotavailable(displayedhotspotproduct.getProduct_value())
+											if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+												existingshopproductsdata.setHangernotavailable(displayedshopproductsdata.getHangernotavailable())
 											}
 											else{
-												existingproductsdata.setOverwrite_hangernotavailable(displayedhotspotproduct.getProduct_value())
+												existingshopproductsdata.setOverwrite_hangernotavailable(displayedshopproductsdata.getOverwrite_hangernotavailable())
 											}
 										}
 									}
@@ -344,12 +300,12 @@ public class HangerKeywords {
 						}
 					}
 					if(flag == false){
-						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategorydata)
+						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
 						break
 					}
 				}
 				else{
-					ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategorydata)
+					ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
 					break
 				}
 			}

@@ -22,7 +22,7 @@ import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
 import com.ct.qa.interfaces.ShopCategories
-import com.ct.qa.struct.MissingMainCategoryData
+import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.UnmatchedItems
 
 import internal.GlobalVariable
@@ -39,17 +39,10 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
-			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
-				String missingcategory = UnmatchedItems_status.getItems().get(i)
-				missingmaincategory.setMaincategory(missingcategory)
-				missingmaincategories.add(missingmaincategory)
-			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
-					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 					break
 				}
 				else{
@@ -57,17 +50,10 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
-			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
-				String missingcategory = UnmatchedItems_status.getItems().get(i)
-				missingmaincategory.setMaincategory(missingcategory)
-				missingmaincategories.add(missingmaincategory)
-			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
-					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 					break
 				}
 				else{
@@ -75,17 +61,10 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
-			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
-				String missingcategory = UnmatchedItems_status.getItems().get(i)
-				missingmaincategory.setMaincategory(missingcategory)
-				missingmaincategories.add(missingmaincategory)
-			}
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
-					ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 					break
 				}
 				else{
@@ -217,9 +196,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -235,9 +214,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -253,9 +232,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -389,9 +368,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -407,9 +386,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -425,9 +404,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -561,9 +540,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -579,9 +558,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -597,9 +576,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -729,9 +708,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -747,9 +726,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -765,9 +744,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -901,9 +880,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -919,9 +898,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -937,9 +916,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1069,9 +1048,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1087,9 +1066,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1105,9 +1084,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1241,9 +1220,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1259,9 +1238,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1277,9 +1256,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1413,9 +1392,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1431,9 +1410,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1449,9 +1428,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1585,9 +1564,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1603,9 +1582,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1621,9 +1600,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1757,9 +1736,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1775,9 +1754,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)
@@ -1793,9 +1772,9 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
+			ArrayList<MissingCategoryData> missingmaincategories = new ArrayList<MissingCategoryData>()
 			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
+				MissingCategoryData missingmaincategory = new MissingCategoryData()
 				String missingcategory = UnmatchedItems_status.getItems().get(i)
 				missingmaincategory.setMaincategory(missingcategory)
 				missingmaincategories.add(missingmaincategory)

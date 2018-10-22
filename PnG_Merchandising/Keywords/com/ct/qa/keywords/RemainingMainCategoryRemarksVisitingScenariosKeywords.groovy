@@ -6,8 +6,8 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import com.ct.qa.constants.ProjectConstants
+import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.MissingCategoryRemarkData
-import com.ct.qa.struct.MissingMainCategoryData
 import com.ct.qa.struct.UnmatchedItems
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
@@ -29,108 +29,39 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 	def visitRemarksWith_DataVerification(){
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopRemainingCategoryRemarks()
 		if(UnmatchedItems_status.getStatus() == 2){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
-			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
-			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
-				String missingremark = UnmatchedItems_status.getItems().get(i)
-				missingcategoryremark.setCategoryremark(missingremark)
-				missingcategoryremarks.add(missingcategoryremark)
-			}
-			MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
-			missingmaincategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingmaincategory.setMissingcategoryremarks(missingcategoryremarks)
-			missingmaincategory.setMissingcategoryremark_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
-			missingmaincategories.add(missingmaincategory)
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setMissingcategoryremarksdata(UnmatchedItems_status.getItems())
+			missingcategory.setMissingcategoryremarksdata_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ArrayList<MissingMainCategoryData> existingmissingmaincatergories = ProjectConstants.missingshopdatainfo.get(j).getMissingmaincategories()
-					if(existingmissingmaincatergories != null){
-						for(int m=0; m< existingmissingmaincatergories; m++){
-							if(existingmissingmaincatergories.get(m).getMaincategory().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_MAINCATEGORY)){
-								existingmissingmaincatergories.get(m).setMissingcategoryremarks(missingcategoryremarks)
-							}
-							else{
-								ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
-								break
-							}
-						}
-					}
-					else{
-						ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
-					}
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
 				}
 				else{
 				}
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
-			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
-			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
-				String missingremark = UnmatchedItems_status.getItems().get(i)
-				missingcategoryremark.setCategoryremark(missingremark)
-				missingcategoryremarks.add(missingcategoryremark)
-			}
-			MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
-			missingmaincategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingmaincategory.setMissingcategoryremarks(missingcategoryremarks)
-			missingmaincategory.setMissingcategoryremark_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
-			missingmaincategories.add(missingmaincategory)
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setMissingcategoryremarksdata(UnmatchedItems_status.getItems())
+			missingcategory.setMissingcategoryremarksdata_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ArrayList<MissingMainCategoryData> existingmissingmaincatergories = ProjectConstants.missingshopdatainfo.get(j).getMissingmaincategories()
-					if(existingmissingmaincatergories != null){
-						for(int m=0; m< existingmissingmaincatergories; m++){
-							if(existingmissingmaincatergories.get(m).getMaincategory().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_MAINCATEGORY)){
-								existingmissingmaincatergories.get(m).setMissingcategoryremarks(missingcategoryremarks)
-							}
-							else{
-								ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
-								break
-							}
-						}
-					}
-					else{
-						ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
-					}
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
 				}
 				else{
 				}
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
-			ArrayList<MissingMainCategoryData> missingmaincategories = new ArrayList<MissingMainCategoryData>()
-			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
-			for(int i=0; i< UnmatchedItems_status.getItems().size() ; i++){
-				MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
-				String missingremark = UnmatchedItems_status.getItems().get(i)
-				missingcategoryremark.setCategoryremark(missingremark)
-				missingcategoryremarks.add(missingcategoryremark)
-			}
-			MissingMainCategoryData missingmaincategory = new MissingMainCategoryData()
-			missingmaincategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingmaincategory.setMissingcategoryremarks(missingcategoryremarks)
-			missingmaincategory.setMissingcategoryremark_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
-			missingmaincategories.add(missingmaincategory)
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setMissingcategoryremarksdata(UnmatchedItems_status.getItems())
+			missingcategory.setMissingcategoryremarksdata_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-					ArrayList<MissingMainCategoryData> existingmissingmaincatergories = ProjectConstants.missingshopdatainfo.get(j).getMissingmaincategories()
-					if(existingmissingmaincatergories != null){
-						for(int m=0; m< existingmissingmaincatergories; m++){
-							if(existingmissingmaincatergories.get(m).getMaincategory().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_MAINCATEGORY)){
-								existingmissingmaincatergories.get(m).setMissingcategoryremarks(missingcategoryremarks)
-							}
-							else{
-								ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
-								break
-							}
-						}
-					}
-					else{
-						ProjectConstants.missingshopdatainfo.get(j).setMissingmaincategories(missingmaincategories)
-					}
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
 				}
 				else{
 				}
@@ -139,7 +70,7 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 		else{
 		}
 		int totalactions = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<= totalactions; i++){
+		for(int i=2; i<= totalactions; i++){
 			MobileElement action = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String actionname = action.getText()
 			ProjectConstants.CURRENTVISITING_REMAININGCATEOGRYREMARK = actionname
