@@ -7,7 +7,6 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import com.ct.qa.constants.ProjectConstants
 import com.ct.qa.struct.ProductWithValue
-import com.ct.qa.struct.Questions
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
@@ -134,7 +133,7 @@ public class LoadDataKeywords {
 	//load channel wise survey questions
 	def static loadSurveyQuestionsList(XSSFSheet sheet, int columnindexforvalue){
 		DataFormatter dataformatter = new DataFormatter()
-		ArrayList<Questions> expectedsurveyquestions = new ArrayList<String>()
+		ArrayList<ProductWithValue> expectedsurveyquestions = new ArrayList<ProductWithValue>()
 		int totalrows = sheet.getLastRowNum()
 		for(int i=1; i<=totalrows; i++){
 			Row row = sheet.getRow(i)
@@ -142,11 +141,11 @@ public class LoadDataKeywords {
 			String questioncategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONCATEGORY))
 			String channelname = "Channel: "+channel
 			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_SURVEYQUESTION_CATEGORY.equalsIgnoreCase(questioncategory)){
-				Questions questionwithvalue = new Questions()
+				ProductWithValue questionwithvalue = new ProductWithValue()
 				String question = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTION))
 				String value = dataformatter.formatCellValue(row.getCell(columnindexforvalue))
-				questionwithvalue.setQuestion(question)
-				questionwithvalue.setQuestion_value(value)
+				questionwithvalue.setProduct(question)
+				questionwithvalue.setProduct_value(value)
 				expectedsurveyquestions.add(questionwithvalue)
 			}
 		}
@@ -155,7 +154,7 @@ public class LoadDataKeywords {
 	//load channel wise survey questions
 	def static loadAdditionalInfoQuestionsList(){
 		DataFormatter dataformatter = new DataFormatter()
-		ArrayList<Questions> expectedadditionalinfoquestions = new ArrayList<String>()
+		ArrayList<ProductWithValue> expectedadditionalinfoquestions = new ArrayList<ProductWithValue>()
 		XSSFSheet sheet = loadAdditionalInfoQuestionsSheet()
 		int totalrows = sheet.getLastRowNum()
 		for(int i=1; i<=totalrows; i++){
@@ -164,11 +163,11 @@ public class LoadDataKeywords {
 			String maincategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTIONS_MAINCATEGORY))
 			String channelname = "Channel: "+channel
 			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_MAINCATEGORY.equalsIgnoreCase(maincategory)){
-				Questions questionwithvalue = new Questions()
+				ProductWithValue questionwithvalue = new ProductWithValue()
 				String question = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTION))
 				String value = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTION_VALUE))
-				questionwithvalue.setQuestion(question)
-				questionwithvalue.setQuestion_value(value)
+				questionwithvalue.setProduct(question)
+				questionwithvalue.setProduct_value(value)
 				expectedadditionalinfoquestions.add(questionwithvalue)
 			}
 		}

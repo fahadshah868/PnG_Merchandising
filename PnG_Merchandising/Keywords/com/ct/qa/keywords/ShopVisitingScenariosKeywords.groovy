@@ -31,6 +31,9 @@ import com.ct.qa.struct.VisitedShopDataInfo
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.MissingCategoryRemarkData
 import com.ct.qa.struct.MissingShopDataInfo
+import com.ct.qa.struct.ShopProductsData
+import com.ct.qa.struct.VisitedCategoryData
+import com.ct.qa.struct.VisitedCategoryRemarkData
 
 public class ShopVisitingScenariosKeywords{
 	def displayDataInReport(){
@@ -357,77 +360,73 @@ public class ShopVisitingScenariosKeywords{
 				}
 			}
 		}
-		//		message = "\n\n\n---------------------------------------------Visited Shop Data-----------------------------------------------------------------------------------------------------\n\n"+
-		//				"<-------------------------------------------------------------------------------------------------------------------------------------->"
-		//		for(int i=0; i<ProjectConstants.visitedshopdatainfo.size(); i++){
-		//			VisitedShopDataInfo visitedshopdatainfo = ProjectConstants.visitedshopdatainfo.get(i)
-		//			if(visitedshopdatainfo != null){
-		//				message = message+"\n\n"+
-		//						String.format("%-11s%-60s%-60s","Shop Name:",visitedshopdatainfo.getShopname(),visitedshopdatainfo.getShopchannel())+"\n\n"+
-		//						String.format("%-30s%-100s", "Visiting Scenarios:",visitedshopdatainfo.getScenario())
-		//				if(visitedshopdatainfo.getVisitedcategoriesdata() != null){
-		//					for(int j=0; j< visitedshopdatainfo.getVisitedcategoriesdata().size(); j++){
-		//						VisitedCategoryData visitedcategorydata = visitedshopdatainfo.getVisitedcategoriesdata().get(j)
-		//						if(visitedcategorydata.getMaincategory().equalsIgnoreCase("Chiller Utilization")){
-		//							for(int k=0; k< visitedcategorydata.getTaggedchillersremark().size(); k++){
-		//								TaggedChillersRemark taggedchillerremarks = visitedcategorydata.getTaggedchillersremark().get(k)
-		//								if(taggedchillerremarks.getChillerremark().equalsIgnoreCase("Chiller Available") || taggedchillerremarks.getChillerremark().equalsIgnoreCase("Chiller need maintenance") || taggedchillerremarks.getChillerremark().equalsIgnoreCase("Chiller Type not Available")){
-		//									if(taggedchillerremarks.getVisitedchillerproductscategories() != null){
-		//										for(int m=0; m<taggedchillerremarks.getVisitedchillerproductscategories().size() ; m++){
-		//											VisitedChillerProductsCategoryData visitedchillerproductcategory = taggedchillerremarks.getVisitedchillerproductscategories().get(m)
-		//											if(visitedchillerproductcategory.getProductCategory() != null){
-		//												message = message + "\n\n" +
-		//														String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-		//														String.format("%-30s%-60s", "Chiller Type:",taggedchillerremarks.getChillertype()) + "\n" +
-		//														String.format("%-30s%-60s", "Chiller Remark:",taggedchillerremarks.getChillerremark()) + "\n" +
-		//														String.format("%-30s%-60s", "Product Category:",visitedchillerproductcategory.getProductCategory()) + "\n" +
-		//														String.format("%-45s%-14s%-14s%-20s%-24s%-24s%-30s", "Products","Facing","Depth","Stock Count","Overwrite Facing","Overwrite Depth","Overwrite Stock Count")+"\n"
-		//												for(int n=0; n<visitedchillerproductcategory.getShopproductsdata().size() ; n++){
-		//													ShopProductsData shopproductsdata = visitedchillerproductcategory.getShopproductsdata().get(n)
-		//													message = message + String.format("%-45s%-14s%-14s%-20s%-24s%-24s%-30s", shopproductsdata.getProduct(),shopproductsdata.getFacingdata(),shopproductsdata.getDepthdata(),shopproductsdata.getStockcountdata(),shopproductsdata.getOverwritefacingdata(),shopproductsdata.getOverwritedepthdata(),shopproductsdata.getOverwritestockcountdata())+"\n"
-		//												}
-		//											}
-		//										}
-		//									}
-		//								}
-		//								else{
-		//									if(taggedchillerremarks.getVisitedchillerproductscategories() != null){
-		//										for(int m=0; m<taggedchillerremarks.getVisitedchillerproductscategories().size() ; m++){
-		//											VisitedChillerProductsCategoryData visitedchillerproductcategory = taggedchillerremarks.getVisitedchillerproductscategories().get(m)
-		//											if(visitedchillerproductcategory.getProductCategory() != null){
-		//												message = message+ "\n\n" +
-		//														String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-		//														String.format("%-30s%-60s", "Chiller Type:",taggedchillerremarks.getChillertype()) + "\n" +
-		//														String.format("%-30s%-60s", "Chiller Remark:",taggedchillerremarks.getChillerremark()) + "\n" +
-		//														String.format("%-30s%-60s", "Product Category:",visitedchillerproductcategory.getProductCategory()) + "\n" +
-		//														String.format("%-50s%-20s%-20s%-30s%-30s", "Products:","Facing","Stock Taking","Overwrite Facing","Overwrite Stock Taking")+"\n"
-		//												for(int n=0; n<visitedchillerproductcategory.getShopproductsdata().size() ; n++){
-		//													ShopProductsData shopproductsdata = visitedchillerproductcategory.getShopproductsdata().get(n)
-		//													message = message + String.format("%-50s%-20s%-20s%-30s%-30s", shopproductsdata.getProduct(),shopproductsdata.getFacingdata(),shopproductsdata.getStocktakingdata(),shopproductsdata.getOverwritefacingdata(),shopproductsdata.getOverwritestocktakingdata())+"\n"
-		//												}
-		//											}
-		//										}
-		//									}
-		//								}
-		//							}
-		//						}
-		//						else{
-		//							message = message+ "\n\n" +
-		//									String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-		//									String.format("%-30s%-60s", "Product Category:",visitedcategorydata.getProductcategory()) + "\n" +
-		//									String.format("%-50s%-20s%-20s%-30s%-30s", "Products:","Facing","Stock Taking","Overwrite Facing","Overwrite Stock Taking")+"\n"
-		//							for(int k=0; k<visitedcategorydata.getShopProductsdata().size() ; k++){
-		//								ShopProductsData shopproductsdata = visitedcategorydata.getShopProductsdata().get(k)
-		//								message = message + String.format("%-50s%-20s%-20s%-30s%-30s", shopproductsdata.getProduct(),shopproductsdata.getFacingdata(),shopproductsdata.getStocktakingdata(),shopproductsdata.getOverwritefacingdata(),shopproductsdata.getOverwritestocktakingdata())+"\n"
-		//							}
-		//						}
-		//					}
-		//				}
-		//				message = message + "\n\n<-------------------------------------------------------------------------------------------------------------------------------------->\n\n"
-		//				KeywordUtil.logInfo(message)
-		//				message = ""
-		//			}
-		//		}
+		message = "\n\n\n---------------------------------------------Visited Shop Data-----------------------------------------------------------------------------------------------------\n\n"+
+				"<-------------------------------------------------------------------------------------------------------------------------------------->"
+		for(int i=0; i<ProjectConstants.visitedshopdatainfo.size(); i++){
+			VisitedShopDataInfo visitedshopdatainfo = ProjectConstants.visitedshopdatainfo.get(i)
+			if(visitedshopdatainfo != null){
+				message = message+"\n\n"+
+						String.format("%-11s%-60s%-60s","Shop Name:",visitedshopdatainfo.getShopname(),visitedshopdatainfo.getShopchannel())+"\n\n"+
+						String.format("%-30s%-100s", "Visiting Scenarios:",visitedshopdatainfo.getScenario())
+				if(visitedshopdatainfo.getVisitedcategoriesdata() != null){
+					for(int j=0; j< visitedshopdatainfo.getVisitedcategoriesdata().size(); j++){
+						VisitedCategoryData visitedcategorydata = visitedshopdatainfo.getVisitedcategoriesdata().get(j)
+						if(visitedcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
+							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
+							if(shopproductsdata != null){
+								message = message + "\n\n" +
+								String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+								String.format("%-30s%-60s", "HotSpot Type:",visitedcategorydata.getSubcategory()) + "\n" +
+								String.format("%-50s%-30s%-30s", "Products","Facing","Overwrite Facing")+"\n"
+								for(int n=0; n< shopproductsdata.size() ; n++){
+									ShopProductsData _shopproductsdata = shopproductsdata.get(n)
+									message = message + String.format("%-50s%-30s%-30s", _shopproductsdata.getProduct(),_shopproductsdata.getHs_facing(), _shopproductsdata.getOverwrite_hs_facing())+"\n"
+								}
+								message = message + "\n"
+							}
+						}
+						else if(visitedcategorydata.getMaincategory().equalsIgnoreCase("Hanger")){
+							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
+							if(shopproductsdata != null){
+								message = message + "\n\n" +
+								String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+								String.format("%-30s%-60s", "Sub Category:",visitedcategorydata.getSubcategory()) + "\n" +
+								String.format("%-40s%-22s%-32s%-26s%-36s", "Products","Hanger Available","Overwrite Hanger Available","Hanger Not Available","Overwrite Hanger Not Available")+"\n"
+								for(int n=0; n< shopproductsdata.size() ; n++){
+									ShopProductsData _shopproductsdata = shopproductsdata.get(n)
+									message = message + String.format("%-40s%-22s%-32s%-26s%-36s", _shopproductsdata.getProduct(),_shopproductsdata.getHangeravailable(), _shopproductsdata.getOverwrite_hangeravailable(), _shopproductsdata.getHangernotavailable(), _shopproductsdata.getOverwrite_hangernotavailable())+"\n"
+								}
+								message = message + "\n"
+							}
+						}
+						else{
+							ArrayList<VisitedCategoryRemarkData> visitedcatgoryremarks = visitedcategorydata.getVisitedcategoryremarks()
+							if(visitedcatgoryremarks != null){
+								for(int b=0; b< visitedcatgoryremarks.size(); b++){
+									VisitedCategoryRemarkData visitedcategoryremark = visitedcatgoryremarks.get(b)
+									ArrayList<ShopProductsData> shopproductsdata = visitedcategoryremark.getShopproductsdata()
+									if(shopproductsdata != null){
+										message = message + "\n\n" +
+										String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+										String.format("%-30s%-60s", "Category Remark:",visitedcategoryremark.getCategoryremark()) + "\n" +
+										String.format("%-30s%-60s", "Sub Category:",visitedcategoryremark.getSubcategory()) + "\n" +
+										String.format("%-50s%-40s%-40s", "Products","Display Space Available","Overwrite Display Space Available")+"\n"
+										for(int n=0; n< shopproductsdata.size() ; n++){
+											ShopProductsData _shopproductsdata = shopproductsdata.get(n)
+											message = message + String.format("%-40s%-22s%-32s-26s%-36s", _shopproductsdata.getProduct(),_shopproductsdata.getPd_displayspaceavailable(), _shopproductsdata.getPd_overwrite_displayspaceavailable())+"\n"
+										}
+										message = message + "\n"
+									}
+								}
+							}
+						}
+					}
+				}
+				message = message + "\n\n<-------------------------------------------------------------------------------------------------------------------------------------->\n\n"
+				KeywordUtil.logInfo(message)
+				message = ""
+			}
+		}
 	}
 
 	def findShop(String _shopname){

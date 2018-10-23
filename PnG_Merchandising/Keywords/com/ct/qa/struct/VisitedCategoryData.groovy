@@ -54,5 +54,4 @@ public class VisitedCategoryData {
 	public void setShopproductsdata(ArrayList<ShopProductsData> shopproductsdata) {
 		this.shopproductsdata = shopproductsdata;
 	}
-	
 }

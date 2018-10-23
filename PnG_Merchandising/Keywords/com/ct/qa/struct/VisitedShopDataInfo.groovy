@@ -54,5 +54,4 @@ public class VisitedShopDataInfo {
 	public void setVisitedcategoriesdata(ArrayList<VisitedCategoryData> visitedcategoriesdata) {
 		this.visitedcategoriesdata = visitedcategoriesdata;
 	}
-	
 }

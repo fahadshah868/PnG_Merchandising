@@ -755,7 +755,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 		MobileElement surveyquestion = null
 		ArrayList<String> visitedsurveyquestions = new ArrayList<String>()
 		ArrayList<String> expectedsurveyquestionslist = new ArrayList<String>()
-		ArrayList<ProductWithValue> expectedsurveyquestions = LoadDataKeywords.loadSurveyQuestionsList(LoadDataKeywords.loadSurveyQuestionsSheet() , ProjectConstants.SURVEYQUESTIONVALUE)
+		ArrayList<ProductWithValue> expectedsurveyquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList()
 		for(int i=1; i< expectedsurveyquestions.size(); i++){
 			expectedsurveyquestionslist.add(expectedsurveyquestions.get(i).getProduct())
 		}
@@ -842,11 +842,17 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedsurveyquestions)
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
+			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
+			missingcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategoryremark.setSubcategory("")
+			missingcategoryremark.setSubremark("")
+			missingcategoryremark.setProducts(UnmatchedItems_status.getItems())
+			missingcategoryremark.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategoryremarks.add(missingcategoryremark)
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
-			missingcategory.setProducts(UnmatchedItems_status.getItems())
-			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategory.setMissingcategoryremarks(missingcategoryremarks)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
@@ -856,11 +862,17 @@ public class RemainingMainCategoriesRemarksKeywords {
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
+			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
+			missingcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategoryremark.setSubcategory("")
+			missingcategoryremark.setSubremark("")
+			missingcategoryremark.setProducts(UnmatchedItems_status.getItems())
+			missingcategoryremark.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategoryremarks.add(missingcategoryremark)
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
-			missingcategory.setProducts(UnmatchedItems_status.getItems())
-			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+			missingcategory.setMissingcategoryremarks(missingcategoryremarks)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
@@ -870,11 +882,17 @@ public class RemainingMainCategoriesRemarksKeywords {
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
+			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
+			missingcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategoryremark.setSubcategory("")
+			missingcategoryremark.setSubremark("")
+			missingcategoryremark.setProducts(UnmatchedItems_status.getItems())
+			missingcategoryremark.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategoryremarks.add(missingcategoryremark)
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
-			missingcategory.setProducts(UnmatchedItems_status.getItems())
-			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+			missingcategory.setMissingcategoryremarks(missingcategoryremarks)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
@@ -885,57 +903,47 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 		else{
 		}
-		
-		
-		//todo
-		
-		
-		
-		
+	}
+	@Keyword
+	def overwriteAdditionalInfoQuestions(){
 		int index = 0
 		String itemtextbeforeswipe = ""
 		String itemtextafterswipe = ""
 		String tag = ""
 		MobileElement surveyquestion = null
-		ArrayList<String> visitedadditionalinfoquestions = new ArrayList<String>()
-		//		ArrayList<Questions> expectedadditionalinfoquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList(LoadDataKeywords.loadAdditionalInfoQuestionsSheet(), ProjectConstants.ADDITIONALINFOQUESTION_VALUE)
+		ArrayList<String> visitedsurveyquestions = new ArrayList<String>()
+		ArrayList<String> expectedsurveyquestionslist = new ArrayList<String>()
+		ArrayList<ProductWithValue> expectedsurveyquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList()
+		for(int i=1; i< expectedsurveyquestions.size(); i++){
+			expectedsurveyquestionslist.add(expectedsurveyquestions.get(i).getProduct())
+		}
 		ArrayList<MobileElement> surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		for(int i=0; i< surveyquestionslist.size(); i++){
 			surveyquestion = surveyquestionslist.get(i)
 			tag = surveyquestion.getTagName()
 			if(tag.equalsIgnoreCase("android.widget.Spinner")){
 				String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
-				visitedadditionalinfoquestions.add(displayeddropdowntext)
+				visitedsurveyquestions.add(displayeddropdowntext)
 				surveyquestion.click()
-				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-				Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-				try{
-					Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-					Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]),0)
-					Mobile.delay(5)
-					Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]),0)
-				}
-				catch(Exception ex){
-				}
-				Mobile.verifyElementText(findTestObject('Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
+				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.tap(findTestObject("ShopOpen/SurveyQuestions/QuestionRemark_No", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 			}
 			else{
-				surveyquestion.setValue("0000")
-				Mobile.hideKeyboard()
-				//				String displayededitfieldtext = surveyquestion.getText()
-				//				visitedadditionalinfoquestions.add(displayededitfieldtext)
-				//				for(int j=0; j< expectedadditionalinfoquestions.size(); j++){
-				//					String expectededitfieldtext = expectedadditionalinfoquestions.get(j).getQuestion()
-				//					if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
-				//						String questionvalue = expectedadditionalinfoquestions.get(j).getQuestion_value()
-				//						surveyquestion.setValue(questionvalue)
-				//						Mobile.hideKeyboard()
-				//					}
-				//					else{
-				//						surveyquestion.setValue("0000")
-				//						Mobile.hideKeyboard()
-				//					}
-				//				}
+				String displayededitfieldtext = surveyquestion.getText()
+				visitedsurveyquestions.add(displayededitfieldtext)
+				for(int j=0; j< expectedsurveyquestions.size(); j++){
+					String expectededitfieldtext = expectedsurveyquestions.get(j).getProduct()
+					if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
+						String questionvalue = expectedsurveyquestions.get(j).getProduct_value()
+						surveyquestion.setValue(questionvalue)
+						Mobile.hideKeyboard()
+					}
+					else{
+						surveyquestion.setValue("0000")
+						Mobile.hideKeyboard()
+					}
+				}
 			}
 		}
 		while(true){
@@ -949,7 +957,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 			else{
 				itemtextbeforeswipe = surveyquestion.getText()
 			}
-			Mobile.swipe(20, 318, 20, 200)
+			Mobile.swipe(20, 317, 20, 200)
 			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 			index = (surveyquestionslist.size()-1)
 			surveyquestion =  surveyquestionslist.get(index)
@@ -966,334 +974,101 @@ public class RemainingMainCategoriesRemarksKeywords {
 			else{
 				if(tag.equalsIgnoreCase("android.widget.Spinner")){
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
-					visitedadditionalinfoquestions.add(displayeddropdowntext)
+					visitedsurveyquestions.add(displayeddropdowntext)
 					surveyquestion.click()
-					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-					try{
-						Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]),0)
-						Mobile.delay(5)
-						Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]),0)
-					}
-					catch(Exception ex){
-					}
-					Mobile.verifyElementText(findTestObject('Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
+					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.tap(findTestObject("ShopOpen/SurveyQuestions/QuestionRemark_No", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 				}
 				else{
-					surveyquestion.setValue("0000")
-					Mobile.hideKeyboard()
-					//					String displayededitfieldtext = surveyquestion.getText()
-					//					visitedadditionalinfoquestions.add(displayededitfieldtext)
-					//					for(int j=0; j< expectedadditionalinfoquestions.size(); j++){
-					//						String expectededitfieldtext = expectedadditionalinfoquestions.get(j).getQuestion()
-					//						if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
-					//							String questionvalue = expectedadditionalinfoquestions.get(j).getQuestion_value()
-					//							surveyquestion.setValue(questionvalue)
-					//							Mobile.hideKeyboard()
-					//						}
-					//						else{
-					//							surveyquestion.setValue("0000")
-					//							Mobile.hideKeyboard()
-					//						}
-					//					}
+					String displayededitfieldtext = surveyquestion.getText()
+					visitedsurveyquestions.add(displayededitfieldtext)
+					for(int j=0; j< expectedsurveyquestions.size(); j++){
+						String expectededitfieldtext = expectedsurveyquestions.get(j).getProduct()
+						if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
+							String questionvalue = expectedsurveyquestions.get(j).getProduct_value()
+							surveyquestion.setValue(questionvalue)
+							Mobile.hideKeyboard()
+						}
+						else{
+							surveyquestion.setValue("0000")
+							Mobile.hideKeyboard()
+						}
+					}
 				}
 			}
 		}
-		//		if(expectedadditionalinfoquestions.size() == visitedadditionalinfoquestions.size()){
-		//			ArrayList<String> questions = new ArrayList<String>()
-		//			for(int i=0; i<visitedadditionalinfoquestions.size(); i++){
-		//				boolean match = false
-		//				for(int j=0; j<expectedadditionalinfoquestions.size(); j++){
-		//					String dis = visitedadditionalinfoquestions.get(i)
-		//					String exp = expectedadditionalinfoquestions.get(j).getQuestion()
-		//					if(visitedadditionalinfoquestions.get(i).equalsIgnoreCase(expectedadditionalinfoquestions.get(j).getQuestion())){
-		//						match = true
-		//						break
-		//					}
-		//					else{}
-		//				}
-		//				if(match == false){
-		//					questions.add(visitedadditionalinfoquestions.get(i))
-		//				}
-		//				else{
-		//				}
-		//			}
-		//			if(!questions.isEmpty()){
-		//				MissingCategoryData missingcategorydata = new MissingCategoryData()
-		//				missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-		//				missingcategorydata.setAdditionalinfoquestions(questions)
-		//				missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_NOTMATCH)
-		//				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-		//					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-		//						ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
-		//						break
-		//					}
-		//					else{
-		//					}
-		//				}
-		//			}
-		//			else{
-		//			}
-		//		}
-		//		else if(expectedadditionalinfoquestions.size() < visitedadditionalinfoquestions.size()){
-		//			ArrayList<String> questions = new ArrayList<String>()
-		//			for(int i=0; i<visitedadditionalinfoquestions.size(); i++){
-		//				boolean match = false
-		//				for(int j=0; j<expectedadditionalinfoquestions.size(); j++){
-		//					if(visitedadditionalinfoquestions.get(i).equalsIgnoreCase(expectedadditionalinfoquestions.get(j).getQuestion())){
-		//						match = true
-		//						break
-		//					}
-		//				}
-		//				if(match == false){
-		//					questions.add(visitedadditionalinfoquestions.get(i))
-		//				}
-		//				else{
-		//				}
-		//			}
-		//			MissingCategoryData missingcategorydata = new MissingCategoryData()
-		//			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-		//			missingcategorydata.setAdditionalinfoquestions(questions)
-		//			missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_MORE)
-		//			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-		//				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-		//					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
-		//				}
-		//				else{
-		//				}
-		//			}
-		//		}
-		//		else if(expectedadditionalinfoquestions.size() > visitedadditionalinfoquestions.size()){
-		//			ArrayList<String> questions = new ArrayList<String>()
-		//			for(int i=0; i<expectedadditionalinfoquestions.size(); i++){
-		//				boolean match = false
-		//				for(int j=0; j<visitedadditionalinfoquestions.size(); j++){
-		//					if(expectedadditionalinfoquestions.get(i).getQuestion().equalsIgnoreCase(visitedadditionalinfoquestions.get(j))){
-		//						match = true
-		//						break
-		//					}
-		//				}
-		//				if(match == false){
-		//					questions.add(expectedadditionalinfoquestions.get(i).getQuestion())
-		//				}
-		//				else{
-		//				}
-		//			}
-		//			MissingCategoryData missingcategorydata = new MissingCategoryData()
-		//			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-		//			missingcategorydata.setAdditionalinfoquestions(questions)
-		//			missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_MISSING)
-		//			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-		//				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-		//					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
-		//					break
-		//				}
-		//				else{
-		//				}
-		//			}
-		//		}
-		//		else{
-		//
-		//			String message = "Main Category: "+ProjectConstants.CURRENTVISITING_MAINCATEGORY+"\nProduct Category: "+ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY+"\n"+ProjectConstants.MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL
-		//			KeywordUtil.logInfo(message)
-		//		}
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedsurveyquestions)
+		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
+			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
+			missingcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategoryremark.setSubcategory("")
+			missingcategoryremark.setSubremark("")
+			missingcategoryremark.setProducts(UnmatchedItems_status.getItems())
+			missingcategoryremark.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategoryremarks.add(missingcategoryremark)
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setMissingcategoryremarks(missingcategoryremarks)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
+			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
+			missingcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategoryremark.setSubcategory("")
+			missingcategoryremark.setSubremark("")
+			missingcategoryremark.setProducts(UnmatchedItems_status.getItems())
+			missingcategoryremark.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategoryremarks.add(missingcategoryremark)
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setMissingcategoryremarks(missingcategoryremarks)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
+			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
+			missingcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategoryremark.setSubcategory("")
+			missingcategoryremark.setSubremark("")
+			missingcategoryremark.setProducts(UnmatchedItems_status.getItems())
+			missingcategoryremark.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategoryremarks.add(missingcategoryremark)
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setMissingcategoryremarks(missingcategoryremarks)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
 	}
-	//	@Keyword
-	//	def overwriteAdditionalInfoQuestions(){
-	//		int index = 0
-	//		String itemtextbeforeswipe = ""
-	//		String itemtextafterswipe = ""
-	//		String tag = ""
-	//		MobileElement surveyquestion = null
-	//		ArrayList<String> visitedadditionalinfoquestions = new ArrayList<String>()
-	//		ArrayList<Questions> expectedadditionalinfoquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList(LoadDataKeywords.loadAdditionalInfoQuestionsSheet(), ProjectConstants.OVERWRITE_ADDITIONALINFOQUESTION_VALUE)
-	//		ArrayList<MobileElement> surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
-	//		for(int i=0; i< surveyquestionslist.size(); i++){
-	//			surveyquestion = surveyquestionslist.get(i)
-	//			tag = surveyquestion.getTagName()
-	//			if(tag.equalsIgnoreCase("android.widget.Spinner")){
-	//				String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
-	//				visitedadditionalinfoquestions.add(displayeddropdowntext)
-	//				surveyquestion.click()
-	//				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-	//				Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-	//				Mobile.verifyElementText(findTestObject('Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
-	//			}
-	//			else{
-	//				String displayededitfieldtext = surveyquestion.getText()
-	//				visitedadditionalinfoquestions.add(displayededitfieldtext)
-	//				for(int j=0; j< expectedadditionalinfoquestions.size(); j++){
-	//					String expectededitfieldtext = expectedadditionalinfoquestions.get(j).getQuestion()
-	//					if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
-	//						String questionvalue = expectedadditionalinfoquestions.get(j).getQuestion_value()
-	//						surveyquestion.setValue(questionvalue)
-	//						Mobile.hideKeyboard()
-	//					}
-	//					else{
-	//						surveyquestion.setValue("0000")
-	//						Mobile.hideKeyboard()
-	//					}
-	//				}
-	//			}
-	//		}
-	//		while(true){
-	//			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
-	//			index = (surveyquestionslist.size()-1)
-	//			surveyquestion =  surveyquestionslist.get(index)
-	//			tag = surveyquestion.getTagName()
-	//			if(tag.equalsIgnoreCase("android.widget.Spinner")){
-	//				itemtextbeforeswipe = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
-	//			}
-	//			else{
-	//				itemtextbeforeswipe = surveyquestion.getText()
-	//			}
-	//			Mobile.swipe(20, 324, 20, 200)
-	//			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
-	//			index = (surveyquestionslist.size()-1)
-	//			surveyquestion =  surveyquestionslist.get(index)
-	//			tag = surveyquestion.getTagName()
-	//			if(tag.equalsIgnoreCase("android.widget.Spinner")){
-	//				itemtextafterswipe = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
-	//			}
-	//			else{
-	//				itemtextafterswipe = surveyquestion.getText()
-	//			}
-	//			if(itemtextbeforeswipe.equals(itemtextafterswipe)){
-	//				break
-	//			}
-	//			else{
-	//				if(tag.equalsIgnoreCase("android.widget.Spinner")){
-	//					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
-	//					visitedadditionalinfoquestions.add(displayeddropdowntext)
-	//					surveyquestion.click()
-	//					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-	//					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-	//					Mobile.verifyElementText(findTestObject('Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
-	//				}
-	//				else{
-	//					String displayededitfieldtext = surveyquestion.getText()
-	//					visitedadditionalinfoquestions.add(displayededitfieldtext)
-	//					for(int j=0; j< expectedadditionalinfoquestions.size(); j++){
-	//						String expectededitfieldtext = expectedadditionalinfoquestions.get(j).getQuestion()
-	//						if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
-	//							String questionvalue = expectedadditionalinfoquestions.get(j).getQuestion_value()
-	//							surveyquestion.setValue(questionvalue)
-	//							Mobile.hideKeyboard()
-	//						}
-	//						else{
-	//							surveyquestion.setValue("0000")
-	//							Mobile.hideKeyboard()
-	//						}
-	//					}
-	//				}
-	//			}
-	//		}
-	//		if(expectedadditionalinfoquestions.size() == visitedadditionalinfoquestions.size()){
-	//			ArrayList<String> questions = new ArrayList<String>()
-	//			for(int i=0; i<visitedadditionalinfoquestions.size(); i++){
-	//				boolean match = false
-	//				for(int j=0; j<expectedadditionalinfoquestions.size(); j++){
-	//					String dis = visitedadditionalinfoquestions.get(i)
-	//					String exp = expectedadditionalinfoquestions.get(j).getQuestion()
-	//					if(visitedadditionalinfoquestions.get(i).equalsIgnoreCase(expectedadditionalinfoquestions.get(j).getQuestion())){
-	//						match = true
-	//						break
-	//					}
-	//					else{}
-	//				}
-	//				if(match == false){
-	//					questions.add(visitedadditionalinfoquestions.get(i))
-	//				}
-	//				else{
-	//				}
-	//			}
-	//			if(!questions.isEmpty()){
-	//				MissingCategoryData missingcategorydata = new MissingCategoryData()
-	//				missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-	//				missingcategorydata.setAdditionalinfoquestions(questions)
-	//				missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_NOTMATCH)
-	//				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-	//					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-	//						ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
-	//						break
-	//					}
-	//					else{
-	//					}
-	//				}
-	//			}
-	//			else{
-	//			}
-	//		}
-	//		else if(expectedadditionalinfoquestions.size() < visitedadditionalinfoquestions.size()){
-	//			ArrayList<String> questions = new ArrayList<String>()
-	//			for(int i=0; i<visitedadditionalinfoquestions.size(); i++){
-	//				boolean match = false
-	//				for(int j=0; j<expectedadditionalinfoquestions.size(); j++){
-	//					if(visitedadditionalinfoquestions.get(i).equalsIgnoreCase(expectedadditionalinfoquestions.get(j).getQuestion())){
-	//						match = true
-	//						break
-	//					}
-	//				}
-	//				if(match == false){
-	//					questions.add(visitedadditionalinfoquestions.get(i))
-	//				}
-	//				else{
-	//				}
-	//			}
-	//			MissingCategoryData missingcategorydata = new MissingCategoryData()
-	//			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-	//			missingcategorydata.setAdditionalinfoquestions(questions)
-	//			missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_MORE)
-	//			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-	//				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-	//					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
-	//				}
-	//				else{
-	//				}
-	//			}
-	//		}
-	//		else if(expectedadditionalinfoquestions.size() > visitedadditionalinfoquestions.size()){
-	//			ArrayList<String> questions = new ArrayList<String>()
-	//			for(int i=0; i<expectedadditionalinfoquestions.size(); i++){
-	//				boolean match = false
-	//				for(int j=0; j<visitedadditionalinfoquestions.size(); j++){
-	//					if(expectedadditionalinfoquestions.get(i).getQuestion().equalsIgnoreCase(visitedadditionalinfoquestions.get(j))){
-	//						match = true
-	//						break
-	//					}
-	//				}
-	//				if(match == false){
-	//					questions.add(expectedadditionalinfoquestions.get(i).getQuestion())
-	//				}
-	//				else{
-	//				}
-	//			}
-	//			MissingCategoryData missingcategorydata = new MissingCategoryData()
-	//			missingcategorydata.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-	//			missingcategorydata.setAdditionalinfoquestions(questions)
-	//			missingcategorydata.setAdditionalinfoquestions_errormessage(ProjectConstants.MESSAGEFOR_SURVEYQUESTIONSARE_MISSING)
-	//			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-	//				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-	//					ProjectConstants.missingshopdatainfo.get(j).setMissingCategoriesData(missingcategorydata)
-	//					break
-	//				}
-	//				else{
-	//				}
-	//			}
-	//		}
-	//		else{
-	//			String message = "Main Category: "+ProjectConstants.CURRENTVISITING_MAINCATEGORY+"\nProduct Category: "+ProjectConstants.CURRENTVISITING_PRODUCTCATEGORY+"\n"+ProjectConstants.MESSAGEFOR_DISPLAYEDPRODUCTSARE_EQUAL
-	//			KeywordUtil.logInfo(message)
-	//		}
-	//	}
-	//	def validateCameraScreenAndTakePicture(){
-	//		if(Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0, FailureHandling.OPTIONAL)){
-	//			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-	//			Mobile.delay(5)
-	//			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-	//		}
-	//		else{
-	//		}
-	//	}
+	def validateCameraScreenAndTakePicture(){
+		if(Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0, FailureHandling.OPTIONAL)){
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.delay(5)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		}
+		else{
+		}
+	}
 }

@@ -104,16 +104,14 @@ public class ProjectConstants {
 	public static String CURRENTVISITING_SHOPNAME = ""
 	public static String CURRENTVISITING_SHOPCHANNEL = ""
 	public static String CURRENTVISITING_MAINCATEGORY = ""
-	public static String CURRENTVISITING_PRODUCTCATEGORY = ""
 	public static String CURRENTVISITING_HOTSPOTTYPE = ""
-	public static String CURRENTVISITING_HANGER = ""
-	public static String CURRENTVISITING_SURVEYQUESTION_CATEGORY = ""
 	public static String SCENARIO = ""
 	public static int HOTSPOTINDEX = 0
 
 	public static String CURRENTVISITING_CATEGORYREMARK = ""
 	public static String CURRENTVISITING_REMAININGCATEOGRYREMARK = ""
 	public static String CURRENTVISITING_SUBCATEGORY = ""
+	public static String CURRENTVISITING_SUBREMARK = ""
 
 	//list for containing shop info
 	public static ArrayList<MissingShopDataInfo> missingshopdatainfo = new ArrayList<MissingShopDataInfo>()

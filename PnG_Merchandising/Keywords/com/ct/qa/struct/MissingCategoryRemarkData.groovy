@@ -68,5 +68,4 @@ public class MissingCategoryRemarkData {
 	public void setProducts_errormessage(String products_errormessage) {
 		this.products_errormessage = products_errormessage;
 	}
-	
 }
