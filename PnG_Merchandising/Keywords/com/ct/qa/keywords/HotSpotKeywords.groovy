@@ -55,10 +55,14 @@ public class HotSpotKeywords {
 		ArrayList<String> displayedhotspottype = new ArrayList<String>()
 		int totalhotspottypes = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalhotspottypes; i++){
+			if(i == totalhotspottypes){
+				Mobile.swipe(0, 240, 0, 200)
+				MobileElement hotspottype = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+				displayedhotspottype.add(hotspottype.getText())
+			}
 			MobileElement hotspottype = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			displayedhotspottype.add(hotspottype.getText())
 		}
-		Mobile.swipe(0, 220, 0, 200)
 		while(true){
 			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 			MobileElement itembeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
@@ -74,7 +78,8 @@ public class HotSpotKeywords {
 				displayedhotspottype.add(itemnameafterswipe)
 			}
 		}
-		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedhotspottypes, displayedhotspottype)
+		ArrayList<String> expectedhotspottypelist = new HashSet<String>(expectedhotspottypes)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedhotspottypelist, displayedhotspottype)
 		if(UnmatchedItems_status.getStatus() == 2){
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
@@ -118,7 +123,7 @@ public class HotSpotKeywords {
 		}
 		Mobile.swipe(0, 200, 0, 750)
 		Mobile.swipe(0, 200, 0, 750)
-		if(ProjectConstants.HOTSPOTINDEX <= 8){
+		if(ProjectConstants.HOTSPOTINDEX <= 7){
 			ProjectConstants.HOTSPOTINDEX = ProjectConstants.HOTSPOTINDEX + 1
 			MobileElement hotspot = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+ProjectConstants.HOTSPOTINDEX+"]/android.widget.TextView[1]")
 			ProjectConstants.CURRENTVISITING_SUBCATEGORY = hotspot.getText()
@@ -130,7 +135,7 @@ public class HotSpotKeywords {
 		}
 		else{
 			ProjectConstants.HOTSPOTINDEX = ProjectConstants.HOTSPOTINDEX + 1
-			Mobile.swipe(0, 220, 0, 200)
+			Mobile.swipe(0, 240, 0, 200)
 			index = ProjectConstants.HOTSPOTINDEX - totalhotspottypes
 			for(int i=1; i<= index; i++){
 				Mobile.swipe(0, 293, 0, 200)
@@ -379,6 +384,16 @@ public class HotSpotKeywords {
 				break
 			}
 			else{}
+		}
+	}
+	@Keyword
+	def enterUtilization(int status){
+		MobileElement editfield = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.EditText[1]")
+		if(status == 1){
+			editfield.setValue("50")
+		}
+		else{
+			editfield.setValue("100")
 		}
 	}
 }

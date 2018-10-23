@@ -4,7 +4,7 @@
    <name>PnG Merchandising With Channel Wise Data Verification</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-10-22T12:41:34</lastRun>
+   <lastRun>2018-10-23T18:40:57</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>15</pageLoadTimeout>

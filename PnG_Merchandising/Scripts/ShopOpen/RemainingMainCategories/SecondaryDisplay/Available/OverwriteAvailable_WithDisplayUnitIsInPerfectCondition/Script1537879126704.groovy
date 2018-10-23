@@ -31,8 +31,7 @@ CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.select
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UtilizationPopUpScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 'Utilization')
 
-Mobile.setText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Utilization_EditField', [('package') : ProjectConstants.PACKAGENAME]), 
-    '100', 0)
+CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUtilizationForSecondaryDisplay'(2)
 
 Mobile.hideKeyboard()
 

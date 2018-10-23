@@ -29,7 +29,11 @@ public class VisitedShopDataInfo {
 	public String shopname
 	public String shopchannel
 	public String scenario
-	public ArrayList<VisitedCategoryData> visitedcategoriesdata
+	public ArrayList<VisitedCategoryData> visitedcategoriesdata
+	
+	public VisitedShopDataInfo(){
+		this.visitedcategoriesdata = new ArrayList<VisitedCategoryData>()
+	}
 	public String getShopname() {
 		return shopname;
 	}
@@ -51,7 +55,7 @@ public class VisitedShopDataInfo {
 	public ArrayList<VisitedCategoryData> getVisitedcategoriesdata() {
 		return visitedcategoriesdata;
 	}
-	public void setVisitedcategoriesdata(ArrayList<VisitedCategoryData> visitedcategoriesdata) {
-		this.visitedcategoriesdata = visitedcategoriesdata;
+	public void setVisitedcategoriesdata(VisitedCategoryData visitedcategoriesdata) {
+		this.visitedcategoriesdata.add(visitedcategoriesdata);
 	}
 }

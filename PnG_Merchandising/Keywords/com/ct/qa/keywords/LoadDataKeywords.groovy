@@ -238,7 +238,7 @@ public class LoadDataKeywords {
 		for(int i=1; i<=totalrows; i++){
 			Row row = sheet.getRow(i)
 			String hotspottype = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTTYPE))
-			if(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE.equalsIgnoreCase(hotspottype)){
+			if(ProjectConstants.CURRENTVISITING_SUBCATEGORY.equalsIgnoreCase(hotspottype)){
 				ProductWithValue productwithvalue = new ProductWithValue()
 				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTPRODUCT))
 				String columndata = dataformatter.formatCellValue(row.getCell(column))

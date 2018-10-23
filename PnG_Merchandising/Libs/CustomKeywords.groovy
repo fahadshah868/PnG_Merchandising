@@ -66,6 +66,16 @@ def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitDSA_P
         	columnindex)
 }
 
+def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUnitsForSecondaryDisplay"() {
+    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).enterUnitsForSecondaryDisplay()
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUtilizationForSecondaryDisplay"(
+    	int status	) {
+    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).enterUtilizationForSecondaryDisplay(
+        	status)
+}
+
 def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplayRemark"(
     	String _remark	) {
     (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).selectSecondaryDisplayRemark(
@@ -84,6 +94,12 @@ def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSeco
     	String _remark	) {
     (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).selectSecondaryDisplay_AvailableRemark(
         	_remark)
+}
+
+def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUtilizationForAdditionalInfo"(
+    	int status	) {
+    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).enterUtilizationForAdditionalInfo(
+        	status)
 }
 
 def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitAdditionalInfoQuestions"() {
@@ -256,6 +272,12 @@ def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotAvailableFacingProduc
 
 def static "com.ct.qa.keywords.HotSpotKeywords.findPOSMImageView"() {
     (new com.ct.qa.keywords.HotSpotKeywords()).findPOSMImageView()
+}
+
+def static "com.ct.qa.keywords.HotSpotKeywords.enterUtilization"(
+    	int status	) {
+    (new com.ct.qa.keywords.HotSpotKeywords()).enterUtilization(
+        	status)
 }
 
 def static "com.ct.qa.keywords.HangerKeywords.visitHangerList"(

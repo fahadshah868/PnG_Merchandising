@@ -187,30 +187,34 @@ public class ShopVisitingScenariosKeywords{
 								if(missingcategoryremarks != null){
 									for(int n=0; n< missingcategoryremarks.size(); n++){
 										MissingCategoryRemarkData missingcategoryremark = missingcategoryremarks.get(n)
-										if(flag == false){
-											message = message+"\n\n"+
-													String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
-													String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
-													"\n\nSub Categories:\n\n" +
-													String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
-													String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n" +
-													String.format("%-30s","Sub Categories:")
-											for(int b=0; b< missingcategoryremark.getSubcategories().size() ; b++){
-												message = message + missingcategoryremark.getSubcategories().get(b) + ",   "
+										ArrayList<String> missingsubcategories = missingcategoryremark.getSubcategories()
+										if(missingsubcategories != null)
+										{
+											if(flag == false){
+												message = message+"\n\n"+
+														String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
+														String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
+														"\n\nSub Categories:\n\n" +
+														String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+														String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n" +
+														String.format("%-30s","Sub Categories:")
+												for(int b=0; b< missingsubcategories.size() ; b++){
+													message = message + missingsubcategories.get(b) + ",   "
+												}
+												message = message + "\n" + missingcategoryremark.getSubcategories_errormessage() + "\n\n"
+												flag = true
 											}
-											message = message + "\n" + missingcategoryremark.getSubcategories_errormessage() + "\n\n"
-											flag = true
-										}
-										else{
-											message = message +
-													"\n\nSub Categories:\n\n" +
-													String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
-													String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n" +
-													String.format("%-30s","Sub Categories:")
-											for(int b=0; b< missingcategoryremark.getSubcategories().size() ; b++){
-												message = message + missingcategoryremark.getSubcategories().get(b) + ",   "
+											else{
+												message = message +
+														"\n\nSub Categories:\n\n" +
+														String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+														String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n" +
+														String.format("%-30s","Sub Categories:")
+												for(int b=0; b< missingsubcategories.size() ; b++){
+													message = message + missingsubcategories.get(b) + ",   "
+												}
+												message = message + "\n" + missingcategoryremark.getSubcategories_errormessage() + "\n\n"
 											}
-											message = message + "\n" + missingcategoryremark.getSubcategories_errormessage() + "\n\n"
 										}
 									}
 								}
@@ -318,32 +322,35 @@ public class ShopVisitingScenariosKeywords{
 								if(missingcategoryremarks != null){
 									for(int n=0; n< missingcategoryremarks.size(); n++){
 										MissingCategoryRemarkData missingcategoryremark = missingcategoryremarks.get(n)
-										if(flag == false){
-											message = message+"\n\n"+
-													String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
-													String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
-													"\n\nProducts:\n\n" +
-													String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
-													String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n" +
-													String.format("%-30s%-60s","Sub Category:",missingcategoryremark.getSubcategory()) + "\n" +
-													String.format("%-30s","Products:")
-											for(int b=0; b< missingcategoryremark.getProducts().size() ; b++){
-												message = message + missingcategoryremark.getProducts().get(b) + ",   "
+										ArrayList<String> products = missingcategoryremark.getProducts()
+										if(products != null){
+											if(flag == false){
+												message = message+"\n\n"+
+														String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
+														String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
+														"\n\nProducts:\n\n" +
+														String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+														String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n" +
+														String.format("%-30s%-60s","Sub Category:",missingcategoryremark.getSubcategory()) + "\n" +
+														String.format("%-30s","Products:")
+												for(int b=0; b< products.size() ; b++){
+													message = message + products.get(b) + ",   "
+												}
+												message = message + "\n" + missingcategoryremark.getProducts_errormessage() + "\n\n"
+												flag = true
 											}
-											message = message + "\n" + missingcategoryremark.getProducts_errormessage() + "\n\n"
-											flag = true
-										}
-										else{
-											message = message +
-													"\n\nProducts:\n\n" +
-													String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
-													String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n" +
-													String.format("%-30s%-60s","Sub Category:",missingcategoryremark.getSubcategory()) + "\n" +
-													String.format("%-30s","Products:")
-											for(int b=0; b< missingcategoryremark.getProducts().size() ; b++){
-												message = message + missingcategoryremark.getProducts().get(b) + ",   "
+											else{
+												message = message +
+														"\n\nProducts:\n\n" +
+														String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+														String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n" +
+														String.format("%-30s%-60s","Sub Category:",missingcategoryremark.getSubcategory()) + "\n" +
+														String.format("%-30s","Products:")
+												for(int b=0; b< products.size() ; b++){
+													message = message + products.get(b) + ",   "
+												}
+												message = message + "\n" + missingcategoryremark.getProducts_errormessage() + "\n\n"
 											}
-											message = message + "\n" + missingcategoryremark.getProducts_errormessage() + "\n\n"
 										}
 									}
 								}
@@ -375,9 +382,9 @@ public class ShopVisitingScenariosKeywords{
 							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
 							if(shopproductsdata != null){
 								message = message + "\n\n" +
-								String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-								String.format("%-30s%-60s", "HotSpot Type:",visitedcategorydata.getSubcategory()) + "\n" +
-								String.format("%-50s%-30s%-30s", "Products","Facing","Overwrite Facing")+"\n"
+										String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+										String.format("%-30s%-60s", "HotSpot Type:",visitedcategorydata.getSubcategory()) + "\n" +
+										String.format("%-50s%-30s%-30s", "Products","Facing","Overwrite Facing")+"\n"
 								for(int n=0; n< shopproductsdata.size() ; n++){
 									ShopProductsData _shopproductsdata = shopproductsdata.get(n)
 									message = message + String.format("%-50s%-30s%-30s", _shopproductsdata.getProduct(),_shopproductsdata.getHs_facing(), _shopproductsdata.getOverwrite_hs_facing())+"\n"
@@ -389,9 +396,9 @@ public class ShopVisitingScenariosKeywords{
 							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
 							if(shopproductsdata != null){
 								message = message + "\n\n" +
-								String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-								String.format("%-30s%-60s", "Sub Category:",visitedcategorydata.getSubcategory()) + "\n" +
-								String.format("%-40s%-22s%-32s%-26s%-36s", "Products","Hanger Available","Overwrite Hanger Available","Hanger Not Available","Overwrite Hanger Not Available")+"\n"
+										String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+										String.format("%-30s%-60s", "Sub Category:",visitedcategorydata.getSubcategory()) + "\n" +
+										String.format("%-40s%-22s%-32s%-26s%-36s", "Products","Hanger Available","Overwrite Hanger Available","Hanger Not Available","Overwrite Hanger Not Available")+"\n"
 								for(int n=0; n< shopproductsdata.size() ; n++){
 									ShopProductsData _shopproductsdata = shopproductsdata.get(n)
 									message = message + String.format("%-40s%-22s%-32s%-26s%-36s", _shopproductsdata.getProduct(),_shopproductsdata.getHangeravailable(), _shopproductsdata.getOverwrite_hangeravailable(), _shopproductsdata.getHangernotavailable(), _shopproductsdata.getOverwrite_hangernotavailable())+"\n"
@@ -407,10 +414,10 @@ public class ShopVisitingScenariosKeywords{
 									ArrayList<ShopProductsData> shopproductsdata = visitedcategoryremark.getShopproductsdata()
 									if(shopproductsdata != null){
 										message = message + "\n\n" +
-										String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-										String.format("%-30s%-60s", "Category Remark:",visitedcategoryremark.getCategoryremark()) + "\n" +
-										String.format("%-30s%-60s", "Sub Category:",visitedcategoryremark.getSubcategory()) + "\n" +
-										String.format("%-50s%-40s%-40s", "Products","Display Space Available","Overwrite Display Space Available")+"\n"
+												String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+												String.format("%-30s%-60s", "Category Remark:",visitedcategoryremark.getCategoryremark()) + "\n" +
+												String.format("%-30s%-60s", "Sub Category:",visitedcategoryremark.getSubcategory()) + "\n" +
+												String.format("%-50s%-40s%-40s", "Products","Display Space Available","Overwrite Display Space Available")+"\n"
 										for(int n=0; n< shopproductsdata.size() ; n++){
 											ShopProductsData _shopproductsdata = shopproductsdata.get(n)
 											message = message + String.format("%-40s%-22s%-32s-26s%-36s", _shopproductsdata.getProduct(),_shopproductsdata.getPd_displayspaceavailable(), _shopproductsdata.getPd_overwrite_displayspaceavailable())+"\n"
@@ -551,7 +558,7 @@ public class ShopVisitingScenariosKeywords{
 		//				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		//			}
 		//		}
-		//		displayDataInReport()
+		displayDataInReport()
 	}
 	@Keyword
 	def visitShopsWithShopLevel_OverwriteScenario(){

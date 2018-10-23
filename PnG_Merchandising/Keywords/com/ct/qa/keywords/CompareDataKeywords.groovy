@@ -292,18 +292,15 @@ public class CompareDataKeywords {
 		return UnmatchedItems_status
 	}
 	def static compareHangerSubCategories(){
-		ArrayList<ProductWithValue> categories = LoadDataKeywords.loadChannelWiseProductCategories()
-		ArrayList<String> expectedcategories = new ArrayList<String>()
+		ArrayList<String> categories = LoadDataKeywords.loadChannelWiseProductCategories()
 		ArrayList<String> displayedcategories = new ArrayList<String>()
-		for(int i=0; i< categories.size(); i++){
-			expectedcategories.add(categories.get(i).getProduct())
-		}
 		int totalhangers = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalhangers; i++){
 			MobileElement hangercategory = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			displayedcategories.add(hangercategory.getText())
 		}
-		UnmatchedItems UnmatchedItems_status = compareLists(expectedcategories, displayedcategories)
+		ArrayList<String> expectedcategorieslist = new HashSet<String>(categories)
+		UnmatchedItems UnmatchedItems_status = compareLists(expectedcategorieslist, displayedcategories)
 		return UnmatchedItems_status
 	}
 }

@@ -2,8 +2,7 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-
-import com.ct.qa.constants.ProjectConstants
+import com.ct.qa.constants.ProjectConstants as ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -23,15 +22,7 @@ CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.select
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UnitsScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 'Units')
 
-Mobile.setText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Units_FirstEditField', [('package') : ProjectConstants.PACKAGENAME]), 
-    '4', 0)
-
-Mobile.hideKeyboard()
-
-Mobile.setText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Unit_SecondEditField', [('package') : ProjectConstants.PACKAGENAME]), 
-    '4', 0)
-
-Mobile.hideKeyboard()
+CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUnitsForSecondaryDisplay'()
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Units_SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
