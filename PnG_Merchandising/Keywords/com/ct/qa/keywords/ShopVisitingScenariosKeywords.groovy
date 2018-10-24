@@ -480,6 +480,7 @@ public class ShopVisitingScenariosKeywords{
 			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_NoButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+			ProjectConstants.SCENARIO = "first visit"
 			Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWithDataVerification"), null)
 			Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -533,6 +534,7 @@ public class ShopVisitingScenariosKeywords{
 		//				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		//				MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_NoButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+		//				ProjectConstants.SCENARIO = "first visit"
 		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWithDataVerification"), null)
 		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 		//				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -584,6 +586,7 @@ public class ShopVisitingScenariosKeywords{
 			// shop closed to shop open
 			if(i == 1){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HA_AY_DSA_Available_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
@@ -702,6 +705,7 @@ public class ShopVisitingScenariosKeywords{
 			//shop open to shop open
 			else if(i == 6){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/OverwriteShopCategoriesWith_HA_AN_DSA_Available_AIN"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
@@ -766,6 +770,7 @@ public class ShopVisitingScenariosKeywords{
 				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				findShop(ProjectConstants.CURRENTVISITING_SHOPNAME)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HA_AY_DSA_Available_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
@@ -914,12 +919,14 @@ public class ShopVisitingScenariosKeywords{
 			//shop open to shop open
 			else if(i == 6){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "first visit"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HA_AY_DSA_Available_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				findShop(ProjectConstants.CURRENTVISITING_SHOPNAME)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
-				Mobile.callTestCase(findTestCase("ShopOpen/CategoryVisitingScenariosWithOverwritePopup/OverwriteShopCategoriesWith_HA_AN_DSA_Available_AIN"), null)
+				ProjectConstants.SCENARIO = "overwrite"
+				Mobile.callTestCase(findTestCase("ShopOpen/CategoryVisitingScenarios/OverwriteShopCategoriesWith_HA_AN_DSA_Available_AIN"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -992,6 +999,7 @@ public class ShopVisitingScenariosKeywords{
 			//HA_AY_DSA_Available_AIY => HNA_AN_NSFD_NAvailable_AIN
 			if(i == 1){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HNA_AN_NSFD_NAvailable_AIN"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1021,6 +1029,7 @@ public class ShopVisitingScenariosKeywords{
 			//visit HA_AY_DSA_Available_AIY => overwrite HA_AN_DSA_Available_AIN
 			else if(i == 2){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/OverwriteShopCategoriesWith_HA_AN_DSA_Available_AIN"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1054,6 +1063,7 @@ public class ShopVisitingScenariosKeywords{
 			//visit SKDNA_AY_SKDNA_Available_AIY => overwrite SKDNA_AN_SKDNA_Available_AIN
 			else if(i == 3){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/OverwriteShopCategoriesWith_SKDNA_AN_SKDNA_Available_AIN"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1087,6 +1097,7 @@ public class ShopVisitingScenariosKeywords{
 			//SKDNA_AY_SKDNA_NR_AIN => HA_AN_DSA_NAvailable_AIY
 			else if(i == 4){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HA_AN_DSA_NAvailable_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1117,6 +1128,7 @@ public class ShopVisitingScenariosKeywords{
 			//SKDNA_AY_SKDNA_NR_AIN => HNA_AN_NSFD_Available_AIY
 			else if(i == 5){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HNA_AN_NSFD_Available_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1150,6 +1162,7 @@ public class ShopVisitingScenariosKeywords{
 			//HNA_AN_NSFD_NAvailable_AIN => HA_AY_DSA_Available_AIY
 			else if(i == 6){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HA_AY_DSA_Available_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1183,6 +1196,7 @@ public class ShopVisitingScenariosKeywords{
 			//HNA_AN_NR_NAvailable_AIN => HA_AY_SKDNA_Available_AIY
 			else if(i == 7){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HA_AY_SKDNA_Available_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1244,7 +1258,9 @@ public class ShopVisitingScenariosKeywords{
 			//HA_AY_DSA_Available_AIY => HNA_AN_NSFD_NAvailable_AIN
 			if(i == 1){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "first visit"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HA_AY_DSA_Available_AIY"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenariosWithOverwritePopup/VisitShopCategoriesWith_HNA_AN_NSFD_NAvailable_AIN"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1287,7 +1303,9 @@ public class ShopVisitingScenariosKeywords{
 			//visit HA_AY_DSA_Available_AIY => overwrite HA_AN_DSA_Available_AIN
 			else if(i == 2){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "first visit"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HA_AY_DSA_Available_AIY"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenariosWithOverwritePopup/OverwriteShopCategoriesWith_HA_AN_DSA_Available_AIN"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1334,7 +1352,9 @@ public class ShopVisitingScenariosKeywords{
 			//visit SKDNA_AY_SKDNA_Available_AIY => overwrite SKDNA_AN_SKDNA_Available_AIN
 			else if(i == 3){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "first visit"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenariosWithOverwritePopup/OverwriteShopCategoriesWith_SKDNA_AN_SKDNA_Available_AIN"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1381,7 +1401,9 @@ public class ShopVisitingScenariosKeywords{
 			//SKDNA_AY_SKDNA_NR_AIN => HA_AN_DSA_NAvailable_AIY
 			else if(i == 4){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "first visit"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_SKDNA_AY_SKDNA_NR_AIN"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenariosWithOverwritePopup/VisitShopCategoriesWith_HA_AN_DSA_NAvailable_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1421,7 +1443,9 @@ public class ShopVisitingScenariosKeywords{
 			//SKDNA_AY_SKDNA_NR_AIN => HNA_AN_NSFD_Available_AIY
 			else if(i == 5){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "first visit"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_SKDNA_AY_SKDNA_NR_AIN"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenariosWithOverwritePopup/VisitShopCategoriesWith_HNA_AN_NSFD_Available_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1464,7 +1488,9 @@ public class ShopVisitingScenariosKeywords{
 			//HNA_AN_NSFD_NAvailable_AIN => HA_AY_DSA_Available_AIY
 			else if(i == 6){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "first visit"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HNA_AN_NSFD_NAvailable_AIN"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenariosWithOverwritePopup/VisitShopCategoriesWith_HA_AY_DSA_Available_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -1507,7 +1533,9 @@ public class ShopVisitingScenariosKeywords{
 			//HNA_AN_NR_NAvailable_AIN => HA_AY_SKDNA_Available_AIY
 			else if(i == 7){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "first visit"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWith_HNA_AN_NR_NAvailable_AIN"), null)
+				ProjectConstants.SCENARIO = "overwrite"
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenariosWithOverwritePopup/VisitShopCategoriesWith_HA_AY_SKDNA_Available_AIY"), null)
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
 				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){

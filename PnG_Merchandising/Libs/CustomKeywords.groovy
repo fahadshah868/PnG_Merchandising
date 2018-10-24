@@ -182,10 +182,8 @@ def static "com.ct.qa.keywords.SliderOptionsKeywords.displayMissingSliderOptions
     (new com.ct.qa.keywords.SliderOptionsKeywords()).displayMissingSliderOptionsInReport()
 }
 
-def static "com.ct.qa.keywords.SliderOptionsKeywords.findSliderOption"(
-    	String option	) {
-    (new com.ct.qa.keywords.SliderOptionsKeywords()).findSliderOption(
-        	option)
+def static "com.ct.qa.keywords.SliderOptionsKeywords.visitSliderOption"() {
+    (new com.ct.qa.keywords.SliderOptionsKeywords()).visitSliderOption()
 }
 
 def static "com.ct.qa.keywords.SliderOptionsKeywords.findRoute"() {

@@ -4,7 +4,7 @@
    <name>PnG Merchandising With Channel Wise Data Verification</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-10-23T18:40:57</lastRun>
+   <lastRun>2018-10-24T12:13:12</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>15</pageLoadTimeout>
@@ -26,7 +26,7 @@
    <testCaseLink>
       <guid>30d38ab9-f1d4-4158-99ae-5a6ef1f1d2af</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>false</isRun>
+      <isRun>true</isRun>
       <testCaseId>Test Cases/SliderOptions/VisitSliderOptions</testCaseId>
    </testCaseLink>
    <testCaseLink>
@@ -38,7 +38,7 @@
    <testCaseLink>
       <guid>15a74100-fe1f-497b-95d3-d17a70d10880</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithChannelWiseDataVerification</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>
