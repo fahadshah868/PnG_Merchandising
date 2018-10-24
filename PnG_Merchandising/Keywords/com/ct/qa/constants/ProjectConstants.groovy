@@ -91,6 +91,7 @@ public class ProjectConstants {
 	public static final int SURVEYQUESTION
 	public static final int SURVEYQUESTIONVALUE
 	public static final int OVERWRITE_SURVEYQUESTIONVALUE
+	public static final int SURVEYQUESTION_TAKEPICTURE
 
 	//additional info questions columns
 	public static final int ADDITIONALINFOQUESTIONS_CHANNEL
@@ -214,6 +215,9 @@ public class ProjectConstants {
 			}
 			else if(columnname.equalsIgnoreCase("Overwrite Value")){
 				OVERWRITE_SURVEYQUESTIONVALUE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Take Picure")){
+				SURVEYQUESTION_TAKEPICTURE = cellnumber
 			}
 			else{}
 		}

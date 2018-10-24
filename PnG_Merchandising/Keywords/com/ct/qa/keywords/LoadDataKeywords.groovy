@@ -140,12 +140,14 @@ public class LoadDataKeywords {
 			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONS_CHANNEL))
 			String questioncategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONCATEGORY))
 			String channelname = "Channel: "+channel
-			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_SURVEYQUESTION_CATEGORY.equalsIgnoreCase(questioncategory)){
+			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_SUBCATEGORY.equalsIgnoreCase(questioncategory)){
 				ProductWithValue questionwithvalue = new ProductWithValue()
 				String question = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTION))
 				String value = dataformatter.formatCellValue(row.getCell(columnindexforvalue))
+				String status = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTION_TAKEPICTURE))
 				questionwithvalue.setProduct(question)
 				questionwithvalue.setProduct_value(value)
+				questionwithvalue.setStatus(status)
 				expectedsurveyquestions.add(questionwithvalue)
 			}
 		}

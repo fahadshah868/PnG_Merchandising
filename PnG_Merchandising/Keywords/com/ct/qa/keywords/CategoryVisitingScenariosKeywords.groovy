@@ -34,7 +34,7 @@ import WebUiBuiltInKeywords as WebUI
 public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	@Keyword
 	def visitShopCategoriesWithDataVerification(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
@@ -189,9 +189,47 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def visitShopCategoriesWith_HA_AY_DSA_Available_AIY(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -306,9 +344,47 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def visitShopCategoriesWith_HNA_AN_NSFD_NAvailable_AIN(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -423,9 +499,47 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def overwriteShopCategoriesWith_HA_AN_DSA_Available_AIN(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -536,9 +650,47 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def visitShopCategoriesWith_SKDNA_AY_SKDNA_Available_AIY(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -653,11 +805,49 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def overwriteShopCategoriesWith_SKDNA_AN_SKDNA_Available_AIN(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
 		int index = 0
 		String lastvisitedcategory = ""
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<=totalcategories; i++){
 			MobileElement category = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
@@ -766,9 +956,47 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def visitShopCategoriesWith_SKDNA_AY_SKDNA_NR_AIN(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -883,9 +1111,47 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def visitShopCategoriesWith_HA_AN_DSA_NAvailable_AIY(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -1000,9 +1266,47 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def visitShopCategoriesWith_HNA_AN_NSFD_Available_AIY(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -1117,9 +1421,47 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def visitShopCategoriesWith_HNA_AN_NR_NAvailable_AIN(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -1234,9 +1576,47 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 	}
 	@Keyword
 	def visitShopCategoriesWith_HA_AY_SKDNA_Available_AIY(){
-		
+
 		MobileElement channel = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 		ProjectConstants.CURRENTVISITING_SHOPCHANNEL = channel.getText()
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopCategories()
+		if(UnmatchedItems_status.getStatus() == 2){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories(UnmatchedItems_status.getItems())
+					ProjectConstants.missingshopdatainfo.get(j).setMissingshopcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+					break
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()

@@ -20,7 +20,14 @@ import internal.GlobalVariable
 
 public class ProductWithValue {
 	public String product
-	public String product_value
+	public String product_value
+	public String status
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getProduct() {
 		return product;
 	}
