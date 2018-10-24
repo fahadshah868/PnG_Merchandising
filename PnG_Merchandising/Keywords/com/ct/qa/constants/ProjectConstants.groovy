@@ -248,7 +248,12 @@ public class ProjectConstants {
 		return xlocation+1
 	}
 	def static visitPopUpForOverwriting(){
-		Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP"), 0, FailureHandling.OPTIONAL)
-		Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_YesButton"), 0, FailureHandling.OPTIONAL)
+		try{
+			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_YesButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		}
+		catch(Exception ex){
+			
+		}		
 	}
 }
