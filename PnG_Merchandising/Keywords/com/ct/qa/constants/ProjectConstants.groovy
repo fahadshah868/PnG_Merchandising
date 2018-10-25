@@ -110,7 +110,6 @@ public class ProjectConstants {
 	public static int HOTSPOTINDEX = 0
 
 	public static String CURRENTVISITING_CATEGORYREMARK = ""
-	public static String CURRENTVISITING_REMAININGCATEOGRYREMARK = ""
 	public static String CURRENTVISITING_SUBCATEGORY = ""
 	public static String CURRENTVISITING_SUBREMARK = ""
 
@@ -253,7 +252,7 @@ public class ProjectConstants {
 			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_YesButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		}
 		catch(Exception ex){
-			
-		}		
+
+		}
 	}
 }

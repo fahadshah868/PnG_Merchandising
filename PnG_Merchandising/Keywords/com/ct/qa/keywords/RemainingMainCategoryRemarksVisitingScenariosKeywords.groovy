@@ -73,7 +73,7 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 		for(int i=1; i<= totalactions; i++){
 			MobileElement action = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String actionname = action.getText()
-			ProjectConstants.CURRENTVISITING_REMAININGCATEOGRYREMARK = actionname
+			ProjectConstants.CURRENTVISITING_CATEGORYREMARK = actionname
 			if(actionname.equalsIgnoreCase("Availability")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/Availability/VisitAvailability_WithYesRemark"), null)
@@ -90,6 +90,7 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				Mobile.callTestCase(findTestCase("ShopOpen/RemainingMainCategories/AdditionalInfo/VisitAdditionalInfoWith_YesRemark"), null)
 			}
+			else{}
 		}
 	}
 	@Keyword

@@ -228,7 +228,7 @@ public class ShopVisitingScenariosKeywords{
 						MissingCategoryData missingcategorydata = missingshopdatainfo.getMissingcategoriesdata().get(j)
 						if(missingcategorydata != null){
 							if(missingcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
-								ArrayList<String> products = missingcategorydata.getProducts()()
+								ArrayList<String> products = missingcategorydata.getProducts()
 								if(products != null){
 									if(flag == false){
 										message = message+"\n\n"+
@@ -420,7 +420,7 @@ public class ShopVisitingScenariosKeywords{
 												String.format("%-50s%-40s%-40s", "Products","Display Space Available","Overwrite Display Space Available")+"\n"
 										for(int n=0; n< shopproductsdata.size() ; n++){
 											ShopProductsData _shopproductsdata = shopproductsdata.get(n)
-											message = message + String.format("%-40s%-22s%-32s-26s%-36s", _shopproductsdata.getProduct(),_shopproductsdata.getPd_displayspaceavailable(), _shopproductsdata.getPd_overwrite_displayspaceavailable())+"\n"
+											message = message + String.format("%-50s%-40s%-40s", _shopproductsdata.getProduct(),_shopproductsdata.getPd_displayspaceavailable(), _shopproductsdata.getPd_overwrite_displayspaceavailable())+"\n"
 										}
 										message = message + "\n"
 									}
@@ -462,7 +462,7 @@ public class ShopVisitingScenariosKeywords{
 	def visitShopWithDataVerification(){
 		int index = 0
 		int totalshops = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<=1; i++){
+		for(int i=1; i<=totalshops; i++){
 			MissingShopDataInfo missingshopdatainfo = new MissingShopDataInfo()
 			VisitedShopDataInfo visitedshopdatainfo = new VisitedShopDataInfo()
 			MobileElement shop = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
@@ -494,72 +494,72 @@ public class ShopVisitingScenariosKeywords{
 				if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 					String message = "'Scenario given bellow' for chiller utilization\n"+
-							String.format("%-34s%-100s","","'Display Space Available' for remaining categories")+"\n"+
-							String.format("%-34s%-100s","","'RTM visit frequency' with 'Once a week'")+"\n"+
-							String.format("%-34s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-							String.format("%-34s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-							String.format("%-34s%-100s","","'Hanger Availability' with 'Yes' remark")
+							String.format("%-30s%-100s","","'Display Space Available' for remaining categories")+"\n"+
+							String.format("%-30s%-100s","","'RTM visit frequency' with 'Once a week'")+"\n"+
+							String.format("%-30s%-100s","","'Pop Application' with 'No' remark")+"\n"+
+							String.format("%-30s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+							String.format("%-30s%-100s","","'Hanger Availability' with 'Yes' remark")
 					ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 					break
 				}
 			}
 			Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 		}
-		//		while(true){
-		//			MissingShopDataInfo missingshopdatainfo = new MissingShopDataInfo()
-		//			VisitedShopDataInfo visitedshopdatainfo = new VisitedShopDataInfo()
-		//			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-		//			MobileElement lastitembeforeswipe  = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
-		//			String lastitemnamebeforeswipe = lastitembeforeswipe.getText()
-		//			Mobile.swipe(0, 292, 0, 200)
-		//			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-		//			MobileElement lastitemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
-		//			String lastitemnameafterswipe = lastitemafterswipe.getText()
-		//			if(lastitemnamebeforeswipe.equalsIgnoreCase(lastitemnameafterswipe)){
-		//				break
-		//			}
-		//			else{
-		//				MobileElement shop = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
-		//				ProjectConstants.CURRENTVISITING_SHOPNAME = shop.getText()
-		//				missingshopdatainfo.setShopname(shop.getText())
-		//				visitedshopdatainfo.setShopname(shop.getText())
-		//				ProjectConstants.missingshopdatainfo.add(missingshopdatainfo)
-		//				ProjectConstants.visitedshopdatainfo.add(visitedshopdatainfo)
-		//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-		//				MobileBuiltInKeywords.verifyElementText(findTestObject("Object Repository/Validate_ShopOptionsScreen", [('package') : ProjectConstants.PACKAGENAME]), "Options")
-		//				MobileBuiltInKeywords.tap(findTestObject("Object Repository/StartWorking", [('package') : ProjectConstants.PACKAGENAME]), 0)
-		//				Mobile.delay(15)
-		//				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_MapScreen", [('package') : ProjectConstants.PACKAGENAME]), 60)
-		//				MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/Location_CheckIn", [('package') : ProjectConstants.PACKAGENAME]), 0)
-		//				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP", [('package') : ProjectConstants.PACKAGENAME]), 0)
-		//				MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_NoButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
-		//				ProjectConstants.SCENARIO = "first visit"
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWithDataVerification"), null)
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
-		//				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
-		//					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-		//						ProjectConstants.missingshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
-		//						ProjectConstants.missingshopdatainfo.get(j).setScenario("Data Verification")
-		//						break
-		//					}
-		//				}
-		//				for(int j=0; j<ProjectConstants.visitedshopdatainfo.size(); j++){
-		//					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
-		//						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
-		//						String message = "'Scenario given bellow' for chiller utilization\n"+
-		//								String.format("%-34s%-100s","","'Display Space Available' for remaining categories")+"\n"+
-		//								String.format("%-34s%-100s","","'RTM visit frequency' with 'Once a week'")+"\n"+
-		//								String.format("%-34s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-		//								String.format("%-34s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-		//								String.format("%-34s%-100s","","'Hanger Availability' with 'Yes' remark")
-		//						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
-		//						break
-		//					}
-		//				}
-		//				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-		//			}
-		//		}
+		while(true){
+			MissingShopDataInfo missingshopdatainfo = new MissingShopDataInfo()
+			VisitedShopDataInfo visitedshopdatainfo = new VisitedShopDataInfo()
+			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement lastitembeforeswipe  = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String lastitemnamebeforeswipe = lastitembeforeswipe.getText()
+			Mobile.swipe(0, 292, 0, 200)
+			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement lastitemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String lastitemnameafterswipe = lastitemafterswipe.getText()
+			if(lastitemnamebeforeswipe.equalsIgnoreCase(lastitemnameafterswipe)){
+				break
+			}
+			else{
+				MobileElement shop = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+				ProjectConstants.CURRENTVISITING_SHOPNAME = shop.getText()
+				missingshopdatainfo.setShopname(shop.getText())
+				visitedshopdatainfo.setShopname(shop.getText())
+				ProjectConstants.missingshopdatainfo.add(missingshopdatainfo)
+				ProjectConstants.visitedshopdatainfo.add(visitedshopdatainfo)
+				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				MobileBuiltInKeywords.verifyElementText(findTestObject("Object Repository/Validate_ShopOptionsScreen", [('package') : ProjectConstants.PACKAGENAME]), "Options")
+				MobileBuiltInKeywords.tap(findTestObject("Object Repository/StartWorking", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.delay(15)
+				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_MapScreen", [('package') : ProjectConstants.PACKAGENAME]), 60)
+				MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/Location_CheckIn", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				MobileBuiltInKeywords.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_NoButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/VisitShopOpen"), null)
+				ProjectConstants.SCENARIO = "first visit"
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/CategoryVisitingScenarios/VisitShopCategoriesWithDataVerification"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SaveShop"), null)
+				for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+					if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+						ProjectConstants.missingshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
+						ProjectConstants.missingshopdatainfo.get(j).setScenario("Data Verification")
+						break
+					}
+				}
+				for(int j=0; j<ProjectConstants.visitedshopdatainfo.size(); j++){
+					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
+						String message = "'Scenario given bellow' for chiller utilization\n"+
+								String.format("%-30s%-100s","","'Display Space Available' for remaining categories")+"\n"+
+								String.format("%-30s%-100s","","'RTM visit frequency' with 'Once a week'")+"\n"+
+								String.format("%-30s%-100s","","'Pop Application' with 'No' remark")+"\n"+
+								String.format("%-30s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s","","'Hanger Availability' with 'Yes' remark")
+						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
+						break
+					}
+				}
+				Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			}
+		}
 		displayDataInReport()
 	}
 	@Keyword
@@ -601,17 +601,17 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "'HotSpot Available' for HotSpot"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'No Remark' for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'No Remark' for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -720,17 +720,17 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "Overwrite 'HotSpot Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","Overwrite 'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","Overwrite 'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes Remark' for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","Overwrite 'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","Overwrite 'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes Remark' for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -785,18 +785,18 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "(1) visit shop with 'Shop Closed'\n\n"+
-								String.format("%-34s%-100s", "","(2) 'HotSpot Available' for HotSpot")+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'No Remark' for Market Intelligence")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot")+
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'No Remark' for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -823,18 +823,18 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "(1) 'HotSpot Available' for HotSpot\n\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
-								String.format("%-34s%-100s","","(2) visit shop with 'Shop Closed'")
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
+								String.format("%-30s%-100s","","(2) visit shop with 'Shop Closed'")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -940,29 +940,29 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "(1) 'HotSpot Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
 								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")+"\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories With Different Values")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories With Different Values")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1013,13 +1013,13 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "'HotSpot Not Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1043,17 +1043,17 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "'HotSpot Available' for HotSpot With Different Values\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories With Different Values")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories With Different Values")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1077,17 +1077,17 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "'SKDNA' for HotSpot With 'Others' Remark\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Others' Remark")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'SKDNA' for Hanger With 'Others' Remark")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Others' Remark")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'SKDNA' for Hanger With 'Others' Remark")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1112,13 +1112,13 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						//SKDNA_AY_SKDNA_NR_AIN => HA_AN_DSA_NAvailable_AIY
 						String message = "'HotSpot Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1142,17 +1142,17 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "'HotSpot Not Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Not Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Not Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1176,17 +1176,17 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "'HotSpot Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1211,17 +1211,17 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						//HNA_AN_NR_NAvailable_AIN => HA_AY_SKDNA_Available_AIY
 						String message = "'HotSpot Available' for HotSpot With Different Values\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1275,25 +1275,25 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "(1) 'HotSpot Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
 								String.format("%-30s%-100s", "","(2) 'HotSpot Not Available' for HotSpot")+"\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1320,29 +1320,29 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "(1) 'HotSpot Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
 								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")+"\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories With Different Values")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories With Different Values")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger With Different Values")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1369,29 +1369,29 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "(1) 'SKDNA' for HotSpot With 'Return' Remark\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'SKDNA' for Hanger With 'Return' Remark")+"\n\n"+
-								String.format("%-34s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' BROKEN HEADER remark With 50% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' RETURN remark With 50% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 50% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'SKDNA' for Hanger With 'Return' Remark")+"\n\n"+
+								String.format("%-30s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
 								String.format("%-30s%-100s", "","(2) 'SKDNA' for HotSpot With 'Others' Remark")+"\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Others' Remark")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'SKDNA' for Hanger With 'Others' Remark")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Others' Remark")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'SKDNA' for Hanger With 'Others' Remark")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1419,21 +1419,21 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						//SKDNA_AY_SKDNA_NR_AIN => HA_AN_DSA_NAvailable_AIY
 						String message = "(1) 'SKDNA' for HotSpot With 'Return' Remark\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'SKDNA' for Hanger With 'Return' Remark")+"\n\n"+
-								String.format("%-34s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'SKDNA' for Hanger With 'Return' Remark")+"\n\n"+
+								String.format("%-30s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
 								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot")+"\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1460,25 +1460,25 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "(1) 'SKDNA' for HotSpot With 'Return' Remark\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'SKDNA' for Hanger With 'Return' Remark")+"\n\n"+
-								String.format("%-34s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'SKDNA' for Hanger With 'Return' Remark")+"\n\n"+
+								String.format("%-30s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
 								String.format("%-30s%-100s", "","(2) 'HotSpot Not Available' for HotSpot")+"\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Not Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Not Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1505,25 +1505,25 @@ public class ShopVisitingScenariosKeywords{
 					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						String message = "(1) 'HotSpot Not Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Not Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(No Space For Display)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Not Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
 								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot")+"\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Display Space Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}
@@ -1551,25 +1551,25 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						//HNA_AN_NR_NAvailable_AIN => HA_AY_SKDNA_Available_AIY
 						String message = "(1) 'HotSpot Not Available' for HotSpot\n"+
-								String.format("%-34s%-100s", "","'Availability No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(Not Recommended)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Not Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
+								String.format("%-30s%-100s", "","'Availability No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(Not Recommended)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Not Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info No' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Not Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'No' Remark for Market Intelligence")+"\n\n"+
 								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")+"\n"+
-								String.format("%-34s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
-								String.format("%-34s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
-								String.format("%-34s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
-								String.format("%-34s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
-								String.format("%-34s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
-								String.format("%-34s%-100s", "","'Yes' Remark for Market Intelligence")
+								String.format("%-30s%-100s", "","'Availability Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Primary Display(SKDNA)' for remaining categories With 'Return' Remark")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available)' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit1:' OLD BRAND remark With 100% Utilization for Display Unit Need Maintenance")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit2:' OTHRES remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit3:' OTHERS remark With 100% Utilization for Shopkeeper did not allow")+"\n"+
+								String.format("%-30s%-100s", "","'Secondary Display(Available) Unit4:' Display Unit Is In Perfect Condition With 100% Utilization")+"\n"+
+								String.format("%-30s%-100s", "","'Additional Info Yes' for remaining categories")+"\n"+
+								String.format("%-30s%-100s", "","'Retailer Remarks' with 'SR not visiting' remark")+"\n"+
+								String.format("%-30s%-100s", "","'Hanger Availabe' for Hanger")+"\n\n"+
+								String.format("%-30s%-100s", "","'Yes' Remark for Market Intelligence")
 						ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 						break
 					}

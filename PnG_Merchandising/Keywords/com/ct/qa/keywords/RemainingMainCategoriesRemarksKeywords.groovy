@@ -615,6 +615,10 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 		ArrayList<VisitedCategoryRemarkData> visitedcategoryremarks = new ArrayList<VisitedCategoryRemarkData>()
 		VisitedCategoryRemarkData visitedcategoryremark = new VisitedCategoryRemarkData()
+		
+		String remark = ProjectConstants.CURRENTVISITING_CATEGORYREMARK
+		
+		
 		visitedcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
 		visitedcategoryremark.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
 		visitedcategoryremark.setShopproductsdata(visitedshopproducts)

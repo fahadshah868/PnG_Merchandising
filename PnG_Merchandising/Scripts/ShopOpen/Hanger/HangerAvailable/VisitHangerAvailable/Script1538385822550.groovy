@@ -34,8 +34,8 @@ Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/HangerAvailable/Validat
 Mobile.tap(findTestObject('ShopOpen/Hanger/HangerAvailable/Availability', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-not_run: Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/HangerAvailable/Validate_ProductsAvailabilityScreen', 
-        [('package') : ProjectConstants.PACKAGENAME]), 'Availability')
+Mobile.verifyElementExist(findTestObject('ShopOpen/Hanger/HangerAvailable/Validate_ProductsAvailabilityScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+    0)
 
 CustomKeywords.'com.ct.qa.keywords.HangerKeywords.visitHangerProducts'(ProjectConstants.HANGERAVAILABLE, 'Hanger Available')
 
