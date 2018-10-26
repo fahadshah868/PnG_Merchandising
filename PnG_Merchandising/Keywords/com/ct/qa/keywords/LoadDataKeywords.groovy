@@ -115,16 +115,17 @@ public class LoadDataKeywords {
 		return expectedshopcategories
 	}
 	//load channel wise survey question categories
-	def static loadSurveyQuestionCategories(XSSFSheet sheet, int columnindexforvalue){
+	def static loadSurveyQuestionCategories(){
 		DataFormatter dataformatter = new DataFormatter()
 		ArrayList<String> expectedsurveyquestioncategories = new ArrayList<String>()
+		XSSFSheet sheet = loadSurveyQuestionsSheet()
 		int totalrows = sheet.getLastRowNum()
 		for(int i=1; i<=totalrows; i++){
 			Row row = sheet.getRow(i)
 			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONS_CHANNEL))
 			String channelname = "Channel: "+channel
 			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname)){
-				String questioncategory = dataformatter.formatCellValue(row.getCell(columnindexforvalue))
+				String questioncategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONCATEGORY))
 				expectedsurveyquestioncategories.add(questioncategory)
 			}
 		}
@@ -140,24 +141,30 @@ public class LoadDataKeywords {
 			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONS_CHANNEL))
 			String questioncategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONCATEGORY))
 			String channelname = "Channel: "+channel
+
+
+			int index = ProjectConstants.SURVEYQUESTION_TAKEPICTURE
+
+
 			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_SUBCATEGORY.equalsIgnoreCase(questioncategory)){
 				ProductWithValue questionwithvalue = new ProductWithValue()
 				String question = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTION))
 				String value = dataformatter.formatCellValue(row.getCell(columnindexforvalue))
 				String status = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTION_TAKEPICTURE))
+				String options = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTION_OPTIONS))
 				questionwithvalue.setProduct(question)
 				questionwithvalue.setProduct_value(value)
 				questionwithvalue.setStatus(status)
+				questionwithvalue.setOptions(options)
 				expectedsurveyquestions.add(questionwithvalue)
 			}
 		}
 		return expectedsurveyquestions
 	}
-	//load channel wise survey questions
-	def static loadAdditionalInfoQuestionsList(){
+	//load channel wise additional questions
+	def static loadAdditionalInfoQuestionsList(XSSFSheet sheet, int columnindexforvalue){
 		DataFormatter dataformatter = new DataFormatter()
 		ArrayList<ProductWithValue> expectedadditionalinfoquestions = new ArrayList<ProductWithValue>()
-		XSSFSheet sheet = loadAdditionalInfoQuestionsSheet()
 		int totalrows = sheet.getLastRowNum()
 		for(int i=1; i<=totalrows; i++){
 			Row row = sheet.getRow(i)
@@ -167,9 +174,13 @@ public class LoadDataKeywords {
 			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_MAINCATEGORY.equalsIgnoreCase(maincategory)){
 				ProductWithValue questionwithvalue = new ProductWithValue()
 				String question = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTION))
-				String value = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTION_VALUE))
+				String value = dataformatter.formatCellValue(row.getCell(columnindexforvalue))
+				String status = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTION_TAKEPICTURE))
+				String options = dataformatter.formatCellValue(row.getCell(ProjectConstants.ADDITIONALINFOQUESTION_OPTIONS))
 				questionwithvalue.setProduct(question)
 				questionwithvalue.setProduct_value(value)
+				questionwithvalue.setStatus(status)
+				questionwithvalue.setOptions(options)
 				expectedadditionalinfoquestions.add(questionwithvalue)
 			}
 		}

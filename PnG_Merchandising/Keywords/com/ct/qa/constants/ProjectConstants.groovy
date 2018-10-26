@@ -41,7 +41,7 @@ import WebUiBuiltInKeywords as WebUI
 public class ProjectConstants {
 
 	//variables for excel file and sheets
-	public static final String EXCEL_FILEPATH = "G:\\PnG_Merchandising.xlsx"
+	public static final String EXCEL_FILEPATH = "F:\\Git Projects\\PnG_Merchandising\\PnG_Merchandising\\PnG_Merchandising.xlsx"
 	public static final String CHANNEL_PRODUCTSSHEET = "Channel Products"
 	public static final String HOTSPOT_PRODUCTSSHEET = "Hotspot Products"
 	public static final String DISTRIBUTION_SHEET = "Distribution Point"
@@ -92,6 +92,7 @@ public class ProjectConstants {
 	public static final int SURVEYQUESTIONVALUE
 	public static final int OVERWRITE_SURVEYQUESTIONVALUE
 	public static final int SURVEYQUESTION_TAKEPICTURE
+	public static final int SURVEYQUESTION_OPTIONS
 
 	//additional info questions columns
 	public static final int ADDITIONALINFOQUESTIONS_CHANNEL
@@ -99,6 +100,8 @@ public class ProjectConstants {
 	public static final int ADDITIONALINFOQUESTION
 	public static final int ADDITIONALINFOQUESTION_VALUE
 	public static final int OVERWRITE_ADDITIONALINFOQUESTION_VALUE
+	public static final int ADDITIONALINFOQUESTION_TAKEPICTURE
+	public static final int ADDITIONALINFOQUESTION_OPTIONS
 
 
 	//variables for current visiting shop channels, chiller and categories
@@ -215,8 +218,11 @@ public class ProjectConstants {
 			else if(columnname.equalsIgnoreCase("Overwrite Value")){
 				OVERWRITE_SURVEYQUESTIONVALUE = cellnumber
 			}
-			else if(columnname.equalsIgnoreCase("Take Picure")){
+			else if(columnname.equalsIgnoreCase("Take Picture")){
 				SURVEYQUESTION_TAKEPICTURE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Options")){
+				SURVEYQUESTION_OPTIONS = cellnumber
 			}
 			else{}
 		}
@@ -237,6 +243,12 @@ public class ProjectConstants {
 			}
 			else if(columnname.equalsIgnoreCase("Overwrite Value")){
 				OVERWRITE_ADDITIONALINFOQUESTION_VALUE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Take Picture")){
+				ADDITIONALINFOQUESTION_TAKEPICTURE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Options")){
+				ADDITIONALINFOQUESTION_OPTIONS = cellnumber
 			}
 			else{}
 		}
