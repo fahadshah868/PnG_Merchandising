@@ -26,13 +26,8 @@ Mobile.tap(findTestObject('CommonScreenElements/DoneButton', [('package') : Proj
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_AvailableRemarksScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplay_AvailableRemark'('Display Unit Need Maintenance')
-
-Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_DUNM_CategoryRemarksScreen', 
-        [('package') : ProjectConstants.PACKAGENAME]), 'CATEGORY REMARKS')
-
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/DUNM_CategoryRemark_BrokenHeader', 
-        [('package') : ProjectConstants.PACKAGENAME]), 0)
+CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplay_AvailableRemark'('Display Unit Need Maintenance', 
+    1)
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/DUNM_CategoryRemarks_BackButton', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)

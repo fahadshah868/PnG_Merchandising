@@ -379,12 +379,12 @@ public class ShopVisitingScenariosKeywords{
 					for(int j=0; j< visitedshopdatainfo.getVisitedcategoriesdata().size(); j++){
 						VisitedCategoryData visitedcategorydata = visitedshopdatainfo.getVisitedcategoriesdata().get(j)
 						if(visitedcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
+							message = message + "\n\n" +
+									String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
+									String.format("%-30s%-60s", "HotSpot Remark With Type:",visitedcategorydata.getFirstvisit_categoryremark()+"  ==>  "+visitedcategorydata.getOverwrite_categoryremark()) + "\n"
 							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
 							if(shopproductsdata != null){
-								message = message + "\n\n" +
-										String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-										String.format("%-30s%-60s", "HotSpot Type:",visitedcategorydata.getSubcategory()) + "\n" +
-										String.format("%-50s%-30s%-30s", "Products","Facing","Overwrite Facing")+"\n"
+								message = message +	String.format("%-50s%-30s%-30s", "Products","Facing","Overwrite Facing")+"\n"
 								for(int n=0; n< shopproductsdata.size() ; n++){
 									ShopProductsData _shopproductsdata = shopproductsdata.get(n)
 									message = message + String.format("%-50s%-30s%-30s", _shopproductsdata.getProduct(),_shopproductsdata.getHs_facing(), _shopproductsdata.getOverwrite_hs_facing())+"\n"

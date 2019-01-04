@@ -20,31 +20,51 @@ import internal.GlobalVariable
 
 public class VisitedCategoryRemarkData {
 	public String categoryremark
-	public String subremark
-	public String subcategory
-	public ArrayList<ShopProductsData> shopproductsdata
+	public String firstvisit_categoryremark_subremark
+	public String overwrite_categoryremark_subremark
+	public ArrayList<SDUnit> sdunits
+	public ArrayList<SubCategory> subcategories
+	public ArrayList<KBD_Question> kbd_questions
+
+	public VisitedCategoryRemarkData(){
+		subcategories = new ArrayList<SubCategory>()
+		sdunits = new ArrayList<SDUnit>()
+	}
+
+	public ArrayList<KBD_Question> getKbd_questions() {
+		return kbd_questions;
+	}
+	public void setKbd_questions(ArrayList<KBD_Question> kbd_questions) {
+		this.kbd_questions = kbd_questions;
+	}
+	public String getFirstvisit_categoryremark_subremark() {
+		return firstvisit_categoryremark_subremark;
+	}
+	public void setFirstvisit_categoryremark_subremark(String firstvisit_categoryremark_subremark) {
+		this.firstvisit_categoryremark_subremark = firstvisit_categoryremark_subremark;
+	}
+	public String getOverwrite_categoryremark_subremark() {
+		return overwrite_categoryremark_subremark;
+	}
+	public void setOverwrite_categoryremark_subremark(String overwrite_categoryremark_subremark) {
+		this.overwrite_categoryremark_subremark = overwrite_categoryremark_subremark;
+	}
 	public String getCategoryremark() {
 		return categoryremark;
 	}
 	public void setCategoryremark(String categoryremark) {
 		this.categoryremark = categoryremark;
 	}
-	public String getSubremark() {
-		return subremark;
+	public ArrayList<SDUnit> getSdunits() {
+		return sdunits;
 	}
-	public void setSubremark(String subremark) {
-		this.subremark = subremark;
+	public void setSdunits(SDUnit sdunits) {
+		this.sdunits.add(sdunits);
 	}
-	public String getSubcategory() {
-		return subcategory;
+	public ArrayList<SubCategory> getSubcategories() {
+		return subcategories;
 	}
-	public void setSubcategory(String subcategory) {
-		this.subcategory = subcategory;
-	}
-	public ArrayList<ShopProductsData> getShopproductsdata() {
-		return shopproductsdata;
-	}
-	public void setShopproductsdata(ArrayList<ShopProductsData> shopproductsdata) {
-		this.shopproductsdata = shopproductsdata;
+	public void setSubcategories(SubCategory subcategories) {
+		this.subcategories.add(subcategories);
 	}
 }

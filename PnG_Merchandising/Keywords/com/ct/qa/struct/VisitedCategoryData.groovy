@@ -28,8 +28,13 @@ import WebUiBuiltInKeywords as WebUI
 public class VisitedCategoryData {
 	public String maincategory
 	public ArrayList<VisitedCategoryRemarkData> visitedcategoryremarks
-	public String subcategory
+	public String firstvisit_categoryremark
+	public String overwrite_categoryremark
 	public ArrayList<ShopProductsData> shopproductsdata
+	public VisitedCategoryData(){
+		visitedcategoryremarks = new ArrayList<VisitedCategoryRemarkData>()
+	}
+	
 	public String getMaincategory() {
 		return maincategory;
 	}
@@ -39,19 +44,25 @@ public class VisitedCategoryData {
 	public ArrayList<VisitedCategoryRemarkData> getVisitedcategoryremarks() {
 		return visitedcategoryremarks;
 	}
-	public void setVisitedcategoryremarks(ArrayList<VisitedCategoryRemarkData> visitedcategoryremarks) {
-		this.visitedcategoryremarks = visitedcategoryremarks;
-	}
-	public String getSubcategory() {
-		return subcategory;
-	}
-	public void setSubcategory(String subcategory) {
-		this.subcategory = subcategory;
+	public void setVisitedcategoryremarks(VisitedCategoryRemarkData visitedcategoryremarks) {
+		this.visitedcategoryremarks.add(visitedcategoryremarks);
 	}
 	public ArrayList<ShopProductsData> getShopproductsdata() {
 		return shopproductsdata;
 	}
 	public void setShopproductsdata(ArrayList<ShopProductsData> shopproductsdata) {
 		this.shopproductsdata = shopproductsdata;
+	}
+	public String getFirstvisit_categoryremark() {
+		return firstvisit_categoryremark;
+	}
+	public void setFirstvisit_categoryremark(String firstvisit_categoryremark) {
+		this.firstvisit_categoryremark = firstvisit_categoryremark;
+	}
+	public String getOverwrite_categoryremark() {
+		return overwrite_categoryremark;
+	}
+	public void setOverwrite_categoryremark(String overwrite_categoryremark) {
+		this.overwrite_categoryremark = overwrite_categoryremark;
 	}
 }

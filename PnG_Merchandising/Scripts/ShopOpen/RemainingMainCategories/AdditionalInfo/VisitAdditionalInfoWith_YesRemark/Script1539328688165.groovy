@@ -32,5 +32,6 @@ Mobile.hideKeyboard()
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Utilization_PopupSubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.validateCategoryDetailActionScreen'()
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/Validate_MainCategoryDetailActionScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+    0)
 

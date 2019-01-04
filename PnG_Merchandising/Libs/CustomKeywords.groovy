@@ -30,10 +30,6 @@ def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWithCateg
     (new com.ct.qa.keywords.ShopVisitingScenariosKeywords()).visitShopsWithCategoryLevel_Overwriting()
 }
 
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.validateCategoryDetailActionScreen"() {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).validateCategoryDetailActionScreen()
-}
-
 def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitVisibilitySubCategories"(
     	int status	) {
     (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitVisibilitySubCategories(
@@ -91,9 +87,11 @@ def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.overwriteS
 }
 
 def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplay_AvailableRemark"(
-    	String _remark	) {
+    	String _remark	
+     , 	int index	) {
     (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).selectSecondaryDisplay_AvailableRemark(
-        	_remark)
+        	_remark
+         , 	index)
 }
 
 def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUtilizationForAdditionalInfo"(
@@ -266,6 +264,10 @@ def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotAvailableFacingProduc
     	int columnindex	) {
     (new com.ct.qa.keywords.HotSpotKeywords()).visitHotSpotAvailableFacingProducts(
         	columnindex)
+}
+
+def static "com.ct.qa.keywords.HotSpotKeywords.visitSKDNA"() {
+    (new com.ct.qa.keywords.HotSpotKeywords()).visitSKDNA()
 }
 
 def static "com.ct.qa.keywords.HotSpotKeywords.findPOSMImageView"() {

@@ -8,10 +8,12 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.openqa.selenium.By
 import com.ct.qa.constants.ProjectConstants
+import com.ct.qa.struct.KBD_Question
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.MissingCategoryRemarkData
 import com.ct.qa.struct.ProductWithValue
 import com.ct.qa.struct.ShopProductsData
+import com.ct.qa.struct.SubCategory
 import com.ct.qa.struct.UnmatchedItems
 import com.ct.qa.struct.VisitedCategoryData
 import com.ct.qa.struct.VisitedCategoryRemarkData
@@ -35,26 +37,6 @@ import io.appium.java_client.MobileElement
 public class RemainingMainCategoriesRemarksKeywords {
 
 	AppiumDriver<MobileElement> driver = ProjectConstants.DRIVER;
-
-	@Keyword
-	def validateCategoryDetailActionScreen(){
-		boolean flag = false
-		Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/Validate_MainCategoryDetailActionScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-		int totalactions = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<= totalactions; i++){
-			flag = false
-			MobileElement action = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
-			String actionname = action.getText()
-			if(actionname.equalsIgnoreCase("Availability")){
-				flag = true
-				break
-			}
-		}
-		if(flag == false){
-			KeywordUtil.markErrorAndStop("Main Category Detail Screen Could Not Found")
-		}
-		else{}
-	}
 
 	// for availability remark -----------------------------------------
 	@Keyword
@@ -246,6 +228,75 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 		else{
 		}
+		SubCategory subcategory = new SubCategory()
+		VisitedCategoryRemarkData visitedcategoryremark = new VisitedCategoryRemarkData()
+		visitedcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+		subcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+		if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+			subcategory.setFirstvisit_remark("Yes")
+		}
+		else{
+			subcategory.setOverwrite_remark("No")
+		}
+		visitedcategoryremark.setSubcategories(subcategory)
+		VisitedCategoryData visitedcategory = new VisitedCategoryData()
+		visitedcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+		visitedcategory.setVisitedcategoryremarks(visitedcategoryremark)
+		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
+			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
+				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
+				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
+				if(visitedcategoriesdata != null){
+					boolean maincategory_flag = false
+					for(int k=0; k<visitedcategoriesdata.size(); k++){
+						VisitedCategoryData visitedcategorydata = visitedcategoriesdata.get(k)
+						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory())){
+							maincategory_flag = true
+							ArrayList<VisitedCategoryRemarkData> visitedcategoryremarksdata = visitedcategorydata.getVisitedcategoryremarks()
+							if(visitedcategoryremarksdata != null){
+								boolean categoryremark_flag = false
+								for(int m=0; m< visitedcategoryremarksdata.size(); m++){
+									VisitedCategoryRemarkData visitedcategoryremarkdata = visitedcategoryremarksdata.get(m)
+									if(visitedcategoryremarkdata != null && (visitedcategoryremarkdata.getCategoryremark().equalsIgnoreCase(visitedcategoryremark.getCategoryremark()))){
+										categoryremark_flag = true
+										ArrayList<SubCategory> subcategoriesdata = visitedcategoryremarkdata.getSubcategories()
+										if(subcategoriesdata != null){
+											boolean subcategoryremark_flag = false
+											for(int o=0; o< subcategoriesdata.size(); o++){
+												SubCategory subcategorydata = subcategoriesdata.get(o)
+												if(subcategorydata.getSubcategory().equals(subcategory.getSubcategory())){
+													subcategoryremark_flag = true
+													if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+														subcategorydata.setFirstvisit_remark("Yes")
+													}
+													else{
+														subcategorydata.setOverwrite_remark("No")
+													}
+												}
+											}
+											if(subcategoryremark_flag == false){
+												visitedcategoryremarkdata.setSubcategories(subcategory)
+											}
+										}
+									}
+								}
+								if(categoryremark_flag == false){
+									visitedcategorydata.setVisitedcategoryremarks(visitedcategoryremark)
+								}
+							}
+						}
+					}
+					if(maincategory_flag == false){
+						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+						break
+					}
+				}
+				else{
+					ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+					break
+				}
+			}
+		}
 	}
 	@Keyword
 	def visitProductsAvailabilityWithNoRemarks(){
@@ -363,6 +414,75 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 		else{
 		}
+		SubCategory subcategory = new SubCategory()
+		VisitedCategoryRemarkData visitedcategoryremark = new VisitedCategoryRemarkData()
+		visitedcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+		subcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+		if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+			subcategory.setFirstvisit_remark("Yes")
+		}
+		else{
+			subcategory.setOverwrite_remark("No")
+		}
+		visitedcategoryremark.setSubcategories(subcategory)
+		VisitedCategoryData visitedcategory = new VisitedCategoryData()
+		visitedcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+		visitedcategory.setVisitedcategoryremarks(visitedcategoryremark)
+		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
+			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
+				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
+				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
+				if(visitedcategoriesdata != null){
+					boolean maincategory_flag = false
+					for(int k=0; k<visitedcategoriesdata.size(); k++){
+						VisitedCategoryData visitedcategorydata = visitedcategoriesdata.get(k)
+						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory())){
+							maincategory_flag = true
+							ArrayList<VisitedCategoryRemarkData> visitedcategoryremarksdata = visitedcategorydata.getVisitedcategoryremarks()
+							if(visitedcategoryremarksdata != null){
+								boolean categoryremark_flag = false
+								for(int m=0; m< visitedcategoryremarksdata.size(); m++){
+									VisitedCategoryRemarkData visitedcategoryremarkdata = visitedcategoryremarksdata.get(m)
+									if(visitedcategoryremarkdata != null && (visitedcategoryremarkdata.getCategoryremark().equalsIgnoreCase(visitedcategoryremark.getCategoryremark()))){
+										categoryremark_flag = true
+										ArrayList<SubCategory> subcategoriesdata = visitedcategoryremarkdata.getSubcategories()
+										if(subcategoriesdata != null){
+											boolean subcategoryremark_flag = false
+											for(int o=0; o< subcategoriesdata.size(); o++){
+												SubCategory subcategorydata = subcategoriesdata.get(o)
+												if(subcategorydata.getSubcategory().equals(subcategory.getSubcategory())){
+													subcategoryremark_flag = true
+													if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+														subcategorydata.setFirstvisit_remark("Yes")
+													}
+													else{
+														subcategorydata.setOverwrite_remark("No")
+													}
+												}
+											}
+											if(subcategoryremark_flag == false){
+												visitedcategoryremarkdata.setSubcategories(subcategory)
+											}
+										}
+									}
+								}
+								if(categoryremark_flag == false){
+									visitedcategorydata.setVisitedcategoryremarks(visitedcategoryremark)
+								}
+							}
+						}
+					}
+					if(maincategory_flag == false){
+						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+						break
+					}
+				}
+				else{
+					ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+					break
+				}
+			}
+		}
 	}
 
 	// for primary display remark -----------------------------------------
@@ -373,6 +493,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 			MobileElement remark = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String remarkname = remark.getText()
 			if(remarkname.equalsIgnoreCase(_remark)){
+				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarkname
 				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				break
 			}
@@ -613,62 +734,77 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 		else{
 		}
-		ArrayList<VisitedCategoryRemarkData> visitedcategoryremarks = new ArrayList<VisitedCategoryRemarkData>()
+
+		SubCategory subcategory = new SubCategory()
 		VisitedCategoryRemarkData visitedcategoryremark = new VisitedCategoryRemarkData()
-
-		String remark = ProjectConstants.CURRENTVISITING_CATEGORYREMARK
-
-
 		visitedcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
-		visitedcategoryremark.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
-		visitedcategoryremark.setShopproductsdata(visitedshopproducts)
-		visitedcategoryremarks.add(visitedcategoryremark)
+		if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+			visitedcategoryremark.setFirstvisit_categoryremark_subremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK)
+		}
+		else{
+			visitedcategoryremark.setFirstvisit_categoryremark_subremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK)
+		}
+		subcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+		subcategory.setShopproductsdata(visitedshopproducts)
+		visitedcategoryremark.setSubcategories(subcategory)
 		VisitedCategoryData visitedcategory = new VisitedCategoryData()
 		visitedcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-		visitedcategory.setVisitedcategoryremarks(visitedcategoryremarks)
-
+		visitedcategory.setVisitedcategoryremarks(visitedcategoryremark)
 		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
 			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
 				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
 				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
 				if(visitedcategoriesdata != null){
-					boolean flag = false
+					boolean maincategory_flag = false
 					for(int k=0; k<visitedcategoriesdata.size(); k++){
 						VisitedCategoryData visitedcategorydata = visitedcategoriesdata.get(k)
 						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory())){
+							maincategory_flag = true
 							ArrayList<VisitedCategoryRemarkData> visitedcategoryremarksdata = visitedcategorydata.getVisitedcategoryremarks()
 							if(visitedcategoryremarksdata != null){
+								boolean categoryremark_flag = false
 								for(int m=0; m< visitedcategoryremarksdata.size(); m++){
 									VisitedCategoryRemarkData visitedcategoryremarkdata = visitedcategoryremarksdata.get(m)
-									if(visitedcategoryremarkdata != null && (visitedcategoryremarkdata.getCategoryremark().equalsIgnoreCase(visitedcategoryremark.getCategoryremark()) && visitedcategoryremarkdata.getSubcategory().equalsIgnoreCase(visitedcategoryremark.getSubcategory()))){
-										flag = true
-										ArrayList<ShopProductsData> shopproductsdata = visitedcategoryremarkdata.getShopproductsdata()
-										for(int n=0; n< shopproductsdata.size(); n++){
-											ShopProductsData existingshopproductsdata = shopproductsdata.get(n)
-											for(int b=0; b< visitedshopproducts.size(); b++){
-												ShopProductsData displayedshopproductsdata = visitedshopproducts.get(b)
-												if(ProjectConstants.SCENARIO.equals("first visit")){
-													if(existingshopproductsdata.getProduct().equalsIgnoreCase(displayedshopproductsdata.getProduct())){
-														existingshopproductsdata.setPd_displayspaceavailable(displayedshopproductsdata.getPd_displayspaceavailable())
-														break
+									if(visitedcategoryremarkdata != null && (visitedcategoryremarkdata.getCategoryremark().equalsIgnoreCase(visitedcategoryremark.getCategoryremark()) && visitedcategoryremarkdata.getFirstvisit_categoryremark_subremark().equalsIgnoreCase(visitedcategoryremark.getOverwrite_categoryremark_subremark()))){
+										categoryremark_flag = true
+										ArrayList<SubCategory> subcategoriesdata = visitedcategoryremarkdata.getSubcategories()
+										if(subcategoriesdata != null){
+											boolean subcategoryremark_flag = false
+											for(int o=0; o< subcategoriesdata.size(); o++){
+												SubCategory subcategorydata = subcategoriesdata.get(o)
+												if(subcategorydata.getSubcategory().equals(subcategory.getSubcategory())){
+													subcategoryremark_flag = true
+													ArrayList<ShopProductsData> existingshopproductsdata = subcategorydata.getShopproductsdata()
+													for(int ex=0; ex< existingshopproductsdata.size(); ex++){
+														ShopProductsData existingshopproduct = existingshopproductsdata.get(ex)
+														for(int ds=0; ds< visitedshopproducts.size(); ds++){
+															ShopProductsData visitedshopproduct = visitedshopproducts.get(ds)
+															if(existingshopproduct.getProduct().equals(visitedshopproduct.getProduct())){
+																if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+																	existingshopproduct.setPd_displayspaceavailable(visitedshopproduct.getPd_displayspaceavailable())
+																}
+																else{
+																	existingshopproduct.setPd_overwrite_displayspaceavailable(visitedshopproduct.getPd_overwrite_displayspaceavailable())
+																}
+																break
+															}
+														}
 													}
-													else{}
 												}
-												else{
-													if(existingshopproductsdata.getProduct().equalsIgnoreCase(displayedshopproductsdata.getProduct())){
-														existingshopproductsdata.setPd_overwrite_displayspaceavailable(displayedshopproductsdata.getPd_overwrite_displayspaceavailable())
-														break
-													}
-													else{}
-												}
+											}
+											if(subcategoryremark_flag == false){
+												visitedcategoryremarkdata.setSubcategories(subcategory)
 											}
 										}
 									}
 								}
+								if(categoryremark_flag == false){
+									visitedcategorydata.setVisitedcategoryremarks(visitedcategoryremark)
+								}
 							}
 						}
 					}
-					if(flag == false){
+					if(maincategory_flag == false){
 						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
 						break
 					}
@@ -679,6 +815,8 @@ public class RemainingMainCategoriesRemarksKeywords {
 				}
 			}
 		}
+
+
 	}
 	// for secondary display remarks
 	@Keyword
@@ -707,6 +845,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 			MobileElement remark = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String remarkname = remark.getText()
 			if(remarkname.equalsIgnoreCase(_remark)){
+				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarkname
 				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				break
 			}
@@ -716,6 +855,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 	def visitSecondaryDisplayUnitsList(){
 		int totalunits = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalunits; i++){
+			ProjectConstants.CURRENTVISITING_UNIT = "Unit"+i
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			if(i == 1){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_DisplayUnitNeedMaintenance"), null)
@@ -738,6 +878,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 	def overwriteSecondaryDisplayUnitsList(){
 		int totalunits = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalunits; i++){
+			ProjectConstants.CURRENTVISITING_UNIT = "Unit"+i
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			if(i == 1){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/OverwriteAvailableWith_DisplayUnitNeedMaintenance"), null)
@@ -757,13 +898,21 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 	}
 	@Keyword
-	def selectSecondaryDisplay_AvailableRemark(String _remark){
+	def selectSecondaryDisplay_AvailableRemark(String _remark, int index){
 		int totalremarks = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalremarks; i++){
 			MobileElement remark = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String remarkname = remark.getText()
 			if(remarkname.equalsIgnoreCase(_remark)){
+				ProjectConstants.CURRENTVISITING_UNITREMARK = remarkname
 				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				if(index == 1 || index == 2){
+					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_SecondaryDisplay_available_remarksScreen",[('package') : ProjectConstants.PACKAGENAME]), 0)
+					MobileElement subremark = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+					String subremark_text = subremark.getText()
+					ProjectConstants.CURRENTVISITING_UNITSUBREMARK = subremark_text
+					driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				}
 				break
 			}
 		}
@@ -788,17 +937,20 @@ public class RemainingMainCategoriesRemarksKeywords {
 		MobileElement surveyquestion = null
 		ArrayList<String> visitedsurveyquestions = new ArrayList<String>()
 		ArrayList<String> expectedsurveyquestionslist = new ArrayList<String>()
+		ArrayList<KBD_Question> kbdquestions = new ArrayList<KBD_Question>()
 		ArrayList<ProductWithValue> expectedsurveyquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList(LoadDataKeywords.loadAdditionalInfoQuestionsSheet() , ProjectConstants.ADDITIONALINFOQUESTION_VALUE)
 		for(int i=0; i< expectedsurveyquestions.size(); i++){
 			expectedsurveyquestionslist.add(expectedsurveyquestions.get(i).getProduct())
 		}
 		ArrayList<MobileElement> surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		for(int i=0; i< surveyquestionslist.size(); i++){
+			KBD_Question kbdquestion = new KBD_Question()
 			surveyquestion = surveyquestionslist.get(i)
 			tag = surveyquestion.getTagName()
 			if(tag.equalsIgnoreCase("android.widget.Spinner")){
 				boolean flag = false
 				String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
+				kbdquestion.setQuestion(displayeddropdowntext)
 				visitedsurveyquestions.add(displayeddropdowntext)
 				surveyquestion.click()
 				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
@@ -808,21 +960,27 @@ public class RemainingMainCategoriesRemarksKeywords {
 						String status = expectedsurveyquestions.get(j).getStatus()
 						String options = expectedsurveyquestions.get(j).getOptions()
 						if(options.equalsIgnoreCase("Y/N")){
+							kbdquestion.setValue("Yes")
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						}
 						else{
+							kbdquestion.setValue("Yes")
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-
 						}
 						if(status.equalsIgnoreCase("Y")){
+							kbdquestion.setPicture_status("Y")
 							validateCameraScreenAndTakePicture()
 							break
 						}
-						else{}
+						else{
+							kbdquestion.setPicture_status("N")
+						}
 					}
 					else{}
 				}
 				if(flag == false){
+					kbdquestion.setValue("Yes")
+					kbdquestion.setPicture_status("Not Mention")
 					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					validateCameraScreenAndTakePicture()
 				}
@@ -833,12 +991,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 				boolean flag = false
 				String displayededitfieldtext = surveyquestion.getText()
 				visitedsurveyquestions.add(displayededitfieldtext)
+				kbdquestion.setQuestion(displayededitfieldtext)
 				for(int j=0; j< expectedsurveyquestions.size(); j++){
 					String expectededitfieldtext = expectedsurveyquestions.get(j).getProduct()
 					if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
 						flag = true
 						String questionvalue = expectedsurveyquestions.get(j).getProduct_value()
 						surveyquestion.setValue(questionvalue)
+						kbdquestion.setValue(questionvalue)
+						kbdquestion.setPicture_status("N")
 						Mobile.hideKeyboard()
 					}
 					else{
@@ -846,11 +1007,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 				}
 				if(flag == false){
 					surveyquestion.setValue("0000")
+					kbdquestion.setValue("0000")
+					kbdquestion.setPicture_status("N")
 					Mobile.hideKeyboard()
 				}
 			}
+			kbdquestions.add(kbdquestion)
 		}
 		while(true){
+			KBD_Question kbdquestion = new KBD_Question()
 			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 			index = (surveyquestionslist.size()-1)
 			surveyquestion =  surveyquestionslist.get(index)
@@ -880,6 +1045,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 					visitedsurveyquestions.add(displayeddropdowntext)
+					kbdquestion.setQuestion(displayeddropdowntext)
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
@@ -888,21 +1054,28 @@ public class RemainingMainCategoriesRemarksKeywords {
 							String status = expectedsurveyquestions.get(j).getStatus()
 							String options = expectedsurveyquestions.get(j).getOptions()
 							if(options.equalsIgnoreCase("Y/N")){
+								kbdquestion.setValue("Yes")
 								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							}
 							else{
+								kbdquestion.setValue("Yes")
 								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 							}
 							if(status.equalsIgnoreCase("Y")){
+								kbdquestion.setPicture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
-							else{}
+							else{
+								kbdquestion.setPicture_status("N")
+							}
 						}
 						else{}
 					}
 					if(flag == false){
+						kbdquestion.setPicture_status("Not Mention")
+						kbdquestion.setPicture_status("Y")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}
@@ -913,12 +1086,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 					boolean flag = false
 					String displayededitfieldtext = surveyquestion.getText()
 					visitedsurveyquestions.add(displayededitfieldtext)
+					kbdquestion.setQuestion(displayededitfieldtext)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
 						String expectededitfieldtext = expectedsurveyquestions.get(j).getProduct()
 						if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
 							flag = true
 							String questionvalue = expectedsurveyquestions.get(j).getProduct_value()
 							surveyquestion.setValue(questionvalue)
+							kbdquestion.setValue(questionvalue)
+							kbdquestion.setPicture_status("N")
 							Mobile.hideKeyboard()
 						}
 						else{
@@ -926,6 +1102,8 @@ public class RemainingMainCategoriesRemarksKeywords {
 					}
 					if(flag == false){
 						surveyquestion.setValue("0000")
+						kbdquestion.setValue("0000")
+						kbdquestion.setPicture_status("N")
 						Mobile.hideKeyboard()
 					}
 				}
@@ -959,6 +1137,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 					visitedsurveyquestions.add(displayeddropdowntext)
+					kbdquestion.setQuestion(displayeddropdowntext)
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
@@ -967,21 +1146,28 @@ public class RemainingMainCategoriesRemarksKeywords {
 							String status = expectedsurveyquestions.get(j).getStatus()
 							String options = expectedsurveyquestions.get(j).getOptions()
 							if(options.equalsIgnoreCase("Y/N")){
+								kbdquestion.setValue("Yes")
 								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							}
 							else{
+								kbdquestion.setValue("Yes")
 								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 							}
 							if(status.equalsIgnoreCase("Y")){
+								kbdquestion.setPicture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
-							else{}
+							else{
+								kbdquestion.setPicture_status("N")
+							}
 						}
 						else{}
 					}
 					if(flag == false){
+						kbdquestion.setValue("Y")
+						kbdquestion.setPicture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}
@@ -992,12 +1178,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 					boolean flag = false
 					String displayededitfieldtext = surveyquestion.getText()
 					visitedsurveyquestions.add(displayededitfieldtext)
+					kbdquestion.setQuestion(displayededitfieldtext)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
 						String expectededitfieldtext = expectedsurveyquestions.get(j).getProduct()
 						if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
 							flag = true
 							String questionvalue = expectedsurveyquestions.get(j).getProduct_value()
 							surveyquestion.setValue(questionvalue)
+							kbdquestion.setValue(questionvalue)
+							kbdquestion.setPicture_status("N")
 							Mobile.hideKeyboard()
 						}
 						else{
@@ -1005,10 +1194,13 @@ public class RemainingMainCategoriesRemarksKeywords {
 					}
 					if(flag == false){
 						surveyquestion.setValue("0000")
+						kbdquestion.setValue("0000")
+						kbdquestion.setPicture_status("N")
 						Mobile.hideKeyboard()
 					}
 				}
 			}
+			kbdquestions.add(kbdquestion)
 		}
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedsurveyquestions)
 		if(UnmatchedItems_status.getStatus() == 2){
@@ -1054,6 +1246,67 @@ public class RemainingMainCategoriesRemarksKeywords {
 			}
 		}
 		else{
+		}
+		VisitedCategoryRemarkData visitedcategoryremark = new VisitedCategoryRemarkData()
+		visitedcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+		visitedcategoryremark.setKbd_questions(kbdquestions)
+		VisitedCategoryData visitedcategory = new VisitedCategoryData()
+		visitedcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+		visitedcategory.setVisitedcategoryremarks(visitedcategoryremark)
+		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
+			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
+				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
+				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
+				if(visitedcategoriesdata != null){
+					boolean maincategory_flag = false
+					for(int k=0; k<visitedcategoriesdata.size(); k++){
+						VisitedCategoryData visitedcategorydata = visitedcategoriesdata.get(k)
+						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory())){
+							maincategory_flag = true
+							ArrayList<VisitedCategoryRemarkData> visitedcategoryremarksdata = visitedcategorydata.getVisitedcategoryremarks()
+							if(visitedcategoryremarksdata != null){
+								boolean categoryremark_flag = false
+								for(int m=0; m< visitedcategoryremarksdata.size(); m++){
+									VisitedCategoryRemarkData visitedcategoryremarkdata = visitedcategoryremarksdata.get(m)
+									if(visitedcategoryremarkdata != null && (visitedcategoryremarkdata.getCategoryremark().equalsIgnoreCase(visitedcategoryremark.getCategoryremark()))){
+										categoryremark_flag = true
+										ArrayList<KBD_Question> existingkbdquestions = visitedcategoryremarkdata.getKbd_questions()
+										if(existingkbdquestions != null){
+											for(int ex=0; ex< existingkbdquestions.size(); ex++){
+												KBD_Question existingkbdquestion = existingkbdquestions.get(ex)
+												for(int ds=0; ds< kbdquestions.size(); ds++){
+													KBD_Question displayedkbdquestion = kbdquestions.get(ds)
+													if(existingkbdquestion.getQuestion().equals(displayedkbdquestion.getQuestion())){
+														if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+															existingkbdquestion.setValue(displayedkbdquestion.getValue())
+															existingkbdquestion.setPicture_status(displayedkbdquestion.getPicture_status())
+														}
+														else{
+															existingkbdquestion.setOverwrite_value(displayedkbdquestion.getOverwrite_value())
+															existingkbdquestion.setOverwrite_picture_status(displayedkbdquestion.getOverwrite_picture_status())
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								if(categoryremark_flag == false){
+									visitedcategorydata.setVisitedcategoryremarks(visitedcategoryremark)
+								}
+							}
+						}
+					}
+					if(maincategory_flag == false){
+						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+						break
+					}
+				}
+				else{
+					ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+					break
+				}
+			}
 		}
 	}
 	@Keyword
@@ -1065,17 +1318,20 @@ public class RemainingMainCategoriesRemarksKeywords {
 		MobileElement surveyquestion = null
 		ArrayList<String> visitedsurveyquestions = new ArrayList<String>()
 		ArrayList<String> expectedsurveyquestionslist = new ArrayList<String>()
-		ArrayList<ProductWithValue> expectedsurveyquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList(LoadDataKeywords.loadAdditionalInfoQuestionsSheet() , ProjectConstants.OVERWRITE_ADDITIONALINFOQUESTION_VALUE)
+		ArrayList<KBD_Question> kbdquestions = new ArrayList<KBD_Question>()
+		ArrayList<ProductWithValue> expectedsurveyquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList(LoadDataKeywords.loadAdditionalInfoQuestionsSheet() , ProjectConstants.ADDITIONALINFOQUESTION_VALUE)
 		for(int i=0; i< expectedsurveyquestions.size(); i++){
 			expectedsurveyquestionslist.add(expectedsurveyquestions.get(i).getProduct())
 		}
 		ArrayList<MobileElement> surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		for(int i=0; i< surveyquestionslist.size(); i++){
+			KBD_Question kbdquestion = new KBD_Question()
 			surveyquestion = surveyquestionslist.get(i)
 			tag = surveyquestion.getTagName()
 			if(tag.equalsIgnoreCase("android.widget.Spinner")){
 				boolean flag = false
 				String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
+				kbdquestion.setQuestion(displayeddropdowntext)
 				visitedsurveyquestions.add(displayeddropdowntext)
 				surveyquestion.click()
 				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
@@ -1085,21 +1341,27 @@ public class RemainingMainCategoriesRemarksKeywords {
 						String status = expectedsurveyquestions.get(j).getStatus()
 						String options = expectedsurveyquestions.get(j).getOptions()
 						if(options.equalsIgnoreCase("Y/N")){
+							kbdquestion.setValue("No")
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						}
 						else{
+							kbdquestion.setValue("Yes")
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-
 						}
 						if(status.equalsIgnoreCase("Y")){
+							kbdquestion.setPicture_status("Y")
 							validateCameraScreenAndTakePicture()
 							break
 						}
-						else{}
+						else{
+							kbdquestion.setPicture_status("N")
+						}
 					}
 					else{}
 				}
 				if(flag == false){
+					kbdquestion.setValue("Yes")
+					kbdquestion.setPicture_status("Not Mention")
 					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					validateCameraScreenAndTakePicture()
 				}
@@ -1110,12 +1372,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 				boolean flag = false
 				String displayededitfieldtext = surveyquestion.getText()
 				visitedsurveyquestions.add(displayededitfieldtext)
+				kbdquestion.setQuestion(displayededitfieldtext)
 				for(int j=0; j< expectedsurveyquestions.size(); j++){
 					String expectededitfieldtext = expectedsurveyquestions.get(j).getProduct()
 					if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
 						flag = true
 						String questionvalue = expectedsurveyquestions.get(j).getProduct_value()
 						surveyquestion.setValue(questionvalue)
+						kbdquestion.setValue(questionvalue)
+						kbdquestion.setPicture_status("N")
 						Mobile.hideKeyboard()
 					}
 					else{
@@ -1123,11 +1388,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 				}
 				if(flag == false){
 					surveyquestion.setValue("0000")
+					kbdquestion.setValue("0000")
+					kbdquestion.setPicture_status("N")
 					Mobile.hideKeyboard()
 				}
 			}
+			kbdquestions.add(kbdquestion)
 		}
 		while(true){
+			KBD_Question kbdquestion = new KBD_Question()
 			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 			index = (surveyquestionslist.size()-1)
 			surveyquestion =  surveyquestionslist.get(index)
@@ -1157,6 +1426,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 					visitedsurveyquestions.add(displayeddropdowntext)
+					kbdquestion.setQuestion(displayeddropdowntext)
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
@@ -1165,21 +1435,28 @@ public class RemainingMainCategoriesRemarksKeywords {
 							String status = expectedsurveyquestions.get(j).getStatus()
 							String options = expectedsurveyquestions.get(j).getOptions()
 							if(options.equalsIgnoreCase("Y/N")){
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+								kbdquestion.setValue("Yes")
+								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							}
 							else{
+								kbdquestion.setValue("Yes")
 								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 							}
 							if(status.equalsIgnoreCase("Y")){
+								kbdquestion.setPicture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
-							else{}
+							else{
+								kbdquestion.setPicture_status("N")
+							}
 						}
 						else{}
 					}
 					if(flag == false){
+						kbdquestion.setPicture_status("Not Mention")
+						kbdquestion.setPicture_status("Y")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}
@@ -1190,12 +1467,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 					boolean flag = false
 					String displayededitfieldtext = surveyquestion.getText()
 					visitedsurveyquestions.add(displayededitfieldtext)
+					kbdquestion.setQuestion(displayededitfieldtext)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
 						String expectededitfieldtext = expectedsurveyquestions.get(j).getProduct()
 						if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
 							flag = true
 							String questionvalue = expectedsurveyquestions.get(j).getProduct_value()
 							surveyquestion.setValue(questionvalue)
+							kbdquestion.setValue(questionvalue)
+							kbdquestion.setPicture_status("N")
 							Mobile.hideKeyboard()
 						}
 						else{
@@ -1203,6 +1483,8 @@ public class RemainingMainCategoriesRemarksKeywords {
 					}
 					if(flag == false){
 						surveyquestion.setValue("0000")
+						kbdquestion.setValue("0000")
+						kbdquestion.setPicture_status("N")
 						Mobile.hideKeyboard()
 					}
 				}
@@ -1236,6 +1518,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 					visitedsurveyquestions.add(displayeddropdowntext)
+					kbdquestion.setQuestion(displayeddropdowntext)
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
@@ -1244,21 +1527,28 @@ public class RemainingMainCategoriesRemarksKeywords {
 							String status = expectedsurveyquestions.get(j).getStatus()
 							String options = expectedsurveyquestions.get(j).getOptions()
 							if(options.equalsIgnoreCase("Y/N")){
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+								kbdquestion.setValue("Yes")
+								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							}
 							else{
+								kbdquestion.setValue("Yes")
 								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 							}
 							if(status.equalsIgnoreCase("Y")){
+								kbdquestion.setPicture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
-							else{}
+							else{
+								kbdquestion.setPicture_status("N")
+							}
 						}
 						else{}
 					}
 					if(flag == false){
+						kbdquestion.setValue("Y")
+						kbdquestion.setPicture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}
@@ -1269,12 +1559,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 					boolean flag = false
 					String displayededitfieldtext = surveyquestion.getText()
 					visitedsurveyquestions.add(displayededitfieldtext)
+					kbdquestion.setQuestion(displayededitfieldtext)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
 						String expectededitfieldtext = expectedsurveyquestions.get(j).getProduct()
 						if(displayededitfieldtext.equalsIgnoreCase(expectededitfieldtext)){
 							flag = true
 							String questionvalue = expectedsurveyquestions.get(j).getProduct_value()
 							surveyquestion.setValue(questionvalue)
+							kbdquestion.setValue(questionvalue)
+							kbdquestion.setPicture_status("N")
 							Mobile.hideKeyboard()
 						}
 						else{
@@ -1282,10 +1575,13 @@ public class RemainingMainCategoriesRemarksKeywords {
 					}
 					if(flag == false){
 						surveyquestion.setValue("0000")
+						kbdquestion.setValue("0000")
+						kbdquestion.setPicture_status("N")
 						Mobile.hideKeyboard()
 					}
 				}
 			}
+			kbdquestions.add(kbdquestion)
 		}
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedsurveyquestions)
 		if(UnmatchedItems_status.getStatus() == 2){
@@ -1331,6 +1627,67 @@ public class RemainingMainCategoriesRemarksKeywords {
 			}
 		}
 		else{
+		}
+		VisitedCategoryRemarkData visitedcategoryremark = new VisitedCategoryRemarkData()
+		visitedcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+		visitedcategoryremark.setKbd_questions(kbdquestions)
+		VisitedCategoryData visitedcategory = new VisitedCategoryData()
+		visitedcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+		visitedcategory.setVisitedcategoryremarks(visitedcategoryremark)
+		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
+			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
+				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
+				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
+				if(visitedcategoriesdata != null){
+					boolean maincategory_flag = false
+					for(int k=0; k<visitedcategoriesdata.size(); k++){
+						VisitedCategoryData visitedcategorydata = visitedcategoriesdata.get(k)
+						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory())){
+							maincategory_flag = true
+							ArrayList<VisitedCategoryRemarkData> visitedcategoryremarksdata = visitedcategorydata.getVisitedcategoryremarks()
+							if(visitedcategoryremarksdata != null){
+								boolean categoryremark_flag = false
+								for(int m=0; m< visitedcategoryremarksdata.size(); m++){
+									VisitedCategoryRemarkData visitedcategoryremarkdata = visitedcategoryremarksdata.get(m)
+									if(visitedcategoryremarkdata != null && (visitedcategoryremarkdata.getCategoryremark().equalsIgnoreCase(visitedcategoryremark.getCategoryremark()))){
+										categoryremark_flag = true
+										ArrayList<KBD_Question> existingkbdquestions = visitedcategoryremarkdata.getKbd_questions()
+										if(existingkbdquestions != null){
+											for(int ex=0; ex< existingkbdquestions.size(); ex++){
+												KBD_Question existingkbdquestion = existingkbdquestions.get(ex)
+												for(int ds=0; ds< kbdquestions.size(); ds++){
+													KBD_Question displayedkbdquestion = kbdquestions.get(ds)
+													if(existingkbdquestion.getQuestion().equals(displayedkbdquestion.getQuestion())){
+														if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+															existingkbdquestion.setValue(displayedkbdquestion.getValue())
+															existingkbdquestion.setPicture_status(displayedkbdquestion.getPicture_status())
+														}
+														else{
+															existingkbdquestion.setOverwrite_value(displayedkbdquestion.getOverwrite_value())
+															existingkbdquestion.setOverwrite_picture_status(displayedkbdquestion.getOverwrite_picture_status())
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								if(categoryremark_flag == false){
+									visitedcategorydata.setVisitedcategoryremarks(visitedcategoryremark)
+								}
+							}
+						}
+					}
+					if(maincategory_flag == false){
+						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+						break
+					}
+				}
+				else{
+					ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+					break
+				}
+			}
 		}
 	}
 	def validateCameraScreenAndTakePicture(){

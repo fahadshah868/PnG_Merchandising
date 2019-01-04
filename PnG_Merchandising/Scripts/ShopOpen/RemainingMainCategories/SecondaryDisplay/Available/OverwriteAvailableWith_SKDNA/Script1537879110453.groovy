@@ -26,13 +26,8 @@ Mobile.tap(findTestObject('CommonScreenElements/DoneButton', [('package') : Proj
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_AvailableRemarksScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplay_AvailableRemark'('Shopkeeper did not allow')
-
-Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_SKDNA_CategoryRemarksScreen', 
-        [('package') : ProjectConstants.PACKAGENAME]), 'CATEGORY REMARKS')
-
-Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/SKDNA_CategoryRemark_Others', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
+CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplay_AvailableRemark'('Shopkeeper did not allow', 
+    2)
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/SKDNA_CategoryRemark_BackButton', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
