@@ -34,7 +34,7 @@ public class VisitedCategoryData {
 	public VisitedCategoryData(){
 		visitedcategoryremarks = new ArrayList<VisitedCategoryRemarkData>()
 	}
-	
+
 	public String getMaincategory() {
 		return maincategory;
 	}

@@ -21,7 +21,10 @@ import internal.GlobalVariable
 public class SDUnit {
 	public String unit
 	public String remark
-	public String sub_remark
+	public String sub_remark
+	public String overwrite_remark
+	public String overwrite_subremark
+	
 	public String getUnit() {
 		return unit;
 	}
@@ -39,6 +42,18 @@ public class SDUnit {
 	}
 	public void setSub_remark(String sub_remark) {
 		this.sub_remark = sub_remark;
+	}
+	public String getOverwrite_remark() {
+		return overwrite_remark;
+	}
+	public void setOverwrite_remark(String overwrite_remark) {
+		this.overwrite_remark = overwrite_remark;
+	}
+	public String getOverwrite_subremark() {
+		return overwrite_subremark;
+	}
+	public void setOverwrite_subremark(String overwrite_subremark) {
+		this.overwrite_subremark = overwrite_subremark;
 	}
 }
 

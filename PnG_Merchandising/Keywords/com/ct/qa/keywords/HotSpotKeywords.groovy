@@ -129,6 +129,7 @@ public class HotSpotKeywords {
 		if(ProjectConstants.HOTSPOTINDEX <= 7){
 			ProjectConstants.HOTSPOTINDEX = ProjectConstants.HOTSPOTINDEX + 1
 			MobileElement hotspot = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+ProjectConstants.HOTSPOTINDEX+"]/android.widget.TextView[1]")
+			ProjectConstants.CURRENTVISITING_HOTSPOTTYPE = hotspot.getText()
 			ProjectConstants.CURRENTVISITING_CATEGORYREMARK = ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with "+hotspot.getText()+" hotspot type"
 			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+ProjectConstants.HOTSPOTINDEX+"]").click()
 			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)

@@ -141,11 +141,6 @@ public class LoadDataKeywords {
 			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONS_CHANNEL))
 			String questioncategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTIONCATEGORY))
 			String channelname = "Channel: "+channel
-
-
-			int index = ProjectConstants.SURVEYQUESTION_TAKEPICTURE
-
-
 			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) && ProjectConstants.CURRENTVISITING_SUBCATEGORY.equalsIgnoreCase(questioncategory)){
 				ProductWithValue questionwithvalue = new ProductWithValue()
 				String question = dataformatter.formatCellValue(row.getCell(ProjectConstants.SURVEYQUESTION))
@@ -251,7 +246,7 @@ public class LoadDataKeywords {
 		for(int i=1; i<=totalrows; i++){
 			Row row = sheet.getRow(i)
 			String hotspottype = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTTYPE))
-			if(ProjectConstants.CURRENTVISITING_SUBCATEGORY.equalsIgnoreCase(hotspottype)){
+			if(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE.equalsIgnoreCase(hotspottype)){
 				ProductWithValue productwithvalue = new ProductWithValue()
 				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTPRODUCT))
 				String columndata = dataformatter.formatCellValue(row.getCell(column))

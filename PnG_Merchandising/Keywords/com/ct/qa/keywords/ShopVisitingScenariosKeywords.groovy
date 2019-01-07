@@ -5,6 +5,8 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.util.ArrayList
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
@@ -28,10 +30,13 @@ import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 import com.ct.qa.constants.ProjectConstants
 import com.ct.qa.struct.VisitedShopDataInfo
+import com.ct.qa.struct.KBD_Question
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.MissingCategoryRemarkData
 import com.ct.qa.struct.MissingShopDataInfo
+import com.ct.qa.struct.SDUnit
 import com.ct.qa.struct.ShopProductsData
+import com.ct.qa.struct.SubCategory
 import com.ct.qa.struct.VisitedCategoryData
 import com.ct.qa.struct.VisitedCategoryRemarkData
 
@@ -381,7 +386,13 @@ public class ShopVisitingScenariosKeywords{
 						if(visitedcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
 							message = message + "\n\n" +
 									String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-									String.format("%-30s%-60s", "HotSpot Remark With Type:",visitedcategorydata.getFirstvisit_categoryremark()+"  ==>  "+visitedcategorydata.getOverwrite_categoryremark()) + "\n"
+									String.format("%-30s%-60s", "HotSpot Remark With Type:",visitedcategorydata.getFirstvisit_categoryremark())
+							if(visitedcategorydata.getOverwrite_categoryremark() != null){
+								message = message + "  ==>  "+visitedcategorydata.getOverwrite_categoryremark() + "\n\n"
+							}
+							else{
+								message = message + "\n\n"
+							}
 							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
 							if(shopproductsdata != null){
 								message = message +	String.format("%-50s%-30s%-30s", "Products","Facing","Overwrite Facing")+"\n"
@@ -409,24 +420,104 @@ public class ShopVisitingScenariosKeywords{
 						else{
 							ArrayList<VisitedCategoryRemarkData> visitedcatgoryremarks = visitedcategorydata.getVisitedcategoryremarks()
 							if(visitedcatgoryremarks != null){
+								message = message + "\n\n" +
+										String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory())
 								for(int b=0; b< visitedcatgoryremarks.size(); b++){
 									VisitedCategoryRemarkData visitedcategoryremark = visitedcatgoryremarks.get(b)
-									ArrayList<ShopProductsData> shopproductsdata = visitedcategoryremark.getShopproductsdata()
-									if(shopproductsdata != null){
-										message = message + "\n\n" +
-												String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-												String.format("%-30s%-60s", "Category Remark:",visitedcategoryremark.getCategoryremark()) + "\n" +
-												String.format("%-30s%-60s", "Sub Category:",visitedcategoryremark.getSubcategory()) + "\n" +
-												String.format("%-50s%-40s%-40s", "Products","Display Space Available","Overwrite Display Space Available")+"\n"
-										for(int n=0; n< shopproductsdata.size() ; n++){
-											ShopProductsData _shopproductsdata = shopproductsdata.get(n)
-											message = message + String.format("%-50s%-40s%-40s", _shopproductsdata.getProduct(),_shopproductsdata.getPd_displayspaceavailable(), _shopproductsdata.getPd_overwrite_displayspaceavailable())+"\n"
+									if(visitedcategoryremark.getCategoryremark().equalsIgnoreCase("Availability")){
+										ArrayList<SubCategory> subcategories = visitedcategoryremark.getSubcategories()
+										if(subcategories != null){
+											message = message + "\n\n" +
+													String.format("%-8s%-30s%-60s", "","Category Remark:",visitedcategoryremark.getCategoryremark())+"\n"
+											for(int c=0; c<subcategories.size(); c++){
+												SubCategory subcategory = subcategories.get(c)
+												message = message +
+														String.format("%-8s%-30s%-60s", "","Sub Category:",subcategory.getSubcategory()) + "\n\n" +
+														String.format("%-8s%-30s%-60s", "","Remark:",subcategory.getFirstvisit_remark())
+												if(subcategory.getOverwrite_remark() != null){
+													message = message + "  ==>  " + subcategory.getOverwrite_remark() + "\n"
+												}
+												else{
+													message = message + "\n"
+												}
+											}
 										}
-										message = message + "\n"
 									}
+									else if(visitedcategoryremark.getCategoryremark().equalsIgnoreCase("Primary Display")){
+										message = message + "\n\n" +
+												String.format("%-8s%-30s%-60s", "","Category Remark",visitedcategoryremark.getCategoryremark()) + "\n" +
+												String.format("%-8s%-30s%-60s", "","Sub Remark",visitedcategoryremark.getFirstvisit_categoryremark_subremark())
+										if(visitedcategoryremark.getOverwrite_categoryremark_subremark() != null){
+											message = message + "  ==>  " + visitedcategoryremark.getOverwrite_categoryremark_subremark() + "\n"
+										}
+										else{
+											message = message + "\n"
+										}
+										ArrayList<SubCategory> subcategories = visitedcategoryremark.getSubcategories()
+										if(subcategories != null){
+											for(int c=0; c<subcategories.size(); c++){
+												SubCategory subcategory = subcategories.get(c)
+												message = message +
+														String.format("%-8s%-30s%-60s", "","Sub Category:",subcategory.getSubcategory())
+												ArrayList<ShopProductsData> shopproductsdata = subcategory.getShopproductsdata()
+												if(shopproductsdata != null){
+													message = message + "\n\n" +
+															String.format("%-8s%-50s%-40s%-40s", "","Products","Display Space Available","Overwrite Display Space Available")+"\n"
+													for(int n=0; n< shopproductsdata.size() ; n++){
+														ShopProductsData _shopproductsdata = shopproductsdata.get(n)
+														message = message + String.format("%-8s%-50s%-40s%-40s", "",_shopproductsdata.getProduct(),_shopproductsdata.getPd_displayspaceavailable(), _shopproductsdata.getPd_overwrite_displayspaceavailable())+"\n"
+													}
+													message = message + "\n"
+												}
+											}
+										}
+									}
+									else if(visitedcategoryremark.getCategoryremark().equalsIgnoreCase("Secondary Display")){
+										message = message + "\n\n" +
+												String.format("%-8s%-30s%-60s", "","Category Remark",visitedcategoryremark.getCategoryremark()) + "\n" +
+												String.format("%-8s%-30s%-60s", "","Sub Remark",visitedcategoryremark.getFirstvisit_categoryremark_subremark())
+										if(visitedcategoryremark.getOverwrite_categoryremark_subremark() != null){
+											message = message +"  ==>  " + visitedcategoryremark.getOverwrite_categoryremark_subremark() + "\n\n"
+										}
+										else{
+											message = message + "\n\n"
+										}
+										ArrayList<SDUnit> sdunits = visitedcategoryremark.getSdunits()
+										if(sdunits != null){
+											for(int c=0; c<sdunits.size(); c++){
+												SDUnit sdunit = sdunits.get(c)
+												message = message +
+														String.format("%-8s%-60s", "",sdunit.getUnit()) + "\n"+
+														String.format("%-8s%-60s", "",sdunit.getRemark()+" with "+sdunit.getSub_remark())
+												if(sdunit.getOverwrite_remark() != null){
+													message = message + "  ==>  " +sdunit.getOverwrite_remark()+" with "+sdunit.getOverwrite_subremark() + "\n"
+												}
+												else{
+													message = message + "\n"
+												}
+											}
+										}
+									}
+									else if(visitedcategoryremark.getCategoryremark().equalsIgnoreCase("Additional Info")){
+										message = message + "\n\n" +
+												String.format("%-8s%-30s%-60s", "","Category Remark",visitedcategoryremark.getCategoryremark()) + "\n\n"
+										ArrayList<KBD_Question> kbd_questions = visitedcategoryremark.getKbd_questions()
+										if(kbd_questions != null){
+											message = message +
+													String.format("%-8s%-50s%-15s%-25s%-30s%-30s", "","Questions","Value","Picture Status","Overwrite Value","Overwrite Picture Status")+"\n"
+											for(int c=0; c< kbd_questions.size(); c++){
+												KBD_Question kbd_question = kbd_questions.get(c)
+												message = message +
+														String.format("%-8s%-50s%-30s%-30s%-30s%-30s", "",kbd_question.getQuestion(),kbd_question.getValue(),kbd_question.getPicture_status(),kbd_question.getOverwrite_value(),kbd_question.getOverwrite_picture_status()) + "\n"
+											}
+										}
+									}
+									else{}
 								}
 							}
 						}
+						message = message + "\n" +
+								String.format("%-32s%-100s%-32s", "","----------------------------------------------------------------------------------------------------","")+"\n"
 					}
 				}
 				message = message + "\n\n<-------------------------------------------------------------------------------------------------------------------------------------->\n\n"
@@ -462,7 +553,7 @@ public class ShopVisitingScenariosKeywords{
 	def visitShopWithDataVerification(){
 		int index = 0
 		int totalshops = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<=totalshops; i++){
+		for(int i=1; i<=1; i++){
 			MissingShopDataInfo missingshopdatainfo = new MissingShopDataInfo()
 			VisitedShopDataInfo visitedshopdatainfo = new VisitedShopDataInfo()
 			MobileElement shop = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")

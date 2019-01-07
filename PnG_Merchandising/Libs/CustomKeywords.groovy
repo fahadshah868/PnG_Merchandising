@@ -30,6 +30,12 @@ def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWithCateg
     (new com.ct.qa.keywords.ShopVisitingScenariosKeywords()).visitShopsWithCategoryLevel_Overwriting()
 }
 
+def static "com.ct.qa.keywords.RetailerRemarks.visitRetailerRemarks"(
+    	int flag	) {
+    (new com.ct.qa.keywords.RetailerRemarks()).visitRetailerRemarks(
+        	flag)
+}
+
 def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitVisibilitySubCategories"(
     	int status	) {
     (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitVisibilitySubCategories(

@@ -54,5 +54,5 @@ public class KBD_Question {
 	}
 	public void setOverwrite_picture_status(String overwrite_picture_status) {
 		this.overwrite_picture_status = overwrite_picture_status;
-	}	
+	}
 }
