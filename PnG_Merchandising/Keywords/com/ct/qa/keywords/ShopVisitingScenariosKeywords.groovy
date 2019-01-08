@@ -335,9 +335,13 @@ public class ShopVisitingScenariosKeywords{
 														String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
 														"\n\nProducts:\n\n" +
 														String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
-														String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n" +
-														String.format("%-30s%-60s","Sub Category:",missingcategoryremark.getSubcategory()) + "\n" +
-														String.format("%-30s","Products:")
+														String.format("%-30s%-60s","Category Remark:",missingcategoryremark.getCategoryremark()) + "\n"
+												if(missingcategoryremark.getSubcategory() != null){
+													message = message + String.format("%-30s%-60s","Sub Category:",missingcategoryremark.getSubcategory()) + "\n"
+												}
+												else{
+												}
+												message = message + String.format("%-30s","Products:")
 												for(int b=0; b< products.size() ; b++){
 													message = message + products.get(b) + ",   "
 												}
@@ -386,7 +390,7 @@ public class ShopVisitingScenariosKeywords{
 						if(visitedcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
 							message = message + "\n\n" +
 									String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-									String.format("%-30s%-60s", "HotSpot Remark With Type:",visitedcategorydata.getFirstvisit_categoryremark())
+									String.format("%-8s%-30s%-60s", "","HotSpot Remark With Type:",visitedcategorydata.getFirstvisit_categoryremark())
 							if(visitedcategorydata.getOverwrite_categoryremark() != null){
 								message = message + "  ==>  "+visitedcategorydata.getOverwrite_categoryremark() + "\n\n"
 							}
@@ -395,26 +399,40 @@ public class ShopVisitingScenariosKeywords{
 							}
 							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
 							if(shopproductsdata != null){
-								message = message +	String.format("%-50s%-30s%-30s", "Products","Facing","Overwrite Facing")+"\n"
+								message = message +	String.format("%-8s%-50s%-30s%-30s", "","Products","Facing","Overwrite Facing")+"\n"
 								for(int n=0; n< shopproductsdata.size() ; n++){
 									ShopProductsData _shopproductsdata = shopproductsdata.get(n)
-									message = message + String.format("%-50s%-30s%-30s", _shopproductsdata.getProduct(),_shopproductsdata.getHs_facing(), _shopproductsdata.getOverwrite_hs_facing())+"\n"
+									message = message + String.format("%-8s%-50s%-30s%-30s", "",_shopproductsdata.getProduct(),_shopproductsdata.getHs_facing(), _shopproductsdata.getOverwrite_hs_facing())+"\n"
 								}
 								message = message + "\n"
 							}
 						}
 						else if(visitedcategorydata.getMaincategory().equalsIgnoreCase("Hanger")){
-							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
-							if(shopproductsdata != null){
+							ArrayList<SubCategory> subcategories = visitedcategorydata.getSubcategories()
+							if(subcategories != null){
 								message = message + "\n\n" +
-										String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-										String.format("%-30s%-60s", "Sub Category:",visitedcategorydata.getSubcategory()) + "\n" +
-										String.format("%-40s%-22s%-32s%-26s%-36s", "Products","Hanger Available","Overwrite Hanger Available","Hanger Not Available","Overwrite Hanger Not Available")+"\n"
-								for(int n=0; n< shopproductsdata.size() ; n++){
-									ShopProductsData _shopproductsdata = shopproductsdata.get(n)
-									message = message + String.format("%-40s%-22s%-32s%-26s%-36s", _shopproductsdata.getProduct(),_shopproductsdata.getHangeravailable(), _shopproductsdata.getOverwrite_hangeravailable(), _shopproductsdata.getHangernotavailable(), _shopproductsdata.getOverwrite_hangernotavailable())+"\n"
+										String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n\n"
+								for(int n=0; n< subcategories.size(); n++){
+									SubCategory subcategory = subcategories.get(n)
+									message = message +
+											String.format("%-8s%-30s%-60s", "","Sub Category:",subcategory.getSubcategory()) + "\n" +
+											String.format("%-8s%-30s%-60s", "","Remark:",subcategory.getFirstvisit_remark())
+									if(subcategory.getOverwrite_remark() != null){
+										message = message + "  ==>  " + subcategory.getOverwrite_remark() + "\n"
+									}
+									else{
+										message = message + "\n"
+									}
+									ArrayList<ShopProductsData> shopproductsdata = subcategory.getShopproductsdata()
+									if(shopproductsdata != null){
+										message = message +	String.format("%-8s%-50s%-30s%-30s", "","Products","Availability","Overwrite Availability")+"\n"
+										for(int v=0; v< shopproductsdata.size() ; v++){
+											ShopProductsData _shopproductsdata = shopproductsdata.get(v)
+											message = message + String.format("%-8s%-50s%-30s%-30s", "",_shopproductsdata.getProduct(),_shopproductsdata.getHanger_availability(), _shopproductsdata.getOverwrite_hanger_availability())+"\n"
+										}
+										message = message + "\n"
+									}
 								}
-								message = message + "\n"
 							}
 						}
 						else{
@@ -432,7 +450,7 @@ public class ShopVisitingScenariosKeywords{
 											for(int c=0; c<subcategories.size(); c++){
 												SubCategory subcategory = subcategories.get(c)
 												message = message +
-														String.format("%-8s%-30s%-60s", "","Sub Category:",subcategory.getSubcategory()) + "\n\n" +
+														String.format("%-8s%-30s%-60s", "","Sub Category:",subcategory.getSubcategory()) + "\n" +
 														String.format("%-8s%-30s%-60s", "","Remark:",subcategory.getFirstvisit_remark())
 												if(subcategory.getOverwrite_remark() != null){
 													message = message + "  ==>  " + subcategory.getOverwrite_remark() + "\n"
@@ -461,13 +479,12 @@ public class ShopVisitingScenariosKeywords{
 														String.format("%-8s%-30s%-60s", "","Sub Category:",subcategory.getSubcategory())
 												ArrayList<ShopProductsData> shopproductsdata = subcategory.getShopproductsdata()
 												if(shopproductsdata != null){
-													message = message + "\n\n" +
+													message = message + "\n" +
 															String.format("%-8s%-50s%-40s%-40s", "","Products","Display Space Available","Overwrite Display Space Available")+"\n"
 													for(int n=0; n< shopproductsdata.size() ; n++){
 														ShopProductsData _shopproductsdata = shopproductsdata.get(n)
 														message = message + String.format("%-8s%-50s%-40s%-40s", "",_shopproductsdata.getProduct(),_shopproductsdata.getPd_displayspaceavailable(), _shopproductsdata.getPd_overwrite_displayspaceavailable())+"\n"
 													}
-													message = message + "\n"
 												}
 											}
 										}
@@ -477,10 +494,10 @@ public class ShopVisitingScenariosKeywords{
 												String.format("%-8s%-30s%-60s", "","Category Remark",visitedcategoryremark.getCategoryremark()) + "\n" +
 												String.format("%-8s%-30s%-60s", "","Sub Remark",visitedcategoryremark.getFirstvisit_categoryremark_subremark())
 										if(visitedcategoryremark.getOverwrite_categoryremark_subremark() != null){
-											message = message +"  ==>  " + visitedcategoryremark.getOverwrite_categoryremark_subremark() + "\n\n"
+											message = message +"  ==>  " + visitedcategoryremark.getOverwrite_categoryremark_subremark() + "\n"
 										}
 										else{
-											message = message + "\n\n"
+											message = message + "\n"
 										}
 										ArrayList<SDUnit> sdunits = visitedcategoryremark.getSdunits()
 										if(sdunits != null){
@@ -500,7 +517,7 @@ public class ShopVisitingScenariosKeywords{
 									}
 									else if(visitedcategoryremark.getCategoryremark().equalsIgnoreCase("Additional Info")){
 										message = message + "\n\n" +
-												String.format("%-8s%-30s%-60s", "","Category Remark",visitedcategoryremark.getCategoryremark()) + "\n\n"
+												String.format("%-8s%-30s%-60s", "","Category Remark",visitedcategoryremark.getCategoryremark()) + "\n"
 										ArrayList<KBD_Question> kbd_questions = visitedcategoryremark.getKbd_questions()
 										if(kbd_questions != null){
 											message = message +
@@ -508,7 +525,7 @@ public class ShopVisitingScenariosKeywords{
 											for(int c=0; c< kbd_questions.size(); c++){
 												KBD_Question kbd_question = kbd_questions.get(c)
 												message = message +
-														String.format("%-8s%-50s%-30s%-30s%-30s%-30s", "",kbd_question.getQuestion(),kbd_question.getValue(),kbd_question.getPicture_status(),kbd_question.getOverwrite_value(),kbd_question.getOverwrite_picture_status()) + "\n"
+														String.format("%-8s%-50s%-15s%-25s%-30s%-30s", "",kbd_question.getQuestion(),kbd_question.getValue(),kbd_question.getPicture_status(),kbd_question.getOverwrite_value(),kbd_question.getOverwrite_picture_status()) + "\n"
 											}
 										}
 									}
@@ -584,12 +601,7 @@ public class ShopVisitingScenariosKeywords{
 			for(int j=0; j<ProjectConstants.visitedshopdatainfo.size(); j++){
 				if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
-					String message = "'Scenario given bellow' for chiller utilization\n"+
-							String.format("%-30s%-100s","","'Display Space Available' for remaining categories")+"\n"+
-							String.format("%-30s%-100s","","'RTM visit frequency' with 'Once a week'")+"\n"+
-							String.format("%-30s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-							String.format("%-30s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-							String.format("%-30s%-100s","","'Hanger Availability' with 'Yes' remark")
+					String message = "'Retailer Remarks' with 'SR not Visiting' remark"
 					ProjectConstants.visitedshopdatainfo.get(j).setScenario(message)
 					break
 				}

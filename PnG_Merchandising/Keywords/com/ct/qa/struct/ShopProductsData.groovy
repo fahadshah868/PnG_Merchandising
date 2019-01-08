@@ -22,10 +22,8 @@ public class ShopProductsData {
 	public String product
 	public String pd_displayspaceavailable
 	public String pd_overwrite_displayspaceavailable
-	public String hangeravailable
-	public String hangernotavailable
-	public String overwrite_hangeravailable
-	public String overwrite_hangernotavailable
+	public String hanger_availability
+	public String overwrite_hanger_availability
 	public String hs_facing
 	public String overwrite_hs_facing
 	public String getProduct() {
@@ -46,30 +44,6 @@ public class ShopProductsData {
 	public void setPd_overwrite_displayspaceavailable(String pd_overwrite_displayspaceavailable) {
 		this.pd_overwrite_displayspaceavailable = pd_overwrite_displayspaceavailable;
 	}
-	public String getHangeravailable() {
-		return hangeravailable;
-	}
-	public void setHangeravailable(String hangeravailable) {
-		this.hangeravailable = hangeravailable;
-	}
-	public String getHangernotavailable() {
-		return hangernotavailable;
-	}
-	public void setHangernotavailable(String hangernotavailable) {
-		this.hangernotavailable = hangernotavailable;
-	}
-	public String getOverwrite_hangeravailable() {
-		return overwrite_hangeravailable;
-	}
-	public void setOverwrite_hangeravailable(String overwrite_hangeravailable) {
-		this.overwrite_hangeravailable = overwrite_hangeravailable;
-	}
-	public String getOverwrite_hangernotavailable() {
-		return overwrite_hangernotavailable;
-	}
-	public void setOverwrite_hangernotavailable(String overwrite_hangernotavailable) {
-		this.overwrite_hangernotavailable = overwrite_hangernotavailable;
-	}
 	public String getHs_facing() {
 		return hs_facing;
 	}
@@ -81,5 +55,17 @@ public class ShopProductsData {
 	}
 	public void setOverwrite_hs_facing(String overwrite_hs_facing) {
 		this.overwrite_hs_facing = overwrite_hs_facing;
+	}
+	public String getHanger_availability() {
+		return hanger_availability;
+	}
+	public void setHanger_availability(String hanger_availability) {
+		this.hanger_availability = hanger_availability;
+	}
+	public String getOverwrite_hanger_availability() {
+		return overwrite_hanger_availability;
+	}
+	public void setOverwrite_hanger_availability(String overwrite_hanger_availability) {
+		this.overwrite_hanger_availability = overwrite_hanger_availability;
 	}
 }

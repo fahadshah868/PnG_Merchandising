@@ -3,6 +3,8 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import org.eclipse.persistence.internal.sessions.factories.model.project.ProjectConfig
+
 import com.ct.qa.constants.ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
@@ -15,11 +17,13 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerListScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Hanger List')
+Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+    'Hanger List')
 
-CustomKeywords.'com.ct.qa.keywords.HangerKeywords.visitHangerList'('Overwrite Hanger Available')
+CustomKeywords.'com.ct.qa.keywords.HangerKeywords.visitHangerListWithDataVerification'('Hanger Available')
 
 Mobile.pressBack()
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 0)
+Mobile.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+    0)
 

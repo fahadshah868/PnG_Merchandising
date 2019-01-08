@@ -77,7 +77,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 		int index = 0
 		String lastvisitedcategory = ""
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<= 1; i++){
+		for(int i=11; i<= 1; i++){
 			MobileElement category = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String categoryname = category.getText()
 			if(categoryname.equalsIgnoreCase("Additional Picture")){
@@ -98,7 +98,7 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
 				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerVisitingScenarios/VisitHangerWithDataVerification"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("HotSpot")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
@@ -119,72 +119,72 @@ public class CategoryVisitingScenariosKeywords implements ShopCategories{
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_DataVerification"), null)
 			}
 		}
-		//		while(true){
-		//			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
-		//			MobileElement lastitembeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
-		//			String lastitemnamebeforeswipe = lastitembeforeswipe.getText()
-		//			Mobile.swipe(0, 293, 0, 200)
-		//			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
-		//			MobileElement lastitemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
-		//			String lastitemnameafterswipe = lastitemafterswipe.getText()
-		//			if(lastitemnamebeforeswipe.equalsIgnoreCase(lastitemnameafterswipe)){
-		//				break
-		//			}
-		//			else if(lastitemnameafterswipe.equalsIgnoreCase("Additional Picture")){
-		//				lastvisitedcategory = lastitemnameafterswipe
-		//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/AdditionalPicture/VisitAdditionalPicture"), null)
-		//			}
-		//			else if(lastitemnameafterswipe.equalsIgnoreCase("Retailer Remarks")){
-		//				lastvisitedcategory = lastitemnameafterswipe
-		//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RetailerRemarks/VisitRetailerRemarks"), null)
-		//			}
-		//			else if(lastitemnameafterswipe.equalsIgnoreCase("Market Intelligence")){
-		//				lastvisitedcategory = lastitemnameafterswipe
-		//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
-		//				Mobile.swipe(0, 200, 0, 750)
-		//				Mobile.swipe(0, 200, 0, 750)
-		//			}
-		//			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
-		//				lastvisitedcategory = lastitemnameafterswipe
-		//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-		//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
-		//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailableForDataVerification"), null)
-		//			}
-		//			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
-		//				lastvisitedcategory = lastitemnameafterswipe
-		//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-		//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
-		//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/VisitHangerWithHangerAvailable"), null)
-		//			}
-		//			else if(lastitemnameafterswipe.equalsIgnoreCase("Survey")){
-		//				lastvisitedcategory = lastitemnameafterswipe
-		//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-		//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
-		//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
-		//			}
-		//			else{
-		//				lastvisitedcategory = lastitemnameafterswipe
-		//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-		//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
-		//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-		//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_DataVerification"), null)
-		//			}
-		//			while(true){
-		//				Mobile.swipe(0, 293, 0, 200)
-		//				index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
-		//				MobileElement product = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
-		//				String productname = product.getText()
-		//				if(productname.equalsIgnoreCase(lastvisitedcategory)){
-		//					break
-		//				}
-		//			}
-		//		}
+		while(true){
+			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement lastitembeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String lastitemnamebeforeswipe = lastitembeforeswipe.getText()
+			Mobile.swipe(0, 293, 0, 200)
+			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement lastitemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String lastitemnameafterswipe = lastitemafterswipe.getText()
+			if(lastitemnamebeforeswipe.equalsIgnoreCase(lastitemnameafterswipe)){
+				break
+			}
+			else if(lastitemnameafterswipe.equalsIgnoreCase("Additional Picture")){
+				lastvisitedcategory = lastitemnameafterswipe
+				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/AdditionalPicture/VisitAdditionalPicture"), null)
+			}
+			else if(lastitemnameafterswipe.equalsIgnoreCase("Retailer Remarks")){
+				lastvisitedcategory = lastitemnameafterswipe
+				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RetailerRemarks/VisitRetailerRemarks"), null)
+			}
+			else if(lastitemnameafterswipe.equalsIgnoreCase("Market Intelligence")){
+				lastvisitedcategory = lastitemnameafterswipe
+				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/MarketIntelligence/VisitMarketIntelligence"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
+			}
+			else if(lastitemnameafterswipe.equalsIgnoreCase("HotSpot")){
+				lastvisitedcategory = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
+				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailableForDataVerification"), null)
+			}
+			else if(lastitemnameafterswipe.equalsIgnoreCase("Hanger")){
+				lastvisitedcategory = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
+				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerVisitingScenarios/VisitHangerWithDataVerification"), null)
+			}
+			else if(lastitemnameafterswipe.equalsIgnoreCase("Survey")){
+				lastvisitedcategory = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
+				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
+			}
+			else{
+				lastvisitedcategory = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
+				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_DataVerification"), null)
+			}
+			while(true){
+				Mobile.swipe(0, 293, 0, 200)
+				index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+				MobileElement product = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+				String productname = product.getText()
+				if(productname.equalsIgnoreCase(lastvisitedcategory)){
+					break
+				}
+			}
+		}
 	}
 	@Keyword
 	def visitShopCategoriesWith_HA_AY_DSA_Available_AIY(){

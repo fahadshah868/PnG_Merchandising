@@ -21,33 +21,35 @@ import internal.GlobalVariable
 import io.appium.java_client.MobileElement
 
 public class RetailerRemarks {
-	
+
 	@Keyword
 	def visitRetailerRemarks(int flag){
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalcategories; i++){
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RetailerRemarks/Validate_RetailerRemarks_RemarksScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			MobileElement remarkslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]")
-			ArrayList<MobileElement> totalremarks = remarkslist.findElementByClassName("android.widget.CheckBox")
-			for(int j=1; j<= totalremarks.size(); j++){
+			MobileElement remarkslist = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]")
+			ArrayList<MobileElement> totalremarks = remarkslist.findElementsByClassName("android.widget.CheckBox")
+			for(int j=0; j< totalremarks.size(); j++){
 				MobileElement remark = totalremarks.get(j)
 				String remark_text = remark.getText()
 				if(flag == 1){
 					if(remark_text.equalsIgnoreCase("SR not Visiting")){
 						remark.click()
+						break
 					}
 					else{}
 				}
 				else{
 					if(remark_text.equalsIgnoreCase("Incentive not paid")){
 						remark.click()
+						break
 					}
 					else{}
 				}
-				Mobile.pressBack()
-				Mobile.verifyElementText(findTestObject('ShopOpen/RetailerRemarks/Validate_RetailerRemarks', [('package') : ProjectConstants.PACKAGENAME]), 'KPI: Retailer Remarks')
 			}
+			Mobile.pressBack()
+			Mobile.verifyElementText(findTestObject('ShopOpen/RetailerRemarks/Validate_RetailerRemarks', [('package') : ProjectConstants.PACKAGENAME]), 'KPI: Retailer Remarks')
 		}
 	}
 }

@@ -5,6 +5,8 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.util.ArrayList
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory
@@ -30,9 +32,12 @@ public class VisitedCategoryData {
 	public ArrayList<VisitedCategoryRemarkData> visitedcategoryremarks
 	public String firstvisit_categoryremark
 	public String overwrite_categoryremark
-	public ArrayList<ShopProductsData> shopproductsdata
+	public ArrayList<ShopProductsData> shopproductsdata
+	public ArrayList<SubCategory> subcategories
+
 	public VisitedCategoryData(){
 		visitedcategoryremarks = new ArrayList<VisitedCategoryRemarkData>()
+		subcategories = new ArrayList<SubCategory>()
 	}
 
 	public String getMaincategory() {
@@ -64,5 +69,11 @@ public class VisitedCategoryData {
 	}
 	public void setOverwrite_categoryremark(String overwrite_categoryremark) {
 		this.overwrite_categoryremark = overwrite_categoryremark;
+	}
+	public ArrayList<SubCategory> getSubcategories() {
+		return subcategories;
+	}
+	public void setSubcategories(SubCategory subcategories) {
+		this.subcategories.add(subcategories);
 	}
 }

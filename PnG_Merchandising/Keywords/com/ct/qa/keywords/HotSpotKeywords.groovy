@@ -346,9 +346,11 @@ public class HotSpotKeywords {
 									ShopProductsData displayedshopproductsdata = visitedshopproductsdata.get(b)
 									if(existingshopproductsdata.getProduct().equalsIgnoreCase(displayedshopproductsdata.getProduct())){
 										if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+											visitedcategorydata.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
 											existingshopproductsdata.setHs_facing(displayedshopproductsdata.getHangeravailable())
 										}
 										else{
+											visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
 											existingshopproductsdata.setOverwrite_hs_facing(displayedshopproductsdata.getOverwrite_hangeravailable())
 										}
 									}

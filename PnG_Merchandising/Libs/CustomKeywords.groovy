@@ -286,10 +286,14 @@ def static "com.ct.qa.keywords.HotSpotKeywords.enterUtilization"(
         	status)
 }
 
-def static "com.ct.qa.keywords.HangerKeywords.visitHangerList"(
+def static "com.ct.qa.keywords.HangerKeywords.visitHangerListWithDataVerification"(
     	String hangertype	) {
-    (new com.ct.qa.keywords.HangerKeywords()).visitHangerList(
+    (new com.ct.qa.keywords.HangerKeywords()).visitHangerListWithDataVerification(
         	hangertype)
+}
+
+def static "com.ct.qa.keywords.HangerKeywords.visitHangerWithOverwriteScenarios"() {
+    (new com.ct.qa.keywords.HangerKeywords()).visitHangerWithOverwriteScenarios()
 }
 
 def static "com.ct.qa.keywords.HangerKeywords.selectHangerRemark"(
@@ -299,11 +303,9 @@ def static "com.ct.qa.keywords.HangerKeywords.selectHangerRemark"(
 }
 
 def static "com.ct.qa.keywords.HangerKeywords.visitHangerProducts"(
-    	int columnindex	
-     , 	String assettype	) {
+    	int columnindex	) {
     (new com.ct.qa.keywords.HangerKeywords()).visitHangerProducts(
-        	columnindex
-         , 	assettype)
+        	columnindex)
 }
 
 def static "com.ct.qa.keywords.CategoryVisitingScenariosWithOverwritePopUpKeywords.visitShopCategoriesWithDataVerification"() {

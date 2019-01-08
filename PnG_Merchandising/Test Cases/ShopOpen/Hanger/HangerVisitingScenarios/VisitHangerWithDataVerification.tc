@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>VisitHangerWithHangerAvailable</name>
+   <name>VisitHangerWithDataVerification</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>47124fa9-3d20-4571-9d5c-6b12eca023d8</testCaseGuid>
+   <testCaseGuid>572cd234-5453-4229-917d-60f79e514873</testCaseGuid>
 </TestCaseEntity>

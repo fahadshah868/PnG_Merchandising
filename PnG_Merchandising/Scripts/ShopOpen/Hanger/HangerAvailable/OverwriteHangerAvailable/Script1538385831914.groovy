@@ -37,7 +37,7 @@ Mobile.tap(findTestObject('ShopOpen/Hanger/HangerAvailable/Availability', [('pac
 Mobile.verifyElementExist(findTestObject('ShopOpen/Hanger/HangerAvailable/Validate_ProductsAvailabilityScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-CustomKeywords.'com.ct.qa.keywords.HangerKeywords.visitHangerProducts'(ProjectConstants.OVERWRITEHANGERAVAILABLE, 'Overwrite Hanger Available')
+CustomKeywords.'com.ct.qa.keywords.HangerKeywords.visitHangerProducts'(ProjectConstants.OVERWRITEHANGERAVAILABLE)
 
 Mobile.tap(findTestObject('ShopOpen/Hanger/HangerAvailable/SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
