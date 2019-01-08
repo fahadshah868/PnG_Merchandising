@@ -22,6 +22,8 @@ CustomKeywords.'com.ct.qa.keywords.HangerKeywords.selectHangerRemark'('ShopKeepe
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/ShopKeeperDidnotAllow/Validate_CategoryRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'CATEGORY REMARKS')
 
+CustomKeywords.'com.ct.qa.keywords.HangerKeywords.visitSKDNA'(1)
+
 Mobile.tap(findTestObject('ShopOpen/HotSpot/ShopKeeperDidnotAllow/CategoryRemarks_Return', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 

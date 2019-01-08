@@ -82,6 +82,7 @@ public class HangerKeywords {
 		}
 		else{
 		}
+		int index = 0
 		int totalhangers = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalhangers; i++){
 			MobileElement hangercategory = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
@@ -308,6 +309,83 @@ public class HangerKeywords {
 													}
 												}
 											}
+										}
+									}
+								}
+								if(subcategory_flag == false){
+									visitedcategorydata.setSubcategories(subcategory)
+									break
+								}
+							}
+						}
+					}
+					if(maincategory_flag == false){
+						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+						break
+					}
+				}
+				else{
+					ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
+					break
+				}
+			}
+		}
+	}
+	@Keyword
+	def visitSKDNA(){
+		int totalremarks = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+		String remark_text = ""
+		for(int i=1; i<= totalremarks; i++){
+			MobileElement remark = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			remark_text = remark.getText()
+			if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+				if(remark_text.equalsIgnoreCase("Expiry Issue")){
+					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+					break
+				}
+				else{}
+			}
+			else{
+				if(remark_text.equalsIgnoreCase("Others")){
+					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+					break
+				}
+				else{}
+			}
+		}
+		SubCategory subcategory = new SubCategory()
+		VisitedCategoryData visitedcategory = new VisitedCategoryData()
+		visitedcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+		subcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+		if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+			subcategory.setFirstvisit_remark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with '"+remark_text+"' remark")
+		}
+		else{
+			subcategory.setOverwrite_remark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with '"+remark_text+"' remark")
+		}
+		visitedcategory.setSubcategories(subcategory)
+		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
+			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
+				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
+				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
+				if(visitedcategoriesdata != null){
+					boolean maincategory_flag = false
+					for(int k=0; k<visitedcategoriesdata.size(); k++){
+						VisitedCategoryData visitedcategorydata = visitedcategoriesdata.get(k)
+						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory())){
+							maincategory_flag = true
+							ArrayList<SubCategory> subcategoriesdata = visitedcategorydata.getSubcategories()
+							if(subcategoriesdata != null){
+								boolean subcategory_flag = false
+								for(int b=0; b< subcategoriesdata.size(); b++){
+									SubCategory subcategorydata = subcategoriesdata.get(b)
+									if(subcategorydata.getSubcategory().equals(subcategory.getSubcategory())){
+										subcategory_flag = true
+										if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+											subcategorydata.setFirstvisit_remark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with '"+remark_text+"' remark")
+										}
+										else{
+											subcategorydata.setOverwrite_remark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with '"+remark_text+"' remark")
 										}
 									}
 								}

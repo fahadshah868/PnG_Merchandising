@@ -18,7 +18,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
 
-public class KBD_Question {
+public class Question {
 	public String question
 	public String value
 	public String picture_status

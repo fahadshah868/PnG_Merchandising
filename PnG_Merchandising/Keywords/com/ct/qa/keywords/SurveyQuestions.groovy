@@ -135,9 +135,11 @@ public class SurveyQuestions {
 			surveyquestion = surveyquestionslist.get(i)
 			tag = surveyquestion.getTagName()
 			if(tag.equalsIgnoreCase("android.widget.Spinner")){
+				Question _surveyquestion = new Question()
 				boolean flag = false
 				String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 				visitedsurveyquestions.add(displayeddropdowntext)
+				_surveyquestion.s
 				surveyquestion.click()
 				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				for(int j=0; j< expectedsurveyquestions.size(); j++){

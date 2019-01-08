@@ -411,10 +411,10 @@ public class HotSpotKeywords {
 						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory())){
 							flag = true
 							if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-								visitedcategory.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with '"+remark_text+"' remark")
+								visitedcategorydata.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with '"+remark_text+"' remark")
 							}
 							else{
-								visitedcategory.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with '"+remark_text+"' remark")
+								visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with '"+remark_text+"' remark")
 							}
 						}
 					}

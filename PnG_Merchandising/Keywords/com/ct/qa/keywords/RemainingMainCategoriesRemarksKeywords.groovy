@@ -10,7 +10,7 @@ import java.util.ArrayList
 import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.openqa.selenium.By
 import com.ct.qa.constants.ProjectConstants
-import com.ct.qa.struct.KBD_Question
+import com.ct.qa.struct.Question
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.MissingCategoryRemarkData
 import com.ct.qa.struct.ProductWithValue
@@ -101,6 +101,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 		else{
 		}
+		int index = 0
 		int totalsubcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalsubcategories; i++){
 			MobileElement category = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
@@ -1027,14 +1028,14 @@ public class RemainingMainCategoriesRemarksKeywords {
 		MobileElement surveyquestion = null
 		ArrayList<String> visitedsurveyquestions = new ArrayList<String>()
 		ArrayList<String> expectedsurveyquestionslist = new ArrayList<String>()
-		ArrayList<KBD_Question> kbdquestions = new ArrayList<KBD_Question>()
+		ArrayList<Question> kbdquestions = new ArrayList<Question>()
 		ArrayList<ProductWithValue> expectedsurveyquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList(LoadDataKeywords.loadAdditionalInfoQuestionsSheet() , ProjectConstants.ADDITIONALINFOQUESTION_VALUE)
 		for(int i=0; i< expectedsurveyquestions.size(); i++){
 			expectedsurveyquestionslist.add(expectedsurveyquestions.get(i).getProduct())
 		}
 		ArrayList<MobileElement> surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		for(int i=0; i< surveyquestionslist.size(); i++){
-			KBD_Question kbdquestion = new KBD_Question()
+			Question kbdquestion = new Question()
 			surveyquestion = surveyquestionslist.get(i)
 			tag = surveyquestion.getTagName()
 			if(tag.equalsIgnoreCase("android.widget.Spinner")){
@@ -1130,7 +1131,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 				break
 			}
 			else{
-				KBD_Question kbdquestion = new KBD_Question()
+				Question kbdquestion = new Question()
 				if(tag.equalsIgnoreCase("android.widget.Spinner")){
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
@@ -1224,7 +1225,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 				break
 			}
 			else{
-				KBD_Question kbdquestion = new KBD_Question()
+				Question kbdquestion = new Question()
 				if(tag.equalsIgnoreCase("android.widget.Spinner")){
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
@@ -1374,12 +1375,12 @@ public class RemainingMainCategoriesRemarksKeywords {
 									VisitedCategoryRemarkData visitedcategoryremarkdata = visitedcategoryremarksdata.get(m)
 									if(visitedcategoryremarkdata != null && (visitedcategoryremarkdata.getCategoryremark().equalsIgnoreCase(visitedcategoryremark.getCategoryremark()))){
 										categoryremark_flag = true
-										ArrayList<KBD_Question> existingkbdquestions = visitedcategoryremarkdata.getKbd_questions()
+										ArrayList<Question> existingkbdquestions = visitedcategoryremarkdata.getKbd_questions()
 										if(existingkbdquestions != null){
 											for(int ex=0; ex< existingkbdquestions.size(); ex++){
-												KBD_Question existingkbdquestion = existingkbdquestions.get(ex)
+												Question existingkbdquestion = existingkbdquestions.get(ex)
 												for(int ds=0; ds< kbdquestions.size(); ds++){
-													KBD_Question displayedkbdquestion = kbdquestions.get(ds)
+													Question displayedkbdquestion = kbdquestions.get(ds)
 													if(existingkbdquestion.getQuestion().equals(displayedkbdquestion.getQuestion())){
 														if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 															existingkbdquestion.setValue(displayedkbdquestion.getValue())
@@ -1422,14 +1423,14 @@ public class RemainingMainCategoriesRemarksKeywords {
 		MobileElement surveyquestion = null
 		ArrayList<String> visitedsurveyquestions = new ArrayList<String>()
 		ArrayList<String> expectedsurveyquestionslist = new ArrayList<String>()
-		ArrayList<KBD_Question> kbdquestions = new ArrayList<KBD_Question>()
+		ArrayList<Question> kbdquestions = new ArrayList<Question>()
 		ArrayList<ProductWithValue> expectedsurveyquestions = LoadDataKeywords.loadAdditionalInfoQuestionsList(LoadDataKeywords.loadAdditionalInfoQuestionsSheet() , ProjectConstants.ADDITIONALINFOQUESTION_VALUE)
 		for(int i=0; i< expectedsurveyquestions.size(); i++){
 			expectedsurveyquestionslist.add(expectedsurveyquestions.get(i).getProduct())
 		}
 		ArrayList<MobileElement> surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		for(int i=0; i< surveyquestionslist.size(); i++){
-			KBD_Question kbdquestion = new KBD_Question()
+			Question kbdquestion = new Question()
 			surveyquestion = surveyquestionslist.get(i)
 			tag = surveyquestion.getTagName()
 			if(tag.equalsIgnoreCase("android.widget.Spinner")){
@@ -1500,7 +1501,7 @@ public class RemainingMainCategoriesRemarksKeywords {
 			kbdquestions.add(kbdquestion)
 		}
 		while(true){
-			KBD_Question kbdquestion = new KBD_Question()
+			Question kbdquestion = new Question()
 			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 			index = (surveyquestionslist.size()-1)
 			surveyquestion =  surveyquestionslist.get(index)
@@ -1755,12 +1756,12 @@ public class RemainingMainCategoriesRemarksKeywords {
 									VisitedCategoryRemarkData visitedcategoryremarkdata = visitedcategoryremarksdata.get(m)
 									if(visitedcategoryremarkdata != null && (visitedcategoryremarkdata.getCategoryremark().equalsIgnoreCase(visitedcategoryremark.getCategoryremark()))){
 										categoryremark_flag = true
-										ArrayList<KBD_Question> existingkbdquestions = visitedcategoryremarkdata.getKbd_questions()
+										ArrayList<Question> existingkbdquestions = visitedcategoryremarkdata.getKbd_questions()
 										if(existingkbdquestions != null){
 											for(int ex=0; ex< existingkbdquestions.size(); ex++){
-												KBD_Question existingkbdquestion = existingkbdquestions.get(ex)
+												Question existingkbdquestion = existingkbdquestions.get(ex)
 												for(int ds=0; ds< kbdquestions.size(); ds++){
-													KBD_Question displayedkbdquestion = kbdquestions.get(ds)
+													Question displayedkbdquestion = kbdquestions.get(ds)
 													if(existingkbdquestion.getQuestion().equals(displayedkbdquestion.getQuestion())){
 														if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 															existingkbdquestion.setValue(displayedkbdquestion.getValue())

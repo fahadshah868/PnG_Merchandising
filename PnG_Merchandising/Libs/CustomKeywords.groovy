@@ -308,6 +308,10 @@ def static "com.ct.qa.keywords.HangerKeywords.visitHangerProducts"(
         	columnindex)
 }
 
+def static "com.ct.qa.keywords.HangerKeywords.visitSKDNA"() {
+    (new com.ct.qa.keywords.HangerKeywords()).visitSKDNA()
+}
+
 def static "com.ct.qa.keywords.CategoryVisitingScenariosWithOverwritePopUpKeywords.visitShopCategoriesWithDataVerification"() {
     (new com.ct.qa.keywords.CategoryVisitingScenariosWithOverwritePopUpKeywords()).visitShopCategoriesWithDataVerification()
 }
