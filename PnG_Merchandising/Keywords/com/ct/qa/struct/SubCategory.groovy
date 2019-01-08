@@ -24,7 +24,8 @@ public class SubCategory {
 	public String subcategory
 	public String firstvisit_remark
 	public String overwrite_remark
-	public ArrayList<ShopProductsData> shopproductsdata
+	public ArrayList<ShopProductsData> shopproductsdata
+	public ArrayList<Question> surveyquestions
 	public String getSubcategory() {
 		return subcategory;
 	}
@@ -48,5 +49,11 @@ public class SubCategory {
 	}
 	public void setShopproductsdata(ArrayList<ShopProductsData> shopproductsdata) {
 		this.shopproductsdata = shopproductsdata;
+	}
+	public ArrayList<Question> getSurveyquestions() {
+		return surveyquestions;
+	}
+	public void setSurveyquestions(ArrayList<Question> surveyquestions) {
+		this.surveyquestions = surveyquestions;
 	}
 }

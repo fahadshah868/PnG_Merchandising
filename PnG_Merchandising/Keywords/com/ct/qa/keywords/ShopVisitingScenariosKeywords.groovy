@@ -30,10 +30,10 @@ import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 import com.ct.qa.constants.ProjectConstants
 import com.ct.qa.struct.VisitedShopDataInfo
-import com.ct.qa.struct.KBD_Question
 import com.ct.qa.struct.MissingCategoryData
 import com.ct.qa.struct.MissingCategoryRemarkData
 import com.ct.qa.struct.MissingShopDataInfo
+import com.ct.qa.struct.Question
 import com.ct.qa.struct.SDUnit
 import com.ct.qa.struct.ShopProductsData
 import com.ct.qa.struct.SubCategory
@@ -435,6 +435,9 @@ public class ShopVisitingScenariosKeywords{
 								}
 							}
 						}
+						else if(visitedcategorydata.getMaincategory().equalsIgnoreCase("Survey")){
+							//todo						
+						}
 						else{
 							ArrayList<VisitedCategoryRemarkData> visitedcatgoryremarks = visitedcategorydata.getVisitedcategoryremarks()
 							if(visitedcatgoryremarks != null){
@@ -518,12 +521,12 @@ public class ShopVisitingScenariosKeywords{
 									else if(visitedcategoryremark.getCategoryremark().equalsIgnoreCase("Additional Info")){
 										message = message + "\n\n" +
 												String.format("%-8s%-30s%-60s", "","Category Remark",visitedcategoryremark.getCategoryremark()) + "\n"
-										ArrayList<KBD_Question> kbd_questions = visitedcategoryremark.getKbd_questions()
+										ArrayList<Question> kbd_questions = visitedcategoryremark.getKbd_questions()
 										if(kbd_questions != null){
 											message = message +
 													String.format("%-8s%-50s%-15s%-25s%-30s%-30s", "","Questions","Value","Picture Status","Overwrite Value","Overwrite Picture Status")+"\n"
 											for(int c=0; c< kbd_questions.size(); c++){
-												KBD_Question kbd_question = kbd_questions.get(c)
+												Question kbd_question = kbd_questions.get(c)
 												message = message +
 														String.format("%-8s%-50s%-15s%-25s%-30s%-30s", "",kbd_question.getQuestion(),kbd_question.getValue(),kbd_question.getPicture_status(),kbd_question.getOverwrite_value(),kbd_question.getOverwrite_picture_status()) + "\n"
 											}

@@ -24,17 +24,17 @@ public class VisitedCategoryRemarkData {
 	public String overwrite_categoryremark_subremark
 	public ArrayList<SDUnit> sdunits
 	public ArrayList<SubCategory> subcategories
-	public ArrayList<KBD_Question> kbd_questions
+	public ArrayList<Question> kbd_questions
 
 	public VisitedCategoryRemarkData(){
 		subcategories = new ArrayList<SubCategory>()
 		sdunits = new ArrayList<SDUnit>()
 	}
 
-	public ArrayList<KBD_Question> getKbd_questions() {
+	public ArrayList<Question> getKbd_questions() {
 		return kbd_questions;
 	}
-	public void setKbd_questions(ArrayList<KBD_Question> kbd_questions) {
+	public void setKbd_questions(ArrayList<Question> kbd_questions) {
 		this.kbd_questions = kbd_questions;
 	}
 	public String getFirstvisit_categoryremark_subremark() {

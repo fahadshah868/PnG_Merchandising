@@ -1540,8 +1540,8 @@ public class RemainingMainCategoriesRemarksKeywords {
 							String status = expectedsurveyquestions.get(j).getStatus()
 							String options = expectedsurveyquestions.get(j).getOptions()
 							if(options.equalsIgnoreCase("Y/N")){
-								kbdquestion.setOverwrite_value("Yes")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+								kbdquestion.setOverwrite_value("No")
+								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							}
 							else{
 								kbdquestion.setOverwrite_value("Yes")
@@ -1632,8 +1632,8 @@ public class RemainingMainCategoriesRemarksKeywords {
 							String status = expectedsurveyquestions.get(j).getStatus()
 							String options = expectedsurveyquestions.get(j).getOptions()
 							if(options.equalsIgnoreCase("Y/N")){
-								kbdquestion.setOverwrite_value("Yes")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+								kbdquestion.setOverwrite_value("No")
+								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							}
 							else{
 								kbdquestion.setOverwrite_value("Yes")
@@ -1690,11 +1690,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 		}
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedsurveyquestions)
 		if(UnmatchedItems_status.getStatus() == 2){
+			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
+			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
+			missingcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategoryremark.setProducts(UnmatchedItems_status.getItems())
+			missingcategoryremark.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategoryremarks.add(missingcategoryremark)
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
-			missingcategory.setProducts(UnmatchedItems_status.getItems())
-			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategory.setMissingcategoryremarks(missingcategoryremarks)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
@@ -1704,11 +1708,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == 1){
+			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
+			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
+			missingcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategoryremark.setProducts(UnmatchedItems_status.getItems())
+			missingcategoryremark.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+			missingcategoryremarks.add(missingcategoryremark)
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
-			missingcategory.setProducts(UnmatchedItems_status.getItems())
-			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+			missingcategory.setMissingcategoryremarks(missingcategoryremarks)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
@@ -1718,11 +1726,15 @@ public class RemainingMainCategoriesRemarksKeywords {
 			}
 		}
 		else if(UnmatchedItems_status.getStatus() == -1){
+			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
+			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
+			missingcategoryremark.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategoryremark.setProducts(UnmatchedItems_status.getItems())
+			missingcategoryremark.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+			missingcategoryremarks.add(missingcategoryremark)
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
-			missingcategory.setProducts(UnmatchedItems_status.getItems())
-			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+			missingcategory.setMissingcategoryremarks(missingcategoryremarks)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
