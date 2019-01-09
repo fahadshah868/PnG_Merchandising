@@ -743,12 +743,12 @@ public class ShopVisitingScenariosKeywords{
 		//		}
 		displayDataInReport()
 	}
-	
+
 	/************************************************************
 	 SHOP LEVEL OVERWRITE SCENARIOS
 	 ***********************************************************/
 	@Keyword
-	def visitShopsWithShopLevel_OverwriteScenario(){
+	def visitShopsWithShopLevel_OverwritingScenario(){
 		int index = 0
 		int totalshops = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<=6; i++){
@@ -787,7 +787,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Closed ==> Shop Open")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -810,7 +810,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open ==> Shop Closed")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -833,7 +833,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("SKDNA with 'Expiry Issue' remark  ==>  SKDNA with 'Others' remark")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -856,7 +856,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Permanently Closed ==> Shop Not Found")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -879,7 +879,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Closed ==> Shop Permanently Closed")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -906,7 +906,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open ==> Shop Open")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -920,7 +920,7 @@ public class ShopVisitingScenariosKeywords{
 		displayDataInReport()
 	}
 	@Keyword
-	def visitShopsWithShopLevel_Overwriting(){
+	def visitShopsWithShopLevel_OverwriteScenarios(){
 		int index = 0
 		int totalshops = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<=6; i++){
@@ -962,7 +962,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Closed ==> Shop Open")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -990,7 +990,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open ==> Shop Closed")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -1016,7 +1016,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("SKDNA with 'Expiry Issue' remark  ==>  SKDNA with 'Others' remark")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -1042,7 +1042,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Permanently Closed ==> Shop Not Found")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -1068,7 +1068,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Closed ==> Shop Permanently Closed")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -1101,7 +1101,7 @@ public class ShopVisitingScenariosKeywords{
 						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open ==> Shop Open")
 						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+								String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 						break
 					}
@@ -1177,7 +1177,7 @@ public class ShopVisitingScenariosKeywords{
 					ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
 					ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open")
 					String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
-					String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
+							String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 					ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 					break
 				}
@@ -1229,16 +1229,9 @@ public class ShopVisitingScenariosKeywords{
 		//				for(int j=0; j<ProjectConstants.visitedshopdatainfo.size(); j++){
 		//					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 		//						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
-		//						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open")
-		//						String message = "'Scenario given bellow' for chiller utilization\n"+
-		//								String message = "(1) 'RTM visit frequency' with 'Once a week'\n"+
-		//										String.format("%-44s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-		//										String.format("%-44s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-		//										String.format("%-44s%-100s","","'Hanger Availability' with 'Yes' remark")+"\n"+
-		//										String.format("%-40s%-100s","","(2) 'RTM visit frequency' with 'Twice a week'")+"\n"+
-		//										String.format("%-44s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-		//										String.format("%-44s%-100s","","'Retailer Remarks' with 'SM not visiting' remark")+"\n"+
-		//										String.format("%-44s%-100s","","'Hanger Availability' with 'No' remark")
+		//						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open ==> Shop Open")
+		//						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
+		//						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 		//						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 		//						break
 		//					}
@@ -1289,15 +1282,9 @@ public class ShopVisitingScenariosKeywords{
 			for(int j=0; j<ProjectConstants.visitedshopdatainfo.size(); j++){
 				if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
-					ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open")
-					String message = "(1) 'RTM visit frequency' with 'Once a week'\n"+
-							String.format("%-44s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-							String.format("%-44s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-							String.format("%-44s%-100s","","'Hanger Availability' with 'Yes' remark")+"\n"+
-							String.format("%-40s%-100s","","(2) 'RTM visit frequency' with 'Twice a week'")+"\n"+
-							String.format("%-44s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-							String.format("%-44s%-100s","","'Retailer Remarks' with 'SM not visiting' remark")+"\n"+
-							String.format("%-44s%-100s","","'Hanger Availability' with 'No' remark")
+					ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open ==> Shop Open")
+					String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
+							String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 					ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 					break
 				}
@@ -1351,16 +1338,9 @@ public class ShopVisitingScenariosKeywords{
 		//				for(int j=0; j<ProjectConstants.visitedshopdatainfo.size(); j++){
 		//					if(ProjectConstants.visitedshopdatainfo.get(j).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 		//						ProjectConstants.visitedshopdatainfo.get(j).setShopchannel(ProjectConstants.CURRENTVISITING_SHOPCHANNEL)
-		//						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open")
-		//						String message = "'Scenario given bellow' for chiller utilization\n"+
-		//								String message = "(1) 'RTM visit frequency' with 'Once a week'\n"+
-		//										String.format("%-44s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-		//										String.format("%-44s%-100s","","'Retailer Remarks' with 'OB not visiting' remark")+"\n"+
-		//										String.format("%-44s%-100s","","'Hanger Availability' with 'Yes' remark")+"\n"+
-		//										String.format("%-40s%-100s","","(2) 'RTM visit frequency' with 'Twice a week'")+"\n"+
-		//										String.format("%-44s%-100s","","'Pop Application' with 'No' remark")+"\n"+
-		//										String.format("%-44s%-100s","","'Retailer Remarks' with 'SM not visiting' remark")+"\n"+
-		//										String.format("%-44s%-100s","","'Hanger Availability' with 'No' remark")
+		//						ProjectConstants.visitedshopdatainfo.get(j).setShop_scenario("Shop Open ==> Shop Open")
+		//						String message = "'Retailer Remarks' with 'SM not visiting' remark"+"\n"+
+		//						String.format("%-30s%-100s", "","(2) 'HotSpot Available' for HotSpot With Different Values")
 		//						ProjectConstants.visitedshopdatainfo.get(j).setOthercategories_scenarios(message)
 		//						break
 		//					}

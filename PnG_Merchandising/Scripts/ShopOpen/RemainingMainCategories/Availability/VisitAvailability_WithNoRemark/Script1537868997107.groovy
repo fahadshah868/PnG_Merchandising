@@ -17,7 +17,7 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/_Availability/Validate_SubCategoriesScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitVisibilitySubCategories'(2)
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.visitVisibilitySubCategories'(2)
 
 Mobile.pressBack()
 

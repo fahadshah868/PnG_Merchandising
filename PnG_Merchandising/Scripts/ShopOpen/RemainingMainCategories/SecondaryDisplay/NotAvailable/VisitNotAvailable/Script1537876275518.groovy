@@ -17,7 +17,7 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Validate_SecondaryDisplayRemarksScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplayRemark'('Not Available')
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.selectSecondaryDisplayRemark'('Not Available')
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/BackButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)

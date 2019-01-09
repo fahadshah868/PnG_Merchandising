@@ -103,7 +103,7 @@ public class ProjectConstants {
 	public static final int OVERWRITE_ADDITIONALINFOQUESTION_VALUE
 	public static final int ADDITIONALINFOQUESTION_TAKEPICTURE
 	public static final int ADDITIONALINFOQUESTION_OPTIONS
-	
+
 	//shop actions columns
 	public static final int SHOPACTIONS
 
@@ -268,20 +268,6 @@ public class ProjectConstants {
 			}
 			else{
 			}
-		}
-	}
-	def static getXPoint(){
-		Point point = DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]").getLocation()
-		int xlocation = point.getX()
-		return xlocation+1
-	}
-	def static visitPopUpForOverwriting(){
-		try{
-			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_YesButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-		}
-		catch(Exception ex){
-
 		}
 	}
 }

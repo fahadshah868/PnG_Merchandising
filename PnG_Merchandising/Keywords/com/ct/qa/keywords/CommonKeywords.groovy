@@ -24,6 +24,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
 
 import internal.GlobalVariable
 import io.appium.java_client.MobileElement
+import java.awt.Point
 import java.text.SimpleDateFormat
 import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
@@ -112,5 +113,28 @@ public class CommonKeywords {
 			}
 			else{}
 		}
+	}
+	
+	def static getXPoint(){
+		Point point = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]").getLocation()
+		int xlocation = point.getX()
+		return xlocation+1
+	}
+	def static visitPopUpForOverwriting(){
+		try{
+			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_YesButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		}
+		catch(Exception ex){
+
+		}
+	}
+	def static takePicture(){
+		if(Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0, FailureHandling.OPTIONAL)){
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			Mobile.delay(5)
+			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+		}
+		else{}
 	}
 }

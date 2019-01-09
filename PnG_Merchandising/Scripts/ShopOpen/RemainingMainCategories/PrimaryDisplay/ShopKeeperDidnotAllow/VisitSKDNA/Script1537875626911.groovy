@@ -17,7 +17,7 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/Validate_PrimaryDisplayRemarksScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectPrimaryDisplayRemark'('Shopkeeper did not allow')
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.selectPrimaryDisplayRemark'('Shopkeeper did not allow')
 
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/ShopKeeperDidnotAllow/Validate_CategoryRemarksScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 'CATEGORY REMARKS')

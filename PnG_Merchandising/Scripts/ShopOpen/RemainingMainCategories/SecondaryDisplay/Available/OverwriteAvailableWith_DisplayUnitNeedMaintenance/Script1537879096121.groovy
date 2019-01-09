@@ -26,7 +26,7 @@ Mobile.tap(findTestObject('CommonScreenElements/DoneButton', [('package') : Proj
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_AvailableRemarksScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplay_AvailableRemark'('Display Unit Need Maintenance', 
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.selectSecondaryDisplay_AvailableRemark'('Display Unit Need Maintenance', 
     2)
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/DUNM_CategoryRemarks_BackButton', 
@@ -41,7 +41,7 @@ Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Ava
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UtilizationPopUpScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 'Utilization')
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUtilizationForSecondaryDisplay'(2)
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.enterUtilizationForSecondaryDisplay'(2)
 
 Mobile.hideKeyboard()
 

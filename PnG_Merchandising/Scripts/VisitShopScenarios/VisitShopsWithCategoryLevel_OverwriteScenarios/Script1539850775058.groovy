@@ -29,5 +29,5 @@ MobileBuiltInKeywords.verifyElementText(findTestObject('Validate_ShopListScreen'
     'Shops on Route')
 
 'select shops from shops list for data verification'
-CustomKeywords.'com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWithCategoryLevel_OverwriteScenario'()
+CustomKeywords.'com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWith_CategoryLevel_OverwriteScenarios'()
 

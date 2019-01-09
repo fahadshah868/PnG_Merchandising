@@ -14,12 +14,12 @@ def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopWithDataVe
     (new com.ct.qa.keywords.ShopVisitingScenariosKeywords()).visitShopWithDataVerification()
 }
 
-def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWithShopLevel_OverwriteScenario"() {
-    (new com.ct.qa.keywords.ShopVisitingScenariosKeywords()).visitShopsWithShopLevel_OverwriteScenario()
+def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWithShopLevel_OverwritingScenario"() {
+    (new com.ct.qa.keywords.ShopVisitingScenariosKeywords()).visitShopsWithShopLevel_OverwritingScenario()
 }
 
-def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWithShopLevel_Overwriting"() {
-    (new com.ct.qa.keywords.ShopVisitingScenariosKeywords()).visitShopsWithShopLevel_Overwriting()
+def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWithShopLevel_OverwriteScenarios"() {
+    (new com.ct.qa.keywords.ShopVisitingScenariosKeywords()).visitShopsWithShopLevel_OverwriteScenarios()
 }
 
 def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWith_CategoryLevel_OverwritingScenarios"() {
@@ -36,86 +36,22 @@ def static "com.ct.qa.keywords.RetailerRemarks.visitRetailerRemarks"(
         	flag)
 }
 
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitVisibilitySubCategories"(
-    	int status	) {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitVisibilitySubCategories(
-        	status)
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitProductsAvailabilityWithYesRemarks"() {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitProductsAvailabilityWithYesRemarks()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitProductsAvailabilityWithNoRemarks"() {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitProductsAvailabilityWithNoRemarks()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectPrimaryDisplayRemark"(
-    	String _remark	) {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).selectPrimaryDisplayRemark(
-        	_remark)
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitPrimaryDisplay_WithDSASubCategories"(
-    	int status	) {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitPrimaryDisplay_WithDSASubCategories(
-        	status)
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitDSA_Products"(
-    	int columnindex	) {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitDSA_Products(
-        	columnindex)
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUnitsForSecondaryDisplay"() {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).enterUnitsForSecondaryDisplay()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUtilizationForSecondaryDisplay"(
-    	int status	) {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).enterUtilizationForSecondaryDisplay(
-        	status)
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplayRemark"(
-    	String _remark	) {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).selectSecondaryDisplayRemark(
-        	_remark)
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitSecondaryDisplayUnitsList"() {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitSecondaryDisplayUnitsList()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.overwriteSecondaryDisplayUnitsList"() {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).overwriteSecondaryDisplayUnitsList()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplay_AvailableRemark"(
-    	String _remark	
-     , 	int index	) {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).selectSecondaryDisplay_AvailableRemark(
-        	_remark
-         , 	index)
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUtilizationForAdditionalInfo"(
-    	int status	) {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).enterUtilizationForAdditionalInfo(
-        	status)
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitAdditionalInfoQuestions"() {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).visitAdditionalInfoQuestions()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.overwriteAdditionalInfoQuestions"() {
-    (new com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords()).overwriteAdditionalInfoQuestions()
-}
-
 def static "com.ct.qa.keywords.MarketIntelligenceKeywords.visitMarketIntelligenceCategories"() {
     (new com.ct.qa.keywords.MarketIntelligenceKeywords()).visitMarketIntelligenceCategories()
+}
+
+def static "com.ct.qa.keywords.AvailabilityKeywords.visitVisibilitySubCategories"(
+    	int status	) {
+    (new com.ct.qa.keywords.AvailabilityKeywords()).visitVisibilitySubCategories(
+        	status)
+}
+
+def static "com.ct.qa.keywords.AvailabilityKeywords.visitProductsAvailabilityWithYesRemarks"() {
+    (new com.ct.qa.keywords.AvailabilityKeywords()).visitProductsAvailabilityWithYesRemarks()
+}
+
+def static "com.ct.qa.keywords.AvailabilityKeywords.visitProductsAvailabilityWithNoRemarks"() {
+    (new com.ct.qa.keywords.AvailabilityKeywords()).visitProductsAvailabilityWithNoRemarks()
 }
 
 def static "com.ct.qa.keywords.DistributionPointKeywords.visitdistributionPoint"() {
@@ -138,44 +74,30 @@ def static "com.ct.qa.keywords.CommonKeywords.findBackButtonImageView"() {
     (new com.ct.qa.keywords.CommonKeywords()).findBackButtonImageView()
 }
 
+def static "com.ct.qa.keywords.AdditionalInfoKeywords.enterUtilizationForAdditionalInfo"(
+    	int status	) {
+    (new com.ct.qa.keywords.AdditionalInfoKeywords()).enterUtilizationForAdditionalInfo(
+        	status)
+}
+
+def static "com.ct.qa.keywords.AdditionalInfoKeywords.visitAdditionalInfoQuestions"() {
+    (new com.ct.qa.keywords.AdditionalInfoKeywords()).visitAdditionalInfoQuestions()
+}
+
+def static "com.ct.qa.keywords.AdditionalInfoKeywords.overwriteAdditionalInfoQuestions"() {
+    (new com.ct.qa.keywords.AdditionalInfoKeywords()).overwriteAdditionalInfoQuestions()
+}
+
 def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_DataVerification"() {
     (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_DataVerification()
 }
 
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AN_DSA_NAvailable_AIY"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AN_DSA_NAvailable_AIY()
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_OverwriteScenarios"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_OverwriteScenarios()
 }
 
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AN_NR_NAvailable_AIN"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AN_NR_NAvailable_AIN()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AN_NSFD_Available_AIY"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AN_NSFD_Available_AIY()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AN_NSFD_NAvailable_AIN"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AN_NSFD_NAvailable_AIN()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AY_DSA_Available_AIY"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AY_DSA_Available_AIY()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AY_SKDNA_Available_AIY"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AY_SKDNA_Available_AIY()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_AY_SKDNA_NR_AIN"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_AY_SKDNA_NR_AIN()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.overwriteRemarksWith_AN_DSA_Available_AIN"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).overwriteRemarksWith_AN_DSA_Available_AIN()
-}
-
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.overwriteRemarksWith_AN_SKDNA_Available_AIN"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).overwriteRemarksWith_AN_SKDNA_Available_AIN()
+def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_OverwritingScenarios"() {
+    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_OverwritingScenarios()
 }
 
 def static "com.ct.qa.keywords.SliderOptionsKeywords.valideSliderOptions"() {
@@ -254,20 +176,16 @@ def static "com.ct.qa.keywords.HotSpotKeywords.enterUtilization"(
         	status)
 }
 
-def static "com.ct.qa.keywords.HangerKeywords.visitHangerListWithDataVerification"(
-    	String hangertype	) {
-    (new com.ct.qa.keywords.HangerKeywords()).visitHangerListWithDataVerification(
-        	hangertype)
+def static "com.ct.qa.keywords.HangerKeywords.visitHangerListWithDataVerification"() {
+    (new com.ct.qa.keywords.HangerKeywords()).visitHangerListWithDataVerification()
 }
 
 def static "com.ct.qa.keywords.HangerKeywords.visitHangerWithOverwriteScenarios"() {
     (new com.ct.qa.keywords.HangerKeywords()).visitHangerWithOverwriteScenarios()
 }
 
-def static "com.ct.qa.keywords.HangerKeywords.selectHangerRemark"(
-    	String _remark	) {
-    (new com.ct.qa.keywords.HangerKeywords()).selectHangerRemark(
-        	_remark)
+def static "com.ct.qa.keywords.HangerKeywords.visitHangerWithOverwritingScenarios"() {
+    (new com.ct.qa.keywords.HangerKeywords()).visitHangerWithOverwritingScenarios()
 }
 
 def static "com.ct.qa.keywords.HangerKeywords.visitHangerProducts"(
@@ -278,4 +196,62 @@ def static "com.ct.qa.keywords.HangerKeywords.visitHangerProducts"(
 
 def static "com.ct.qa.keywords.HangerKeywords.visitSKDNA"() {
     (new com.ct.qa.keywords.HangerKeywords()).visitSKDNA()
+}
+
+def static "com.ct.qa.keywords.SecondaryDisplayKeywords.enterUnitsForSecondaryDisplay"() {
+    (new com.ct.qa.keywords.SecondaryDisplayKeywords()).enterUnitsForSecondaryDisplay()
+}
+
+def static "com.ct.qa.keywords.SecondaryDisplayKeywords.enterUtilizationForSecondaryDisplay"(
+    	int status	) {
+    (new com.ct.qa.keywords.SecondaryDisplayKeywords()).enterUtilizationForSecondaryDisplay(
+        	status)
+}
+
+def static "com.ct.qa.keywords.SecondaryDisplayKeywords.selectSecondaryDisplayRemark_WithDataVerification"() {
+    (new com.ct.qa.keywords.SecondaryDisplayKeywords()).selectSecondaryDisplayRemark_WithDataVerification()
+}
+
+def static "com.ct.qa.keywords.SecondaryDisplayKeywords.selectSecondaryDisplayRemark_WithOverwriteScenarios"() {
+    (new com.ct.qa.keywords.SecondaryDisplayKeywords()).selectSecondaryDisplayRemark_WithOverwriteScenarios()
+}
+
+def static "com.ct.qa.keywords.SecondaryDisplayKeywords.visitSecondaryDisplayUnitsList"() {
+    (new com.ct.qa.keywords.SecondaryDisplayKeywords()).visitSecondaryDisplayUnitsList()
+}
+
+def static "com.ct.qa.keywords.SecondaryDisplayKeywords.overwriteSecondaryDisplayUnitsList"() {
+    (new com.ct.qa.keywords.SecondaryDisplayKeywords()).overwriteSecondaryDisplayUnitsList()
+}
+
+def static "com.ct.qa.keywords.SecondaryDisplayKeywords.selectSecondaryDisplay_AvailableRemark"(
+    	String _remark	
+     , 	int index	) {
+    (new com.ct.qa.keywords.SecondaryDisplayKeywords()).selectSecondaryDisplay_AvailableRemark(
+        	_remark
+         , 	index)
+}
+
+def static "com.ct.qa.keywords.CategoryVisitingScenariosWithOverwritePopUpKeywords.visitShopCategoriesWithOverwritingScenarios"() {
+    (new com.ct.qa.keywords.CategoryVisitingScenariosWithOverwritePopUpKeywords()).visitShopCategoriesWithOverwritingScenarios()
+}
+
+def static "com.ct.qa.keywords.PrimaryDisplayKeywords.selectPrimaryDisplayRemark_ForDataVerfication"() {
+    (new com.ct.qa.keywords.PrimaryDisplayKeywords()).selectPrimaryDisplayRemark_ForDataVerfication()
+}
+
+def static "com.ct.qa.keywords.PrimaryDisplayKeywords.selectPrimaryDisplayRemark_ForOverwriteScenarios"() {
+    (new com.ct.qa.keywords.PrimaryDisplayKeywords()).selectPrimaryDisplayRemark_ForOverwriteScenarios()
+}
+
+def static "com.ct.qa.keywords.PrimaryDisplayKeywords.visitPrimaryDisplay_WithDSASubCategories"(
+    	int status	) {
+    (new com.ct.qa.keywords.PrimaryDisplayKeywords()).visitPrimaryDisplay_WithDSASubCategories(
+        	status)
+}
+
+def static "com.ct.qa.keywords.PrimaryDisplayKeywords.visitDSA_Products"(
+    	int columnindex	) {
+    (new com.ct.qa.keywords.PrimaryDisplayKeywords()).visitDSA_Products(
+        	columnindex)
 }

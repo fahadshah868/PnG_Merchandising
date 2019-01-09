@@ -23,7 +23,7 @@ Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/_Availability/Availa
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/_Availability/Validate_ProductAvailabilityScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Availability')
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitProductsAvailabilityWithYesRemarks'()
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.visitProductsAvailabilityWithYesRemarks'()
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/_Availability/ProductAvailability_SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 

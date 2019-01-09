@@ -18,9 +18,9 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Validate_SecondaryDisplayRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.selectSecondaryDisplayRemark'('Not Recommended For This Channel')
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.selectSecondaryDisplayRemark'('Not Recommended For This Channel')
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/BackButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.validateCategoryDetailActionScreen'()
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.validateCategoryDetailActionScreen'()
 

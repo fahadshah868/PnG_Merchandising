@@ -14,20 +14,6 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'KPI: Hanger')
-
-CustomKeywords.'com.ct.qa.keywords.HangerKeywords.selectHangerRemark'('Hanger Available')
-
-Mobile.verifyElementExist(findTestObject('CommonScreenElements/Validate_CameraScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
-
-Mobile.tap(findTestObject('CommonScreenElements/TakePictureButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
-
-Mobile.delay(5, FailureHandling.STOP_ON_FAILURE)
-
-Mobile.tap(findTestObject('CommonScreenElements/DoneButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
-
 Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/HangerAvailable/Validate_HangerAvailabilityScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Category:Hanger')
 

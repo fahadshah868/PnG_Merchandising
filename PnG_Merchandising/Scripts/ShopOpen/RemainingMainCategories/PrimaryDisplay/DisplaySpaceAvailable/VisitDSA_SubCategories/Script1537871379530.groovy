@@ -22,7 +22,7 @@ Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/Displ
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_ShareOfShelfProductsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Share of shelf')
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitDSA_Products'(ProjectConstants.DISPLAYSPACEAVAILABLE)
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.visitDSA_Products'(ProjectConstants.DISPLAYSPACEAVAILABLE)
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 

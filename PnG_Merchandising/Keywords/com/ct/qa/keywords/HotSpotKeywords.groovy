@@ -132,10 +132,7 @@ public class HotSpotKeywords {
 			ProjectConstants.CURRENTVISITING_HOTSPOTTYPE = hotspot.getText()
 			ProjectConstants.CURRENTVISITING_CATEGORYREMARK = ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with "+hotspot.getText()+" hotspot type"
 			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+ProjectConstants.HOTSPOTINDEX+"]").click()
-			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			Mobile.delay(5)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			CommonKeywords.takePicture()
 		}
 		else{
 			ProjectConstants.HOTSPOTINDEX = ProjectConstants.HOTSPOTINDEX + 1
@@ -148,10 +145,7 @@ public class HotSpotKeywords {
 			MobileElement hotspot = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+totalhotspottypes+"]/android.widget.TextView[1]")
 			ProjectConstants.CURRENTVISITING_CATEGORYREMARK = ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with "+hotspot.getText()+" hotspot type"
 			driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+totalhotspottypes+"]").click()
-			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			Mobile.delay(5)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+			CommonKeywords.takePicture()
 		}
 	}
 	@Keyword
@@ -163,10 +157,7 @@ public class HotSpotKeywords {
 			if(hotspottext.equalsIgnoreCase("2 Shelfs")){
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK = ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with "+hotspot.getText()+" hotspot type"
 				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
-				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-				Mobile.delay(5)
-				Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				CommonKeywords.takePicture()
 				break
 			}
 			else{}
@@ -227,7 +218,7 @@ public class HotSpotKeywords {
 			while(true){
 				ShopProductsData shopproductdata = new ShopProductsData()
 				boolean flag = false
-				int xlocation = ProjectConstants.getXPoint()
+				int xlocation = CommonKeywords.getXPoint()
 				MobileElement productbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
 				String productnamebeforeswipe = productbeforeswipe.getText()
 				Mobile.swipe(xlocation, 359, xlocation, 250)

@@ -4,7 +4,6 @@
    <name>PnG Merchandising With Category Level Overwrite Scenarios</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <lastRun>2018-09-12T11:06:41</lastRun>
    <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>4</pageLoadTimeout>
@@ -39,6 +38,6 @@
       <guid>56601ed6-4570-4b9b-9a73-11551915bf58</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel_Overwriting</testCaseId>
+      <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel_OverwritingScenarios</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

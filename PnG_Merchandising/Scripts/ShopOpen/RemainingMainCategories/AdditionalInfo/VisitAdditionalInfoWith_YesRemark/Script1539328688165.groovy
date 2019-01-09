@@ -17,7 +17,7 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Questions')
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.visitAdditionalInfoQuestions'()
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.visitAdditionalInfoQuestions'()
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Questions_SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
@@ -25,7 +25,7 @@ Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Quest
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_UtilizationPopupScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 'Utilization')
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoriesRemarksKeywords.enterUtilizationForAdditionalInfo'(1)
+CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.enterUtilizationForAdditionalInfo'(1)
 
 Mobile.hideKeyboard()
 
