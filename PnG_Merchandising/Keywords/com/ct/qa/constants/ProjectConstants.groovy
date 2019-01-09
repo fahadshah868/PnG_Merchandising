@@ -47,6 +47,7 @@ public class ProjectConstants {
 	public static final String DISTRIBUTION_SHEET = "Distribution Point"
 	public static final String SLIDEROPTIONSSHEET = "Slider Options"
 	public static final String SURVEYQUESTIONS_SHEET = "Survey Questions"
+	public static final String SHOPACTIONSSHEET = "Shop Actions"
 	public static final String ADDITIONALINFOQUESTIONS_SHEET = "Additional Info Questions"
 
 	public static final AppiumDriver<MobileElement> DRIVER = MobileDriverFactory.getDriver()
@@ -102,6 +103,9 @@ public class ProjectConstants {
 	public static final int OVERWRITE_ADDITIONALINFOQUESTION_VALUE
 	public static final int ADDITIONALINFOQUESTION_TAKEPICTURE
 	public static final int ADDITIONALINFOQUESTION_OPTIONS
+	
+	//shop actions columns
+	public static final int SHOPACTIONS
 
 
 	//variables for current visiting shop channels, chiller and categories
@@ -111,11 +115,11 @@ public class ProjectConstants {
 	public static String SCENARIO = ""
 	public static int HOTSPOTINDEX = 0
 	public static String CURRENTVISITING_HOTSPOTTYPE = ""
-
 	public static String CURRENTVISITING_CATEGORYREMARK = ""
 	public static String CURRENTVISITING_CATEGORYREMARK_SUBREMARK = ""
 	public static String CURRENTVISITING_SUBCATEGORY = ""
 	public static String CURRENTVISITING_UNIT = ""
+	public static int SHOP_ATTEMPT = 0
 
 	//list for containing shop info
 	public static ArrayList<MissingShopDataInfo> missingshopdatainfo = new ArrayList<MissingShopDataInfo>()
@@ -129,18 +133,21 @@ public class ProjectConstants {
 		XSSFSheet slideroptionssheet = LoadDataKeywords.loadSliderOptionsSheet()
 		XSSFSheet surveyquestionssheet = LoadDataKeywords.loadSurveyQuestionsSheet()
 		XSSFSheet additionalinfoquestionssheet = LoadDataKeywords.loadAdditionalInfoQuestionsSheet()
+		XSSFSheet shopactionssheet = LoadDataKeywords.loadShopActionsSheet()
 
 		Row channelproductssheetheaderrow = channelproductssheet.getRow(0)
 		Row hotspotproductssheetheaderrow = hotspotproductssheet.getRow(0)
 		Row slideroptionssheetheaderrow = slideroptionssheet.getRow(0)
 		Row surveyquestionssheetheaderrow = surveyquestionssheet.getRow(0)
 		Row additionalinfoquestionssheetheaderrow = additionalinfoquestionssheet.getRow(0)
+		Row shopactionssheetheaderrow = shopactionssheet.getRow(0)
 
 		int channelproductssheettotalcolumns = channelproductssheetheaderrow.getLastCellNum()
 		int hotspotproductssheettotalcolumns = hotspotproductssheetheaderrow.getLastCellNum()
 		int slideroptionssheettotalcolumns = slideroptionssheetheaderrow.getLastCellNum()
 		int surveyquestionssheettotalcolumns = surveyquestionssheetheaderrow.getLastCellNum()
 		int additionalinfoquestionssheettotalcolumns = additionalinfoquestionssheetheaderrow.getLastCellNum()
+		int shopactionssheettotalcolumns = shopactionssheetheaderrow.getLastCellNum()
 
 		//load channel wise products sheet columns
 		for(int cellnumber=0; cellnumber<channelproductssheettotalcolumns; cellnumber++){
@@ -252,6 +259,15 @@ public class ProjectConstants {
 				ADDITIONALINFOQUESTION_OPTIONS = cellnumber
 			}
 			else{}
+		}
+		//load shop action sheet columns
+		for(int cellnumber=0; cellnumber<shopactionssheettotalcolumns; cellnumber++ ){
+			String columnname = shopactionssheetheaderrow.getCell(cellnumber)
+			if(columnname.equalsIgnoreCase("Shop Actions")){
+				SHOPACTIONS = cellnumber
+			}
+			else{
+			}
 		}
 	}
 	def static getXPoint(){

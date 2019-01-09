@@ -107,6 +107,17 @@ public class CompareDataKeywords {
 			return UnmatchedItems_status
 		}
 	}
+	def static compareShopActionsList(){
+		ArrayList<String> displayedshopactionslist = new ArrayList<String>()
+		ArrayList<String> expectedshopactionslist = LoadDataKeywords.loadShopActionsList()
+		int actionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i<= actionslist; i++){
+			MobileElement action = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			displayedshopactionslist.add(action.getText())
+		}
+		UnmatchedItems unmatcheditems = compareLists(expectedshopactionslist, displayedshopactionslist)
+		return unmatcheditems
+	}
 	//compare display and actual channel wise products categories
 	def static compareChannelWiseProductsCategories(){
 		DataFormatter dataformatter = new DataFormatter()

@@ -31,7 +31,10 @@ public class MissingShopDataInfo {
 	public String scenario
 	public ArrayList<String> missingshopcategories
 	public String missingshopcategories_errormessage
-	public ArrayList<MissingCategoryData> missingcategoriesdata
+	public ArrayList<MissingCategoryData> missingcategoriesdata
+	public ArrayList<String> missingshopactions
+	public String missingshopactions_errormessage
+
 	public MissingShopDataInfo(){
 		this.missingcategoriesdata = new ArrayList<MissingCategoryData>()
 	}
@@ -71,5 +74,17 @@ public class MissingShopDataInfo {
 	}
 	public void setMissingcategoriesdata(MissingCategoryData missingcategoriesdata) {
 		this.missingcategoriesdata.add(missingcategoriesdata);
+	}
+	public ArrayList<String> getMissingshopactions() {
+		return missingshopactions;
+	}
+	public void setMissingshopactions(ArrayList<String> missingshopactions) {
+		this.missingshopactions = missingshopactions;
+	}
+	public String getMissingshopactions_errormessage() {
+		return missingshopactions_errormessage;
+	}
+	public void setMissingshopactions_errormessage(String missingshopactions_errormessage) {
+		this.missingshopactions_errormessage = missingshopactions_errormessage;
 	}
 }

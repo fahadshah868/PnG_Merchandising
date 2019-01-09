@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>VisitShopCategoriesWith_HA_AY_DSA_Available_AIY</name>
+   <name>VisitShopCategoriesWithOverwritingScenarios</name>
    <tag></tag>
    <comment></comment>
-   <testCaseGuid>ad98128d-71d9-4143-97c8-84b48e4854d8</testCaseGuid>
+   <testCaseGuid>9b8df23d-cdfc-4f83-9b22-9b94724ab4f2</testCaseGuid>
 </TestCaseEntity>

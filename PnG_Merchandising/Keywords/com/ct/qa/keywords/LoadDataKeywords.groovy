@@ -53,6 +53,31 @@ public class LoadDataKeywords {
 		catch(Exception ex){
 		}
 	}
+	
+	//load shop action sheet
+	def static loadShopActionsSheet(){
+		try{
+			FileInputStream inputStream = new FileInputStream(new File(ProjectConstants.EXCEL_FILEPATH))
+			XSSFWorkbook wb = new XSSFWorkbook(inputStream)
+			XSSFSheet sheet = wb.getSheet(ProjectConstants.SHOPACTIONSSHEET)
+			return sheet
+		}
+		catch(Exception ex){
+		}
+	}
+	//load shop actions
+	def static loadShopActionsList(){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<String> expectedshopactionslist = new ArrayList<String>()
+		XSSFSheet sheet = loadShopActionsSheet()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<= totalrows; i++){
+			Row row = sheet.getRow(i)
+			String shopaction = dataformatter.formatCellValue(row.getCell(ProjectConstants.SHOPACTIONS))
+			expectedshopactionslist.add(shopaction)
+		}
+		return expectedshopactionslist
+	}
 	//load HotSopt sheet
 	def static loadHotSpotProductsSheet(){
 		try{
