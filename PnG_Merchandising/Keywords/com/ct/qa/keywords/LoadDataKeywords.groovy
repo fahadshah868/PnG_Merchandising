@@ -271,6 +271,9 @@ public class LoadDataKeywords {
 		for(int i=1; i<=totalrows; i++){
 			Row row = sheet.getRow(i)
 			String hotspottype = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTTYPE))
+			
+			String a = ProjectConstants.CURRENTVISITING_HOTSPOTTYPE
+			
 			if(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE.equalsIgnoreCase(hotspottype)){
 				ProductWithValue productwithvalue = new ProductWithValue()
 				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTPRODUCT))

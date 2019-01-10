@@ -45,6 +45,7 @@ public class PrimaryDisplayKeywords {
 			if(remarkname.equalsIgnoreCase("Display Space Available")){
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarkname
 				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				CommonKeywords.takePicture()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/VisitDSA"), null)
 				break
 			}
@@ -70,10 +71,12 @@ public class PrimaryDisplayKeywords {
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarktext
 				if(remarktext.equalsIgnoreCase("Display Space Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getFirstvisit_scenario()+"]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/VisitDSA"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("No Space for Display")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getFirstvisit_scenario()+"]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/NoSpaceForDisplay/VisitNSFD"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("Shopkeeper did not allow")){
@@ -91,11 +94,13 @@ public class PrimaryDisplayKeywords {
 				String remarktext = remark.getText()
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarktext
 				if(remarktext.equalsIgnoreCase("Display Space Available")){
-					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()()+"]").click()
+					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/OverwriteDSA"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("No Space for Display")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/NoSpaceForDisplay/OverwriteNSFD"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("Shopkeeper did not allow")){
@@ -116,10 +121,12 @@ public class PrimaryDisplayKeywords {
 			if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 				if(remarktext.equalsIgnoreCase("Display Space Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/VisitDSA"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("No Space for Display")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/NoSpaceForDisplay/VisitNSFD"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("Shopkeeper did not allow")){
@@ -135,10 +142,12 @@ public class PrimaryDisplayKeywords {
 			else{
 				if(remarktext.equalsIgnoreCase("Display Space Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/OverwriteDSA"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("No Space for Display")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/PrimaryDisplay/NoSpaceForDisplay/OverwriteNSFD"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("Shopkeeper did not allow")){

@@ -34,7 +34,7 @@ public class AvailabilityKeywords {
 	AppiumDriver<MobileElement> driver = ProjectConstants.DRIVER;
 
 	@Keyword
-	def visitVisibilitySubCategories(int status){
+	def visitAvailabilitySubCategories(int status){
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareShopRemainingCategoryAvailabilitySubCategories()
 		if(UnmatchedItems_status.getStatus() == 2){
 			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
@@ -342,7 +342,7 @@ public class AvailabilityKeywords {
 						MobileElement product = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[9]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")
 						String productname = product.getText()
 						displayedproducts.add(productname)
-						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[9]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RadioGroup[1]/android.widget.RadioButton[1]").click()
+						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[9]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RadioGroup[1]/android.widget.RadioButton[2]").click()
 					}
 				}
 				else{

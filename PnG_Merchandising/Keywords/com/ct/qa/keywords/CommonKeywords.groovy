@@ -24,8 +24,8 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
 
 import internal.GlobalVariable
 import io.appium.java_client.MobileElement
-import java.awt.Point
 import java.text.SimpleDateFormat
+import org.openqa.selenium.Point
 import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI

@@ -25,13 +25,13 @@
    <testCaseLink>
       <guid>80575ba9-724c-444f-bb98-cd91ac0d89a3</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/DistributionPoint/VisitDistributionPoint</testCaseId>
    </testCaseLink>
    <testCaseLink>
       <guid>16593f81-7cb6-4607-919e-a593ef1f9a77</guid>
       <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
+      <isRun>false</isRun>
       <testCaseId>Test Cases/VisitShopScenarios/VisitShopsWithCategoryLevel_OverwriteScenarios</testCaseId>
    </testCaseLink>
    <testCaseLink>

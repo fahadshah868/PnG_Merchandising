@@ -58,6 +58,7 @@ public class SecondaryDisplayKeywords {
 			if(remarkname.equalsIgnoreCase("Available")){
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarkname
 				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitSecondaryDisplayAvailable"), null)
 				break
 			}
 		}

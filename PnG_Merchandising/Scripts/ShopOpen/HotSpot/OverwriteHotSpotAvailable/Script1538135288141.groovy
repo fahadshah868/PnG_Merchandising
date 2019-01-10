@@ -14,11 +14,6 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/HotSpot/Validate_HotSpotRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
-
-CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.selectHotSpotRemark'('Hotspot Available')
-
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Hotspot_SelectType', [('package') : ProjectConstants.PACKAGENAME]), 
     'Select appropriate type')
 

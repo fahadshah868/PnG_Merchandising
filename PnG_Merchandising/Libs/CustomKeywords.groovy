@@ -40,9 +40,9 @@ def static "com.ct.qa.keywords.MarketIntelligenceKeywords.visitMarketIntelligenc
     (new com.ct.qa.keywords.MarketIntelligenceKeywords()).visitMarketIntelligenceCategories()
 }
 
-def static "com.ct.qa.keywords.AvailabilityKeywords.visitVisibilitySubCategories"(
+def static "com.ct.qa.keywords.AvailabilityKeywords.visitAvailabilitySubCategories"(
     	int status	) {
-    (new com.ct.qa.keywords.AvailabilityKeywords()).visitVisibilitySubCategories(
+    (new com.ct.qa.keywords.AvailabilityKeywords()).visitAvailabilitySubCategories(
         	status)
 }
 

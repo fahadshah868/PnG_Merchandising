@@ -14,11 +14,6 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
-Mobile.verifyElementExist(findTestObject('ShopOpen/HotSpot/Validate_HotSpotRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
-
-CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.selectHotSpotRemark'('Shopkeeper did not allow')
-
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/ShopKeeperDidnotAllow/Validate_CategoryRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'CATEGORY REMARKS')
 

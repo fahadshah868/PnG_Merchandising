@@ -49,7 +49,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords{
 			}
 			else if(categoryname.equalsIgnoreCase("Retailer Remarks")){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				CommonKeywords.takePicture()
+				CommonKeywords.visitPopUpForOverwriting()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RetailerRemarks/OverwriteRetailerRemarks"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
@@ -123,7 +123,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
 				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				CommonKeywords.takePicture()
+				CommonKeywords.visitPopUpForOverwriting()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_OverwritingScenarios"), null)
 			}
 		}
@@ -146,7 +146,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords{
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Retailer Remarks")){
 				lastvisitedcategory = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-				CommonKeywords.takePicture()
+				CommonKeywords.visitPopUpForOverwriting()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RetailerRemarks/OverwriteRetailerRemarks"), null)
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Market Intelligence")){
@@ -225,7 +225,7 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
 				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-				CommonKeywords.takePicture()
+				CommonKeywords.visitPopUpForOverwriting()
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/MainCategoryRemarksVisitingScenarios/VisitRemarksWith_OverwritingScenarios"), null)
 			}
 			while(true){

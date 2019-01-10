@@ -90,7 +90,7 @@ public class HangerKeywords {
 			ProjectConstants.CURRENTVISITING_SUBCATEGORY = hangercategory.getText()
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]),
-				'KPI: Hanger')
+			'KPI: Hanger')
 			int hangerremarks = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 			for(int j=1; j<= hangerremarks; j++){
 				MobileElement hangerremark = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+j+"]/android.widget.TextView[1]")
@@ -161,7 +161,7 @@ public class HangerKeywords {
 			ProjectConstants.CURRENTVISITING_SUBCATEGORY = hangercategory.getText()
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]),
-				'KPI: Hanger')
+			'KPI: Hanger')
 			int hangerremarks = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 			for(int j=1; j<= hangerremarks; j++){
 				for(int k=1; k<= hangerremarks; k++){
@@ -220,7 +220,7 @@ public class HangerKeywords {
 			ProjectConstants.CURRENTVISITING_SUBCATEGORY = hangercategory.getText()
 			ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 			Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]),
-				'KPI: Hanger')
+			'KPI: Hanger')
 			int hangerremarks = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 			for(int j=1; j<= hangerremarks; j++){
 				for(int k=1; k<= hangerremarks; k++){

@@ -156,6 +156,7 @@ public class HotSpotKeywords {
 			String hotspottext = hotspot.getText()
 			if(hotspottext.equalsIgnoreCase("2 Shelfs")){
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK = ProjectConstants.CURRENTVISITING_CATEGORYREMARK+" with "+hotspot.getText()+" hotspot type"
+				ProjectConstants.CURRENTVISITING_HOTSPOTTYPE = hotspottext
 				driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				CommonKeywords.takePicture()
 				break
@@ -338,11 +339,11 @@ public class HotSpotKeywords {
 									if(existingshopproductsdata.getProduct().equalsIgnoreCase(displayedshopproductsdata.getProduct())){
 										if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 											visitedcategorydata.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
-											existingshopproductsdata.setHs_facing(displayedshopproductsdata.getHangeravailable())
+											existingshopproductsdata.setHs_facing(displayedshopproductsdata.getHs_facing())
 										}
 										else{
 											visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
-											existingshopproductsdata.setOverwrite_hs_facing(displayedshopproductsdata.getOverwrite_hangeravailable())
+											existingshopproductsdata.setOverwrite_hs_facing(displayedshopproductsdata.getOverwrite_hs_facing())
 										}
 									}
 								}

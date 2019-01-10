@@ -26,7 +26,7 @@ Mobile.tap(findTestObject('CommonScreenElements/DoneButton', [('package') : Proj
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_AvailableRemarksScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.selectSecondaryDisplay_AvailableRemark'('Shopkeeper did not allow', 
+CustomKeywords.'com.ct.qa.keywords.SecondaryDisplayKeywords.selectSecondaryDisplay_AvailableRemark'('Shopkeeper did not allow', 
     1)
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/SKDNA_CategoryRemark_BackButton', 
@@ -41,7 +41,7 @@ Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Ava
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UtilizationPopUpScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 'Utilization')
 
-CustomKeywords.'com.ct.qa.keywords.AdditionalInfoKeywords.enterUtilizationForSecondaryDisplay'(1)
+CustomKeywords.'com.ct.qa.keywords.SecondaryDisplayKeywords.enterUtilizationForSecondaryDisplay'(1)
 
 Mobile.hideKeyboard()
 
