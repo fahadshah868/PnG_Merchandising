@@ -531,7 +531,6 @@ public class AdditionalInfoKeywords {
 			kbdquestions.add(kbdquestion)
 		}
 		while(true){
-			Question kbdquestion = new Question()
 			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 			index = (surveyquestionslist.size()-1)
 			surveyquestion =  surveyquestionslist.get(index)
@@ -557,6 +556,7 @@ public class AdditionalInfoKeywords {
 				break
 			}
 			else{
+				Question kbdquestion = new Question()
 				if(tag.equalsIgnoreCase("android.widget.Spinner")){
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
@@ -622,6 +622,7 @@ public class AdditionalInfoKeywords {
 						Mobile.hideKeyboard()
 					}
 				}
+				kbdquestions.add(kbdquestion)
 			}
 			surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 			index = (surveyquestionslist.size()-1)
@@ -648,6 +649,7 @@ public class AdditionalInfoKeywords {
 				break
 			}
 			else{
+				Question kbdquestion = new Question()
 				if(tag.equalsIgnoreCase("android.widget.Spinner")){
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
@@ -713,8 +715,8 @@ public class AdditionalInfoKeywords {
 						Mobile.hideKeyboard()
 					}
 				}
+				kbdquestions.add(kbdquestion)
 			}
-			kbdquestions.add(kbdquestion)
 		}
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedsurveyquestions)
 		if(UnmatchedItems_status.getStatus() == 2){

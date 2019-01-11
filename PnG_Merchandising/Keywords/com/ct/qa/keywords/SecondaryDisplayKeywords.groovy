@@ -186,7 +186,7 @@ public class SecondaryDisplayKeywords {
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/OverwriteAvailableWith_SKDNA"), null)
 			}
 			else if(i == 3){
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_SKDNA"), null)
+				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_DisplayUnitNeedMaintenance"), null)
 			}
 			else if(i == 4){
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/VisitAvailableWith_DisplayUnitNeedMaintenance"), null)

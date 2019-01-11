@@ -1,0 +1,8 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+PnG Merchandising With Channel Wise Data Verification,,,2019-01-11 16:26:28,2019-01-11 16:26:36,7.798s,FAILED
+,,,,,,
+Test Cases/LaunchingApp/LaunchApp,,,2019-01-11 16:26:29,2019-01-11 16:26:36,7.071s,FAILED
+"startApplication(""F:\QA_Automation\Builds\png_070818_live_v152.apk"", false)",,launch application,2019-01-11 16:26:29,2019-01-11 16:26:36,6.329s,FAILED
+,,,,,,
+Test Cases/VisitShopScenarios/VisitShopsWithChannelWiseDataVerification,,,2019-01-11 16:26:36,2019-01-11 16:26:36,0.340s,FAILED
+"verifyElementText(findTestObject(""DashboardScreenElements/Validate_DashboardScreen"", [""package"":PACKAGENAME]), ""Dashboard"")",,validate the dashboard screen appearance,2019-01-11 16:26:36,2019-01-11 16:26:36,0.077s,FAILED
