@@ -413,13 +413,13 @@ public class ShopVisitingScenariosKeywords{
 						VisitedCategoryData visitedcategorydata = visitedshopdatainfo.getVisitedcategoriesdata().get(j)
 						if(visitedcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
 							message = message + "\n\n" +
-									String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n" +
-									String.format("%-8s%-30s%-60s", "","HotSpot Remark With Type:",visitedcategorydata.getFirstvisit_categoryremark())
+									String.format("%-30s%-60s", "Main Category:",visitedcategorydata.getMaincategory()) + "\n\n" +
+									String.format("%-8s%-30s%s", "","HotSpot Remark With Type:",visitedcategorydata.getFirstvisit_categoryremark())
 							if(visitedcategorydata.getOverwrite_categoryremark() != null){
-								message = message + "  ==>  "+visitedcategorydata.getOverwrite_categoryremark() + "\n\n"
+								message = message + "  ==>  "+visitedcategorydata.getOverwrite_categoryremark() + "\n"
 							}
 							else{
-								message = message + "\n\n"
+								message = message + "\n"
 							}
 							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
 							if(shopproductsdata != null){
@@ -440,7 +440,7 @@ public class ShopVisitingScenariosKeywords{
 									SubCategory subcategory = subcategories.get(n)
 									message = message +
 											String.format("%-8s%-30s%-60s", "","Sub Category:",subcategory.getSubcategory()) + "\n" +
-											String.format("%-8s%-30s%-60s", "","Remark:",subcategory.getFirstvisit_remark())
+											String.format("%-8s%-30s%s", "","Remark:",subcategory.getFirstvisit_remark())
 									if(subcategory.getOverwrite_remark() != null){
 										message = message + "  ==>  " + subcategory.getOverwrite_remark() + "\n"
 									}
@@ -494,7 +494,7 @@ public class ShopVisitingScenariosKeywords{
 												SubCategory subcategory = subcategories.get(c)
 												message = message +
 														String.format("%-8s%-30s%-60s", "","Sub Category:",subcategory.getSubcategory()) + "\n" +
-														String.format("%-8s%-30s%-60s", "","Remark:",subcategory.getFirstvisit_remark())
+														String.format("%-8s%-30s%s", "","Remark:",subcategory.getFirstvisit_remark())
 												if(subcategory.getOverwrite_remark() != null){
 													message = message + "  ==>  " + subcategory.getOverwrite_remark() + "\n"
 												}
@@ -507,7 +507,7 @@ public class ShopVisitingScenariosKeywords{
 									else if(visitedcategoryremark.getCategoryremark().equalsIgnoreCase("Primary Display")){
 										message = message + "\n\n" +
 												String.format("%-8s%-30s%-60s", "","Category Remark",visitedcategoryremark.getCategoryremark()) + "\n" +
-												String.format("%-8s%-30s%-60s", "","Sub Remark",visitedcategoryremark.getFirstvisit_categoryremark_subremark())
+												String.format("%-8s%-30s%s", "","Sub Remark",visitedcategoryremark.getFirstvisit_categoryremark_subremark())
 										if(visitedcategoryremark.getOverwrite_categoryremark_subremark() != null){
 											message = message + "  ==>  " + visitedcategoryremark.getOverwrite_categoryremark_subremark() + "\n"
 										}
@@ -535,7 +535,7 @@ public class ShopVisitingScenariosKeywords{
 									else if(visitedcategoryremark.getCategoryremark().equalsIgnoreCase("Secondary Display")){
 										message = message + "\n\n" +
 												String.format("%-8s%-30s%-60s", "","Category Remark",visitedcategoryremark.getCategoryremark()) + "\n" +
-												String.format("%-8s%-30s%-60s", "","Sub Remark",visitedcategoryremark.getFirstvisit_categoryremark_subremark())
+												String.format("%-8s%-30s%s", "","Sub Remark",visitedcategoryremark.getFirstvisit_categoryremark_subremark())
 										if(visitedcategoryremark.getOverwrite_categoryremark_subremark() != null){
 											message = message +"  ==>  " + visitedcategoryremark.getOverwrite_categoryremark_subremark() + "\n"
 										}
@@ -548,7 +548,7 @@ public class ShopVisitingScenariosKeywords{
 												SDUnit sdunit = sdunits.get(c)
 												message = message +
 														String.format("%-8s%-60s", "",sdunit.getUnit()) + "\n"+
-														String.format("%-8s%-60s", "",sdunit.getRemark()+" with "+sdunit.getSub_remark())
+														String.format("%-8s%s", "",sdunit.getRemark()+" with "+sdunit.getSub_remark())
 												if(sdunit.getOverwrite_remark() != null){
 													message = message + "  ==>  " +sdunit.getOverwrite_remark()+" with "+sdunit.getOverwrite_subremark() + "\n"
 												}
