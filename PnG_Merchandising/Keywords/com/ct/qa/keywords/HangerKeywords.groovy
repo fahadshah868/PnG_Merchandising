@@ -178,10 +178,12 @@ public class HangerKeywords {
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarktext
 				if(remarktext.equalsIgnoreCase("Hanger Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getFirstvisit_scenario()+"]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerAvailable/VisitHangerAvailable"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("Hanger Not Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getFirstvisit_scenario()+"]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerNotAvailable/VisitHangerNotAvailable"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("SKDNA")){
@@ -196,10 +198,12 @@ public class HangerKeywords {
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarktext
 				if(remarktext.equalsIgnoreCase("Hanger Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerAvailable/VisitHangerAvailable"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("Hanger Not Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerNotAvailable/VisitHangerNotAvailable"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("SKDNA")){
@@ -232,15 +236,17 @@ public class HangerKeywords {
 			}
 			if(scenarioscombination.size() >= ProjectConstants.SHOP_ATTEMPT){
 				ScenariosCombination scenario = scenarioscombination.get((ProjectConstants.SHOP_ATTEMPT-1))
-				MobileElement remark = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()()+"]/android.widget.TextView[1]")
+				MobileElement remark = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]/android.widget.TextView[1]")
 				String remarktext = remark.getText()
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarktext
 				if(remarktext.equalsIgnoreCase("Hanger Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerAvailable/OverwriteHangerAvailable"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("Hanger Not Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerNotAvailable/OverwriteHangerNotAvailable"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("SKDNA")){
@@ -255,10 +261,12 @@ public class HangerKeywords {
 				ProjectConstants.CURRENTVISITING_CATEGORYREMARK_SUBREMARK = remarktext
 				if(remarktext.equalsIgnoreCase("Hanger Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerAvailable/OverwriteHangerAvailable"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("Hanger Not Available")){
 					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
+					CommonKeywords.takePicture()
 					Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/Hanger/HangerNotAvailable/OverwriteHangerNotAvailable"), null)
 				}
 				else if(remarktext.equalsIgnoreCase("SKDNA")){

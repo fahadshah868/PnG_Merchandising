@@ -26,5 +26,5 @@ CustomKeywords.'com.ct.qa.keywords.MarketIntelligenceKeywords.visitMarketIntelli
 Mobile.tap(findTestObject('ShopOpen/MarketIntelligence/SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 'validate shop\'s categories screen appearance'
-MobileBuiltInKeywords.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 0)
+Mobile.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
