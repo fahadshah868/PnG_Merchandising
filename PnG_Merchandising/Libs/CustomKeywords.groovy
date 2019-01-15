@@ -152,8 +152,10 @@ def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotTypeForDataVerificati
     (new com.ct.qa.keywords.HotSpotKeywords()).visitHotSpotTypeForDataVerification()
 }
 
-def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotType"() {
-    (new com.ct.qa.keywords.HotSpotKeywords()).visitHotSpotType()
+def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotType"(
+    	int flag	) {
+    (new com.ct.qa.keywords.HotSpotKeywords()).visitHotSpotType(
+        	flag)
 }
 
 def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotAvailableFacingProducts"(
