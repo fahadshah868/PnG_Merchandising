@@ -17,7 +17,7 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Hotspot_SelectType', [('package') : ProjectConstants.PACKAGENAME]), 
     'Select appropriate type')
 
-CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.visitHotSpotType'()
+CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.visitHotSpotType'(2)
 
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Facing')

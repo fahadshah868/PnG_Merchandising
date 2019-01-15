@@ -78,18 +78,11 @@ public class AdditionalInfoKeywords {
 				surveyquestion.click()
 				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				for(int j=0; j< expectedsurveyquestions.size(); j++){
-					if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext)){
+					if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("Yes")){
 						flag = true
+						kbdquestion.setValue("Yes")
+						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						String status = expectedsurveyquestions.get(j).getStatus()
-						String options = expectedsurveyquestions.get(j).getOptions()
-						if(options.equalsIgnoreCase("Y/N")){
-							kbdquestion.setValue("Yes")
-							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						}
-						else{
-							kbdquestion.setValue("Yes")
-							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						}
 						if(status.equalsIgnoreCase("Y")){
 							kbdquestion.setPicture_status("Y")
 							validateCameraScreenAndTakePicture()
@@ -172,18 +165,11 @@ public class AdditionalInfoKeywords {
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
-						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext)){
+						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("Yes")){
 							flag = true
+							kbdquestion.setValue("Yes")
+							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							String status = expectedsurveyquestions.get(j).getStatus()
-							String options = expectedsurveyquestions.get(j).getOptions()
-							if(options.equalsIgnoreCase("Y/N")){
-								kbdquestion.setValue("Yes")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							}
-							else{
-								kbdquestion.setValue("Yes")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							}
 							if(status.equalsIgnoreCase("Y")){
 								kbdquestion.setPicture_status("Y")
 								validateCameraScreenAndTakePicture()
@@ -265,18 +251,11 @@ public class AdditionalInfoKeywords {
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
-						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext)){
+						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("Yes")){
 							flag = true
+							kbdquestion.setValue("Yes")
+							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							String status = expectedsurveyquestions.get(j).getStatus()
-							String options = expectedsurveyquestions.get(j).getOptions()
-							if(options.equalsIgnoreCase("Y/N")){
-								kbdquestion.setValue("Yes")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							}
-							else{
-								kbdquestion.setValue("Yes")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							}
 							if(status.equalsIgnoreCase("Y")){
 								kbdquestion.setPicture_status("Y")
 								validateCameraScreenAndTakePicture()
@@ -289,7 +268,7 @@ public class AdditionalInfoKeywords {
 						else{}
 					}
 					if(flag == false){
-						kbdquestion.setValue("Y")
+						kbdquestion.setValue("Yes")
 						kbdquestion.setPicture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
@@ -471,32 +450,25 @@ public class AdditionalInfoKeywords {
 				surveyquestion.click()
 				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 				for(int j=0; j< expectedsurveyquestions.size(); j++){
-					if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext)){
+					if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("No")){
 						flag = true
+						kbdquestion.setValue("No")
+						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						String status = expectedsurveyquestions.get(j).getStatus()
-						String options = expectedsurveyquestions.get(j).getOptions()
-						if(options.equalsIgnoreCase("Y/N")){
-							kbdquestion.setOverwrite_value("No")
-							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						}
-						else{
-							kbdquestion.setOverwrite_value("Yes")
-							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						}
 						if(status.equalsIgnoreCase("Y")){
-							kbdquestion.setOverwrite_picture_status("Y")
+							kbdquestion.setPicture_status("Y")
 							validateCameraScreenAndTakePicture()
 							break
 						}
 						else{
-							kbdquestion.setOverwrite_picture_status("N")
+							kbdquestion.setPicture_status("N")
 						}
 					}
 					else{}
 				}
 				if(flag == false){
-					kbdquestion.setOverwrite_value("Yes")
-					kbdquestion.setOverwrite_picture_status("Not Mention")
+					kbdquestion.setValue("Yes")
+					kbdquestion.setPicture_status("Not Mention")
 					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					validateCameraScreenAndTakePicture()
 				}
@@ -565,32 +537,25 @@ public class AdditionalInfoKeywords {
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
-						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext)){
+						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("No")){
 							flag = true
+							kbdquestion.setValue("No")
+							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							String status = expectedsurveyquestions.get(j).getStatus()
-							String options = expectedsurveyquestions.get(j).getOptions()
-							if(options.equalsIgnoreCase("Y/N")){
-								kbdquestion.setOverwrite_value("No")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							}
-							else{
-								kbdquestion.setOverwrite_value("Yes")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							}
 							if(status.equalsIgnoreCase("Y")){
-								kbdquestion.setOverwrite_picture_status("Y")
+								kbdquestion.setPicture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
 							else{
-								kbdquestion.setOverwrite_picture_status("N")
+								kbdquestion.setPicture_status("N")
 							}
 						}
 						else{}
 					}
 					if(flag == false){
-						kbdquestion.setOverwrite_value("Yes")
-						kbdquestion.setOverwrite_picture_status("Not Mention")
+						kbdquestion.setValue("Yes")
+						kbdquestion.setPicture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}
@@ -658,32 +623,25 @@ public class AdditionalInfoKeywords {
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
-						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext)){
+						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("No")){
 							flag = true
+							kbdquestion.setValue("No")
+							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							String status = expectedsurveyquestions.get(j).getStatus()
-							String options = expectedsurveyquestions.get(j).getOptions()
-							if(options.equalsIgnoreCase("Y/N")){
-								kbdquestion.setOverwrite_value("No")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							}
-							else{
-								kbdquestion.setOverwrite_value("Yes")
-								Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							}
 							if(status.equalsIgnoreCase("Y")){
-								kbdquestion.setOverwrite_picture_status("Y")
+								kbdquestion.setPicture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
 							else{
-								kbdquestion.setOverwrite_picture_status("N")
+								kbdquestion.setPicture_status("N")
 							}
 						}
 						else{}
 					}
 					if(flag == false){
-						kbdquestion.setOverwrite_value("Y")
-						kbdquestion.setOverwrite_picture_status("Not Mention")
+						kbdquestion.setValue("Yes")
+						kbdquestion.setPicture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}

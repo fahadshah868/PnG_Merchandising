@@ -151,7 +151,7 @@ public class HotSpotKeywords {
 	@Keyword
 	def visitHotSpotType(int flag){
 		int totalhotspottypes = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-		if(ProjectConstants.SHOP_ATTEMPT == 10){
+		if(ProjectConstants.SHOP_ATTEMPT == 1){
 			if(flag == 1){
 				for(int i=1; i<= totalhotspottypes; i++){
 					MobileElement hotspot = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
@@ -358,31 +358,45 @@ public class HotSpotKeywords {
 				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
 				ArrayList<VisitedCategoryData> visitedcategoriesdata = visitedshopdata.getVisitedcategoriesdata()
 				if(visitedcategoriesdata != null){
-					boolean flag = false
+					boolean maincategory_flag = false
 					for(int k=0; k<visitedcategoriesdata.size(); k++){
 						VisitedCategoryData visitedcategorydata = visitedcategoriesdata.get(k)
 						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory())){
-							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
-							flag = true
-							for(int n=0; n< shopproductsdata.size(); n++){
-								ShopProductsData existingshopproductsdata = shopproductsdata.get(n)
-								for(int b=0; b< visitedshopproductsdata.size(); b++){
-									ShopProductsData displayedshopproductsdata = visitedshopproductsdata.get(b)
-									if(existingshopproductsdata.getProduct().equalsIgnoreCase(displayedshopproductsdata.getProduct())){
-										if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-											visitedcategorydata.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
-											existingshopproductsdata.setHs_facing(displayedshopproductsdata.getHs_facing())
-										}
-										else{
-											visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
-											existingshopproductsdata.setOverwrite_hs_facing(displayedshopproductsdata.getOverwrite_hs_facing())
+							maincategory_flag = true
+							if(visitedcategorydata.getFirstvisit_categoryremark().equals(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)){
+								ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
+								for(int n=0; n< shopproductsdata.size(); n++){
+									ShopProductsData existingshopproductsdata = shopproductsdata.get(n)
+									for(int b=0; b< visitedshopproductsdata.size(); b++){
+										ShopProductsData displayedshopproductsdata = visitedshopproductsdata.get(b)
+										if(existingshopproductsdata.getProduct().equalsIgnoreCase(displayedshopproductsdata.getProduct())){
+											if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+												visitedcategorydata.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+												existingshopproductsdata.setHs_facing(displayedshopproductsdata.getHs_facing())
+											}
+											else{
+												visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+												existingshopproductsdata.setOverwrite_hs_facing(displayedshopproductsdata.getOverwrite_hs_facing())
+											}
 										}
 									}
 								}
 							}
+							else{
+								visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+								ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
+								ShopProductsData shopproductdata = new ShopProductsData()
+								shopproductdata.setProduct("")
+								shopproductdata.setHs_facing("")
+								shopproductdata.setOverwrite_hs_facing("")
+								shopproductsdata.add(shopproductdata)
+								for(int m=0; m< visitedshopproductsdata.size(); m++){
+									shopproductsdata.add(visitedshopproductsdata.get(m))
+								}
+							}
 						}
 					}
-					if(flag == false){
+					if(maincategory_flag == false){
 						ProjectConstants.visitedshopdatainfo.get(i).setVisitedcategoriesdata(visitedcategory)
 						break
 					}
