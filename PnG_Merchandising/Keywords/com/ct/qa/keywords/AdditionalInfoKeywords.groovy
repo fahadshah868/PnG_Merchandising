@@ -304,7 +304,8 @@ public class AdditionalInfoKeywords {
 				kbdquestions.add(kbdquestion)
 			}
 		}
-		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedsurveyquestions)
+		ArrayList<String> visitedquestionslist = new HashSet<String>(visitedsurveyquestions)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedquestionslist)
 		if(UnmatchedItems_status.getStatus() == 2){
 			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
 			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
@@ -676,7 +677,8 @@ public class AdditionalInfoKeywords {
 				kbdquestions.add(kbdquestion)
 			}
 		}
-		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedsurveyquestions)
+		ArrayList<String> visitedquestionslist = new HashSet<String>(visitedsurveyquestions)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedquestionslist)
 		if(UnmatchedItems_status.getStatus() == 2){
 			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
 			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
