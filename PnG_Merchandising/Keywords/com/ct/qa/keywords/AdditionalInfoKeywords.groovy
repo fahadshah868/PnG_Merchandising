@@ -304,8 +304,8 @@ public class AdditionalInfoKeywords {
 				kbdquestions.add(kbdquestion)
 			}
 		}
-		ArrayList<String> visitedquestionslist = new HashSet<String>(visitedsurveyquestions)
-		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedquestionslist)
+		ArrayList<String> expectedKBDquestions = new HashSet<String>(expectedsurveyquestionslist)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedKBDquestions, visitedsurveyquestions)
 		if(UnmatchedItems_status.getStatus() == 2){
 			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
 			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()
@@ -453,23 +453,23 @@ public class AdditionalInfoKeywords {
 				for(int j=0; j< expectedsurveyquestions.size(); j++){
 					if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("No")){
 						flag = true
-						kbdquestion.setValue("No")
+						kbdquestion.setOverwrite_value("No")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						String status = expectedsurveyquestions.get(j).getStatus()
 						if(status.equalsIgnoreCase("Y")){
-							kbdquestion.setPicture_status("Y")
+							kbdquestion.setOverwrite_picture_status("Y")
 							validateCameraScreenAndTakePicture()
 							break
 						}
 						else{
-							kbdquestion.setPicture_status("N")
+							kbdquestion.setOverwrite_picture_status("N")
 						}
 					}
 					else{}
 				}
 				if(flag == false){
-					kbdquestion.setValue("Yes")
-					kbdquestion.setPicture_status("Not Mention")
+					kbdquestion.setOverwrite_value("Yes")
+					kbdquestion.setOverwrite_picture_status("Not Mention")
 					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					validateCameraScreenAndTakePicture()
 				}
@@ -533,30 +533,30 @@ public class AdditionalInfoKeywords {
 				if(tag.equalsIgnoreCase("android.widget.Spinner")){
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
-					visitedsurveyquestions.add(displayeddropdowntext)
 					kbdquestion.setQuestion(displayeddropdowntext)
+					visitedsurveyquestions.add(displayeddropdowntext)
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
 						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("No")){
 							flag = true
-							kbdquestion.setValue("No")
+							kbdquestion.setOverwrite_value("No")
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							String status = expectedsurveyquestions.get(j).getStatus()
 							if(status.equalsIgnoreCase("Y")){
-								kbdquestion.setPicture_status("Y")
+								kbdquestion.setOverwrite_picture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
 							else{
-								kbdquestion.setPicture_status("N")
+								kbdquestion.setOverwrite_picture_status("N")
 							}
 						}
 						else{}
 					}
 					if(flag == false){
-						kbdquestion.setValue("Yes")
-						kbdquestion.setPicture_status("Not Mention")
+						kbdquestion.setOverwrite_value("Yes")
+						kbdquestion.setOverwrite_picture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}
@@ -619,30 +619,30 @@ public class AdditionalInfoKeywords {
 				if(tag.equalsIgnoreCase("android.widget.Spinner")){
 					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
-					visitedsurveyquestions.add(displayeddropdowntext)
 					kbdquestion.setQuestion(displayeddropdowntext)
+					visitedsurveyquestions.add(displayeddropdowntext)
 					surveyquestion.click()
 					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopupScreen", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
 						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("No")){
 							flag = true
-							kbdquestion.setValue("No")
+							kbdquestion.setOverwrite_value("No")
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							String status = expectedsurveyquestions.get(j).getStatus()
 							if(status.equalsIgnoreCase("Y")){
-								kbdquestion.setPicture_status("Y")
+								kbdquestion.setOverwrite_picture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
 							else{
-								kbdquestion.setPicture_status("N")
+								kbdquestion.setOverwrite_picture_status("N")
 							}
 						}
 						else{}
 					}
 					if(flag == false){
-						kbdquestion.setValue("Yes")
-						kbdquestion.setPicture_status("Not Mention")
+						kbdquestion.setOverwrite_value("Yes")
+						kbdquestion.setOverwrite_picture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}
@@ -677,8 +677,8 @@ public class AdditionalInfoKeywords {
 				kbdquestions.add(kbdquestion)
 			}
 		}
-		ArrayList<String> visitedquestionslist = new HashSet<String>(visitedsurveyquestions)
-		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedquestionslist)
+		ArrayList<String> expectedKBDquestions = new HashSet<String>(expectedsurveyquestionslist)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedKBDquestions, visitedsurveyquestions)
 		if(UnmatchedItems_status.getStatus() == 2){
 			ArrayList<MissingCategoryRemarkData> missingcategoryremarks = new ArrayList<MissingCategoryRemarkData>()
 			MissingCategoryRemarkData missingcategoryremark = new MissingCategoryRemarkData()

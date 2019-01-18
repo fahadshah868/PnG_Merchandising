@@ -510,23 +510,23 @@ public class SurveyQuestions {
 				for(int j=0; j< expectedsurveyquestions.size(); j++){
 					if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("No")){
 						flag = true
-						_surveyquestion.setValue("No")
+						_surveyquestion.setOverwrite_value("No")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						String status = expectedsurveyquestions.get(j).getStatus()
 						if(status.equalsIgnoreCase("Y")){
-							_surveyquestion.setPicture_status("Y")
+							_surveyquestion.setOverwrite_picture_status("Y")
 							validateCameraScreenAndTakePicture()
 							break
 						}
 						else{
-							_surveyquestion.setPicture_status("N")
+							_surveyquestion.setOverwrite_picture_status("N")
 						}
 					}
 					else{}
 				}
 				if(flag == false){
-					_surveyquestion.setValue("Yes")
-					_surveyquestion.setPicture_status("Not Mention")
+					_surveyquestion.setOverwrite_value("Yes")
+					_surveyquestion.setOverwrite_picture_status("Not Mention")
 					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					validateCameraScreenAndTakePicture()
 				}
@@ -597,23 +597,23 @@ public class SurveyQuestions {
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
 						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("No")){
 							flag = true
-							_surveyquestion.setValue("No")
+							_surveyquestion.setOverwrite_value("No")
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							String status = expectedsurveyquestions.get(j).getStatus()
 							if(status.equalsIgnoreCase("Y")){
-								_surveyquestion.setPicture_status("Y")
+								_surveyquestion.setOverwrite_picture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
 							else{
-								_surveyquestion.setPicture_status("N")
+								_surveyquestion.setOverwrite_picture_status("N")
 							}
 						}
 						else{}
 					}
 					if(flag == false){
-						_surveyquestion.setValue("Yes")
-						_surveyquestion.setPicture_status("Not Mention")
+						_surveyquestion.setOverwrite_value("Yes")
+						_surveyquestion.setOverwrite_picture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}
@@ -683,23 +683,23 @@ public class SurveyQuestions {
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
 						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("No")){
 							flag = true
-							_surveyquestion.setValue("No")
+							_surveyquestion.setOverwrite_value("No")
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_NoOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							String status = expectedsurveyquestions.get(j).getStatus()
 							if(status.equalsIgnoreCase("Y")){
-								_surveyquestion.setPicture_status("Y")
+								_surveyquestion.setOverwrite_picture_status("Y")
 								validateCameraScreenAndTakePicture()
 								break
 							}
 							else{
-								_surveyquestion.setPicture_status("N")
+								_surveyquestion.setOverwrite_picture_status("N")
 							}
 						}
 						else{}
 					}
 					if(flag == false){
-						_surveyquestion.setValue("Yes")
-						_surveyquestion.setPicture_status("Not Mention")
+						_surveyquestion.setOverwrite_value("Yes")
+						_surveyquestion.setOverwrite_picture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						validateCameraScreenAndTakePicture()
 					}
@@ -734,8 +734,8 @@ public class SurveyQuestions {
 				_surveyquestions.add(_surveyquestion)
 			}
 		}
-		ArrayList<String> visitedquestionslist = new HashSet<String>(visitedsurveyquestions)
-		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedsurveyquestionslist, visitedquestionslist)
+		ArrayList<String> _expectedsurveyquestionslist = new HashSet<String>(expectedsurveyquestionslist)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(_expectedsurveyquestionslist, visitedsurveyquestions)
 		if(UnmatchedItems_status.getStatus() == 2){
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
