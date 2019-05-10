@@ -48,6 +48,7 @@ public class ProjectConstants {
 	public static final String SLIDEROPTIONSSHEET = "Slider Options"
 	public static final String SURVEYQUESTIONS_SHEET = "Survey Questions"
 	public static final String SHOPACTIONSSHEET = "Shop Actions"
+	public static final String SHOPREMARKSSHEET = "Shop Remarks"
 	public static final String ADDITIONALINFOQUESTIONS_SHEET = "Additional Info Questions"
 
 	public static final AppiumDriver<MobileElement> DRIVER = MobileDriverFactory.getDriver()
@@ -106,6 +107,9 @@ public class ProjectConstants {
 
 	//shop actions columns
 	public static final int SHOPACTIONS
+	
+	//shop remarks columns
+	public static final int SHOPREMARKS
 
 
 	//variables for current visiting shop channels, chiller and categories
@@ -134,6 +138,7 @@ public class ProjectConstants {
 		XSSFSheet surveyquestionssheet = LoadDataKeywords.loadSurveyQuestionsSheet()
 		XSSFSheet additionalinfoquestionssheet = LoadDataKeywords.loadAdditionalInfoQuestionsSheet()
 		XSSFSheet shopactionssheet = LoadDataKeywords.loadShopActionsSheet()
+		XSSFSheet shopremarkssheet = LoadDataKeywords.loadShopRemarksSheet()
 
 		Row channelproductssheetheaderrow = channelproductssheet.getRow(0)
 		Row hotspotproductssheetheaderrow = hotspotproductssheet.getRow(0)
@@ -141,6 +146,7 @@ public class ProjectConstants {
 		Row surveyquestionssheetheaderrow = surveyquestionssheet.getRow(0)
 		Row additionalinfoquestionssheetheaderrow = additionalinfoquestionssheet.getRow(0)
 		Row shopactionssheetheaderrow = shopactionssheet.getRow(0)
+		Row shopremarkssheetheaderrow = shopremarkssheet.getRow(0)
 
 		int channelproductssheettotalcolumns = channelproductssheetheaderrow.getLastCellNum()
 		int hotspotproductssheettotalcolumns = hotspotproductssheetheaderrow.getLastCellNum()
@@ -148,6 +154,7 @@ public class ProjectConstants {
 		int surveyquestionssheettotalcolumns = surveyquestionssheetheaderrow.getLastCellNum()
 		int additionalinfoquestionssheettotalcolumns = additionalinfoquestionssheetheaderrow.getLastCellNum()
 		int shopactionssheettotalcolumns = shopactionssheetheaderrow.getLastCellNum()
+		int shopremarkssheettotalcolumns = shopremarkssheetheaderrow.getLastCellNum()
 
 		//load channel wise products sheet columns
 		for(int cellnumber=0; cellnumber<channelproductssheettotalcolumns; cellnumber++){
@@ -265,6 +272,15 @@ public class ProjectConstants {
 			String columnname = shopactionssheetheaderrow.getCell(cellnumber)
 			if(columnname.equalsIgnoreCase("Shop Actions")){
 				SHOPACTIONS = cellnumber
+			}
+			else{
+			}
+		}
+		//load shop remarks sheet columns
+		for(int cellnumber=0; cellnumber<shopremarkssheettotalcolumns; cellnumber++ ){
+			String columnname = shopremarkssheetheaderrow.getCell(cellnumber)
+			if(columnname.equalsIgnoreCase("Shop Remarks")){
+				SHOPREMARKS = cellnumber
 			}
 			else{
 			}

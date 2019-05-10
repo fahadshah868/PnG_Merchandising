@@ -65,6 +65,17 @@ public class LoadDataKeywords {
 		catch(Exception ex){
 		}
 	}
+	//load Shop remarks sheet
+	def static loadShopRemarksSheet(){
+		try{
+			FileInputStream inputStream = new FileInputStream(new File(ProjectConstants.EXCEL_FILEPATH))
+			XSSFWorkbook wb = new XSSFWorkbook(inputStream)
+			XSSFSheet sheet = wb.getSheet(ProjectConstants.SHOPREMARKSSHEET)
+			return sheet
+		}
+		catch(Exception ex){
+		}
+	}
 	//load shop actions
 	def static loadShopActionsList(){
 		DataFormatter dataformatter = new DataFormatter()
@@ -77,6 +88,19 @@ public class LoadDataKeywords {
 			expectedshopactionslist.add(shopaction)
 		}
 		return expectedshopactionslist
+	}
+	//load shop remarks
+	def static loadShopRemarksList(){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<String> expectedshopremarkslist = new ArrayList<String>()
+		XSSFSheet sheet = loadShopRemarksSheet()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<= totalrows; i++){
+			Row row = sheet.getRow(i)
+			String shopaction = dataformatter.formatCellValue(row.getCell(ProjectConstants.SHOPREMARKS))
+			expectedshopremarkslist.add(shopaction)
+		}
+		return expectedshopremarkslist
 	}
 	//load HotSopt sheet
 	def static loadHotSpotProductsSheet(){
@@ -132,7 +156,7 @@ public class LoadDataKeywords {
 			Row row = sheet.getRow(i)
 			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.CHANNEL))
 			String channelname = "Channel: "+channel
-			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname)){
+			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) || channel.equalsIgnoreCase("Others")){
 				String category = dataformatter.formatCellValue(row.getCell(ProjectConstants.MAINCATEGORY))
 				expectedshopcategories.add(category)
 			}
@@ -271,9 +295,9 @@ public class LoadDataKeywords {
 		for(int i=1; i<=totalrows; i++){
 			Row row = sheet.getRow(i)
 			String hotspottype = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTTYPE))
-			
+
 			String a = ProjectConstants.CURRENTVISITING_HOTSPOTTYPE
-			
+
 			if(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE.equalsIgnoreCase(hotspottype)){
 				ProductWithValue productwithvalue = new ProductWithValue()
 				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTPRODUCT))

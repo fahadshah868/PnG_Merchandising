@@ -148,23 +148,11 @@ public class CompareDataKeywords {
 	def static compareShopCategories(){
 		ArrayList<String> displayshopcategorieslist = new ArrayList<String>()
 		int index = 0
-		int mandatorycategories = 0
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<=totalcategories; i++){
 			MobileElement category = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String categoryname = category.getText()
-			if(categoryname.equalsIgnoreCase("Additional Picture")){
-				mandatorycategories = mandatorycategories + 1
-			}
-			else if(categoryname.equalsIgnoreCase("Retailer Remarks")){
-				mandatorycategories = mandatorycategories + 1
-			}
-			else if(categoryname.equalsIgnoreCase("Market Intelligence")){
-				mandatorycategories = mandatorycategories + 1
-			}
-			else{
-				displayshopcategorieslist.add(categoryname)
-			}
+			displayshopcategorieslist.add(categoryname)
 		}
 		while(true){
 			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -177,15 +165,6 @@ public class CompareDataKeywords {
 			if(lastitemnamebeforeswipe.equalsIgnoreCase(lastitemnameafterswipe)){
 				break
 			}
-			else if(lastitemnameafterswipe.equalsIgnoreCase("Additional Picture")){
-				mandatorycategories = mandatorycategories + 1
-			}
-			else if(lastitemnameafterswipe.equalsIgnoreCase("Retailer Remarks")){
-				mandatorycategories = mandatorycategories + 1
-			}
-			else if(lastitemnameafterswipe.equalsIgnoreCase("Market Intelligence")){
-				mandatorycategories = mandatorycategories + 1
-			}
 			else{
 				displayshopcategorieslist.add(lastitemnameafterswipe)
 			}
@@ -194,6 +173,18 @@ public class CompareDataKeywords {
 		ArrayList<String> expectedshopcategories = new HashSet<String>(expectedshopcategorieslist)
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedshopcategories , displayshopcategorieslist)
 		return UnmatchedItems_status
+	}
+	//compare shop remarks list
+	def static compareShopRemarksList(){
+		ArrayList<String> displayedshopremarkslist = new ArrayList<String>()
+		ArrayList<String> expectedshopremarkslist = LoadDataKeywords.loadShopRemarksList()
+		int remarkslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i<= remarkslist; i++){
+			MobileElement action = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			displayedshopremarkslist.add(action.getText())
+		}
+		UnmatchedItems unmatcheditems = compareLists(expectedshopremarkslist, displayedshopremarkslist)
+		return unmatcheditems
 	}
 	//compare display and actual shop remaining categories remarks
 	def static compareShopRemainingCategoryRemarks(){

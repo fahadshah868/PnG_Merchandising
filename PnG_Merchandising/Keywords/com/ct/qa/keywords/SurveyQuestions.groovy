@@ -131,47 +131,112 @@ public class SurveyQuestions {
 		ArrayList<String> visitedsurveyquestions = new ArrayList<String>()
 		ArrayList<String> expectedsurveyquestionslist = new ArrayList<String>()
 		ArrayList<Question> _surveyquestions = new ArrayList<Question>()
-		ArrayList<ProductWithValue> expectedsurveyquestions = LoadDataKeywords.loadSurveyQuestionsList(LoadDataKeywords.loadSurveyQuestionsSheet() , ProjectConstants.SURVEYQUESTIONVALUE)
-		for(int i=0; i< expectedsurveyquestions.size(); i++){
-			expectedsurveyquestionslist.add(expectedsurveyquestions.get(i).getProduct())
+		ArrayList<ProductWithValue> expectedquestionslist = LoadDataKeywords.loadSurveyQuestionsList(LoadDataKeywords.loadSurveyQuestionsSheet() , ProjectConstants.SURVEYQUESTIONVALUE)
+		for(int i=0; i< expectedquestionslist.size(); i++){
+			expectedsurveyquestionslist.add(expectedquestionslist.get(i).getProduct())
 		}
 		ArrayList<MobileElement> surveyquestionslist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
 		for(int i=0; i< surveyquestionslist.size(); i++){
-			Question _surveyquestion = new Question()
+			Question visitedquestion = new Question()
+			ArrayList<ProductWithValue> expectedsimilarquestions = new ArrayList<ProductWithValue>()
 			surveyquestion = surveyquestionslist.get(i)
 			tag = surveyquestion.getTagName()
 			if(tag.equalsIgnoreCase("android.widget.Spinner")){
-				boolean flag = false
 				String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 				visitedsurveyquestions.add(displayeddropdowntext)
-				_surveyquestion.setQuestion(displayeddropdowntext)
-				surveyquestion.click()
-				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
-				for(int j=0; j< expectedsurveyquestions.size(); j++){
-					if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("Yes")){
-						flag = true
-						_surveyquestion.setValue("Yes")
-						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						String status = expectedsurveyquestions.get(j).getStatus()
-						if(status.equalsIgnoreCase("Y")){
-							_surveyquestion.setPicture_status("Y")
-							validateCameraScreenAndTakePicture()
-							break
+				visitedquestion.setQuestion(displayeddropdowntext)
+				for(int j=0; j< expectedquestionslist.size(); j++){
+					ProductWithValue expectedquestion = expectedquestionslist.get(j)
+					if(expectedquestion.getProduct().equalsIgnoreCase(displayeddropdowntext)){
+						expectedsimilarquestions.add(expectedquestionslist.get(j))
+					}
+				}
+				if(expectedsimilarquestions.size() > 0){
+					if(expectedsimilarquestions.size() == 1){
+						if(expectedsimilarquestions.get(0).getOptions().equalsIgnoreCase("Y")){
+							ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
+							Mobile.verifyElementExist(findTestObject("ShopOpen/Survey/Validate_RemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+							Mobile.tap(findTestObject("ShopOpen/Survey/RemarksPopup_Yes", [('package') : ProjectConstants.PACKAGENAME]), 0)
+							//validate scenario
+							if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+								visitedquestion.setValue("Y")
+								if(expectedsimilarquestions.get(0).getStatus().equalsIgnoreCase("Y")){
+									CommonKeywords.takePicture()
+									visitedquestion.setPicture_status("Y")
+								}
+								else{
+									visitedquestion.setPicture_status("N")
+								}
+							}
+							else{
+								visitedquestion.setOverwrite_value("Y")
+								if(expectedsimilarquestions.get(0).getStatus().equalsIgnoreCase("Y")){
+									CommonKeywords.takePicture()
+									visitedquestion.setOverwrite_picture_status("Y")
+								}
+								else{
+									visitedquestion.setOverwrite_picture_status("N")
+								}
+							}
 						}
 						else{
-							_surveyquestion.setPicture_status("N")
+							ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
+							Mobile.verifyElementExist(findTestObject("ShopOpen/Survey/Validate_RemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+							Mobile.tap(findTestObject("ShopOpen/Survey/RemarksPopup_No", [('package') : ProjectConstants.PACKAGENAME]), 0)
+							//validate scenarios
+							if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+								visitedquestion.setValue("N")
+								if(expectedsimilarquestions.get(0).getStatus().equalsIgnoreCase("Y")){
+									CommonKeywords.takePicture()
+									visitedquestion.setPicture_status("Y")
+								}
+								else{
+									visitedquestion.setPicture_status("N")
+								}
+							}
+							else{
+								visitedquestion.setOverwrite_value("N")
+								if(expectedsimilarquestions.get(0).getStatus().equalsIgnoreCase("Y")){
+									CommonKeywords.takePicture()
+									visitedquestion.setOverwrite_picture_status("Y")
+								}
+								else{
+									visitedquestion.setOverwrite_picture_status("N")
+								}
+							}
+
 						}
 					}
-					else{}
+					else{
+						boolean flag = false
+						for(int q=0; q< expectedsimilarquestions.size(); q++){
+							ProductWithValue _question = expectedsimilarquestions.get(q)
+							if(_question.getOptions().equalsIgnoreCase("Y")){
+								visitedquestion.setValue("Y")
+								ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
+								Mobile.verifyElementExist(findTestObject("ShopOpen/Survey/Validate_RemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+								Mobile.tap(findTestObject("ShopOpen/Survey/RemarksPopup_Yes", [('package') : ProjectConstants.PACKAGENAME]), 0)
+								if(_question.getStatus().equalsIgnoreCase("Y")){
+									flag = true
+									CommonKeywords.takePicture()
+									visitedquestion.setQuestionoption_takepicture("Y")
+								}
+								break
+							}
+						}
+						if(flag == false){
+							visitedquestion.setQuestionoption_takepicture("N")
+						}
+					}
 				}
-				if(flag == false){
-					_surveyquestion.setValue("Yes")
-					_surveyquestion.setPicture_status("Not Mention")
-					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-					validateCameraScreenAndTakePicture()
+				else{
+					visitedquestion.setQuestionoption("Y")
+					visitedquestion.setQuestionoption_takepicture("Not Mention")
+					ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.Spinner["+i+"]").click()
+					Mobile.verifyElementExist(findTestObject("ShopOpen/Survey/Validate_RemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.tap(findTestObject("ShopOpen/Survey/RemarksPopup_Yes", [('package') : ProjectConstants.PACKAGENAME]), 0)
+					CommonKeywords.takePicture()
 				}
-				else{}
-				Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 			}
 			else{
 				boolean flag = false
@@ -227,37 +292,61 @@ public class SurveyQuestions {
 			}
 			else{
 				Question _surveyquestion = new Question()
+				ArrayList<Question> expectedsimilarquestions = new ArrayList<Question>()
 				if(tag.equalsIgnoreCase("android.widget.Spinner")){
-					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 					visitedsurveyquestions.add(displayeddropdowntext)
 					_surveyquestion.setQuestion(displayeddropdowntext)
-					surveyquestion.click()
-					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
-						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("Yes")){
-							flag = true
-							_surveyquestion.setValue("Yes")
+						Question expectedquestion = expectedsurveyquestions.get(j)
+						if(expectedquestion.getQuestion().equalsIgnoreCase(displayeddropdowntext)){
+							expectedsimilarquestions.add(expectedsurveyquestions.get(j))
+						}
+					}
+					if(expectedsimilarquestions.size() > 0){
+						if(expectedsimilarquestions.size() == 1){
+							_surveyquestion.setValue("Y")
+							surveyquestion.click()
+							Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							String status = expectedsurveyquestions.get(j).getStatus()
-							if(status.equalsIgnoreCase("Y")){
+							if(expectedsimilarquestions.get(0).getPicture_status().equalsIgnoreCase("Y")){
+								CommonKeywords.takePicture()
 								_surveyquestion.setPicture_status("Y")
-								validateCameraScreenAndTakePicture()
-								break
 							}
 							else{
 								_surveyquestion.setPicture_status("N")
 							}
 						}
-						else{}
+						else{
+							boolean flag = false
+							for(int q=0; q< expectedsimilarquestions.size(); q++){
+								Question _question = expectedsimilarquestions.get(q)
+								if(_question.getValue().equalsIgnoreCase("Y")){
+									_surveyquestion.setValue("Y")
+									surveyquestion.click()
+									Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+									Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+									if(_question.getPicture_status().equalsIgnoreCase("Y")){
+										flag = true
+										CommonKeywords.takePicture()
+										_surveyquestion.setPicture_status("Y")
+									}
+									break
+								}
+							}
+							if(flag == false){
+								_surveyquestion.setPicture_status("N")
+							}
+						}
 					}
-					if(flag == false){
-						_surveyquestion.setValue("Yes")
+					else{
+						_surveyquestion.setValue("Y")
 						_surveyquestion.setPicture_status("Not Mention")
+						surveyquestion.click()
+						Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						validateCameraScreenAndTakePicture()
+						CommonKeywords.takePicture()
 					}
-					else{}
 					Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 				}
 				else{
@@ -314,37 +403,61 @@ public class SurveyQuestions {
 			}
 			else{
 				Question _surveyquestion = new Question()
+				ArrayList<Question> expectedsimilarquestions = new ArrayList<Question>()
 				if(tag.equalsIgnoreCase("android.widget.Spinner")){
-					boolean flag = false
 					String displayeddropdowntext = surveyquestion.findElement(By.xpath(".//android.widget.LinearLayout[1]/android.widget.TextView[1]")).getText()
 					visitedsurveyquestions.add(displayeddropdowntext)
 					_surveyquestion.setQuestion(displayeddropdowntext)
-					surveyquestion.click()
-					Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
 					for(int j=0; j< expectedsurveyquestions.size(); j++){
-						if(expectedsurveyquestions.get(j).getProduct().equalsIgnoreCase(displayeddropdowntext) && expectedsurveyquestions.get(j).getOptions().equalsIgnoreCase("Yes")){
-							flag = true
-							_surveyquestion.setValue("Yes")
+						Question expectedquestion = expectedsurveyquestions.get(j)
+						if(expectedquestion.getQuestion().equalsIgnoreCase(displayeddropdowntext)){
+							expectedsimilarquestions.add(expectedsurveyquestions.get(j))
+						}
+					}
+					if(expectedsimilarquestions.size() > 0){
+						if(expectedsimilarquestions.size() == 1){
+							_surveyquestion.setValue("Y")
+							surveyquestion.click()
+							Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
 							Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-							String status = expectedsurveyquestions.get(j).getStatus()
-							if(status.equalsIgnoreCase("Y")){
+							if(expectedsimilarquestions.get(0).getPicture_status().equalsIgnoreCase("Y")){
+								CommonKeywords.takePicture()
 								_surveyquestion.setPicture_status("Y")
-								validateCameraScreenAndTakePicture()
-								break
 							}
 							else{
 								_surveyquestion.setPicture_status("N")
 							}
 						}
-						else{}
+						else{
+							boolean flag = false
+							for(int q=0; q< expectedsimilarquestions.size(); q++){
+								Question _question = expectedsimilarquestions.get(q)
+								if(_question.getValue().equalsIgnoreCase("Y")){
+									_surveyquestion.setValue("Y")
+									surveyquestion.click()
+									Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+									Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
+									if(_question.getPicture_status().equalsIgnoreCase("Y")){
+										flag = true
+										CommonKeywords.takePicture()
+										_surveyquestion.setPicture_status("Y")
+									}
+									break
+								}
+							}
+							if(flag == false){
+								_surveyquestion.setPicture_status("N")
+							}
+						}
 					}
-					if(flag == false){
-						_surveyquestion.setValue("Yes")
+					else{
+						_surveyquestion.setValue("Y")
 						_surveyquestion.setPicture_status("Not Mention")
+						surveyquestion.click()
+						Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/SurveyQuestions/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						validateCameraScreenAndTakePicture()
+						CommonKeywords.takePicture()
 					}
-					else{}
 					Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
 				}
 				else{
@@ -515,7 +628,7 @@ public class SurveyQuestions {
 						String status = expectedsurveyquestions.get(j).getStatus()
 						if(status.equalsIgnoreCase("Y")){
 							_surveyquestion.setOverwrite_picture_status("Y")
-							validateCameraScreenAndTakePicture()
+							CommonKeywords.takePicture()
 							break
 						}
 						else{
@@ -528,7 +641,7 @@ public class SurveyQuestions {
 					_surveyquestion.setOverwrite_value("Yes")
 					_surveyquestion.setOverwrite_picture_status("Not Mention")
 					Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-					validateCameraScreenAndTakePicture()
+					CommonKeywords.takePicture()
 				}
 				else{}
 				Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
@@ -602,7 +715,7 @@ public class SurveyQuestions {
 							String status = expectedsurveyquestions.get(j).getStatus()
 							if(status.equalsIgnoreCase("Y")){
 								_surveyquestion.setOverwrite_picture_status("Y")
-								validateCameraScreenAndTakePicture()
+								CommonKeywords.takePicture()
 								break
 							}
 							else{
@@ -615,7 +728,7 @@ public class SurveyQuestions {
 						_surveyquestion.setOverwrite_value("Yes")
 						_surveyquestion.setOverwrite_picture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						validateCameraScreenAndTakePicture()
+						CommonKeywords.takePicture()
 					}
 					else{}
 					Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
@@ -688,7 +801,7 @@ public class SurveyQuestions {
 							String status = expectedsurveyquestions.get(j).getStatus()
 							if(status.equalsIgnoreCase("Y")){
 								_surveyquestion.setOverwrite_picture_status("Y")
-								validateCameraScreenAndTakePicture()
+								CommonKeywords.takePicture()
 								break
 							}
 							else{
@@ -701,7 +814,7 @@ public class SurveyQuestions {
 						_surveyquestion.setOverwrite_value("Yes")
 						_surveyquestion.setOverwrite_picture_status("Not Mention")
 						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemarks_YesOption", [('package') : ProjectConstants.PACKAGENAME]), 0)
-						validateCameraScreenAndTakePicture()
+						CommonKeywords.takePicture()
 					}
 					else{}
 					Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 'Questions')
@@ -838,16 +951,6 @@ public class SurveyQuestions {
 					break
 				}
 			}
-		}
-	}
-	def validateCameraScreenAndTakePicture(){
-		try{
-			Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0, FailureHandling.OPTIONAL)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-			Mobile.delay(5)
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
-		}
-		catch(Exception ex){
 		}
 	}
 }

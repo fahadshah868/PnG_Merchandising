@@ -34,9 +34,9 @@ public class SecondaryDisplayKeywords {
 	def enterUnitsForSecondaryDisplay(){
 		MobileElement editfield1 = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]")
 		MobileElement editfield2 = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.EditText[1]")
-		editfield1.setValue("4")
+		editfield1.setValue("1")
 		Mobile.hideKeyboard()
-		editfield2.setValue("4")
+		editfield2.setValue("1")
 		Mobile.hideKeyboard()
 	}
 	@Keyword

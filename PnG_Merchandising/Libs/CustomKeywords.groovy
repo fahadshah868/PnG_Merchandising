@@ -10,6 +10,12 @@ def static "com.ct.qa.keywords.AdditionalPictureKeywords.takeMendatoryImages"() 
     (new com.ct.qa.keywords.AdditionalPictureKeywords()).takeMendatoryImages()
 }
 
+def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitSliderShops"(
+    	String remark	) {
+    (new com.ct.qa.keywords.ShopVisitingScenariosKeywords()).visitSliderShops(
+        	remark)
+}
+
 def static "com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopWithDataVerification"() {
     (new com.ct.qa.keywords.ShopVisitingScenariosKeywords()).visitShopWithDataVerification()
 }
@@ -72,6 +78,10 @@ def static "com.ct.qa.keywords.CommonKeywords.findPlanogramImageView"() {
 
 def static "com.ct.qa.keywords.CommonKeywords.findBackButtonImageView"() {
     (new com.ct.qa.keywords.CommonKeywords()).findBackButtonImageView()
+}
+
+def static "com.ct.qa.keywords.CommonKeywords.takePicture"() {
+    (new com.ct.qa.keywords.CommonKeywords()).takePicture()
 }
 
 def static "com.ct.qa.keywords.AdditionalInfoKeywords.enterUtilizationForAdditionalInfo"(
@@ -140,6 +150,10 @@ def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCatego
 
 def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWithOverwritingScenarios"() {
     (new com.ct.qa.keywords.CategoryVisitingScenariosKeywords()).visitShopCategoriesWithOverwritingScenarios()
+}
+
+def static "com.ct.qa.keywords.Attendence.visitAttendenceRemark"() {
+    (new com.ct.qa.keywords.Attendence()).visitAttendenceRemark()
 }
 
 def static "com.ct.qa.keywords.HotSpotKeywords.selectHotSpotRemark"(

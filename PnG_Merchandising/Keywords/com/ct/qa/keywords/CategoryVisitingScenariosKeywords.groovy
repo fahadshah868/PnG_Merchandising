@@ -107,10 +107,10 @@ public class CategoryVisitingScenariosKeywords{
 				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/VisitHotSpotAvailableForDataVerification"), null)
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
-				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
+//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
+//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
+//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
@@ -163,10 +163,12 @@ public class CategoryVisitingScenariosKeywords{
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Survey")){
 				lastvisitedcategory = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
-				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
+//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
+//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
+//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
 			}
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
@@ -312,10 +314,10 @@ public class CategoryVisitingScenariosKeywords{
 				}
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
-				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
+//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
+//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
+//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
@@ -413,10 +415,12 @@ public class CategoryVisitingScenariosKeywords{
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Survey")){
 				lastvisitedcategory = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
-				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
+//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
+//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
+//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithYesRemark"), null)
 			}
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
@@ -555,10 +559,10 @@ public class CategoryVisitingScenariosKeywords{
 				}
 			}
 			else if(categoryname.equalsIgnoreCase("Survey")){
-				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
-				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithNoRemark"), null)
+//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
+//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
+//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = categoryname
+//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithNoRemark"), null)
 			}
 			else{
 				ProjectConstants.CURRENTVISITING_MAINCATEGORY = categoryname
@@ -654,10 +658,12 @@ public class CategoryVisitingScenariosKeywords{
 			}
 			else if(lastitemnameafterswipe.equalsIgnoreCase("Survey")){
 				lastvisitedcategory = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
-				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
-				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
-				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithNoRemark"), null)
+				Mobile.swipe(0, 200, 0, 750)
+				Mobile.swipe(0, 200, 0, 750)
+//				ProjectConstants.CURRENTVISITING_MAINCATEGORY = lastitemnameafterswipe
+//				ProjectConstants.CURRENTVISITING_SUBCATEGORY = lastitemnameafterswipe
+//				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
+//				Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/SurveyQuestions/VisitSurveyQuestionsWithNoRemark"), null)
 			}
 			else{
 				lastvisitedcategory = lastitemnameafterswipe
