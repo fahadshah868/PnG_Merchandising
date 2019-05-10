@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[@class = 'android.widget.EditText' and @instance = '0' and (text() = 'Enter email' or . = 'Enter email') and @resource-id = '${package}:id/email']</value>
+         <value>//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1][count(. | //*[@class = 'android.widget.EditText' and @instance = '0' and (text() = 'Enter email' or . = 'Enter email') and @resource-id = '${package}:id/email']) = count(//*[@class = 'android.widget.EditText' and @instance = '0' and (text() = 'Enter email' or . = 'Enter email') and @resource-id = '${package}:id/email'])]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -146,7 +146,7 @@
       <value>63</value>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>false</isSelected>
+      <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>

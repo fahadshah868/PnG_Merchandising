@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[@class = 'android.widget.Button' and @instance = '0' and (text() = 'Update Profile' or . = 'Update Profile') and @resource-id = '${package}:id/button']</value>
+         <value>//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.Button[1][count(. | //*[@class = 'android.widget.Button' and @instance = '0' and (text() = 'Update Profile' or . = 'Update Profile') and @resource-id = '${package}:id/button']) = count(//*[@class = 'android.widget.Button' and @instance = '0' and (text() = 'Update Profile' or . = 'Update Profile') and @resource-id = '${package}:id/button'])]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -146,7 +146,7 @@
       <value>98</value>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>false</isSelected>
+      <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>

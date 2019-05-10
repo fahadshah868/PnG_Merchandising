@@ -77,9 +77,9 @@ public class SliderOptionsKeywords {
 			if(slideroptionname.equalsIgnoreCase("Update Profile")){
 				flag = true
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
-				Mobile.verifyElementText(findTestObject('SliderOptions/UpdateProfile_EnterEmail', [('package') : ProjectConstants.PACKAGENAME]), 'Enter email')
-				Mobile.verifyElementText(findTestObject('SliderOptions/UpdateProfile_EnterPhone', [('package') : ProjectConstants.PACKAGENAME]), 'Enter Phone')
-				Mobile.verifyElementText(findTestObject('SliderOptions/UpdateProfile_EnterCNIC', [('package') : ProjectConstants.PACKAGENAME]), 'Enter CNIC')
+				Mobile.verifyElementExist(findTestObject('SliderOptions/UpdateProfile_EnterEmail', [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.verifyElementExist(findTestObject('SliderOptions/UpdateProfile_EnterPhone', [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.verifyElementExist(findTestObject('SliderOptions/UpdateProfile_EnterCNIC', [('package') : ProjectConstants.PACKAGENAME]), 0)
 				Mobile.verifyElementText(findTestObject('SliderOptions/UpdateProfile_SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 'Update Profile')
 				Mobile.pressBack()
 				Mobile.verifyElementExist(findTestObject("Object Repository/SliderOptions/Validate_SliderItemsScreen" , [('package') : ProjectConstants.PACKAGENAME]), 0)
@@ -95,6 +95,19 @@ public class SliderOptionsKeywords {
 				Mobile.verifyElementText(findTestObject('SliderOptions/Validate_OutOfRoute_RouteListScreen', [('package') : ProjectConstants.PACKAGENAME]),'Route LIST')
 				Mobile.pressBack()
 				Mobile.verifyElementExist(findTestObject("Object Repository/SliderOptions/Validate_SliderItemsScreen" , [('package') : ProjectConstants.PACKAGENAME]), 0)
+			}
+			else if(slideroptionname.equalsIgnoreCase("Abnormal Shops")){
+				Mobile.delay(10)
+				try{
+					Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen" , [('package') : ProjectConstants.PACKAGENAME]), 10)
+					Mobile.verifyElementText(findTestObject("Object Repository/Validate_ShopListScreen" , [('package') : ProjectConstants.PACKAGENAME]), "Shops on Route")
+					ShopVisitingScenariosKeywords.visitSliderShops("Abnormal Shops")
+					Mobile.pressBack()
+				}
+				catch(Exception ex){
+					Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP" , [('package') : ProjectConstants.PACKAGENAME]), 0)
+					Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_OKButton" , [('package') : ProjectConstants.PACKAGENAME]), 0)
+				}
 			}
 			else if(slideroptionname.equalsIgnoreCase("Info")){
 				flag = true
@@ -144,6 +157,19 @@ public class SliderOptionsKeywords {
 						Mobile.pressBack()
 						Mobile.verifyElementExist(findTestObject("Object Repository/SliderOptions/Validate_SliderItemsScreen" , [('package') : ProjectConstants.PACKAGENAME]), 0)
 					}
+					else if(slideroptionnameafterswipe.equalsIgnoreCase("Abnormal Shops")){
+						Mobile.delay(10)
+						try{
+							Mobile.verifyElementExist(findTestObject("Object Repository/Validate_ShopListScreen" , [('package') : ProjectConstants.PACKAGENAME]), 10)
+							Mobile.verifyElementText(findTestObject("Object Repository/Validate_ShopListScreen" , [('package') : ProjectConstants.PACKAGENAME]), "Shops on Route")
+							ShopVisitingScenariosKeywords.visitSliderShops("Abnormal Shops")
+							Mobile.pressBack()
+						}
+						catch(Exception ex){
+							Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_InfoPopUP" , [('package') : ProjectConstants.PACKAGENAME]), 0)
+							Mobile.tap(findTestObject("Object Repository/CommonScreenElements/InfoPopUp_OKButton" , [('package') : ProjectConstants.PACKAGENAME]), 0)
+						}
+					}
 					else if(slideroptionnameafterswipe.equalsIgnoreCase("Info")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]").click()
 						Mobile.verifyElementText(findTestObject('SliderOptions/Validate_LoginCode', [('package') : ProjectConstants.PACKAGENAME]),'Login Code')
@@ -162,11 +188,33 @@ public class SliderOptionsKeywords {
 	}
 	@Keyword
 	def findRoute(){
+		Calendar calendar = Calendar.getInstance()
+		int day = calendar.get(Calendar.DAY_OF_WEEK)
+		if(day == 1){
+			getRoute("Monday")
+		}
+		else if(day == 2){
+			getRoute("Tuesday")
+		}
+		else if(day == 3){
+			getRoute("Wednesday")
+		}
+		else if(day == 4){
+			getRoute("Thursday")
+		}
+		else if(day == 5){
+			getRoute("Friday")
+		}
+		else if(day == 6){
+			getRoute("Saturday")
+		}
+	}
+	def getRoute(String _route){
 		int totalroutes = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<=totalroutes; i++){
 			MobileElement route = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String routename = route.getText()
-			if(routename.equalsIgnoreCase("Monday")){
+			if(routename.equalsIgnoreCase(_route)){
 				ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]").click()
 				break
 			}

@@ -172,6 +172,12 @@ def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotType"(
         	flag)
 }
 
+def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotProductCategories"(
+    	int flag	) {
+    (new com.ct.qa.keywords.HotSpotKeywords()).visitHotSpotProductCategories(
+        	flag)
+}
+
 def static "com.ct.qa.keywords.HotSpotKeywords.visitHotSpotAvailableFacingProducts"(
     	int columnindex	) {
     (new com.ct.qa.keywords.HotSpotKeywords()).visitHotSpotAvailableFacingProducts(

@@ -56,15 +56,8 @@ public class HotSpotKeywords {
 		ArrayList<String> displayedhotspottype = new ArrayList<String>()
 		int totalhotspottypes = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 		for(int i=1; i<= totalhotspottypes; i++){
-			if(i == totalhotspottypes){
-				Mobile.swipe(0, 240, 0, 200)
-				MobileElement hotspottype = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
-				displayedhotspottype.add(hotspottype.getText())
-			}
-			else{
-				MobileElement hotspottype = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
-				displayedhotspottype.add(hotspottype.getText())
-			}
+			MobileElement hotspottype = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			displayedhotspottype.add(hotspottype.getText())
 		}
 		while(true){
 			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
@@ -136,7 +129,6 @@ public class HotSpotKeywords {
 		}
 		else{
 			ProjectConstants.HOTSPOTINDEX = ProjectConstants.HOTSPOTINDEX + 1
-			Mobile.swipe(0, 240, 0, 200)
 			totalhotspottypes = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
 			index = ProjectConstants.HOTSPOTINDEX - totalhotspottypes
 			for(int i=1; i<= index; i++){
@@ -197,7 +189,24 @@ public class HotSpotKeywords {
 		}
 	}
 	@Keyword
+	def visitHotSpotProductCategories(int flag){
+		int totalproductcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i< totalproductcategories; i++){
+			MobileElement productcategory = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			ProjectConstants.CURRENTVISITING_SUBCATEGORY = productcategory.getText()
+			productcategory.click()
+			if(flag == 1){
+				Mobile.callTestCase(findTestCase('Test Cases/ShopOpen/HotSpot/HotSpotAvailable/VisitHotSpotProducts'), null)
+			}
+			else{
+				Mobile.callTestCase(findTestCase('Test Cases/ShopOpen/HotSpot/HotSpotAvailable/OverwriteHotSpotProducts'), null)
+			}
+		}
+	}
+	@Keyword
 	def visitHotSpotAvailableFacingProducts(int columnindex){
+		int textview_index
+		int xlocation = CommonKeywords.getXPoint()
 		ArrayList<ShopProductsData> visitedshopproductsdata = new ArrayList<ShopProductsData>()
 		ArrayList<String> expectedproducts = new ArrayList<String>()
 		ArrayList<String> displayedproducts = new ArrayList<String>()
@@ -207,14 +216,21 @@ public class HotSpotKeywords {
 		for(int i=0; i< expectedhotspotproducts.size(); i++){
 			expectedproducts.add(expectedhotspotproducts.get(i).getProduct())
 		}
-		int totalproducts = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
-		for(int i=1; i<= totalproducts; i=i+3){
+		MobileElement list = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]")
+		int totalproducts_tv = list.findElementByClassName("android.widget.TextView").size()
+		int totalproducts_et = list.findElementByClassName("android.widget.EditText").size()
+		for(int i=1; i<= totalproducts_tv; i++){
 			ShopProductsData shopproductdata = new ShopProductsData()
 			boolean flag = false
 			index = index + 1
 			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
 			String productname = product.getText()
 			shopproductdata.setProduct(productname)
+			if(i == totalproducts_tv){
+				if(totalproducts_et != totalproducts_tv){
+					Mobile.swipe(xlocation, 240, xlocation, 200)
+				}
+			}
 			for(int j=0; j< expectedhotspotproducts.size(); j++){
 				ProductWithValue expectedhotspotproduct = expectedhotspotproducts.get(j)
 				if(expectedhotspotproduct.getProduct().equalsIgnoreCase(productname)){
@@ -246,56 +262,53 @@ public class HotSpotKeywords {
 			else{}
 			visitedshopproductsdata.add(shopproductdata)
 		}
-		totalproducts = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
-		if(totalproducts >= 16){
-			while(true){
-				ShopProductsData shopproductdata = new ShopProductsData()
-				boolean flag = false
-				int xlocation = CommonKeywords.getXPoint()
-				MobileElement productbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
-				String productnamebeforeswipe = productbeforeswipe.getText()
-				Mobile.swipe(xlocation, 359, xlocation, 250)
-				MobileElement productafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
-				String productnameafterswipe = productafterswipe.getText()
-				if(productnamebeforeswipe.equals(productnameafterswipe)){
-					break
-				}
-				else{
-					shopproductdata.setProduct(productnameafterswipe)
-					for(int j=0; j< expectedhotspotproducts.size(); j++){
-						ProductWithValue expectedchannelproduct = expectedhotspotproducts.get(j)
-						if(expectedchannelproduct.getProduct().equalsIgnoreCase(productnameafterswipe)){
-							flag = true
-							MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
-							edittext.setValue(expectedchannelproduct.getProduct_value())
-							if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-								shopproductdata.setHs_facing(expectedchannelproduct.getProduct_value())
-							}
-							else{
-								shopproductdata.setOverwrite_hs_facing(expectedchannelproduct.getProduct_value())
-							}
-							Mobile.hideKeyboard()
-							break
-						}
-						else{}
-					}
-					if(flag == false){
+		while(true){
+			ShopProductsData shopproductdata = new ShopProductsData()
+			boolean flag = false
+			textview_index = list.findElementsByClassName("android.widget.TextView").size()
+			MobileElement productbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+textview_index+"]")
+			String productnamebeforeswipe = productbeforeswipe.getText()
+			Mobile.swipe(xlocation, 359, xlocation, 250)
+			textview_index = list.findElementsByClassName("android.widget.TextView").size()
+			MobileElement productafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+textview_index+"]")
+			String productnameafterswipe = productafterswipe.getText()
+			if(productnamebeforeswipe.equals(productnameafterswipe)){
+				break
+			}
+			else{
+				shopproductdata.setProduct(productnameafterswipe)
+				for(int j=0; j< expectedhotspotproducts.size(); j++){
+					ProductWithValue expectedchannelproduct = expectedhotspotproducts.get(j)
+					if(expectedchannelproduct.getProduct().equalsIgnoreCase(productnameafterswipe)){
+						flag = true
 						MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
-						edittext.setValue("0000")
+						edittext.setValue(expectedchannelproduct.getProduct_value())
 						if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-							shopproductdata.setHs_facing("0000")
+							shopproductdata.setHs_facing(expectedchannelproduct.getProduct_value())
 						}
 						else{
-							shopproductdata.setOverwrite_hs_facing("0000")
+							shopproductdata.setOverwrite_hs_facing(expectedchannelproduct.getProduct_value())
 						}
 						Mobile.hideKeyboard()
+						break
 					}
 					else{}
 				}
-				visitedshopproductsdata.add(shopproductdata)
+				if(flag == false){
+					MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
+					edittext.setValue("0000")
+					if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+						shopproductdata.setHs_facing("0000")
+					}
+					else{
+						shopproductdata.setOverwrite_hs_facing("0000")
+					}
+					Mobile.hideKeyboard()
+				}
+				else{}
 			}
+			visitedshopproductsdata.add(shopproductdata)
 		}
-		else{}
 		for(int i=0; i< visitedshopproductsdata.size(); i++){
 			displayedproducts.add((visitedshopproductsdata.get(i).getProduct()))
 		}

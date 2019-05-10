@@ -107,7 +107,7 @@ public class ProjectConstants {
 
 	//shop actions columns
 	public static final int SHOPACTIONS
-	
+
 	//shop remarks columns
 	public static final int SHOPREMARKS
 

@@ -82,15 +82,15 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords{
 					ProjectConstants.CURRENTVISITING_CATEGORYREMARK = remarktext
 					if(remarktext.equalsIgnoreCase("Hotspot Available")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotSpotAvailable"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/HotSpotAvailable/OverwriteHotSpotAvailable"), null)
 					}
 					else if(remarktext.equalsIgnoreCase("Hotspot not Available")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotspotNotAvailable"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/HotSpotNotAvailable/OverwriteHotspotNotAvailable"), null)
 					}
 					else if(remarktext.equalsIgnoreCase("Shopkeeper did not allow")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteShopKeeperDidnotAllow"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/SKDNA/OverwriteShopKeeperDidnotAllow"), null)
 					}
 					else{}
 				}
@@ -100,15 +100,15 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords{
 					ProjectConstants.CURRENTVISITING_CATEGORYREMARK = remarktext
 					if(remarktext.equalsIgnoreCase("Hotspot Available")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotSpotAvailable"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/HotSpotAvailable/OverwriteHotSpotAvailable"), null)
 					}
 					else if(remarktext.equalsIgnoreCase("Hotspot not Available")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotspotNotAvailable"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/HotSpotNotAvailable/OverwriteHotspotNotAvailable"), null)
 					}
 					else if(remarktext.equalsIgnoreCase("Shopkeeper did not allow")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteShopKeeperDidnotAllow"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/SKDNA/OverwriteShopKeeperDidnotAllow"), null)
 					}
 					else{}
 				}
@@ -175,15 +175,15 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords{
 					ProjectConstants.CURRENTVISITING_CATEGORYREMARK = remarktext
 					if(remarktext.equalsIgnoreCase("Hotspot Available")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotSpotAvailable"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/HotSpotAvailable/OverwriteHotSpotAvailable"), null)
 					}
 					else if(remarktext.equalsIgnoreCase("Hotspot not Available")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotspotNotAvailable"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/HotSpotNotAvailable/OverwriteHotspotNotAvailable"), null)
 					}
 					else if(remarktext.equalsIgnoreCase("Shopkeeper did not allow")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+scenario.getOverwrite_scenario()+"]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteShopKeeperDidnotAllow"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/SKDNA/OverwriteShopKeeperDidnotAllow"), null)
 					}
 					else{}
 				}
@@ -193,15 +193,15 @@ public class CategoryVisitingScenariosWithOverwritePopUpKeywords{
 					ProjectConstants.CURRENTVISITING_CATEGORYREMARK = remarktext
 					if(remarktext.equalsIgnoreCase("Hotspot Available")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotSpotAvailable"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/HotSpotAvailable/OverwriteHotSpotAvailable"), null)
 					}
 					else if(remarktext.equalsIgnoreCase("Hotspot not Available")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteHotspotNotAvailable"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/HotSpotNotAvailable/OverwriteHotspotNotAvailable"), null)
 					}
 					else if(remarktext.equalsIgnoreCase("Shopkeeper did not allow")){
 						ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[1]").click()
-						Mobile.callTestCase(findTestCase("Test Cases/ShopOpen/HotSpot/OverwriteShopKeeperDidnotAllow"), null)
+						Mobile.callTestCase(findTestCase("ShopOpen/HotSpot/SKDNA/OverwriteShopKeeperDidnotAllow"), null)
 					}
 					else{}
 				}

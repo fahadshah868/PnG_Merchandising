@@ -14,31 +14,20 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
 
+Mobile.verifyElementExist(findTestObject('ShopOpen/HotSpot/Validate_HotSpotRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
+    0)
+
+CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.selectHotSpotRemark'('Hotspot Available')
+
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Hotspot_SelectType', [('package') : ProjectConstants.PACKAGENAME]), 
     'Select appropriate type')
 
-CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.visitHotSpotType'(2)
+CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.visitHotSpotTypeForDataVerification'()
 
-Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Facing')
+Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_HotSpotProductCategories_Screen', [('package') : ProjectConstants.PACKAGENAME]), 
+    'Category:HotSpot')
 
-Mobile.tap(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Facing', [('package') : ProjectConstants.PACKAGENAME]), 0)
-
-Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_FacingScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Facing')
-
-CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.visitHotSpotAvailableFacingProducts'(ProjectConstants.OVERWRITEHOTSPOTFACING)
-
-Mobile.tap(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
-
-Mobile.verifyElementExist(findTestObject('CommonScreenElements/Validate_InfoPopUP', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
-
-Mobile.tap(findTestObject('CommonScreenElements/InfoPopUp_OKButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
-
-Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Facing')
+CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.visitHotSpotProductCategories'(1)
 
 Mobile.tap(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/POSM_ImageView', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
@@ -71,7 +60,7 @@ Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Valid
 Mobile.tap(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/HotSpotIsAvailableOnTheRightLocation_Yes', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.enterUtilization'(2)
+CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.enterUtilization'(1)
 
 Mobile.hideKeyboard()
 
