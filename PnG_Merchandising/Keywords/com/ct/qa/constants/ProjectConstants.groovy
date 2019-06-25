@@ -47,6 +47,7 @@ public class ProjectConstants {
 	public static final String DISTRIBUTION_SHEET = "Distribution Point"
 	public static final String SLIDEROPTIONSSHEET = "Slider Options"
 	public static final String SURVEYQUESTIONS_SHEET = "Survey Questions"
+	public static final String SURVEY_SHEET = "Survey"
 	public static final String SHOPACTIONSSHEET = "Shop Actions"
 	public static final String SHOPREMARKSSHEET = "Shop Remarks"
 	public static final String ADDITIONALINFOQUESTIONS_SHEET = "Additional Info Questions"
@@ -74,6 +75,7 @@ public class ProjectConstants {
 
 	//hotspot product columns
 	public static final int HOTSPOTTYPE
+	public static final int HOTSPOTPRODUCTCATEGORY
 	public static final int HOTSPOTPRODUCT
 	public static final int HOTSPOTFACING
 	public static final int OVERWRITEHOTSPOTFACING
@@ -87,7 +89,7 @@ public class ProjectConstants {
 	//slider options columns
 	public static final int SLIDEROPTIONS
 
-	//survey questions columns
+	//channel wise survey questions columns
 	public static final int SURVEYQUESTIONS_CHANNEL
 	public static final int SURVEYQUESTIONCATEGORY
 	public static final int SURVEYQUESTION
@@ -95,6 +97,10 @@ public class ProjectConstants {
 	public static final int OVERWRITE_SURVEYQUESTIONVALUE
 	public static final int SURVEYQUESTION_TAKEPICTURE
 	public static final int SURVEYQUESTION_OPTIONS
+
+	//survey columns
+	public static final int SURVEY_QUESTIONCATEGORY
+	public static final int SURVEY_QUESTION
 
 	//additional info questions columns
 	public static final int ADDITIONALINFOQUESTIONS_CHANNEL
@@ -139,6 +145,7 @@ public class ProjectConstants {
 		XSSFSheet additionalinfoquestionssheet = LoadDataKeywords.loadAdditionalInfoQuestionsSheet()
 		XSSFSheet shopactionssheet = LoadDataKeywords.loadShopActionsSheet()
 		XSSFSheet shopremarkssheet = LoadDataKeywords.loadShopRemarksSheet()
+		XSSFSheet surveysheet = LoadDataKeywords.loadSurveySheet()
 
 		Row channelproductssheetheaderrow = channelproductssheet.getRow(0)
 		Row hotspotproductssheetheaderrow = hotspotproductssheet.getRow(0)
@@ -147,6 +154,7 @@ public class ProjectConstants {
 		Row additionalinfoquestionssheetheaderrow = additionalinfoquestionssheet.getRow(0)
 		Row shopactionssheetheaderrow = shopactionssheet.getRow(0)
 		Row shopremarkssheetheaderrow = shopremarkssheet.getRow(0)
+		Row surveysheetheaderrow = surveysheet.getRow(0)
 
 		int channelproductssheettotalcolumns = channelproductssheetheaderrow.getLastCellNum()
 		int hotspotproductssheettotalcolumns = hotspotproductssheetheaderrow.getLastCellNum()
@@ -155,6 +163,7 @@ public class ProjectConstants {
 		int additionalinfoquestionssheettotalcolumns = additionalinfoquestionssheetheaderrow.getLastCellNum()
 		int shopactionssheettotalcolumns = shopactionssheetheaderrow.getLastCellNum()
 		int shopremarkssheettotalcolumns = shopremarkssheetheaderrow.getLastCellNum()
+		int surveysheetsheettotalcolumns = surveysheetheaderrow.getLastCellNum()
 
 		//load channel wise products sheet columns
 		for(int cellnumber=0; cellnumber<channelproductssheettotalcolumns; cellnumber++){
@@ -195,6 +204,9 @@ public class ProjectConstants {
 			String columnname = hotspotproductssheetheaderrow.getCell(cellnumber)
 			if(columnname.equalsIgnoreCase("Hotspot Type")){
 				HOTSPOTTYPE = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("HotSpot Product Category")){
+				HOTSPOTPRODUCTCATEGORY = cellnumber
 			}
 			else if(columnname.equalsIgnoreCase("Product")){
 				HOTSPOTPRODUCT = cellnumber
@@ -283,6 +295,16 @@ public class ProjectConstants {
 				SHOPREMARKS = cellnumber
 			}
 			else{
+			}
+		}
+		//load survey sheet columns
+		for(int cellnumber=0; cellnumber<surveysheetsheettotalcolumns; cellnumber++ ){
+			String columnname = surveysheetheaderrow.getCell(cellnumber)
+			if(columnname.equalsIgnoreCase("Question Category")){
+				SURVEY_QUESTIONCATEGORY = cellnumber
+			}
+			else if(columnname.equalsIgnoreCase("Question")){
+				SURVEY_QUESTION = cellnumber
 			}
 		}
 	}

@@ -28,12 +28,14 @@ import WebUiBuiltInKeywords as WebUI
 public class MissingCategoryData {
 	public String maincategory
 	public ArrayList<MissingCategoryRemarkData> missingcategoryremarks
-
+	public String categoryremark
 	public String subcategory
 	public ArrayList<String> missingcategoryremarksdata
 	public ArrayList<String> subcategories
+	public ArrayList<String> hotspottypes
 	public ArrayList<String> products
 	public String subcategories_errormessage
+	public String hotspottypes_errormessage
 	public String products_errormessage
 	public String missingcategoryremarksdata_errormessage
 	public String getMaincategory() {
@@ -89,5 +91,23 @@ public class MissingCategoryData {
 	}
 	public void setMissingcategoryremarksdata_errormessage(String missingcategoryremarksdata_errormessage) {
 		this.missingcategoryremarksdata_errormessage = missingcategoryremarksdata_errormessage;
+	}
+	public ArrayList<String> getHotspottypes() {
+		return hotspottypes;
+	}
+	public void setHotspottypes(ArrayList<String> hotspottypes) {
+		this.hotspottypes = hotspottypes;
+	}
+	public String getHotspottypes_errormessage() {
+		return hotspottypes_errormessage;
+	}
+	public void setHotspottypes_errormessage(String hotspottypes_errormessage) {
+		this.hotspottypes_errormessage = hotspottypes_errormessage;
+	}
+	public String getCategoryremark() {
+		return categoryremark;
+	}
+	public void setCategoryremark(String categoryremark) {
+		this.categoryremark = categoryremark;
 	}
 }

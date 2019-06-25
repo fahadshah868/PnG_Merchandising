@@ -5,12 +5,17 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.time.Duration
+
 import com.ct.qa.constants.ProjectConstants
 import com.ct.qa.struct.MissingCategoryData
+import com.ct.qa.struct.MissingCategoryRemarkData
 import com.ct.qa.struct.ProductWithValue
 import com.ct.qa.struct.ShopProductsData
+import com.ct.qa.struct.SubCategory
 import com.ct.qa.struct.UnmatchedItems
 import com.ct.qa.struct.VisitedCategoryData
+import com.ct.qa.struct.VisitedCategoryRemarkData
 import com.ct.qa.struct.VisitedShopDataInfo
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
@@ -28,13 +33,14 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable
 import io.appium.java_client.AppiumDriver
 import io.appium.java_client.MobileElement
+import io.appium.java_client.TouchAction
 import org.apache.poi.xssf.usermodel.XSSFSheet
+import org.openqa.selenium.Dimension
 
 public class HotSpotKeywords {
 
 	public static AppiumDriver<MobileElement> driver = ProjectConstants.DRIVER
 
-	// for hotspot available
 	@Keyword
 	def selectHotSpotRemark(String _remark){
 		int totalremarks = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
@@ -51,20 +57,26 @@ public class HotSpotKeywords {
 	}
 	@Keyword
 	def visitHotSpotTypeForDataVerification(){
+		TouchAction touchaction = new TouchAction(ProjectConstants.DRIVER)
 		int index = 0
 		ArrayList<String> expectedhotspottypes = LoadDataKeywords.loadHotSpotTypeList()
 		ArrayList<String> displayedhotspottype = new ArrayList<String>()
 		int totalhotspottypes = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<= totalhotspottypes; i++){
+		for(int i=1; i< totalhotspottypes; i++){
 			MobileElement hotspottype = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			displayedhotspottype.add(hotspottype.getText())
 		}
 		while(true){
 			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			index = index - 1
 			MobileElement itembeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 			String itemnamebeforeswipe = itembeforeswipe.getText()
-			Mobile.swipe(0, 293, 0, 200)
+			MobileElement startpoint = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[5]")
+			MobileElement endpoint = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[4]")
+			touchaction.press(startpoint).waitAction(Duration.ofMillis(650)).moveTo(endpoint).release().perform()
+			Thread.sleep(1000)
 			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			index = index - 1
 			MobileElement itemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 			String itemnameafterswipe = itemafterswipe.getText()
 			if(itemnamebeforeswipe.equals(itemnameafterswipe)){
@@ -74,13 +86,16 @@ public class HotSpotKeywords {
 				displayedhotspottype.add(itemnameafterswipe)
 			}
 		}
+		index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+		MobileElement lastitem = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+		displayedhotspottype.add(lastitem.getText())
 		ArrayList<String> expectedhotspottypelist = new HashSet<String>(expectedhotspottypes)
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedhotspottypelist, displayedhotspottype)
 		if(UnmatchedItems_status.getStatus() == 2){
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategories(UnmatchedItems_status.getItems())
-			missingcategory.setSubcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategory.setHotspottypes(UnmatchedItems_status.getItems())
+			missingcategory.setHotspottypes_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
@@ -92,8 +107,8 @@ public class HotSpotKeywords {
 		else if(UnmatchedItems_status.getStatus() == 1){
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategories(UnmatchedItems_status.getItems())
-			missingcategory.setSubcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+			missingcategory.setHotspottypes(UnmatchedItems_status.getItems())
+			missingcategory.setHotspottypes_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
@@ -105,8 +120,8 @@ public class HotSpotKeywords {
 		else if(UnmatchedItems_status.getStatus() == -1){
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategories(UnmatchedItems_status.getItems())
-			missingcategory.setSubcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+			missingcategory.setHotspottypes(UnmatchedItems_status.getItems())
+			missingcategory.setHotspottypes_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
 				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
 					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
@@ -190,8 +205,93 @@ public class HotSpotKeywords {
 	}
 	@Keyword
 	def visitHotSpotProductCategories(int flag){
+		int index = 0
+		ArrayList<String> expectedhotspotproductcategories = LoadDataKeywords.loadHotSpotProductCategories()
+		ArrayList<String> displayedhotspotproductcategories = new ArrayList<String>()
+		int totalhotspotproductcategories = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+		for(int i=1; i<= totalhotspotproductcategories; i++){
+			if(i == totalhotspotproductcategories){
+				MobileElement element = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]")
+				Dimension dimensions = element.getSize()
+				if(dimensions.getHeight() <= 30){
+					Mobile.swipe(0, 240, 0, 200)
+				}
+			}
+			MobileElement hotspotproductcategory = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
+			displayedhotspotproductcategories.add(hotspotproductcategory.getText())
+		}
+		while(true){
+			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement itembeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String itemnamebeforeswipe = itembeforeswipe.getText()
+			Mobile.swipe(0, 293, 0, 200)
+			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement itemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String itemnameafterswipe = itemafterswipe.getText()
+			if(itemnamebeforeswipe.equals(itemnameafterswipe)){
+				break
+			}
+			else{
+				displayedhotspotproductcategories.add(itemnameafterswipe)
+			}
+		}
+		ArrayList<String> expectedhotspottypelist = new HashSet<String>(expectedhotspotproductcategories)
+		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedhotspottypelist, displayedhotspotproductcategories)
+		if(UnmatchedItems_status.getStatus() == 2){
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategory.setSubcategories(UnmatchedItems_status.getItems())
+			missingcategory.setSubcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == 1){
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategory.setSubcategories(UnmatchedItems_status.getItems())
+			missingcategory.setSubcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
+				}
+				else{
+				}
+			}
+		}
+		else if(UnmatchedItems_status.getStatus() == -1){
+			MissingCategoryData missingcategory = new MissingCategoryData()
+			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
+			missingcategory.setCategoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+			missingcategory.setSubcategories(UnmatchedItems_status.getItems())
+			missingcategory.setSubcategories_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
+			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
+				if(ProjectConstants.missingshopdatainfo.get(j).getShopname().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SHOPNAME)) {
+					ProjectConstants.missingshopdatainfo.get(j).setMissingcategoriesdata(missingcategory)
+				}
+				else{
+				}
+			}
+		}
+		else{
+		}
+		Mobile.swipe(0, 200, 0, 750)
+		Mobile.swipe(0, 200, 0, 750)
 		int totalproductcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i< totalproductcategories; i++){
+		for(int i=1; i<= totalproductcategories; i++){
+			if(i == totalhotspotproductcategories){
+				MobileElement element = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]")
+				Dimension dimensions = element.getSize()
+				if(dimensions.getHeight() <= 30){
+					Mobile.swipe(0, 240, 0, 200)
+				}
+			}
 			MobileElement productcategory = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			ProjectConstants.CURRENTVISITING_SUBCATEGORY = productcategory.getText()
 			productcategory.click()
@@ -202,10 +302,32 @@ public class HotSpotKeywords {
 				Mobile.callTestCase(findTestCase('Test Cases/ShopOpen/HotSpot/HotSpotAvailable/OverwriteHotSpotProducts'), null)
 			}
 		}
+		while(true){
+			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement itembeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String itemnamebeforeswipe = itembeforeswipe.getText()
+			Mobile.swipe(0, 293, 0, 200)
+			index = driver.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/*").size()
+			MobileElement itemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+			String itemnameafterswipe = itemafterswipe.getText()
+			if(itemnamebeforeswipe.equals(itemnameafterswipe)){
+				break
+			}
+			else{
+				ProjectConstants.CURRENTVISITING_SUBCATEGORY = itemnameafterswipe
+				itemafterswipe.click()
+				if(flag == 1){
+					Mobile.callTestCase(findTestCase('Test Cases/ShopOpen/HotSpot/HotSpotAvailable/VisitHotSpotProducts'), null)
+				}
+				else{
+					Mobile.callTestCase(findTestCase('Test Cases/ShopOpen/HotSpot/HotSpotAvailable/OverwriteHotSpotProducts'), null)
+				}
+			}
+		}
 	}
 	@Keyword
 	def visitHotSpotAvailableFacingProducts(int columnindex){
-		int textview_index
+		TouchAction touchaction = new TouchAction(ProjectConstants.DRIVER)
 		int xlocation = CommonKeywords.getXPoint()
 		ArrayList<ShopProductsData> visitedshopproductsdata = new ArrayList<ShopProductsData>()
 		ArrayList<String> expectedproducts = new ArrayList<String>()
@@ -217,8 +339,8 @@ public class HotSpotKeywords {
 			expectedproducts.add(expectedhotspotproducts.get(i).getProduct())
 		}
 		MobileElement list = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]")
-		int totalproducts_tv = list.findElementByClassName("android.widget.TextView").size()
-		int totalproducts_et = list.findElementByClassName("android.widget.EditText").size()
+		int totalproducts_tv = list.findElementsByClassName("android.widget.TextView").size()
+		int totalproducts_et = list.findElementsByClassName("android.widget.EditText").size()
 		for(int i=1; i<= totalproducts_tv; i++){
 			ShopProductsData shopproductdata = new ShopProductsData()
 			boolean flag = false
@@ -226,10 +348,9 @@ public class HotSpotKeywords {
 			MobileElement product = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
 			String productname = product.getText()
 			shopproductdata.setProduct(productname)
-			if(i == totalproducts_tv){
-				if(totalproducts_et != totalproducts_tv){
-					Mobile.swipe(xlocation, 240, xlocation, 200)
-				}
+			if(i == totalproducts_tv && totalproducts_et != totalproducts_tv){
+				touchaction.press(xlocation, 250).waitAction(Duration.ofMillis(500)).moveTo(xlocation, 200).release().perform()
+				Thread.sleep(500)
 			}
 			for(int j=0; j< expectedhotspotproducts.size(); j++){
 				ProductWithValue expectedhotspotproduct = expectedhotspotproducts.get(j)
@@ -265,23 +386,25 @@ public class HotSpotKeywords {
 		while(true){
 			ShopProductsData shopproductdata = new ShopProductsData()
 			boolean flag = false
-			textview_index = list.findElementsByClassName("android.widget.TextView").size()
-			MobileElement productbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+textview_index+"]")
+			index = list.findElementsByClassName("android.widget.TextView").size()
+			MobileElement productbeforeswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
 			String productnamebeforeswipe = productbeforeswipe.getText()
-			Mobile.swipe(xlocation, 359, xlocation, 250)
-			textview_index = list.findElementsByClassName("android.widget.TextView").size()
-			MobileElement productafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+textview_index+"]")
+			touchaction.press(xlocation, 270).waitAction(Duration.ofMillis(500)).moveTo(xlocation, 200).release().perform()
+			Thread.sleep(500)
+			index = list.findElementsByClassName("android.widget.TextView").size()
+			MobileElement productafterswipe = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView["+index+"]")
 			String productnameafterswipe = productafterswipe.getText()
 			if(productnamebeforeswipe.equals(productnameafterswipe)){
 				break
 			}
 			else{
 				shopproductdata.setProduct(productnameafterswipe)
+				index = list.findElementsByClassName("android.widget.EditText").size()
 				for(int j=0; j< expectedhotspotproducts.size(); j++){
 					ProductWithValue expectedchannelproduct = expectedhotspotproducts.get(j)
 					if(expectedchannelproduct.getProduct().equalsIgnoreCase(productnameafterswipe)){
 						flag = true
-						MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
+						MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 						edittext.setValue(expectedchannelproduct.getProduct_value())
 						if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 							shopproductdata.setHs_facing(expectedchannelproduct.getProduct_value())
@@ -295,7 +418,7 @@ public class HotSpotKeywords {
 					else{}
 				}
 				if(flag == false){
-					MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
+					MobileElement edittext = driver.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
 					edittext.setValue("0000")
 					if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 						shopproductdata.setHs_facing("0000")
@@ -316,7 +439,7 @@ public class HotSpotKeywords {
 		if(UnmatchedItems_status.getStatus() == 2){
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE)
 			missingcategory.setProducts(UnmatchedItems_status.getItems())
 			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_NOTMATCH)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -330,7 +453,7 @@ public class HotSpotKeywords {
 		else if(UnmatchedItems_status.getStatus() == 1){
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE)
 			missingcategory.setProducts(UnmatchedItems_status.getItems())
 			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MORE)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -344,7 +467,7 @@ public class HotSpotKeywords {
 		else if(UnmatchedItems_status.getStatus() == -1){
 			MissingCategoryData missingcategory = new MissingCategoryData()
 			missingcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
-			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+			missingcategory.setSubcategory(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE)
 			missingcategory.setProducts(UnmatchedItems_status.getItems())
 			missingcategory.setProducts_errormessage(ProjectConstants.MESSAGEFOR_ITEMSARE_MISSING)
 			for(int j=0; j<ProjectConstants.missingshopdatainfo.size(); j++){
@@ -358,6 +481,10 @@ public class HotSpotKeywords {
 		else{
 		}
 		VisitedCategoryData visitedcategory = new VisitedCategoryData()
+		SubCategory subcategory = new SubCategory()
+		subcategory.setSubcategory(ProjectConstants.CURRENTVISITING_SUBCATEGORY)
+		subcategory.setFirstvisit_remark("type1")
+		subcategory.setShopproductsdata(visitedshopproductsdata)
 		visitedcategory.setMaincategory(ProjectConstants.CURRENTVISITING_MAINCATEGORY)
 		if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
 			visitedcategory.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
@@ -365,7 +492,7 @@ public class HotSpotKeywords {
 		else{
 			visitedcategory.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
 		}
-		visitedcategory.setShopproductsdata(visitedshopproductsdata)
+		visitedcategory.setSubcategories(subcategory)
 		for(int i=0; i< ProjectConstants.visitedshopdatainfo.size(); i++){
 			if(ProjectConstants.visitedshopdatainfo.get(i).getShopname().equals(ProjectConstants.CURRENTVISITING_SHOPNAME)){
 				VisitedShopDataInfo visitedshopdata = ProjectConstants.visitedshopdatainfo.get(i)
@@ -377,35 +504,41 @@ public class HotSpotKeywords {
 						if(visitedcategorydata.getMaincategory().equals(visitedcategory.getMaincategory())){
 							maincategory_flag = true
 							if(visitedcategorydata.getFirstvisit_categoryremark().equals(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)){
-								ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
-								for(int n=0; n< shopproductsdata.size(); n++){
-									ShopProductsData existingshopproductsdata = shopproductsdata.get(n)
-									for(int b=0; b< visitedshopproductsdata.size(); b++){
-										ShopProductsData displayedshopproductsdata = visitedshopproductsdata.get(b)
-										if(existingshopproductsdata.getProduct().equalsIgnoreCase(displayedshopproductsdata.getProduct())){
-											if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-												visitedcategorydata.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
-												existingshopproductsdata.setHs_facing(displayedshopproductsdata.getHs_facing())
-											}
-											else{
-												visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
-												existingshopproductsdata.setOverwrite_hs_facing(displayedshopproductsdata.getOverwrite_hs_facing())
+								ArrayList<SubCategory> subcategoriesdata = visitedcategorydata.getSubcategories()
+								boolean subcategory_flag = false
+								for(int p=0; p< subcategoriesdata.size(); p++){
+									SubCategory subcategorydata = subcategoriesdata.get(p)
+									if(subcategorydata.getSubcategory().equalsIgnoreCase(ProjectConstants.CURRENTVISITING_SUBCATEGORY)){
+										subcategory_flag = true
+										ArrayList<ShopProductsData> shopproductsdata = subcategorydata.getShopproductsdata()
+										for(int n=0; n< shopproductsdata.size(); n++){
+											ShopProductsData existingshopproductsdata = shopproductsdata.get(n)
+											for(int b=0; b< visitedshopproductsdata.size(); b++){
+												ShopProductsData displayedshopproductsdata = visitedshopproductsdata.get(b)
+												if(existingshopproductsdata.getProduct().equalsIgnoreCase(displayedshopproductsdata.getProduct())){
+													if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+														visitedcategorydata.setFirstvisit_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+														existingshopproductsdata.setHs_facing(displayedshopproductsdata.getHs_facing())
+													}
+													else{
+														visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
+														existingshopproductsdata.setOverwrite_hs_facing(displayedshopproductsdata.getOverwrite_hs_facing())
+													}
+													break
+												}
 											}
 										}
 									}
 								}
+								if(subcategory_flag == false){
+									visitedcategorydata.setSubcategories(subcategory)
+									break
+								}
 							}
 							else{
 								visitedcategorydata.setOverwrite_categoryremark(ProjectConstants.CURRENTVISITING_CATEGORYREMARK)
-								ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
-								ShopProductsData shopproductdata = new ShopProductsData()
-								shopproductdata.setProduct("")
-								shopproductdata.setHs_facing("")
-								shopproductdata.setOverwrite_hs_facing("")
-								shopproductsdata.add(shopproductdata)
-								for(int m=0; m< visitedshopproductsdata.size(); m++){
-									shopproductsdata.add(visitedshopproductsdata.get(m))
-								}
+								subcategory.setFirstvisit_remark("type2")
+								visitedcategorydata.setSubcategories(subcategory)
 							}
 						}
 					}

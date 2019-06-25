@@ -17,7 +17,7 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionCategoryScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Question Category')
 
-CustomKeywords.'com.ct.qa.keywords.SurveyQuestions.visitSurveyQuestionCategories'(2)
+CustomKeywords.'com.ct.qa.keywords.__SurveyQuestions.visitSurveyQuestionCategories'(2)
 
 Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionCategoryScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Question Category')

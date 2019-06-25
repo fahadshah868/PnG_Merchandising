@@ -5,6 +5,8 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.time.Duration
+
 import com.ct.qa.constants.ProjectConstants
 import com.ct.qa.struct.ProductWithValue
 import com.ct.qa.struct.UnmatchedItems
@@ -24,10 +26,14 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords
 
 import internal.GlobalVariable
+import io.appium.java_client.MobileBy
 import io.appium.java_client.MobileElement
+import io.appium.java_client.TouchAction
+import io.appium.java_client.android.AndroidDriver
 import org.apache.poi.ss.usermodel.DataFormatter
 import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.xssf.usermodel.XSSFSheet
+import org.openqa.selenium.JavascriptExecutor
 import MobileBuiltInKeywords as Mobile
 import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
@@ -146,20 +152,28 @@ public class CompareDataKeywords {
 	}
 	//compare display and actual shop main categories
 	def static compareShopCategories(){
+		TouchAction touchaction = new TouchAction(ProjectConstants.DRIVER)
 		ArrayList<String> displayshopcategorieslist = new ArrayList<String>()
 		int index = 0
 		int totalcategories = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<=totalcategories; i++){
+		for(int i=1; i< totalcategories; i++){
 			MobileElement category = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String categoryname = category.getText()
 			displayshopcategorieslist.add(categoryname)
 		}
+		touchaction.press(0, 220).waitAction(Duration.ofMillis(600)).moveTo(0, 200).release().perform()
+		Thread.sleep(1000)
 		while(true){
 			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+			index = index - 1
 			MobileElement lastitembeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 			String lastitemnamebeforeswipe = lastitembeforeswipe.getText()
-			Mobile.swipe(0, 293, 0, 200)
+			MobileElement startpoint = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[5]")
+			MobileElement endpoint = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout[4]")
+			touchaction.press(startpoint).waitAction(Duration.ofMillis(650)).moveTo(endpoint).release().perform()
+			Thread.sleep(1000)
 			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+			index = index - 1
 			MobileElement lastitemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 			String lastitemnameafterswipe = lastitemafterswipe.getText()
 			if(lastitemnamebeforeswipe.equalsIgnoreCase(lastitemnameafterswipe)){
@@ -169,6 +183,9 @@ public class CompareDataKeywords {
 				displayshopcategorieslist.add(lastitemnameafterswipe)
 			}
 		}
+		index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
+		MobileElement lastitem = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+		displayshopcategorieslist.add(lastitem.getText())
 		ArrayList<String> expectedshopcategorieslist = LoadDataKeywords.loadShopCategories()
 		ArrayList<String> expectedshopcategories = new HashSet<String>(expectedshopcategorieslist)
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedshopcategories , displayshopcategorieslist)
@@ -238,20 +255,26 @@ public class CompareDataKeywords {
 		return UnmatchedItems_status
 	}
 	def static compareSliderOptions(){
+		TouchAction touchAction = new TouchAction(ProjectConstants.DRIVER)
 		int index = 0
 		ArrayList<String> expectedslideroptions = LoadDataKeywords.loadSliderOptions()
 		ArrayList<String> displayedslideroptions = new ArrayList<String>()
 		int slidertotaloptions = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/*").size()
-		for(int i=1; i<=slidertotaloptions; i++){
+		for(int i=1; i< slidertotaloptions; i++){
 			MobileElement slideroption = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			displayedslideroptions.add(slideroption.getText())
 		}
 		while(true){
 			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/*").size()
+			index = index  - 1
 			MobileElement lastitembeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 			String lastitemnamebeforeswipe = lastitembeforeswipe.getText()
-			Mobile.swipe(0, 294, 0, 200)
+			MobileElement startpoint = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/android.widget.LinearLayout[5]")
+			MobileElement endpoint = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/android.widget.LinearLayout[4]")
+			touchAction.press(startpoint).waitAction(Duration.ofMillis(600)).moveTo(endpoint).release().perform()
+			Thread.sleep(1000)
 			index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/*").size()
+			index = index  - 1
 			MobileElement lastitemafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
 			String lastitemnameafterswipe = lastitemafterswipe.getText()
 			if(lastitemnamebeforeswipe.equals(lastitemnameafterswipe)){
@@ -261,6 +284,9 @@ public class CompareDataKeywords {
 				displayedslideroptions.add(lastitemnameafterswipe)
 			}
 		}
+		index = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/*").size()
+		MobileElement lastitem = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.widget.LinearLayout[2]/android.widget.ListView[1]/android.widget.LinearLayout["+index+"]/android.widget.TextView[1]")
+		displayedslideroptions.add(lastitem.getText())
 		UnmatchedItems UnmatchedItems_status = CompareDataKeywords.compareLists(expectedslideroptions , displayedslideroptions)
 		return UnmatchedItems_status
 	}

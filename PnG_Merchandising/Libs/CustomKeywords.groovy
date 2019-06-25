@@ -42,6 +42,20 @@ def static "com.ct.qa.keywords.RetailerRemarks.visitRetailerRemarks"(
         	flag)
 }
 
+def static "com.ct.qa.keywords.__SurveyQuestions.visitSurveyQuestionCategories"(
+    	int flag	) {
+    (new com.ct.qa.keywords.__SurveyQuestions()).visitSurveyQuestionCategories(
+        	flag)
+}
+
+def static "com.ct.qa.keywords.__SurveyQuestions.visitSurveyQuestionsWithYesRemark"() {
+    (new com.ct.qa.keywords.__SurveyQuestions()).visitSurveyQuestionsWithYesRemark()
+}
+
+def static "com.ct.qa.keywords.__SurveyQuestions.visitSurveyQuestionsWithNoRemark"() {
+    (new com.ct.qa.keywords.__SurveyQuestions()).visitSurveyQuestionsWithNoRemark()
+}
+
 def static "com.ct.qa.keywords.MarketIntelligenceKeywords.visitMarketIntelligenceCategories"() {
     (new com.ct.qa.keywords.MarketIntelligenceKeywords()).visitMarketIntelligenceCategories()
 }
@@ -98,6 +112,12 @@ def static "com.ct.qa.keywords.AdditionalInfoKeywords.overwriteAdditionalInfoQue
     (new com.ct.qa.keywords.AdditionalInfoKeywords()).overwriteAdditionalInfoQuestions()
 }
 
+def static "com.ct.qa.keywords.SurveyKeywords.visitSurveyQuestionCategories"(
+    	int flag	) {
+    (new com.ct.qa.keywords.SurveyKeywords()).visitSurveyQuestionCategories(
+        	flag)
+}
+
 def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_DataVerification"() {
     (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_DataVerification()
 }
@@ -118,26 +138,14 @@ def static "com.ct.qa.keywords.SliderOptionsKeywords.displayMissingSliderOptions
     (new com.ct.qa.keywords.SliderOptionsKeywords()).displayMissingSliderOptionsInReport()
 }
 
-def static "com.ct.qa.keywords.SliderOptionsKeywords.visitSliderOption"() {
-    (new com.ct.qa.keywords.SliderOptionsKeywords()).visitSliderOption()
+def static "com.ct.qa.keywords.SliderOptionsKeywords.findSliderOption"(
+    	String option	) {
+    (new com.ct.qa.keywords.SliderOptionsKeywords()).findSliderOption(
+        	option)
 }
 
 def static "com.ct.qa.keywords.SliderOptionsKeywords.findRoute"() {
     (new com.ct.qa.keywords.SliderOptionsKeywords()).findRoute()
-}
-
-def static "com.ct.qa.keywords.SurveyQuestions.visitSurveyQuestionCategories"(
-    	int flag	) {
-    (new com.ct.qa.keywords.SurveyQuestions()).visitSurveyQuestionCategories(
-        	flag)
-}
-
-def static "com.ct.qa.keywords.SurveyQuestions.visitSurveyQuestionsWithYesRemark"() {
-    (new com.ct.qa.keywords.SurveyQuestions()).visitSurveyQuestionsWithYesRemark()
-}
-
-def static "com.ct.qa.keywords.SurveyQuestions.visitSurveyQuestionsWithNoRemark"() {
-    (new com.ct.qa.keywords.SurveyQuestions()).visitSurveyQuestionsWithNoRemark()
 }
 
 def static "com.ct.qa.keywords.CategoryVisitingScenariosKeywords.visitShopCategoriesWithDataVerification"() {

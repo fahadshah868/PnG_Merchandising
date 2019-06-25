@@ -35,3 +35,8 @@ Mobile.tap(findTestObject('CommonScreenElements/InfoPopUp_OKButton', [('package'
 Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Facing')
 
+Mobile.tap(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/BackButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
+
+Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_HotSpotProductCategories_Screen', [('package') : ProjectConstants.PACKAGENAME]), 
+    'Category:HotSpot')
+

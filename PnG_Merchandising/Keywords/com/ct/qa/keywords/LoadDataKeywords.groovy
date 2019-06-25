@@ -76,6 +76,17 @@ public class LoadDataKeywords {
 		catch(Exception ex){
 		}
 	}
+	//load survey sheet
+	def static loadSurveySheet(){
+		try{
+			FileInputStream inputStream = new FileInputStream(new File(ProjectConstants.EXCEL_FILEPATH))
+			XSSFWorkbook wb = new XSSFWorkbook(inputStream)
+			XSSFSheet sheet = wb.getSheet(ProjectConstants.SURVEY_SHEET)
+			return sheet
+		}
+		catch(Exception ex){
+		}
+	}
 	//load shop actions
 	def static loadShopActionsList(){
 		DataFormatter dataformatter = new DataFormatter()
@@ -156,7 +167,7 @@ public class LoadDataKeywords {
 			Row row = sheet.getRow(i)
 			String channel = dataformatter.formatCellValue(row.getCell(ProjectConstants.CHANNEL))
 			String channelname = "Channel: "+channel
-			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) || channel.equalsIgnoreCase("Others")){
+			if(ProjectConstants.CURRENTVISITING_SHOPCHANNEL.equalsIgnoreCase(channelname) || channel.equalsIgnoreCase("Other")){
 				String category = dataformatter.formatCellValue(row.getCell(ProjectConstants.MAINCATEGORY))
 				expectedshopcategories.add(category)
 			}
@@ -277,7 +288,7 @@ public class LoadDataKeywords {
 	//load hotspot type
 	def static loadHotSpotTypeList(){
 		DataFormatter dataformatter = new DataFormatter()
-		ArrayList<String> hotspottypes = new ArrayList<ProductWithValue>()
+		ArrayList<String> hotspottypes = new ArrayList<String>()
 		XSSFSheet sheet = loadHotSpotProductsSheet()
 		int totalrows = sheet.getLastRowNum()
 		for(int i=1; i<=totalrows; i++){
@@ -287,6 +298,22 @@ public class LoadDataKeywords {
 		}
 		return hotspottypes
 	}
+	//load hotspot product categories
+	def static loadHotSpotProductCategories(){
+		DataFormatter dataformatter = new DataFormatter()
+		ArrayList<String> hotspotproductcategories = new ArrayList<String>()
+		XSSFSheet sheet = loadHotSpotProductsSheet()
+		int totalrows = sheet.getLastRowNum()
+		for(int i=1; i<=totalrows; i++){
+			Row row = sheet.getRow(i)
+			String hotspottype = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTTYPE))
+			if(hotspottype.equalsIgnoreCase(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE)){
+				String hotspotproductcategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTPRODUCTCATEGORY))
+				hotspotproductcategories.add(hotspotproductcategory)
+			}
+		}
+		return hotspotproductcategories
+	}
 	//load hotspot products and quantity
 	def static loadHotSpotProductsList(XSSFSheet sheet, int column){
 		DataFormatter dataformatter = new DataFormatter()
@@ -295,10 +322,8 @@ public class LoadDataKeywords {
 		for(int i=1; i<=totalrows; i++){
 			Row row = sheet.getRow(i)
 			String hotspottype = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTTYPE))
-
-			String a = ProjectConstants.CURRENTVISITING_HOTSPOTTYPE
-
-			if(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE.equalsIgnoreCase(hotspottype)){
+			String hotspotproductcategory = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTPRODUCTCATEGORY))
+			if(ProjectConstants.CURRENTVISITING_HOTSPOTTYPE.equalsIgnoreCase(hotspottype) && ProjectConstants.CURRENTVISITING_SUBCATEGORY.equalsIgnoreCase(hotspotproductcategory)){
 				ProductWithValue productwithvalue = new ProductWithValue()
 				String product = dataformatter.formatCellValue(row.getCell(ProjectConstants.HOTSPOTPRODUCT))
 				String columndata = dataformatter.formatCellValue(row.getCell(column))

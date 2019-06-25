@@ -49,8 +49,8 @@ public class VisitedCategoryData {
 	public ArrayList<VisitedCategoryRemarkData> getVisitedcategoryremarks() {
 		return visitedcategoryremarks;
 	}
-	public void setVisitedcategoryremarks(VisitedCategoryRemarkData visitedcategoryremarks) {
-		this.visitedcategoryremarks.add(visitedcategoryremarks);
+	public void setVisitedcategoryremarks(VisitedCategoryRemarkData visitedcategoryremark) {
+		this.visitedcategoryremarks.add(visitedcategoryremark);
 	}
 	public ArrayList<ShopProductsData> getShopproductsdata() {
 		return shopproductsdata;

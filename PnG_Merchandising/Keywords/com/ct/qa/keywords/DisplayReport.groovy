@@ -139,6 +139,34 @@ public class DisplayReport {
 						MissingCategoryData missingcategorydata = missingshopdatainfo.getMissingcategoriesdata().get(j)
 						if(missingcategorydata != null){
 							if(missingcategorydata.getMaincategory().equalsIgnoreCase("HotSpot")){
+								//hotspot tyes
+								ArrayList<String> hotspottypes = missingcategorydata.getHotspottypes()
+								if(hotspottypes != null){
+									if(flag == false){
+										message = message+"\n\n"+
+												String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
+												String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
+												"\n\nHotSpot Types:\n\n" +
+												String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+												String.format("%-30s","HotSpot Types:")
+										for(int n=0; n< hotspottypes.size() ; n++){
+											message = message + hotspottypes.get(n) + ",   "
+										}
+										message = message + "\n" + missingcategorydata.getHotspottypes_errormessage() + "\n\n"
+										flag = true
+									}
+									else{
+										message = message +
+												"\n\nSub Categories:\n\n" +
+												String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+												String.format("%-30s","HotSpot Type:")
+										for(int n=0; n< hotspottypes.size() ; n++){
+											message = message + hotspottypes.get(n) + ",   "
+										}
+										message = message + "\n" + missingcategorydata.getHotspottypes_errormessage() + "\n\n"
+									}
+								}
+								//hotspot sub categories
 								ArrayList<String> subcategories = missingcategorydata.getSubcategories()
 								if(subcategories != null){
 									if(flag == false){
@@ -147,6 +175,7 @@ public class DisplayReport {
 												String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
 												"\n\nSub Categories:\n\n" +
 												String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+												String.format("%-30s%-60s","Category Remark With Type:",missingcategorydata.getCategoryremark()) + "\n" +
 												String.format("%-30s","HotSpot Type:")
 										for(int n=0; n< subcategories.size() ; n++){
 											message = message + subcategories.get(n) + ",   "
@@ -158,6 +187,7 @@ public class DisplayReport {
 										message = message +
 												"\n\nSub Categories:\n\n" +
 												String.format("%-30s%-60s","Main Category:",missingcategorydata.getMaincategory()) + "\n" +
+												String.format("%-30s%-60s","Category Remark With Type:",missingcategorydata.getCategoryremark()) + "\n" +
 												String.format("%-30s","HotSpot Type:")
 										for(int n=0; n< subcategories.size() ; n++){
 											message = message + subcategories.get(n) + ",   "
@@ -431,16 +461,41 @@ public class DisplayReport {
 								message = message + "  ==>  "+visitedcategorydata.getOverwrite_categoryremark() + "\n"
 							}
 							else{
-								message = message + "\n"
+								message = message + "\n\n"
 							}
-							ArrayList<ShopProductsData> shopproductsdata = visitedcategorydata.getShopproductsdata()
-							if(shopproductsdata != null){
-								message = message +	String.format("%-8s%-50s%-30s%-30s", "","Products","Facing","Overwrite Facing")+"\n"
-								for(int n=0; n< shopproductsdata.size() ; n++){
-									ShopProductsData _shopproductsdata = shopproductsdata.get(n)
-									message = message + String.format("%-8s%-50s%-30s%-30s", "",_shopproductsdata.getProduct(),_shopproductsdata.getHs_facing(), _shopproductsdata.getOverwrite_hs_facing())+"\n"
+							boolean typeflag = false
+							ArrayList<SubCategory> subcategories = visitedcategorydata.getSubcategories()
+							for(int p=0; p< subcategories.size(); p++){
+								SubCategory subcategory = subcategories.get(p)
+								message = message + String.format("%-8s%-100s","",subcategory.getSubcategory()) + "\n\n"
+								if(subcategory.getFirstvisit_remark().equalsIgnoreCase("type1")){
+									ArrayList<ShopProductsData> shopproductsdata = subcategory.getShopproductsdata()
+									if(shopproductsdata != null){
+										message = message +	String.format("%-8s%-50s%-30s%-30s", "","Products","Facing","Overwrite Facing")+"\n"
+										for(int n=0; n< shopproductsdata.size() ; n++){
+											ShopProductsData _shopproductsdata = shopproductsdata.get(n)
+											message = message + String.format("%-8s%-50s%-30s%-30s", "",_shopproductsdata.getProduct(),_shopproductsdata.getHs_facing(), _shopproductsdata.getOverwrite_hs_facing())+"\n"
+										}
+										message = message + "\n"
+									}
 								}
-								message = message + "\n"
+								else{
+									if(typeflag == false){
+										typeflag = true
+										message = message + "<------------------------------------------------------------------>" + "\n\n"
+									}
+									else{
+										ArrayList<ShopProductsData> shopproductsdata = subcategory.getShopproductsdata()
+										if(shopproductsdata != null){
+											message = message +	String.format("%-8s%-50s%-30s%-30s", "","Products","Facing","Overwrite Facing")+"\n"
+											for(int n=0; n< shopproductsdata.size() ; n++){
+												ShopProductsData _shopproductsdata = shopproductsdata.get(n)
+												message = message + String.format("%-8s%-50s%-30s%-30s", "",_shopproductsdata.getProduct(),_shopproductsdata.getHs_facing(), _shopproductsdata.getOverwrite_hs_facing())+"\n"
+											}
+											message = message + "\n"
+										}
+									}
+								}
 							}
 						}
 						else if(visitedcategorydata.getMaincategory().equalsIgnoreCase("Hanger")){

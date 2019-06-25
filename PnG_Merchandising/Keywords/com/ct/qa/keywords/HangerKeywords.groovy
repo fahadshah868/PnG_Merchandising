@@ -5,6 +5,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.time.Duration
 import java.util.ArrayList
 
 import com.ct.qa.constants.ProjectConstants
@@ -31,6 +32,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
 import io.appium.java_client.MobileElement
+import io.appium.java_client.TouchAction
 import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.eclipse.persistence.internal.sessions.factories.model.project.ProjectConfig
 
@@ -282,14 +284,18 @@ public class HangerKeywords {
 		ArrayList<ShopProductsData> visitedshopproductsdata = new ArrayList<ShopProductsData>()
 		ArrayList<String> expectedproducts = new ArrayList<String>()
 		ArrayList<String> displayedproducts = new ArrayList<String>()
+		TouchAction touchaction = new TouchAction(ProjectConstants.DRIVER)
+		int xlocation = CommonKeywords.getXPoint()
 		int index = 0
 		XSSFSheet sheet = LoadDataKeywords.loadChannelProductsSheet()
 		ArrayList<ProductWithValue> expectedhangerproducts = LoadDataKeywords.loadChannelWiseProductsList(sheet, columnindex)
 		for(int i=0; i< expectedhangerproducts.size(); i++){
 			expectedproducts.add(expectedhangerproducts.get(i).getProduct())
 		}
-		int totalproducts = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
-		for(int i=1; i<= totalproducts; i=i+3){
+		MobileElement listcontainer = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]")
+		int totalproducts_tv = listcontainer.findElementsByClassName("android.widget.TextView").size()
+		int totalproducts_et = listcontainer.findElementsByClassName("android.widget.EditText").size()
+		for(int i=1; i<= totalproducts_tv; i++){
 			ShopProductsData shopproductdata = new ShopProductsData()
 			boolean flag = false
 			index = index + 1
@@ -327,56 +333,54 @@ public class HangerKeywords {
 			else{}
 			visitedshopproductsdata.add(shopproductdata)
 		}
-		totalproducts = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*").size()
-		if(totalproducts >= 16){
-			while(true){
-				ShopProductsData hangerproduct = new ShopProductsData()
-				boolean flag = false
-				int xlocation = CommonKeywords.getXPoint()
-				MobileElement productbeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
-				String productnamebeforeswipe = productbeforeswipe.getText()
-				Mobile.swipe(xlocation, 359, xlocation, 250)
-				MobileElement productafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
-				String productnameafterswipe = productafterswipe.getText()
-				if(productnamebeforeswipe.equals(productnameafterswipe)){
-					break
-				}
-				else{
-					hangerproduct.setProduct(productnameafterswipe)
-					for(int j=0; j< expectedhangerproducts.size(); j++){
-						ProductWithValue expectedchannelproduct = expectedhangerproducts.get(j)
-						if(expectedchannelproduct.getProduct().equalsIgnoreCase(productnameafterswipe)){
-							flag = true
-							MobileElement edittext = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
-							edittext.setValue(expectedchannelproduct.getProduct_value())
-							if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-								hangerproduct.setHanger_availability(expectedchannelproduct.getProduct_value())
-							}
-							else{
-								hangerproduct.setOverwrite_hanger_availability(expectedchannelproduct.getProduct_value())
-							}
-							Mobile.hideKeyboard()
-							break
-						}
-						else{}
-					}
-					if(flag == false){
-						MobileElement edittext = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.EditText[1]")
-						edittext.setValue("0000")
+		while(true){
+			ShopProductsData hangerproduct = new ShopProductsData()
+			boolean flag = false
+			index = listcontainer.findElementsByClassName("android.widget.TextView").size()
+			MobileElement productbeforeswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String productnamebeforeswipe = productbeforeswipe.getText()
+			touchaction.press(xlocation, 270).waitAction(Duration.ofMillis(500)).moveTo(xlocation, 200).release().perform()
+			index = listcontainer.findElementsByClassName("android.widget.TextView").size()
+			MobileElement productafterswipe = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.TextView[5]")
+			String productnameafterswipe = productafterswipe.getText()
+			if(productnamebeforeswipe.equals(productnameafterswipe)){
+				break
+			}
+			else{
+				hangerproduct.setProduct(productnameafterswipe)
+				index = listcontainer.findElementsByClassName("android.widget.EditText").size()
+				for(int j=0; j< expectedhangerproducts.size(); j++){
+					ProductWithValue expectedchannelproduct = expectedhangerproducts.get(j)
+					if(expectedchannelproduct.getProduct().equalsIgnoreCase(productnameafterswipe)){
+						flag = true
+						MobileElement edittext = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+						edittext.setValue(expectedchannelproduct.getProduct_value())
 						if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
-							hangerproduct.setHanger_availability("0000")
+							hangerproduct.setHanger_availability(expectedchannelproduct.getProduct_value())
 						}
 						else{
-							hangerproduct.setOverwrite_hanger_availability("0000")
+							hangerproduct.setOverwrite_hanger_availability(expectedchannelproduct.getProduct_value())
 						}
 						Mobile.hideKeyboard()
+						break
 					}
 					else{}
 				}
-				visitedshopproductsdata.add(hangerproduct)
+				if(flag == false){
+					MobileElement edittext = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout["+index+"]/android.widget.EditText[1]")
+					edittext.setValue("0000")
+					if(ProjectConstants.SCENARIO.equalsIgnoreCase("first visit")){
+						hangerproduct.setHanger_availability("0000")
+					}
+					else{
+						hangerproduct.setOverwrite_hanger_availability("0000")
+					}
+					Mobile.hideKeyboard()
+				}
+				else{}
 			}
+			visitedshopproductsdata.add(hangerproduct)
 		}
-		else{}
 		for(int i=0; i< visitedshopproductsdata.size(); i++){
 			displayedproducts.add(visitedshopproductsdata.get(i).getProduct())
 		}

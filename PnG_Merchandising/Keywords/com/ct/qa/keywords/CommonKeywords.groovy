@@ -128,7 +128,7 @@ public class CommonKeywords {
 	@Keyword
 	def static takePicture(){
 		if(Mobile.verifyElementExist(findTestObject("Object Repository/CommonScreenElements/Validate_CameraScreen", [('package') : ProjectConstants.PACKAGENAME]), 0, FailureHandling.OPTIONAL)){
-			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/Camera_flashButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
+//			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/Camera_flashButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/TakePictureButton", [('package') : ProjectConstants.PACKAGENAME]), 0)
 			Mobile.delay(5)
 			Mobile.tap(findTestObject("Object Repository/CommonScreenElements/DoneButton", [('package') : ProjectConstants.PACKAGENAME]), 0)

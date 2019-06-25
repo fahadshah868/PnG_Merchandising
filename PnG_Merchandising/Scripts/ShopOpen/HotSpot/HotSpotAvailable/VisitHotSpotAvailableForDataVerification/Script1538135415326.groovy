@@ -39,18 +39,18 @@ CustomKeywords.'com.ct.qa.keywords.HotSpotKeywords.findPOSMImageView'()
 
 Mobile.pressBack()
 
-Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Facing')
+Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_HotSpotProductCategories_Screen', [('package') : ProjectConstants.PACKAGENAME]), 
+    'Category:HotSpot')
 
 CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPlanogramImageView'()
 
-Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Facing')
+Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_HotSpotProductCategories_Screen', [('package') : ProjectConstants.PACKAGENAME]), 
+    'Category:HotSpot')
 
 CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPictureImageView'()
 
-Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_AssetsScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    'Facing')
+Mobile.verifyElementText(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Validate_HotSpotProductCategories_Screen', [('package') : ProjectConstants.PACKAGENAME]), 
+    'Category:HotSpot')
 
 CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findBackButtonImageView'()
 
@@ -66,11 +66,6 @@ Mobile.hideKeyboard()
 
 Mobile.tap(findTestObject('ShopOpen/HotSpot/HotSpotAvailable/Utilization_popupSubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
-
-Mobile.verifyElementExist(findTestObject('ShopOpen/HotSpot/Validate_HotSpotRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
-
-Mobile.tap(findTestObject('ShopOpen/HotSpot/BackButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 Mobile.verifyElementExist(findTestObject('ShopOpen/Validate_ShopCategoriesListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)

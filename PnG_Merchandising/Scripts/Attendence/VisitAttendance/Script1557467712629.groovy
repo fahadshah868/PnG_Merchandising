@@ -27,8 +27,7 @@ Mobile.tap(findTestObject('DashboardScreenElements/StartYourDay', [('package') :
 Mobile.verifyElementText(findTestObject('Attendence/Validate_AttendenceScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Attendance')
 
-Mobile.tap(findTestObject('Attendence/TakeSelfie_ImageViewButton', [('package') : ProjectConstants.PACKAGENAME]), 
-    0)
+Mobile.tap(findTestObject('Attendence/TakeSelfie_ImageViewButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 
 CustomKeywords.'com.ct.qa.keywords.CommonKeywords.takePicture'()
 

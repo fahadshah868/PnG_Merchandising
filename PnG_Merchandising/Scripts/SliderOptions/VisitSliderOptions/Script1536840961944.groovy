@@ -30,11 +30,17 @@ Mobile.swipe(5, 150, 5, 550)
 
 Mobile.swipe(5, 150, 5, 550)
 
-CustomKeywords.'com.ct.qa.keywords.SliderOptionsKeywords.visitSliderOption'()
+CustomKeywords.'com.ct.qa.keywords.SliderOptionsKeywords.findSliderOption'('Update Profile')
 
-Mobile.swipe(320, 5, 2, 5)
+CustomKeywords.'com.ct.qa.keywords.SliderOptionsKeywords.findSliderOption'('Out of Route')
 
-Mobile.swipe(320, 5, 2, 5)
+CustomKeywords.'com.ct.qa.keywords.SliderOptionsKeywords.findSliderOption'('Abnormal Shops')
+
+CustomKeywords.'com.ct.qa.keywords.SliderOptionsKeywords.findSliderOption'('Info')
+
+Mobile.swipe(320, 70, 2, 70)
+
+Mobile.swipe(320, 70, 2, 70)
 
 CustomKeywords.'com.ct.qa.keywords.SliderOptionsKeywords.displayMissingSliderOptionsInReport'()
 
