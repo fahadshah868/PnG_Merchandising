@@ -12,11 +12,12 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
+import qa.constants.ProjectConstants
 
 Mobile.verifyElementText(findTestObject('ShopOpen/SurveyQuestions/Validate_QuestionsListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Questions')
 
-CustomKeywords.'com.ct.qa.keywords.__SurveyQuestions.visitSurveyQuestionsWithNoRemark'()
+CustomKeywords.'qa.keywords.__SurveyQuestions.visitSurveyQuestionsWithNoRemark'()
 
 Mobile.tap(findTestObject('ShopOpen/SurveyQuestions/SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 0)
 

@@ -12,13 +12,14 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
+import qa.constants.ProjectConstants
 
 'validate the dashboard screen appearance'
 Mobile.verifyElementText(findTestObject('DashboardScreenElements/Validate_DashboardScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Dashboard')
 
 'select current day'
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.selectday'()
+CustomKeywords.'qa.keywords.CommonKeywords.selectday'()
 
 'tap on start your day button to further proceed'
 Mobile.tap(findTestObject('DashboardScreenElements/StartYourDay', [('package') : ProjectConstants.PACKAGENAME]), 
@@ -29,5 +30,5 @@ Mobile.verifyElementText(findTestObject('Validate_ShopListScreen', [('package') 
     'Shops on Route')
 
 'select shops from shops list for data verification'
-CustomKeywords.'com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWithShopLevel_OverwritingScenario'()
+CustomKeywords.'qa.keywords.ShopVisitingScenariosKeywords.visitShopsWithShopLevel_OverwritingScenario'()
 

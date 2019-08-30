@@ -2,7 +2,7 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.ct.qa.constants.ProjectConstants as ProjectConstants
+import qa.constants.ProjectConstants as ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -23,7 +23,7 @@ Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/Displ
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_ShareOfShelfProductsScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 'Share of shelf')
 
-CustomKeywords.'com.ct.qa.keywords.PrimaryDisplayKeywords.visitDSA_Products'(ProjectConstants.DISPLAYSPACEAVAILABLE)
+CustomKeywords.'qa.keywords.PrimaryDisplayKeywords.visitDSA_Products'(ProjectConstants.DISPLAYSPACEAVAILABLE)
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)

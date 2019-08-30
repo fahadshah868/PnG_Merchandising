@@ -2,7 +2,7 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.ct.qa.constants.ProjectConstants as ProjectConstants
+import qa.constants.ProjectConstants as ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -23,7 +23,7 @@ Mobile.tap(findTestObject('ShopOpen/Hanger/HangerAvailable/Availability', [('pac
 Mobile.verifyElementExist(findTestObject('ShopOpen/Hanger/HangerAvailable/Validate_ProductsAvailabilityScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-CustomKeywords.'com.ct.qa.keywords.HangerKeywords.visitHangerProducts'(ProjectConstants.OVERWRITEHANGERAVAILABLE)
+CustomKeywords.'qa.keywords.HangerKeywords.visitHangerProducts'(ProjectConstants.OVERWRITEHANGERAVAILABLE)
 
 Mobile.tap(findTestObject('ShopOpen/Hanger/HangerAvailable/SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
@@ -31,17 +31,17 @@ Mobile.tap(findTestObject('ShopOpen/Hanger/HangerAvailable/SubmitButton', [('pac
 Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/HangerAvailable/Validate_HangerAvailabilityScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Category:Hanger')
 
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPlanogramImageView'()
+CustomKeywords.'qa.keywords.CommonKeywords.findPlanogramImageView'()
 
 Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/HangerAvailable/Validate_HangerAvailabilityScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Category:Hanger')
 
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPictureImageView'()
+CustomKeywords.'qa.keywords.CommonKeywords.findPictureImageView'()
 
 Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/HangerAvailable/Validate_HangerAvailabilityScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Category:Hanger')
 
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findBackButtonImageView'()
+CustomKeywords.'qa.keywords.CommonKeywords.findBackButtonImageView'()
 
 Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerRemarksScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'KPI: Hanger')

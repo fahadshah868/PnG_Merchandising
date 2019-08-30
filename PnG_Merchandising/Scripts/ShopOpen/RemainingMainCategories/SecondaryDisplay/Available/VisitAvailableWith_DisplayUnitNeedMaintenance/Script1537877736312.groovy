@@ -2,7 +2,7 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.ct.qa.constants.ProjectConstants as ProjectConstants
+import qa.constants.ProjectConstants as ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -26,7 +26,7 @@ Mobile.tap(findTestObject('CommonScreenElements/DoneButton', [('package') : Proj
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_AvailableRemarksScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.SecondaryDisplayKeywords.selectSecondaryDisplay_AvailableRemark'('Display Unit Need Maintenance', 
+CustomKeywords.'qa.keywords.SecondaryDisplayKeywords.selectSecondaryDisplay_AvailableRemark'('Display Unit Need Maintenance', 
     1)
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/DUNM_CategoryRemarks_BackButton', 
@@ -41,7 +41,7 @@ Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Ava
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UtilizationPopUpScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 'Utilization')
 
-CustomKeywords.'com.ct.qa.keywords.SecondaryDisplayKeywords.enterUtilizationForSecondaryDisplay'(1)
+CustomKeywords.'qa.keywords.SecondaryDisplayKeywords.enterUtilizationForSecondaryDisplay'(1)
 
 Mobile.hideKeyboard()
 

@@ -3,7 +3,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import org.eclipse.persistence.internal.sessions.factories.model.project.ProjectConfig as ProjectConfig
-import com.ct.qa.constants.ProjectConstants as ProjectConstants
+import qa.constants.ProjectConstants as ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -18,7 +18,7 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementText(findTestObject('ShopOpen/Hanger/Validate_HangerListScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     'Hanger List')
 
-CustomKeywords.'com.ct.qa.keywords.HangerKeywords.visitHangerListWithDataVerification'()
+CustomKeywords.'qa.keywords.HangerKeywords.visitHangerListWithDataVerification'()
 
 Mobile.pressBack()
 

@@ -3,7 +3,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import org.eclipse.persistence.sessions.Project as Project
-import com.ct.qa.constants.ProjectConstants as ProjectConstants
+import qa.constants.ProjectConstants as ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.checkpoint.CheckpointFactory as CheckpointFactory
 import com.kms.katalon.core.logging.KeywordLogger as KeywordLogger
@@ -25,7 +25,7 @@ import internal.GlobalVariable as GlobalVariable
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 
 'launch application'
-Mobile.startApplication('F:\\QA_Automation\\Builds\\PnG\\png_170519_local_v156_2.apk', false)
+Mobile.startApplication('F:\\QA_Automation\\Builds\\png_160519_local_v156_2.apk', false)
 
 'delay of 5 seconds'
 MobileBuiltInKeywords.delay(5)

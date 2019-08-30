@@ -3,7 +3,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-import com.ct.qa.constants.ProjectConstants
+import qa.constants.ProjectConstants
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -20,7 +20,7 @@ Mobile.verifyElementText(findTestObject('DashboardScreenElements/Validate_Dashbo
     'Dashboard')
 
 'select current day'
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.selectday'()
+CustomKeywords.'qa.keywords.CommonKeywords.selectday'()
 
 'tap on start your day button to further proceed'
 Mobile.tap(findTestObject('DashboardScreenElements/StartYourDay', [('package') : ProjectConstants.PACKAGENAME]), 
@@ -31,5 +31,5 @@ Mobile.verifyElementText(findTestObject('Validate_ShopListScreen', [('package') 
     'Shops on Route')
 
 'select shops from shops list for data verification'
-CustomKeywords.'com.ct.qa.keywords.ShopVisitingScenariosKeywords.visitShopsWith_CategoryLevel_OverwritingScenarios'()
+CustomKeywords.'qa.keywords.ShopVisitingScenariosKeywords.visitShopsWith_CategoryLevel_OverwritingScenarios'()
 

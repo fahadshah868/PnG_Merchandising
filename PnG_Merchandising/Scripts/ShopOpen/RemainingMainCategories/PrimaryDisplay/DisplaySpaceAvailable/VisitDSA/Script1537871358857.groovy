@@ -2,8 +2,8 @@ import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import com.ct.qa.constants.ProjectConstants as ProjectConstants
-import com.ct.qa.keywords.CommonKeywords as CommonKeywords
+import qa.constants.ProjectConstants as ProjectConstants
+import qa.keywords.CommonKeywords as CommonKeywords
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -18,19 +18,19 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.PrimaryDisplayKeywords.visitPrimaryDisplay_WithDSASubCategories'(1)
+CustomKeywords.'qa.keywords.PrimaryDisplayKeywords.visitPrimaryDisplay_WithDSASubCategories'(1)
 
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPlanogramImageView'()
-
-Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen', 
-        [('package') : ProjectConstants.PACKAGENAME]), 0)
-
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findPictureImageView'()
+CustomKeywords.'qa.keywords.CommonKeywords.findPlanogramImageView'()
 
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.CommonKeywords.findBackButtonImageView'()
+CustomKeywords.'qa.keywords.CommonKeywords.findPictureImageView'()
+
+Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/PrimaryDisplay/DisplaySpaceAvailable/Validate_SubCategoriesScreen', 
+        [('package') : ProjectConstants.PACKAGENAME]), 0)
+
+CustomKeywords.'qa.keywords.CommonKeywords.findBackButtonImageView'()
 
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/Validate_MainCategoryDetailActionScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)

@@ -18,7 +18,7 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementText(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UnitsScreen'), 
     'Units')
 
-CustomKeywords.'com.ct.qa.keywords.SecondaryDisplayKeywords.enterUnitsForSecondaryDisplay'()
+CustomKeywords.'qa.keywords.SecondaryDisplayKeywords.enterUnitsForSecondaryDisplay'()
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Units_SubmitButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
@@ -26,7 +26,7 @@ Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Ava
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/Validate_UnitsListScreen', 
         [('package') : ProjectConstants.PACKAGENAME]), 0)
 
-CustomKeywords.'com.ct.qa.keywords.SecondaryDisplayKeywords.overwriteSecondaryDisplayUnitsList'()
+CustomKeywords.'qa.keywords.SecondaryDisplayKeywords.overwriteSecondaryDisplayUnitsList'()
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/SecondaryDisplay/Available/UnitsList_BackButton'), 0)
 
