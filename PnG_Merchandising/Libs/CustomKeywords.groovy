@@ -118,16 +118,16 @@ def static "com.ct.qa.keywords.SurveyKeywords.visitSurveyQuestionCategories"(
         	flag)
 }
 
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_DataVerification"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_DataVerification()
+def static "com.ct.qa.keywords.CategoryRemarksVisitingScenariosKeywords.visitRemarksWith_DataVerification"() {
+    (new com.ct.qa.keywords.CategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_DataVerification()
 }
 
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_OverwriteScenarios"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_OverwriteScenarios()
+def static "com.ct.qa.keywords.CategoryRemarksVisitingScenariosKeywords.visitRemarksWith_OverwriteScenarios"() {
+    (new com.ct.qa.keywords.CategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_OverwriteScenarios()
 }
 
-def static "com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_OverwritingScenarios"() {
-    (new com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_OverwritingScenarios()
+def static "com.ct.qa.keywords.CategoryRemarksVisitingScenariosKeywords.visitRemarksWith_OverwritingScenarios"() {
+    (new com.ct.qa.keywords.CategoryRemarksVisitingScenariosKeywords()).visitRemarksWith_OverwritingScenarios()
 }
 
 def static "com.ct.qa.keywords.SliderOptionsKeywords.valideSliderOptions"() {

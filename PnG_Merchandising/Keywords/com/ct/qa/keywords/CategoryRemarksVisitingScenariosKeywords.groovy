@@ -23,7 +23,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable
 import io.appium.java_client.MobileElement
 
-public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
+public class CategoryRemarksVisitingScenariosKeywords {
 
 	@Keyword
 	def visitRemarksWith_DataVerification(){
@@ -70,7 +70,7 @@ public class RemainingMainCategoryRemarksVisitingScenariosKeywords {
 		else{
 		}
 		int totalactions = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/*").size()
-		for(int i=2; i<= totalactions; i++){
+		for(int i=4; i<= totalactions; i++){
 			MobileElement action = ProjectConstants.DRIVER.findElementByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.LinearLayout["+i+"]/android.widget.TextView[1]")
 			String actionname = action.getText()
 			ProjectConstants.CURRENTVISITING_CATEGORYREMARK = actionname

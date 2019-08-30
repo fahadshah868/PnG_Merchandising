@@ -5,6 +5,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.time.Duration
 import java.util.ArrayList
 
 import org.apache.poi.xssf.usermodel.XSSFSheet
@@ -36,6 +37,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable
 import io.appium.java_client.AppiumDriver
 import io.appium.java_client.MobileElement
+import io.appium.java_client.TouchAction
 
 public class AdditionalInfoKeywords {
 
@@ -53,6 +55,73 @@ public class AdditionalInfoKeywords {
 	}
 	@Keyword
 	def visitAdditionalInfoQuestions(){
+		TouchAction touchaction = new TouchAction(ProjectConstants.DRIVER)
+		ArrayList<MobileElement> elementlist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+		for(int i=0; i< elementlist.size(); i++){
+			elementlist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+			MobileElement element = elementlist.get(i)
+			String tagname = element.getTagName()
+			if(tagname.equalsIgnoreCase("android.widget.Spinner")){
+				element.click()
+				Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemark_yes", [('package') : ProjectConstants.PACKAGENAME]), 0)
+				CommonKeywords.takePicture()
+			}
+			else if(tagname.equalsIgnoreCase("android.widget.LinearLayout")){
+				MobileElement edittextbox = element.findElementByClassName("android.widget.EditText")
+				edittextbox.sendKeys("12345")
+			}
+		}
+		while(true){
+			String elementtextbeforeswipe, elementtextafterswipe, tagname
+			MobileElement element
+			elementlist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+			element = elementlist.get((elementlist.size()-1))
+			tagname = element.getTagName()
+			if(tagname.equalsIgnoreCase("android.widget.spinner")){
+				elementtextbeforeswipe = element.findElementByClassName("android.widget.TextView").getText()
+			}
+			else if(tagname.equalsIgnoreCase("android.widget.LinearLayout")){
+				elementtextbeforeswipe = element.findElementByClassName("android.widget.EditText").getText()
+			}
+			touchaction.longPress(40, 650).waitAction(Duration.ofMillis(1000)).moveTo(40, 200).release().perform()
+			Thread.sleep(1000)
+			elementlist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+			element = elementlist.get((elementlist.size()-1))
+			tagname = element.getTagName()
+			if(tagname.equalsIgnoreCase("android.widget.spinner")){
+				elementtextafterswipe = element.findElementByClassName("android.widget.TextView").getText()
+			}
+			else if(tagname.equalsIgnoreCase("android.widget.LinearLayout")){
+				elementtextafterswipe = element.findElementByClassName("android.widget.EditText").getText()
+			}
+			//check if element text same than break loop otherwise continue swiping
+			if(elementtextbeforeswipe.equalsIgnoreCase(elementtextafterswipe)){
+				break
+			}
+			else{
+				for(int i=0; i< elementlist.size(); i++){
+					element = elementlist.get(i)
+					tagname = element.getTagName()
+					if(tagname.equalsIgnoreCase("android.widget.Spinner")){
+						element.click()
+						Mobile.verifyElementExist(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/Validate_QuestionRemarksPopup", [('package') : ProjectConstants.PACKAGENAME]), 0)
+						Mobile.tap(findTestObject("Object Repository/ShopOpen/RemainingMainCategories/AdditionalInfo/QuestionRemark_yes", [('package') : ProjectConstants.PACKAGENAME]), 0)
+						CommonKeywords.takePicture()
+					}
+					else if(tagname.equalsIgnoreCase("android.widget.LinearLayout")){
+						MobileElement edittextbox = element.findElementByClassName("android.widget.EditText")
+						edittextbox.sendKeys("12345")
+					}
+					elementlist = ProjectConstants.DRIVER.findElementsByXPath("//hierarchy/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/*")
+				}
+			}
+		}
+
+
+
+
+
 		int index = 0
 		String itemtextbeforeswipe = ""
 		String itemtextafterswipe = ""

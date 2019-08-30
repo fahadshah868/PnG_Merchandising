@@ -18,7 +18,7 @@ import internal.GlobalVariable as GlobalVariable
 Mobile.verifyElementExist(findTestObject('ShopOpen/RemainingMainCategories/Validate_MainCategoryDetailActionScreen', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
 
-CustomKeywords.'com.ct.qa.keywords.RemainingMainCategoryRemarksVisitingScenariosKeywords.visitRemarksWith_OverwriteScenarios'()
+CustomKeywords.'com.ct.qa.keywords.CategoryRemarksVisitingScenariosKeywords.visitRemarksWith_OverwriteScenarios'()
 
 Mobile.tap(findTestObject('ShopOpen/RemainingMainCategories/BackButton', [('package') : ProjectConstants.PACKAGENAME]), 
     0)
