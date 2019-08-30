@@ -42,6 +42,11 @@ public class DisplayReport {
 			if(missingshopdatainfo != null){
 				if(missingshopdatainfo.getMissingshopcategories() != null){
 					if(flag == false){
+						if(missingshopdatainfo.getSupervisorname() != null){
+							message = message+"\n\n"+
+									String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+									String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+						}
 						message = message+"\n\n"+
 								String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 								String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -58,6 +63,11 @@ public class DisplayReport {
 				//missing shop actions
 				if(missingshopdatainfo.getMissingshopactions() != null){
 					if(flag == false){
+						if(missingshopdatainfo.getSupervisorname() != null){
+							message = message+"\n\n"+
+									String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+									String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+						}
 						message = message+"\n\n"+
 								String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 								String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -80,6 +90,11 @@ public class DisplayReport {
 				//missing shop remarks
 				if(missingshopdatainfo.getMissingshopremarks() != null){
 					if(flag == false){
+						if(missingshopdatainfo.getSupervisorname() != null){
+							message = message+"\n\n"+
+									String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+									String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+						}
 						message = message+"\n\n"+
 								String.format("%-60s%-60s","Shop Name: "+missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n"+
 								String.format("%-60s%-60s", "Visiting Scenarios: "+missingshopdatainfo.getScenario(),"Remark: "+missingshopdatainfo.getRemark())+
@@ -107,6 +122,11 @@ public class DisplayReport {
 							ArrayList<String> categoryremarks = missingcategorydata.getMissingcategoryremarksdata()
 							if(categoryremarks != null){
 								if(flag == false){
+									if(missingshopdatainfo.getSupervisorname() != null){
+										message = message+"\n\n"+
+												String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+												String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+									}
 									message = message+"\n\n"+
 											String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 											String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -143,6 +163,11 @@ public class DisplayReport {
 								ArrayList<String> hotspottypes = missingcategorydata.getHotspottypes()
 								if(hotspottypes != null){
 									if(flag == false){
+										if(missingshopdatainfo.getSupervisorname() != null){
+											message = message+"\n\n"+
+													String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+													String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+										}
 										message = message+"\n\n"+
 												String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 												String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -170,6 +195,11 @@ public class DisplayReport {
 								ArrayList<String> subcategories = missingcategorydata.getSubcategories()
 								if(subcategories != null){
 									if(flag == false){
+										if(missingshopdatainfo.getSupervisorname() != null){
+											message = message+"\n\n"+
+													String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+													String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+										}
 										message = message+"\n\n"+
 												String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 												String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -200,6 +230,11 @@ public class DisplayReport {
 								ArrayList<String> subcategories = missingcategorydata.getSubcategories()
 								if(subcategories != null){
 									if(flag == false){
+										if(missingshopdatainfo.getSupervisorname() != null){
+											message = message+"\n\n"+
+													String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+													String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+										}
 										message = message+"\n\n"+
 												String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 												String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -228,6 +263,11 @@ public class DisplayReport {
 								ArrayList<String> subcategories = missingcategorydata.getSubcategories()
 								if(subcategories != null){
 									if(flag == false){
+										if(missingshopdatainfo.getSupervisorname() != null){
+											message = message+"\n\n"+
+													String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+													String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+										}
 										message = message+"\n\n"+
 												String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 												String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -261,6 +301,11 @@ public class DisplayReport {
 										if(missingsubcategories != null)
 										{
 											if(flag == false){
+												if(missingshopdatainfo.getSupervisorname() != null){
+													message = message+"\n\n"+
+															String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+															String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+												}
 												message = message+"\n\n"+
 														String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 														String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -301,6 +346,11 @@ public class DisplayReport {
 								ArrayList<String> products = missingcategorydata.getProducts()
 								if(products != null){
 									if(flag == false){
+										if(missingshopdatainfo.getSupervisorname() != null){
+											message = message+"\n\n"+
+													String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+													String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+										}
 										message = message+"\n\n"+
 												String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 												String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -331,6 +381,11 @@ public class DisplayReport {
 								ArrayList<String> products = missingcategorydata.getProducts()
 								if(products != null){
 									if(flag == false){
+										if(missingshopdatainfo.getSupervisorname() != null){
+											message = message+"\n\n"+
+													String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+													String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+										}
 										message = message+"\n\n"+
 												String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 												String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -395,6 +450,11 @@ public class DisplayReport {
 										ArrayList<String> products = missingcategoryremark.getProducts()
 										if(products != null){
 											if(flag == false){
+												if(missingshopdatainfo.getSupervisorname() != null){
+													message = message+"\n\n"+
+															String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",missingshopdatainfo.getSupervisorname(),"Merchandiser Name",missingshopdatainfo.getMerchandisername())+"\n"+
+															String.format("%-20s%-30s%-20s%-30s","Working Action:",missingshopdatainfo.getWorkingaction(),"Route",missingshopdatainfo.getRoute())
+												}
 												message = message+"\n\n"+
 														String.format("%-11s%-60s%-60s","Shop Name:",missingshopdatainfo.getShopname(),missingshopdatainfo.getShopchannel())+"\n\n"+
 														String.format("%-30s%-100s", "Visiting Scenarios:",missingshopdatainfo.getScenario())+
@@ -446,6 +506,11 @@ public class DisplayReport {
 		for(int i=0; i<ProjectConstants.visitedshopdatainfo.size(); i++){
 			VisitedShopDataInfo visitedshopdatainfo = ProjectConstants.visitedshopdatainfo.get(i)
 			if(visitedshopdatainfo != null){
+				if(visitedshopdatainfo.getSupervisorname() != null){
+					message = message+"\n\n"+
+							String.format("%-20s%-30s%-20s%-30s","Supervisor Name:",visitedshopdatainfo.getSupervisorname(),"Merchandiser Name",visitedshopdatainfo.getMerchandisername())+"\n"+
+							String.format("%-20s%-30s%-20s%-30s","Working Action:",visitedshopdatainfo.getWorkingaction(),"Route",visitedshopdatainfo.getRoute())
+				}
 				message = message+"\n\n"+
 						String.format("%-11s%-60s%-60s","Shop Name:",visitedshopdatainfo.getShopname(),visitedshopdatainfo.getShopchannel())+"\n\n"+
 						String.format("%-40s%-100s","Shop Visiting Scenarios:",visitedshopdatainfo.getShop_scenario())+"\n\n"+

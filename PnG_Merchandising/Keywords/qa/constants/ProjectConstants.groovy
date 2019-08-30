@@ -8,6 +8,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import qa.keywords.LoadDataKeywords
 import qa.struct.MissingShopDataInfo
 import qa.struct.MissingSliderOptions
+import qa.struct.ScoreCard
 import qa.struct.VisitedShopDataInfo
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
@@ -51,6 +52,7 @@ public class ProjectConstants {
 	public static final String SHOPACTIONSSHEET = "Shop Actions"
 	public static final String SHOPREMARKSSHEET = "Shop Remarks"
 	public static final String ADDITIONALINFOQUESTIONS_SHEET = "Additional Info Questions"
+	public static final String SCORECARDSHEET = "Score Card"
 
 	public static final AppiumDriver<MobileElement> DRIVER = MobileDriverFactory.getDriver()
 
@@ -117,24 +119,31 @@ public class ProjectConstants {
 	//shop remarks columns
 	public static final int SHOPREMARKS
 
+	//score card columns
+	public static final int SCORE_CARD
 
 	//variables for current visiting shop channels, chiller and categories
-	public static String CURRENTVISITING_SHOPNAME = ""
-	public static String CURRENTVISITING_SHOPCHANNEL = ""
-	public static String CURRENTVISITING_MAINCATEGORY = ""
-	public static String SCENARIO = ""
+	public static String SUPERVISOR_NAME = null
+	public static String MERCHANDISER_NAME = null
+	public static String WORKING_ACTION = null
+	public static String CURRENTVISITING_ROUTE = null
+	public static String CURRENTVISITING_SHOPNAME = null
+	public static String CURRENTVISITING_SHOPCHANNEL = null
+	public static String CURRENTVISITING_MAINCATEGORY = null
+	public static String SCENARIO = null
 	public static int HOTSPOTINDEX = 0
-	public static String CURRENTVISITING_HOTSPOTTYPE = ""
-	public static String CURRENTVISITING_CATEGORYREMARK = ""
-	public static String CURRENTVISITING_CATEGORYREMARK_SUBREMARK = ""
-	public static String CURRENTVISITING_SUBCATEGORY = ""
-	public static String CURRENTVISITING_UNIT = ""
+	public static String CURRENTVISITING_HOTSPOTTYPE = null
+	public static String CURRENTVISITING_CATEGORYREMARK = null
+	public static String CURRENTVISITING_CATEGORYREMARK_SUBREMARK = null
+	public static String CURRENTVISITING_SUBCATEGORY = null
+	public static String CURRENTVISITING_UNIT = null
 	public static int SHOP_ATTEMPT = 0
 
 	//list for containing shop info
 	public static ArrayList<MissingShopDataInfo> missingshopdatainfo = new ArrayList<MissingShopDataInfo>()
 	public static ArrayList<VisitedShopDataInfo> visitedshopdatainfo = new ArrayList<MissingShopDataInfo>()
 	public static MissingSliderOptions missingslideroptions = new MissingSliderOptions()
+	public static ArrayList<ScoreCard> missingscorecardremarks = new ArrayList<ScoreCard>()
 
 	//initialization of sheet columns index
 	static{
@@ -146,6 +155,7 @@ public class ProjectConstants {
 		XSSFSheet shopactionssheet = LoadDataKeywords.loadShopActionsSheet()
 		XSSFSheet shopremarkssheet = LoadDataKeywords.loadShopRemarksSheet()
 		XSSFSheet surveysheet = LoadDataKeywords.loadSurveySheet()
+		XSSFSheet scorecardsheet = LoadDataKeywords.loadScoreCardSheet()
 
 		Row channelproductssheetheaderrow = channelproductssheet.getRow(0)
 		Row hotspotproductssheetheaderrow = hotspotproductssheet.getRow(0)
@@ -155,6 +165,7 @@ public class ProjectConstants {
 		Row shopactionssheetheaderrow = shopactionssheet.getRow(0)
 		Row shopremarkssheetheaderrow = shopremarkssheet.getRow(0)
 		Row surveysheetheaderrow = surveysheet.getRow(0)
+		Row scorecardsheetheaderrow = scorecardsheet.getRow(0)
 
 		int channelproductssheettotalcolumns = channelproductssheetheaderrow.getLastCellNum()
 		int hotspotproductssheettotalcolumns = hotspotproductssheetheaderrow.getLastCellNum()
@@ -164,6 +175,7 @@ public class ProjectConstants {
 		int shopactionssheettotalcolumns = shopactionssheetheaderrow.getLastCellNum()
 		int shopremarkssheettotalcolumns = shopremarkssheetheaderrow.getLastCellNum()
 		int surveysheetsheettotalcolumns = surveysheetheaderrow.getLastCellNum()
+		int scorecardsheettotalcolumns = scorecardsheetheaderrow.getLastCellNum()
 
 		//load channel wise products sheet columns
 		for(int cellnumber=0; cellnumber<channelproductssheettotalcolumns; cellnumber++){
@@ -305,6 +317,15 @@ public class ProjectConstants {
 			}
 			else if(columnname.equalsIgnoreCase("Question")){
 				SURVEY_QUESTION = cellnumber
+			}
+		}
+		//load score card columns
+		for(int cellnumber=0; cellnumber<scorecardsheettotalcolumns; cellnumber++ ){
+			String columnname = scorecardsheetheaderrow.getCell(cellnumber)
+			if(columnname.equalsIgnoreCase("Score Card")){
+				SCORE_CARD = cellnumber
+			}
+			else{
 			}
 		}
 	}

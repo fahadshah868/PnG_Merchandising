@@ -26,6 +26,10 @@ import WSBuiltInKeywords as WS
 import WebUiBuiltInKeywords as WebUI
 
 public class MissingShopDataInfo {
+	public String supervisorname
+	public String merchandisername
+	public String workingaction
+	public String route
 	public String shopname
 	public String shopchannel
 	public String scenario
@@ -38,9 +42,40 @@ public class MissingShopDataInfo {
 	public ArrayList<String> missingshopremarks
 	public String missingshopremarks_errormessage
 
-
 	public MissingShopDataInfo(){
 		this.missingcategoriesdata = new ArrayList<MissingCategoryData>()
+	}
+
+	public String getSupervisorname() {
+		return supervisorname;
+	}
+
+	public void setSupervisorname(String supervisorname) {
+		this.supervisorname = supervisorname;
+	}
+
+	public String getMerchandisername() {
+		return merchandisername;
+	}
+
+	public void setMerchandisername(String merchandisername) {
+		this.merchandisername = merchandisername;
+	}
+
+	public String getWorkingaction() {
+		return workingaction;
+	}
+
+	public void setWorkingaction(String workingaction) {
+		this.workingaction = workingaction;
+	}
+
+	public String getRoute() {
+		return route;
+	}
+
+	public void setRoute(String route) {
+		this.route = route;
 	}
 
 	public String getShopname() {
